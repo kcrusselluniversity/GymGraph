@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom"
-import NavBar from "../../components/NavBar"
+import NavBar from "../../components/ui/NavBar"
 
 const UserPageLayout = () => {
-    return <>
+    return <div className="userPageContainer">
         <NavBar />
         <Outlet />        
-    </>
+    </div>
 }
 
 export default UserPageLayout
