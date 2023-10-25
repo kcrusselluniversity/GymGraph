@@ -8,7 +8,7 @@ const NavBar = () => {
                 <NavLink to="/user/history">History</NavLink>
                 <NavLink to="/user/metrics">Metrics</NavLink>
                 <NavLink to="/user/profile">Profile</NavLink>
-                <NavLink>Settings</NavLink>
+                <NavLink to="/user/settings">Settings</NavLink>
                 <NavLink to="/">Log Out</NavLink>
             </nav>
     );

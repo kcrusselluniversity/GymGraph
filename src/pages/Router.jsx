@@ -6,9 +6,10 @@ import Workout from "./Workout";
 import History from "./History";
 import Metrics from "./Metrics";
 import Profile from "./Profile";
-import Dashboard from "./Dashboard"
+import Dashboard from "./Dashboard";
+import Error from "./Error";
+import UnderConstruction from "./UnderConstruction"
 import UserPageLayout from "./UserPageLayout";
-import Error from "./Error"
 
 const Router = () => {
     return (
@@ -22,6 +23,7 @@ const Router = () => {
                 <Route path="history" element={<History />} />
                 <Route path="metrics" element={<Metrics />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="settings" element={<UnderConstruction />} />
             </Route>
             <Route path="*" element={<Error />} />
         </Routes>
