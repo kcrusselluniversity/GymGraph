@@ -1,7 +1,8 @@
-import './App.css'
+import "./App.css";
+import Router from "./pages/Router";
 
 const App = () => {
-  return <h1>Hello, World!</h1>
-}
+    return <Router />;
+};
 
-export default App
+export default App;
