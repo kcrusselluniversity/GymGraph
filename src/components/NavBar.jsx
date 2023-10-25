@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
     return (
@@ -12,7 +12,6 @@ const NavBar = () => {
                 <NavLink>Settings</NavLink>
                 <NavLink to="/">Log Out</NavLink>
             </nav>
-            <Outlet />
         </>
     );
 };
