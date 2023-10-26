@@ -31,7 +31,7 @@ const Landing = () => {
                     </p>
                     <p>
                         ... or just looking for a demo &nbsp;
-                        <Link to="/signup">Sign up</Link>
+                        <Link to="/signup">Click here</Link>
                     </p>
                 </footer>
             </div>
