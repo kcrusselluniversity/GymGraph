@@ -13,6 +13,7 @@ const LinkButton = ({ text, className, to }) => {
                 fontFamily: "Montserrat",
                 textTransform: "none",
                 fontSize: "20px",
+                marginBottom: "12px",
             }}
         >
             {text}
@@ -23,7 +24,7 @@ const LinkButton = ({ text, className, to }) => {
 LinkButton.propTypes = {
     text: PropTypes.string.isRequired,
     className: PropTypes.string,
-    to: PropTypes.string.isRequired
+    to: PropTypes.string.isRequired,
 };
 
 export default LinkButton;
