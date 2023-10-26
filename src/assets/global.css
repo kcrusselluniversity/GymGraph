@@ -1,16 +1,45 @@
+:root {
+    --logo-height: 46px;
+    --footer-height: 50px;
+}
+
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
+
+
+/* SEMANTIC STYLING */
 
 html, body, #root {
     height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+    font-weight: 600;
+    font-size: 42px;
+    letter-spacing: -0.8px;
+}
+
+h2 {
+    font-size: 30px;
+    letter-spacing: -0.4px;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/* SECTION: PAGES */
+
+/* SECTION: LANDING PAGE */
 .landing {
     height: 100%;
-    position: relative; 
-    overflow-x: hidden; 
+    position: relative;
+    padding: 2rem;
 }
 
 .landing::after {
@@ -23,11 +52,32 @@ html, body, #root {
     background-image: url('./images/hero_image_compressed.jpg');
     background-size: cover; 
     background-repeat: no-repeat;
-    z-index: 1;
+    z-index: -1;
 }
 
-/* @media screen and (max-width: 700px) {
-    .landing::after {
-        content: none;
-    } 
-} */
+.landing__content {
+    width: 55%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: var(--logo-height) 1fr 1fr var(--footer-height);
+}
+
+.content__main {
+    align-self: center;
+    justify-self: center;
+}
+
+.content__footer {
+    align-self: end;
+}
+
+@media screen and (min-width: 1200px) {
+    .content__CTA {
+        justify-self: center;    
+    }    
+}
+
+/* ASSETS */
+.gymGraphLogo {
+    height: var(--logo-height)
+}
