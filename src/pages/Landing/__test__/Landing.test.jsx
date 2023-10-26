@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 import Landing from "../Landing";
 
 describe("Landing page", () => {
@@ -20,5 +21,13 @@ describe("Landing page", () => {
     it("renders logo", () => {
         const logo = screen.getByRole("img", { name: "GymGraph" });
         expect(logo).toBeInTheDocument();
+    });
+
+    it("has a sign up button", async () => {
+        const signUpButton = screen.getByRole("link", {
+            name: "Sign Up Now",
+        });
+
+        expect(signUpButton).toBeInTheDocument();
     });
 });
