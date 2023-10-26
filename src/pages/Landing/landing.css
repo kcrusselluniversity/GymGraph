@@ -43,13 +43,13 @@
     align-self: end;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (650px < width <= 1200px) {
     .content__CTA {
         justify-self: center; 
     }    
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (width <= 650px) {
     .landing::after {
         content: none;
     }
