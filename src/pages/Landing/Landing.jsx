@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
 import LinkButton from "../../components/ui/LinkButton";
+import "./landing.css";
 
 const Landing = () => {
     return (
