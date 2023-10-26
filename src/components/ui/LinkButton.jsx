@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const LinkButton = ({text, className, to}) => {
+const LinkButton = ({ text, className, to }) => {
     return (
         <Button
             variant="contained"
@@ -19,5 +20,10 @@ const LinkButton = ({text, className, to}) => {
     );
 };
 
-export default LinkButton;
+LinkButton.propTypes = {
+    text: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    to: PropTypes.string.isRequired
+};
 
+export default LinkButton;
