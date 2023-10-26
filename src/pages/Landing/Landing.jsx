@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
-import { Button } from "@mui/material";
+import LinkButton from "../../components/ui/LinkButton";
 
 const Landing = () => {
     return (
@@ -18,19 +18,11 @@ const Landing = () => {
                 </div>
                 <div className="content__CTA">
                     <h2>Your gains. Your data. One app.</h2>
-                    <Button
+                    <LinkButton
                         className="CTA__button"
-                        variant="contained"
-                        component={Link}
+                        text="Sign Up Now"
                         to="/signup"
-                        sx={{
-                            "font-family": "Montserrat",
-                            "text-transform": "none",
-                            "font-size": '20px'
-                        }}
-                    >
-                        Sign Up Now
-                    </Button>
+                    />
                 </div>
                 <footer className="content__footer">
                     <p>
