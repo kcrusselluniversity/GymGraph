@@ -2,6 +2,7 @@
     height: 100%;
     position: relative;
     padding: 2rem;
+    padding-left: 4rem;
 }
 
 .landing::after {
@@ -26,13 +27,13 @@
 
 .content__main {
     align-self: center;
-    justify-self: center;
 }
 
 .content__CTA {
     display: flex;
     flex-direction: column;
     gap: 1rem;   
+    width: fit-content;
 }
 
 .CTA__button {
@@ -43,13 +44,7 @@
     align-self: end;
 }
 
-@media screen and (650px < width <= 1200px) {
-    .content__CTA {
-        justify-self: center; 
-    }    
-}
-
-@media screen and (width <= 650px) {
+@media screen and (width <= 750px) {
     .landing::after {
         content: none;
     }
@@ -62,5 +57,9 @@
     .landing__content {
         width: 85%;
         text-align: center;
+    }
+
+    .content__CTA {
+        width: auto;    
     }
 }

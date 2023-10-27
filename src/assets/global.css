@@ -1,6 +1,10 @@
 :root {
-    --logo-height: 46px;
+    --logo-height: 40px;
     --footer-height: 50px;
+
+    --dominant-color: white;
+    --secondary-color: #a8dadc;
+    --accent-color: #4b86aa;
 }
 
 * {
