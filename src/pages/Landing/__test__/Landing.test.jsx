@@ -1,16 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 import Landing from "../Landing";
 
-describe("Landing page", () => {
+describe("Landing page tests", () => {
     beforeEach(() => {
-        render(
-            <MemoryRouter>
-                <Landing />
-            </MemoryRouter>
-        );
+        render(<Landing />, { wrapper: BrowserRouter });
     });
 
     it("renders without crashing", () => {
