@@ -27,4 +27,9 @@ LinkButton.propTypes = {
     to: PropTypes.string.isRequired,
 };
 
+LinkButton.defaultProps = {
+    text: 'Button',
+    to: '/'
+}
+
 export default LinkButton;
