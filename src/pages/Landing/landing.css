@@ -27,6 +27,7 @@
 
 .content__main {
     align-self: center;
+    padding: 1rem 0px;
 }
 
 .content__CTA {
@@ -42,6 +43,7 @@
 
 .content__footer {
     align-self: end;
+    margin-top: 8px;
 }
 
 @media screen and (width <= 750px) {
@@ -62,5 +64,6 @@
 
     .content__CTA {
         width: auto;    
+        margin-bottom: 8px;
     }
 }
