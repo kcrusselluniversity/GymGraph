@@ -52,6 +52,7 @@
     .landing {
         display: flex;
         justify-content: center;
+        padding: 2rem;
     }
 
     .landing__content {
