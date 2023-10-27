@@ -14,8 +14,11 @@ const LinkButton = ({ text, className, to }) => {
                 bgcolor: accentColor,
                 fontFamily: "Montserrat",
                 textTransform: "none",
-                fontSize: "20px",
+                fontSize: "16px",
+                fontWeight: "600",
                 my: "8px",
+                px: "1.75rem",
+                py: "4px"
             }}
         >
             {text}
