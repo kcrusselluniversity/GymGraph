@@ -1,0 +1,74 @@
+.signInPage {
+    height: 100%;
+    padding: 2rem;
+}
+
+.signInPage > header {
+    padding-left: 2rem;
+}
+.signInPage__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    height:  90%;   
+    min-height: 550px;
+}
+
+.content__signInContainer {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin: 2rem 0px;
+}
+
+.signInEmail {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+.divider__line {
+    --input-outline-color: #CBCBCB;
+    width: 1px;
+    background-color: var(--input-outline-color);
+    flex-grow: 1;
+    border-radius: 100px;
+}
+
+.divider__text {
+    display: inline-block;
+    padding: 16px 8px;
+}
+
+@media screen and (width <= 700px) {
+    .signInPage__content > h1 {
+        text-align: center;
+    }
+    
+    .content__signInContainer {
+        flex-direction: column;
+    }
+
+    .divider {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .divider__line {
+        
+        height: 1px;
+        width: auto;
+    }
+
+    .divider__text {
+        padding: 8px 16px;
+    }
+}
