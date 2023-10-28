@@ -6,19 +6,21 @@ const WithGoogleButton = ({ text }) => {
     const googleIconHeight = "30px";
     const googleIcon = <img src={googleIconSVG} height={googleIconHeight} />;
 
+    const buttonStyle = {
+        fontFamily: "Montserrat",
+        fontWeight: "500",
+        textTransform: "none",
+        fontSize: "16px",
+        my: "8px",
+        px: "1.75rem",
+        py: "4px",
+    };
+
     return (
         <Button
             variant="outlined"
             startIcon={googleIcon}
-            sx={{
-                fontFamily: "Montserrat",
-                fontWeight: "500",
-                textTransform: "none",
-                fontSize: "16px",
-                my: "8px",
-                px: "1.75rem",
-                py: "4px",
-            }}
+            sx={buttonStyle}
         >
             {text} with Google
         </Button>
