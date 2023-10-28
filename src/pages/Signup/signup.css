@@ -1,0 +1,23 @@
+.signUpPage {
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.signUpPage > header {
+    padding-left: 2rem;
+}
+
+.signUpPage__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    height:  90%;   
+    min-height: 550px;
+}
+
+.content__signUpContainer {
+ 
+}
