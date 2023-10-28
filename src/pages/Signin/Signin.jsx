@@ -7,53 +7,57 @@ import Divider from "../../components/ui/Divider";
 
 const Signin = () => {
     const [formData, setFormData] = useState({
-        email:"",
-        password:"",
+        email: "",
+        password: "",
     });
 
-    const handleChange = (e) => {setFormData({...formData, [e.target.name]: e.target.value})};
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = () => {};
 
     return (
-        <>
-            <div className="signInPage">
-                <header>
-                    <img src={logo} alt="GymGraph" className="gymGraphLogo" />
-                </header>
-                <div className="signInPage__content">
-                    <h1>Login to GymGraph</h1>
-                    <div className="content__signInContainer">
-                        <form className="signInEmail" onSubmit={handleSubmit} noValidate>
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                            <LinkButton to="" text="Log In" />
-                        </form>
-                        <Divider direction="vertical" text="or"/>
-                        <div className="signInGoogle">signInGoogle</div>
-                    </div>
+        <div className="signInPage">
+            <header>
+                <img src={logo} alt="GymGraph" className="gymGraphLogo" />
+            </header>
+            <div className="signInPage__content">
+                <h1>Login to GymGraph</h1>
+                <div className="content__signInContainer">
+                    <form
+                        className="signInEmail"
+                        onSubmit={handleSubmit}
+                        noValidate
+                    >
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                        <LinkButton to="" text="Log In" />
+                    </form>
+                    <Divider direction="vertical" text="or" />
+                    <div className="signInGoogle">signInGoogle</div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
