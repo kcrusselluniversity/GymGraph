@@ -2,6 +2,7 @@ import "./signup.css";
 import logo from "../../assets/Logo.svg";
 import Divider from "../../components/ui/Divider";
 import SignUpForm from "./SignUpForm";
+import WithGoogleButton from "../../components/ui/WithGoogleButton";
 
 const Signup = () => {
     return (
@@ -14,7 +15,7 @@ const Signup = () => {
                 <div className="content__signUpContainer">
                     <SignUpForm />
                     <Divider text="or" direction="horizontal" />
-                    <div className="signInGoogle">Sign Up with Google</div>
+                    <WithGoogleButton text="Sign up"/>
                 </div>
 
             </div>

@@ -2,9 +2,9 @@ import "./signin.css";
 import logo from "../../assets/Logo.svg";
 import Divider from "../../components/ui/Divider";
 import SignInForm from "./SignInForm";
+import WithGoogleButton from '../../components/ui/WithGoogleButton';
 
 const Signin = () => {
-
     return (
         <div className="signInPage">
             <header>
@@ -15,7 +15,7 @@ const Signin = () => {
                 <div className="content__signInContainer">
                     <SignInForm />
                     <Divider direction="vertical" text="or" />
-                    <div className="signInGoogle">signInGoogle</div>
+                    <WithGoogleButton text="Continue"/>
                 </div>
             </div>
         </div>
