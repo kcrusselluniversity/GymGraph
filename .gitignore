@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Preferentially hidden
-notes & totos.md
+notesAndTodos.md
