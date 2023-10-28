@@ -7,6 +7,10 @@
     --accent-color: #4b86aa;
 
     --text-input-box-outline-color: #CBCBCB;
+    --text-input-width-standard-screen: 250px;
+    --text-input-width-small-screen: 280px;
+
+    --screen-small: 750px;
 }
 
 * {
@@ -30,7 +34,6 @@ h1 {
 }
 
 h2 {
-    font-size: 30px;
     letter-spacing: -0.4px;
 }
 
@@ -47,6 +50,20 @@ a {
 
 p {
     padding: 4px 0px;
+}
+
+@media screen and (width <= 750px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
 }
 
 /* ASSETS */
@@ -77,7 +94,7 @@ p {
     padding: 16px 8px;
 }
 
-@media screen and (width <= 700px) {
+@media screen and (width <= 750px) {
     .divider-vertical {
         flex-direction: row;
         width: 80%;
