@@ -3,6 +3,7 @@ import logo from "../../assets/Logo.svg";
 import LinkButton from "../../components/ui/LinkButton";
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import Divider from "../../components/ui/Divider";
 
 const Signin = () => {
     const [formData, setFormData] = useState({
@@ -47,11 +48,7 @@ const Signin = () => {
                             />
                             <LinkButton to="" text="Log In" />
                         </form>
-                        <div className="divider">
-                            <div className="divider__line"></div>
-                            <span className="divider__text">or</span>
-                            <div className="divider__line"></div>
-                        </div>
+                        <Divider direction="horizontal" text="or"/>
                         <div className="signInGoogle">signInGoogle</div>
                     </div>
                 </div>

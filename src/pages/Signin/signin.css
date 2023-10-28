@@ -28,6 +28,7 @@
     width: 300px;
 }
 
+/* Divider styling */
 .divider {
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@
     height: 80%;
 }
 
-.divider__line {
+.divider-line {
     --input-outline-color: #CBCBCB;
     width: 1px;
     background-color: var(--input-outline-color);
@@ -43,10 +44,28 @@
     border-radius: 100px;
 }
 
-.divider__text {
+.divider-text {
     display: inline-block;
     padding: 16px 8px;
 }
+
+@media screen and (width <= 700px) {
+    .divider {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .divider-line {  
+        height: 1px;
+        width: auto;
+    }
+
+    .divider-text {
+        padding: 8px 16px;
+    }
+}
+
+/* Responsiveness styling */
 
 @media screen and (width <= 700px) {
     .signInPage__content > h1 {
@@ -55,20 +74,5 @@
     
     .content__signInContainer {
         flex-direction: column;
-    }
-
-    .divider {
-        flex-direction: row;
-        width: 80%;
-    }
-
-    .divider__line {
-        
-        height: 1px;
-        width: auto;
-    }
-
-    .divider__text {
-        padding: 8px 16px;
     }
 }

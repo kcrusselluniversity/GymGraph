@@ -51,3 +51,80 @@ p {
 .gymGraphLogo {
     height: var(--logo-height)
 }
+
+/* GLOBAL COMPONENTS */
+
+/* DIVIDER */
+/* Divider - Horizontal */
+.divider-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+.divider__line-horizontal {
+    --input-outline-color: #CBCBCB;
+    width: 1px;
+    background-color: var(--input-outline-color);
+    flex-grow: 1;
+    border-radius: 100px;
+}
+
+.divider__text-horizontal {
+    display: inline-block;
+    padding: 16px 8px;
+}
+
+@media screen and (width <= 700px) {
+    .divider-horizontal {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .divider__line-horizontal {  
+        height: 1px;
+        width: auto;
+    }
+
+    .divider__text-horizontal {
+        padding: 8px 16px;
+    }
+}
+
+/* Divider - Vertical */
+.divider-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+.divider__line-horizontal {
+    --input-outline-color: #CBCBCB;
+    width: 1px;
+    background-color: var(--input-outline-color);
+    flex-grow: 1;
+    border-radius: 100px;
+}
+
+.divider__text-horizontal {
+    display: inline-block;
+    padding: 16px 8px;
+}
+
+@media screen and (width <= 700px) {
+    .divider-horizontal {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .divider__line-horizontal {  
+        height: 1px;
+        width: auto;
+    }
+
+    .divider__text-horizontal {
+        padding: 8px 16px;
+    }
+}
