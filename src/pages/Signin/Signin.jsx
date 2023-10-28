@@ -48,7 +48,7 @@ const Signin = () => {
                             />
                             <LinkButton to="" text="Log In" />
                         </form>
-                        <Divider direction="horizontal" text="or"/>
+                        <Divider direction="vertical" text="or"/>
                         <div className="signInGoogle">signInGoogle</div>
                     </div>
                 </div>
