@@ -21,7 +21,7 @@ describe("App routing tests", () => {
 
         const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
         await user.click(signUpButton);
-        expect(screen.getByText(/signup/i)).toBeInTheDocument();
+        expect(screen.getByText(/create your gymgraph account/i)).toBeInTheDocument();
     });
 
     it("correctly routes to sign in page after clicking signin link", async () => {
