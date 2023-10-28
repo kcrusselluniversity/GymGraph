@@ -1,8 +1,11 @@
 import LinkButton from "../../components/ui/LinkButton";
-import { TextField } from "@mui/material";
+import { TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 
 const SignUpForm = () => {
+    const isSmallScreen = useMediaQuery('(width <= 750px)');
+    const size = isSmallScreen ? 'small' : 'medium';
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -19,58 +22,66 @@ const SignUpForm = () => {
     const handleSubmit = () => {};
 
     return (
-        <form className="signInEmail" onSubmit={handleSubmit} noValidate>
-            <TextField
-                variant="outlined"
-                id="firstName"
-                label="First name"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-            />
-            <TextField
-                variant="outlined"
-                id="lastName"
-                label="Last name"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-            />
-            <TextField
-                variant="outlined"
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={formData.email}
-                onChange={handleChange}
-            />
-            <TextField
-                variant="outlined"
-                id="dob"
-                label="Age"
-                name="dob"
-                value={formData.dob}
-                onChange={handleChange}
-            />
-            <TextField
-                variant="outlined"
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                value={formData.password}
-                onChange={handleChange}
-            />
-            <TextField
-                variant="outlined"
-                name="confirmPassword"
-                label="confirmPassword"
-                type="Confirm password"
-                id="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-            />
+        <form className="signUpEmail" onSubmit={handleSubmit} noValidate>
+            <div className="inputContainer">
+                <TextField
+                    variant="outlined"
+                    id="firstName"
+                    label="First name"
+                    name="firstName"
+                    size={size}
+                    value={formData.firstName}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    id="lastName"
+                    label="Last name"
+                    name="lastName"
+                    size={size}
+                    value={formData.lastName}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    size={size}
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    id="dob"
+                    label="Age"
+                    name="dob"
+                    size={size}
+                    value={formData.dob}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    size={size}
+                    value={formData.password}
+                    onChange={handleChange}
+                />
+                <TextField
+                    variant="outlined"
+                    name="confirmPassword"
+                    label="confirmPassword"
+                    type="Confirm password"
+                    id="confirmPassword"
+                    size={size}
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                />
+            </div>
             <LinkButton to="" text="Start Your Journey" />
         </form>
     );

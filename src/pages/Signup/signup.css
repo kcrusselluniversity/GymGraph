@@ -16,8 +16,51 @@
     justify-content: center;
     height:  90%;   
     min-height: 550px;
+    gap: 2rem;
+}
+
+.content__signUpContainer,
+.signUpEmail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content__signUpContainer {
- 
+    gap: 2rem;
+}
+
+form > .inputContainer {
+    display: grid;
+    grid-template-columns: repeat(2,var(--text-input-width-standard-screen));
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+}
+
+.divider-horizontal {
+    align-self: stretch;
+}
+
+@media screen and (width <= 750px) {
+    .signUpPage {
+        padding: 1rem;
+    }
+    .signUpPage__content {
+        gap: 0.5rem;
+    }
+
+    .signUpPage__content > h1 {
+        text-align: center;
+        padding-bottom: 1rem;
+        font-size: 30px;
+    }
+
+    form > .inputContainer {
+        grid-template-columns: var(--text-input-width-small-screen);
+        gap: 0.5rem;        
+    }
+
+    .content__signUpContainer {
+        gap: 4px;
+    }
 }
