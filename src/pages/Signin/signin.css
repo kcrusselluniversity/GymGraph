@@ -49,7 +49,7 @@
     padding: 16px 8px;
 }
 
-@media screen and (width <= 700px) {
+@media screen and (width <= 750px) {
     .divider {
         flex-direction: row;
         width: 80%;
@@ -67,12 +67,17 @@
 
 /* Responsiveness styling */
 
-@media screen and (width <= 700px) {
+@media screen and (width <= 750px) {
     .signInPage__content > h1 {
         text-align: center;
     }
     
     .content__signInContainer {
         flex-direction: column;
+    }
+    
+    .signInEmail {
+        width: var(--text-input-width-small-screen);
+        gap: 0.5rem;
     }
 }
