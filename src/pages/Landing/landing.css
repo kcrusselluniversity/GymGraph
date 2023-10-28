@@ -37,6 +37,10 @@
     width: fit-content;
 }
 
+.content__CTA > h2 {
+    font-size: 28px;
+}
+
 .CTA__button {
     align-self: center;  
 }
