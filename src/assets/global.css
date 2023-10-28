@@ -5,6 +5,8 @@
     --dominant-color: white;
     --secondary-color: #a8dadc;
     --accent-color: #4b86aa;
+
+    --text-input-box-outline-color: #CBCBCB;
 }
 
 * {
@@ -64,9 +66,8 @@ p {
 }
 
 .divider__line-vertical {
-    --input-outline-color: #CBCBCB;
     width: 1px;
-    background-color: var(--input-outline-color);
+    background-color: var(--text-input-box-outline-color);
     flex-grow: 1;
     border-radius: 100px;
 }
@@ -97,11 +98,12 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80%;
 }
 
 .divider__line-horizontal {  
+    flex-grow: 1;
     height: 1px;
+    background-color: var(--text-input-box-outline-color);
 }
 
 .divider__text-horizontal {
