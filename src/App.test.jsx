@@ -31,7 +31,7 @@ describe("App routing tests", () => {
 
         const signInButton = screen.getByRole("link", { name: "Sign in" });
         await user.click(signInButton);
-        expect(screen.getByText(/signin/i)).toBeInTheDocument();
+        expect(screen.getByText(/Login to GymGraph/i)).toBeInTheDocument();
     });
 
     it("correctly render a bad page", () => {
