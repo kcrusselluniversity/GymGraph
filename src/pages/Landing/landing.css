@@ -30,15 +30,15 @@
     padding: 1rem 0px;
 }
 
+.content__main > * {
+    padding: 8px 0px;
+}
+
 .content__CTA {
     display: flex;
     flex-direction: column;
     gap: 1rem;   
     width: fit-content;
-}
-
-.content__CTA > h2 {
-    font-size: 28px;
 }
 
 .CTA__button {
