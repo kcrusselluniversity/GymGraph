@@ -21,7 +21,6 @@ const SignInForm = () => {
                     >
                         <TextField
                             variant="outlined"
-                            margin="normal"
                             id="email"
                             label="Email Address"
                             name="email"
@@ -31,7 +30,6 @@ const SignInForm = () => {
                         />
                         <TextField
                             variant="outlined"
-                            margin="normal"
                             name="password"
                             label="Password"
                             type="password"
