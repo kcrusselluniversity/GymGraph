@@ -1,18 +1,7 @@
 import { TextField, Button } from "@mui/material";
-import { useState } from "react";
 import { CTAButtonStyle } from "../../data/constants.js";
 
-const SignInForm = () => {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = () => {};
+const SignInForm = ({ formData, handleChange, handleSubmit }) => {
 
     return (
         <form className="signInEmail" onSubmit={handleSubmit} noValidate>
