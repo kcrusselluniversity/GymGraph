@@ -1,11 +1,10 @@
 import { TextField, Button } from "@mui/material";
 import { CTAButtonStyle } from "../../data/constants.js";
-import { PropTypes } from 'prop-types';
+import { PropTypes } from "prop-types";
 
 const SignInForm = ({ formData, handleChange, handleSubmit }) => {
-
     return (
-        <form className="signInEmail" onSubmit={handleSubmit} noValidate>
+        <form name="signInEmail" className="signInEmail" onSubmit={handleSubmit} noValidate>
             <TextField
                 variant="outlined"
                 id="email"
@@ -25,7 +24,12 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => {
                 value={formData.password}
                 onChange={handleChange}
             />
-            <Button variant="contained" sx={CTAButtonStyle}>
+            <Button
+                type="submit"
+                variant="contained"
+                sx={CTAButtonStyle}
+                onClick={handleSubmit}
+            >
                 Log In
             </Button>
         </form>
@@ -39,6 +43,6 @@ SignInForm.propTypes = {
     }).isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-}
+};
 
 export default SignInForm;
