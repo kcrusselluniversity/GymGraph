@@ -1,5 +1,6 @@
 import { TextField, Button } from "@mui/material";
 import { CTAButtonStyle } from "../../data/constants.js";
+import { PropTypes } from 'prop-types';
 
 const SignInForm = ({ formData, handleChange, handleSubmit }) => {
 
@@ -30,5 +31,14 @@ const SignInForm = ({ formData, handleChange, handleSubmit }) => {
         </form>
     );
 };
+
+SignInForm.propTypes = {
+    formData: PropTypes.shape({
+        email: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+    }).isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+}
 
 export default SignInForm;
