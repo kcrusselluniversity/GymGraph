@@ -4,7 +4,9 @@ import { PropTypes } from "prop-types";
 
 const WithGoogleButton = ({ text }) => {
     const googleIconHeight = "30px";
-    const googleIcon = <img src={googleIconSVG} height={googleIconHeight} />;
+    const googleIcon = (
+        <img src={googleIconSVG} height={googleIconHeight} alt="Google Icon" />
+    );
 
     const buttonStyle = {
         fontFamily: "Montserrat",
@@ -17,11 +19,7 @@ const WithGoogleButton = ({ text }) => {
     };
 
     return (
-        <Button
-            variant="outlined"
-            startIcon={googleIcon}
-            sx={buttonStyle}
-        >
+        <Button variant="outlined" startIcon={googleIcon} sx={buttonStyle}>
             {text} with Google
         </Button>
     );
