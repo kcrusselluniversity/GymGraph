@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { string } from "prop-types";
 import { CTAButtonStyle } from "../../data/constants";
 
 const LinkButton = ({ text, className, to }) => {
@@ -18,9 +18,9 @@ const LinkButton = ({ text, className, to }) => {
 };
 
 LinkButton.propTypes = {
-    text: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    to: PropTypes.string.isRequired,
+    text: string.isRequired,
+    className: string,
+    to: string.isRequired,
 };
 
 LinkButton.defaultProps = {

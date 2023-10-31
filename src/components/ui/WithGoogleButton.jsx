@@ -1,6 +1,6 @@
 import googleIconSVG from "../../assets/icons/google.svg";
 import { Button } from "@mui/material";
-import { PropTypes } from "prop-types";
+import { string } from "prop-types";
 
 const WithGoogleButton = ({ text }) => {
     const googleIconHeight = "30px";
@@ -26,7 +26,8 @@ const WithGoogleButton = ({ text }) => {
 };
 
 WithGoogleButton.propTypes = {
-    text: PropTypes.string.isRequired,
+    text: string.isRequired,
 };
 
 export default WithGoogleButton;
+

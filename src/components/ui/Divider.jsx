@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import { string } from 'prop-types';
 
 const Divider = ({ direction, text }) => {
     return (
@@ -11,8 +11,8 @@ const Divider = ({ direction, text }) => {
 };
 
 Divider.propTypes = {
-    direction: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    direction: string.isRequired,
+    text: string.isRequired,
 }
 
 export default Divider;
