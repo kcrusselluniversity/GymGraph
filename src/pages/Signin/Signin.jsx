@@ -5,7 +5,15 @@ import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
 import { useState } from "react";
 
+/**
+ * Signin page component
+ * 
+ * This component provides a user interface for signing in to GymGraph.
+ * It includes a form for entering email and password, as well as an option
+ * to sign in with Google.
+ */
 const Signin = () => {
+    // State to manage signin form data
     const [formData, setFormData] = useState({
         email: "",
         password: "",

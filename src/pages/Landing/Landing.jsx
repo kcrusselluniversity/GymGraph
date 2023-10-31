@@ -3,6 +3,12 @@ import logo from "../../assets/Logo.svg";
 import LinkButton from "../../components/ui/LinkButton";
 import "./landing.css";
 
+/**
+ * Landing page component
+ * 
+ * Generates the landing page. This will be the first page
+ * the user sees when they go to the default route of the site. 
+ */
 const Landing = () => {
     return (
         <div className="landing">

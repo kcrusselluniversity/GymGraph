@@ -2,10 +2,18 @@ import LinkButton from "../../components/ui/LinkButton";
 import { TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 
+/**
+ * SignUpForm component
+ * 
+ * This component provides the HTML form used to sign up as a user using
+ * a provided username and password.
+ */
 const SignUpForm = () => {
+    // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery('(width <= 750px)');
     const size = isSmallScreen ? 'small' : 'medium';
 
+    // State to manage form data
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",

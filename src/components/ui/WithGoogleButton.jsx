@@ -2,6 +2,16 @@ import googleIconSVG from "../../assets/icons/google.svg";
 import { Button } from "@mui/material";
 import { string } from "prop-types";
 
+/**
+ * WithGoogleButton Component
+ *
+ * Generates a Material-UI Button component to be used to allow users
+ * to sign in with Google using OAuth.
+ *
+ * Props:
+ * @param {string} {text}: The text you want to be displayed in the template
+ * string.
+ */
 const WithGoogleButton = ({ text }) => {
     const googleIconHeight = "30px";
     const googleIcon = (
@@ -30,4 +40,3 @@ WithGoogleButton.propTypes = {
 };
 
 export default WithGoogleButton;
-
