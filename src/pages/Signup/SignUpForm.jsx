@@ -2,8 +2,20 @@ import LinkButton from "../../components/ui/LinkButton";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { useState } from "react";
-import validateFormInput from "./utils/validateFormInput";
 import { minDate, maxDate } from "../../data/constants";
+import validateName from "../../utils/formUtils/validateName";
+import validateEmail from "../../utils/formUtils/validateEmail";
+import validatePassword from "../../utils/formUtils/validatePassword";
+import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
+
+// This object maps the input fields name attribute to the appropreate
+// validation function for that field
+const validateFunctionMap = {
+    firstName: validateName,
+    lastName: validateName,
+    email: validateEmail,
+    password: validatePassword,
+};
 
 /**
  * SignUpForm component
@@ -49,10 +61,40 @@ const SignUpForm = () => {
         setFormData({ ...formData, dob: newValue });
     };
 
+    // Validates a TextFields given input
+    const handleValidation = (e) => {
+        const inputField = e.target.name;
+        const inputValue = e.target.value;
+        const validateFunction = validateFunctionMap[inputField];
+
+        // Check that the input field has a validate function
+        if (validateFunction === undefined) {
+            console.error(`${inputField} is not valid`);
+            return;
+        }
+
+        setFormErrors({
+            ...formErrors,
+            [inputField]: validateFunction(inputValue),
+        });
+    };
+
+    // Validates confirm password input
+    const handleConfirmPasswordValidation = (e) => {
+        const confirmPasswordInput = e.target.value;
+        const passwordInput = formData.password;
+
+        setFormErrors({
+            ...formErrors,
+            confirmPassword: validateConfirmPassword(
+                passwordInput,
+                confirmPasswordInput
+            ),
+        });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        validateFormInput(formData);
     };
 
     return (
@@ -66,6 +108,7 @@ const SignUpForm = () => {
                     size={size}
                     value={formData.firstName}
                     onChange={handleChange}
+                    onBlur={handleValidation}
                     error={!!formErrors.firstName}
                     helperText={formErrors.firstName}
                 />
@@ -77,6 +120,9 @@ const SignUpForm = () => {
                     size={size}
                     value={formData.lastName}
                     onChange={handleChange}
+                    onBlur={handleValidation}
+                    error={!!formErrors.lastName}
+                    helperText={formErrors.lastName}
                 />
                 <TextField
                     variant="outlined"
@@ -87,6 +133,9 @@ const SignUpForm = () => {
                     autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleValidation}
+                    error={!!formErrors.email}
+                    helperText={formErrors.email}
                 />
                 <DateField
                     id="dob"
@@ -97,7 +146,9 @@ const SignUpForm = () => {
                     maxDate={maxDate}
                     value={formData.dob}
                     onChange={handleDateChange}
-                    onError={(error) => setFormErrors({...formErrors, dob: error})}
+                    onError={(error) =>
+                        setFormErrors({ ...formErrors, dob: error })
+                    }
                 />
                 <TextField
                     variant="outlined"
@@ -108,16 +159,22 @@ const SignUpForm = () => {
                     size={size}
                     value={formData.password}
                     onChange={handleChange}
+                    onBlur={handleValidation}
+                    error={!!formErrors.password}
+                    helperText={formErrors.password}
                 />
                 <TextField
                     variant="outlined"
                     name="confirmPassword"
-                    label="confirmPassword"
-                    type="Confirm password"
+                    label="Confirm Password"
+                    type="password"
                     id="confirmPassword"
                     size={size}
                     value={formData.confirmPassword}
                     onChange={handleChange}
+                    onBlur={handleConfirmPasswordValidation}
+                    error={!!formErrors.confirmPassword}
+                    helperText={formErrors.confirmPassword}
                 />
             </div>
             <LinkButton to="" text="Start Your Journey" />
