@@ -3,6 +3,10 @@
     padding: 2rem;
 }
 
+.signInPage > header {
+    padding-left: 2rem;
+}
+
 .signInPage__content {
     display: flex;
     flex-direction: column;
@@ -66,6 +70,10 @@
 /* Responsiveness styling */
 
 @media screen and (width <= 750px) {
+    .signInPage > header {
+        padding-left: 0px;
+    }
+    
     .signInPage__content > h1 {
         text-align: center;
     }
