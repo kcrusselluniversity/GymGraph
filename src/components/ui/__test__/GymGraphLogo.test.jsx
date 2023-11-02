@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import GymGraphLogo from "../../GymGraphLogo";
+import GymGraphLogo from "../GymGraphLogo";
 import logo from "../../../assets/Logo.svg";
 
 beforeEach(() => {
