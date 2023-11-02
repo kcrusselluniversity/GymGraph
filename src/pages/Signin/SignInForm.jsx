@@ -6,7 +6,7 @@ import { useState } from "react";
  * SignInForm Component
  *
  * This component provides the form used by the Signin page
- * for the user to sign in with their email and password.
+ * for the user to sign in using their email and password.
  */
 const SignInForm = () => {
     // State to manage signin form data
