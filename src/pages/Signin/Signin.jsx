@@ -3,6 +3,7 @@ import logo from "../../assets/Logo.svg";
 import Divider from "../../components/ui/Divider";
 import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
+import GymGraphLogo from "../../components/GymGraphLogo";
 import { useState } from "react";
 
 /**
@@ -27,9 +28,7 @@ const Signin = () => {
 
     return (
         <div className="signInPage">
-            <header>
-                <img src={logo} alt="GymGraph" className="gymGraphLogo" />
-            </header>
+            <GymGraphLogo />
             <div className="signInPage__content">
                 <h1>Login to GymGraph</h1>
                 <div className="content__signInContainer">

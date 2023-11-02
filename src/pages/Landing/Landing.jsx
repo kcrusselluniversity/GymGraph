@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/Logo.svg";
 import LinkButton from "../../components/ui/LinkButton";
+import GymGraphLogo from "../../components/GymGraphLogo";
 import "./landing.css";
 
 /**
@@ -13,9 +13,7 @@ const Landing = () => {
     return (
         <div className="landing">
             <div className="landing__content">
-                <header>
-                    <img src={logo} alt="GymGraph" className="gymGraphLogo" />
-                </header>
+                <GymGraphLogo />
                 <div className="content__main">
                     <h1>Discover Strength Unleashed.</h1>
                     <h4>
