@@ -22,11 +22,18 @@
 
 @media screen and (width <= 750px) {
     .underConstruction {
-        padding-left: 2rem;
+        height: 100vh;
+        padding: 1rem;
+        padding-left: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 
     .content {
         flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
     }
 
     .content > h1 {
