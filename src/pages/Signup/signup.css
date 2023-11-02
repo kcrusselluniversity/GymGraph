@@ -43,8 +43,13 @@ form > .inputContainer {
 
 @media screen and (width <= 750px) {
     .signUpPage {
-        padding: 1rem;
+        padding: 2rem;
     }
+    
+    .signUpPage > header {
+        padding: 0rem;
+    }
+    
     .signUpPage__content {
         gap: 0.5rem;
     }

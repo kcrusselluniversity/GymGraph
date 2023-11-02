@@ -3,9 +3,6 @@
     padding: 2rem;
 }
 
-.signInPage > header {
-    padding-left: 2rem;
-}
 .signInPage__content {
     display: flex;
     flex-direction: column;
