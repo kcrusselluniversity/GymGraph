@@ -95,6 +95,11 @@ p {
 }
 
 @media screen and (width <= 750px) {
+    html, body, #root {
+        height: auto;
+        min-height: 100vh;
+    }
+
     .divider-vertical {
         flex-direction: row;
         width: 80%;
