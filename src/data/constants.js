@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 // Colour palette for the sites design.
 const dominantColor = "white";
 const secondaryColor = "#a8dadc";
@@ -20,3 +22,9 @@ const CTAButtonStyle = {
 };
 
 export { CTAButtonStyle };
+
+// DateTime constants
+const minDate = dayjs().set('year', 1900).set('month', 0).set('date', 1);
+const maxDate = dayjs().set('year', 2020).set('month', 0).set('date', 1);
+
+export { minDate, maxDate }
