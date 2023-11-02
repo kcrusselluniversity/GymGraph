@@ -1,21 +1,12 @@
 import { TextField, Button } from "@mui/material";
 import { CTAButtonStyle } from "../../data/constants.js";
-import { shape, string, func } from "prop-types";
 import { useState } from "react";
 
 /**
  * SignInForm Component
  *
- * This component provides the HTML form used by the Signin page
+ * This component provides the form used by the Signin page
  * for the user to sign in with their email and password.
- *
- * Props:
- * @param {Object} formData: This object stores the state of the username and
- * password input fields.
- * @param {function} handleChange: This function updates the formData state
- * everytime the corresponding input field changes.
- * @param {function} handleSubmit: This function handles the submitting of the
- * form
  */
 const SignInForm = () => {
     // State to manage signin form data
@@ -68,15 +59,6 @@ const SignInForm = () => {
             </Button>
         </form>
     );
-};
-
-SignInForm.propTypes = {
-    formData: shape({
-        email: string.isRequired,
-        password: string.isRequired,
-    }).isRequired,
-    handleChange: func.isRequired,
-    handleSubmit: func.isRequired,
 };
 
 export default SignInForm;
