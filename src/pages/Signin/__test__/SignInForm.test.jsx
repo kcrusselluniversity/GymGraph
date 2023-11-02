@@ -1,28 +1,10 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignInForm from "../SignInForm";
 
-let handleChangeMock;
-let handleSubmitMock;
-
 beforeEach(() => {
-    const formData = {
-        email: "",
-        password: "",
-    };
-
-    // Reset the mock functions before each test
-    handleChangeMock = vi.fn();
-    handleSubmitMock = vi.fn().mockImplementation(e => e.preventDefault());
-
-    render(
-        <SignInForm
-            formData={formData}
-            handleChange={handleChangeMock}
-            handleSubmit={handleSubmitMock}
-        />
-    );
+    render(<SignInForm />)
 });
 
 describe("Initial render tests", () => {
@@ -52,11 +34,11 @@ describe("Initial render tests", () => {
 describe("Form input tests", () => {
     it("handles input being typed into email form field", async () => {
         const emailField = screen.getByLabelText("Email Address");
-
+        
         const user = userEvent.setup();
         await user.type(emailField, "example@gmail.com");
 
-        expect(handleChangeMock).toHaveBeenCalledTimes(17);
+        expect(emailField.value).toBe("example@gmail.com");
     });
 
     it("handles input being typed into password form field", async () => {
@@ -65,7 +47,7 @@ describe("Form input tests", () => {
         const user = userEvent.setup();
         await user.type(passwordField, "12345");
 
-        expect(handleChangeMock).toHaveBeenCalledTimes(5);
+        expect(passwordField.value).toBe("12345")
     });
 
     it("hides the password fields input characters", () => {
@@ -85,6 +67,7 @@ describe("Form submission tests", async () => {
         await user.type(emailField, "example@gmail.com");
         await user.type(passwordField, "password");
         await user.click(submitButton);    
-        expect(handleSubmitMock).toHaveBeenCalled();
+        
+        // TODO: Write test to test the outcome of the handle submit function
     });
 });
