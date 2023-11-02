@@ -7,6 +7,8 @@ export default function validateEmail(email) {
     const emailRegex =
         /^[a-zA-Z0-9._-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\.[a-zA-Z]{2,6})?$/;
 
+    if (email.length === 0) return "email required";
+
     const validEmail = emailRegex.test(email);
     if (!validEmail) return "Must be a valid email address";
 
