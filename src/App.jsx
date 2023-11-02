@@ -1,4 +1,6 @@
 import Router from "./pages/Router";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 /**
  * App Component
@@ -7,7 +9,11 @@ import Router from "./pages/Router";
  * router component that defines the site's navigation.
  */
 const App = () => {
-    return <Router />;
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Router />
+        </LocalizationProvider>
+    );
 };
 
 export default App;
