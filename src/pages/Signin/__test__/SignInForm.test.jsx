@@ -39,6 +39,14 @@ describe("Initial render tests", () => {
         const passwordField = screen.getByLabelText("Password");
         expect(passwordField).toHaveAttribute("name", "password");
     });
+
+    it("renders the text fields with empty values", () => {
+        const emailField = screen.getByLabelText("Email Address");
+        expect(emailField.value).toBe("");
+
+        const passwordField = screen.getByLabelText("Password");
+        expect(passwordField.value).toBe("");
+    })
 });
 
 describe("Form input tests", () => {
@@ -59,6 +67,12 @@ describe("Form input tests", () => {
 
         expect(handleChangeMock).toHaveBeenCalledTimes(5);
     });
+
+    it("hides the password fields input characters", () => {
+        const passwordField = screen.getByLabelText("Password");
+
+        expect(passwordField).toHaveAttribute('type', 'password')
+    })
 });
 
 describe("Form submission tests", async () => {
