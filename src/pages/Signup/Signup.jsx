@@ -1,9 +1,8 @@
 import "./signup.css";
-import logo from "../../assets/Logo.svg";
 import Divider from "../../components/ui/Divider";
 import SignUpForm from "./SignUpForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
-import GymGraphLogo from "../../components/GymGraphLogo";
+import GymGraphLogo from "../../components/ui/GymGraphLogo";
 
 /**
  * Signup page component

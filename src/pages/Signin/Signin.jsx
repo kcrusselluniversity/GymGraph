@@ -1,9 +1,8 @@
 import "./signin.css";
-import logo from "../../assets/Logo.svg";
 import Divider from "../../components/ui/Divider";
 import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
-import GymGraphLogo from "../../components/GymGraphLogo";
+import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import { useState } from "react";
 
 /**

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import LinkButton from "../../components/ui/LinkButton";
-import GymGraphLogo from "../../components/GymGraphLogo";
+import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import "./landing.css";
 
 /**
  * Landing page component
- * 
+ *
  * Generates the landing page. This will be the first page
- * the user sees when they go to the default route of the site. 
+ * the user sees when they go to the default route of the site.
  */
 const Landing = () => {
     return (
