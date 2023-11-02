@@ -61,7 +61,7 @@ const SignUpForm = () => {
         setFormData({ ...formData, dob: newValue });
     };
 
-    // Validates a TextFields given input
+    // Validates a TextFields input
     const handleValidation = (e) => {
         const inputField = e.target.name;
         const inputValue = e.target.value;
@@ -73,6 +73,7 @@ const SignUpForm = () => {
             return;
         }
 
+        // Validate input and update formErrors state
         setFormErrors({
             ...formErrors,
             [inputField]: validateFunction(inputValue),
