@@ -8,8 +8,8 @@ import { minDate, maxDate } from "../../data/constants";
 /**
  * SignUpForm component
  *
- * This component provides the HTML form used to sign up as a user using
- * a provided username and password.
+ * This component provides the form for a user to sign up to GymGraph with
+ * a username and password.
  */
 const SignUpForm = () => {
     // Determine the screen size based on the screen width
@@ -26,6 +26,7 @@ const SignUpForm = () => {
         confirmPassword: "",
     });
 
+    // State to manage form errors
     const [formErrors, setFormErrors] = useState({
         firstName: "",
         lastName: "",
@@ -96,6 +97,7 @@ const SignUpForm = () => {
                     maxDate={maxDate}
                     value={formData.dob}
                     onChange={handleDateChange}
+                    onError={(error) => setFormErrors({...formErrors, dob: error})}
                 />
                 <TextField
                     variant="outlined"
