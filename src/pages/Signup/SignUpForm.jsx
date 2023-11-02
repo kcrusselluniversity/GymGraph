@@ -21,7 +21,7 @@ const SignUpForm = () => {
         firstName: "",
         lastName: "",
         email: "",
-        dob: "",
+        dob: null,
         password: "",
         confirmPassword: "",
     });
@@ -35,8 +35,17 @@ const SignUpForm = () => {
         confirmPassword: "",
     });
 
+    // Updates FormData based on TextField input changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    /**
+     * Updates FormData based on DateField input changes
+     * @param {Object} newValue: dayjs object
+     */
+    const handleDateChange = (newValue) => {
+        setFormData({ ...formData, dob: newValue });
     };
 
     const handleSubmit = (e) => {
@@ -85,6 +94,8 @@ const SignUpForm = () => {
                     format="DD/MM/YYYY"
                     minDate={minDate}
                     maxDate={maxDate}
+                    value={formData.dob}
+                    onChange={handleDateChange}
                 />
                 <TextField
                     variant="outlined"
