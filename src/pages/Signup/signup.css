@@ -62,7 +62,7 @@ form > .inputContainer {
 
     form > .inputContainer {
         grid-template-columns: var(--text-input-width-small-screen);
-        gap: 0.5rem;        
+        gap: 0.75rem;        
     }
 
     .content__signUpContainer {
