@@ -1,4 +1,4 @@
-import GymGraphLogo from "../../components/GymGraphLogo";
+import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import "./underConstruction.css";
 import underConstructionImage from "../../assets/images/under_construction_image_compressed.png";
 
