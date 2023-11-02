@@ -1,6 +1,5 @@
 export default function validateEmail(email) {
-    // This Regex matches emails that have a top-level and (optionally)
-    // a secondary top-level domain.
+    // This Regex matches for email addresses
     // Example matches:
     // username@domain.com
     // username@domain.co.uk
