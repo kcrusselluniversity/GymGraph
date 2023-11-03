@@ -101,10 +101,7 @@ const SignUpForm = () => {
         e.preventDefault();
 
         // Return if not all form inputs are valid
-        if (!areAllAttributesNull(formErrors)) {
-            alert("There are errors");
-            return;
-        }
+        if (!areAllAttributesNull(formErrors)) return;
 
         alert("All form input is correct!");
     };
@@ -189,7 +186,7 @@ const SignUpForm = () => {
                     helperText={formErrors.confirmPassword}
                 />
             </div>
-            <Button variant="contained" sx={CTAButtonStyle}>
+            <Button variant="contained" sx={CTAButtonStyle} type="submit">
                 Start Your Journey
             </Button>
         </form>
