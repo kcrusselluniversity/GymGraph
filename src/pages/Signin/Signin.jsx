@@ -14,7 +14,9 @@ import GymGraphLogo from "../../components/ui/GymGraphLogo";
 const Signin = () => {
     return (
         <div className="signInPage">
-            <GymGraphLogo />
+            <header>
+                <GymGraphLogo />
+            </header>
             <div className="signInPage__content">
                 <h1>Login to GymGraph</h1>
                 <div className="content__signInContainer">

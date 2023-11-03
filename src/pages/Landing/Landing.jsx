@@ -13,7 +13,9 @@ const Landing = () => {
     return (
         <div className="landing">
             <div className="landing__content">
-                <GymGraphLogo />
+                <header>
+                    <GymGraphLogo />
+                </header>
                 <div className="content__main">
                     <h1>Discover Strength Unleashed.</h1>
                     <h4>

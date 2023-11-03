@@ -15,7 +15,9 @@ import GymGraphLogo from "../../components/ui/GymGraphLogo";
 const Signup = () => {
     return (
         <div className="signUpPage">
-            <GymGraphLogo />
+            <header>
+                <GymGraphLogo />
+            </header>
             <div className="signUpPage__content">
                 <h1>Create your GymGraph account</h1>
                 <div className="content__signUpContainer">
