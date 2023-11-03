@@ -3,7 +3,7 @@ import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { useState } from "react";
 import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
-import { validateFunctionMap } from './utils/validateFunctionMap';
+import { validationFunctionMapper } from './utils/validationFunctionMapper';
 import areAllAttributesNull from "../../utils/areAllAttributesNull";
 import validateConfirmPassword from '../../utils/formUtils/validateConfirmPassword';
 
@@ -29,7 +29,7 @@ const SignUpForm = () => {
     });
 
     // State to manage form errors
-    // NOTE: If an attribute is null, then this indicates there is no error
+    // NOTE: If an attributes value is null this indicates there is no error
     // for that particular form input
     const [formErrors, setFormErrors] = useState({
         firstName: "",
@@ -57,7 +57,7 @@ const SignUpForm = () => {
     const handleValidation = (e) => {
         const inputField = e.target.name;
         const inputValue = e.target.value;
-        const validateFunction = validateFunctionMap[inputField];
+        const validateFunction = validationFunctionMapper[inputField];
 
         // Check that the input field has a validate function
         if (validateFunction === undefined) {
