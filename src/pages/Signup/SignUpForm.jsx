@@ -1,8 +1,8 @@
-import LinkButton from "../../components/ui/LinkButton";
+import { Button } from "@mui/material";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { useState } from "react";
-import { minDate, maxDate } from "../../data/constants";
+import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
 import validateName from "../../utils/formUtils/validateName";
 import validateEmail from "../../utils/formUtils/validateEmail";
 import validatePassword from "../../utils/formUtils/validatePassword";
@@ -38,7 +38,7 @@ const SignUpForm = () => {
         password: "",
         confirmPassword: "",
     });
-    
+
     // State to manage form errors
     // NOTE: If an attribute is null, then this indicates there is no error
     // for that particular form input
@@ -102,11 +102,11 @@ const SignUpForm = () => {
 
         // Return if not all form inputs are valid
         if (!areAllAttributesNull(formErrors)) {
-            alert('There are errors')
-            return
+            alert("There are errors");
+            return;
         }
 
-        alert('All form input is correct!')
+        alert("All form input is correct!");
     };
 
     return (
@@ -189,7 +189,9 @@ const SignUpForm = () => {
                     helperText={formErrors.confirmPassword}
                 />
             </div>
-            <LinkButton to="" text="Start Your Journey" />
+            <Button variant="contained" sx={CTAButtonStyle}>
+                Start Your Journey
+            </Button>
         </form>
     );
 };
