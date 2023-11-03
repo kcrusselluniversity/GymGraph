@@ -19,15 +19,20 @@ beforeEach(() => {
 // SignUpForm general tests
 describe("SignUpForm component tests", () => {
     it("renders without crashing", () => {
-        const submitButton = screen.getByRole("button", {
-            name: /start your journey/i,
-        });
+        expect(screen.getByText(/start your journey/i)).toBeInTheDocument();
+    });
+
+    it("renders submit button", () => {
+        const submitButton = screen.getByRole("button");
 
         expect(submitButton).toBeInTheDocument();
     });
 });
 
 // SignUpForm submission tests
+describe.only("SignUpForm submission tests", () => {
+    it.todo()
+})
 
 // SignUpForm individual input tests
 describe("First name input tests", () => {
@@ -149,6 +154,45 @@ describe("Email address input tests", () => {
     });
 });
 
+describe("date of birth input tests", () => {
+    let input;
+
+    beforeEach(() => {
+        input = screen.getByRole("textbox", {
+            name: /date of birth/i,
+        });
+    });
+
+    it("renders with initial value set to an empty string", () => {
+        expect(input.value).toBe("");
+    });
+
+    it("renders with correct placeholder", () => {
+        expect(input.placeholder).toBe("DD/MM/YYYY");
+    });
+
+    it("allows users to enter a valid date", async () => {
+        const user = userEvent.setup();
+
+        await user.type(input, "01012000");
+        expect(input.value).toBe("01/01/2000");
+    });
+
+    it("renders with the 'invalid input' styling when an invalid date is entered", async () => {
+        const user = userEvent.setup();
+
+        await user.type(input, "01013000");
+        expect(input).toHaveAttribute('aria-invalid', 'true')
+    });
+
+    it("doesnt render with the 'invalid input' styling when a valid date is entered", async () => {
+        const user = userEvent.setup();
+
+        await user.type(input, "01012000");
+        expect(input).toHaveAttribute('aria-invalid', 'false')
+    });
+});
+
 describe("password input tests", () => {
     let input;
 
@@ -188,7 +232,7 @@ describe("password input tests", () => {
     });
 });
 
-describe.only("confirm password input tests", () => {
+describe("confirm password input tests", () => {
     let input;
 
     beforeEach(() => {
@@ -231,6 +275,8 @@ describe.only("confirm password input tests", () => {
         await user.type(passwordField, "password");
         await user.type(input, "password");
         await user.tab();
-        expect(screen.queryByText(/passwords must match/i)).not.toBeInTheDocument();
+        expect(
+            screen.queryByText(/passwords must match/i)
+        ).not.toBeInTheDocument();
     });
 });
