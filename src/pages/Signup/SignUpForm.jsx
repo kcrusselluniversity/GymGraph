@@ -7,6 +7,7 @@ import validateName from "../../utils/formUtils/validateName";
 import validateEmail from "../../utils/formUtils/validateEmail";
 import validatePassword from "../../utils/formUtils/validatePassword";
 import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
+import areAllAttributesNull from "../../utils/areAllAttributesNull";
 
 // This object maps the input fields name attribute to the appropreate
 // validation function for that field
@@ -37,8 +38,10 @@ const SignUpForm = () => {
         password: "",
         confirmPassword: "",
     });
-
+    
     // State to manage form errors
+    // NOTE: If an attribute is null, then this indicates there is no error
+    // for that particular form input
     const [formErrors, setFormErrors] = useState({
         firstName: "",
         lastName: "",
@@ -96,6 +99,14 @@ const SignUpForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Return if not all form inputs are valid
+        if (!areAllAttributesNull(formErrors)) {
+            alert('There are errors')
+            return
+        }
+
+        alert('All form input is correct!')
     };
 
     return (
