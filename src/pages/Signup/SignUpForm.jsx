@@ -3,20 +3,9 @@ import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { useState } from "react";
 import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
-import validateName from "../../utils/formUtils/validateName";
-import validateEmail from "../../utils/formUtils/validateEmail";
-import validatePassword from "../../utils/formUtils/validatePassword";
-import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
+import { validateFunctionMap } from './utils/validateFunctionMap';
 import areAllAttributesNull from "../../utils/areAllAttributesNull";
-
-// This object maps the input fields name attribute to the appropreate
-// validation function for that field
-const validateFunctionMap = {
-    firstName: validateName,
-    lastName: validateName,
-    email: validateEmail,
-    password: validatePassword,
-};
+import validateConfirmPassword from '../../utils/formUtils/validateConfirmPassword';
 
 /**
  * SignUpForm component
