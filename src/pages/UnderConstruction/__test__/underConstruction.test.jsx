@@ -2,12 +2,16 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import UnderConstruction from "../UnderConstruction";
 import underConstructionImage from "../../../assets/images/under_construction_image_compressed.png";
+import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import App from '../../../App';
 
-beforeEach(() => {
-    render(<UnderConstruction />);
-});
 
 describe("underConstruction page", () => {
+    beforeEach(() => {
+        render(<UnderConstruction />, { wrapper: MemoryRouter });
+    });
+    
     it("renders without crashing", () => {
         expect(screen.getByRole("heading")).toBeInTheDocument();
     });
@@ -25,3 +29,19 @@ describe("underConstruction page", () => {
         expect(image).toHaveAttribute("src", underConstructionImage);
     });
 });
+
+describe("underConstruction page routing", () => {
+    it("routes to landing page when logo clicked", async () => {
+        const user = userEvent.setup();
+
+        render(<MemoryRouter initialEntries={["/underConstruction"]}>
+            <App />
+        </MemoryRouter>)
+      
+        const logo = screen.getByAltText("GymGraph");
+        const link = logo.closest('a');
+
+        await user.click(link);
+        expect(screen.getByText(/discover strength unleashed/i)).toBeInTheDocument()
+    })
+})
