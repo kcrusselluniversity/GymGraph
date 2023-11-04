@@ -26,7 +26,7 @@ const SignUpForm = () => {
 
     // State
     const [formSubmissionError, setFormSubmissionError] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     // State to manage form data
     const [formData, setFormData] = useState({
@@ -98,10 +98,11 @@ const SignUpForm = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        setLoading(true);
 
         // Return if not all form inputs are valid
         if (!areAllAttributesNull(formErrors)) return;
+
+        setIsLoading(true);
 
         try {
             // Create user
@@ -125,7 +126,7 @@ const SignUpForm = () => {
                 );
             }
 
-            setLoading(false);
+            setIsLoading(false);
 
             console.error(`sign-in error: ${err}`);
         }
@@ -221,8 +222,14 @@ const SignUpForm = () => {
                 sx={{ ...CTAButtonStyle, width: "220px", height: "38px" }}
                 type="submit"
             >
-                {loading ? <CircularProgress size="1.5rem" sx={{ color: "white" }} /> : "Start Your Journey"}
-                
+                {isLoading ? (
+                    <CircularProgress
+                        size="1.5rem"
+                        sx={{ color: "white" }}
+                    />
+                ) : (
+                    "Start Your Journey"
+                )}
             </Button>
         </form>
     );
