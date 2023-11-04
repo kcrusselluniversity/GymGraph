@@ -3,6 +3,7 @@ import Divider from "../../components/ui/Divider";
 import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
+import { Link } from "react-router-dom";
 
 /**
  * Signin page component
@@ -15,7 +16,9 @@ const Signin = () => {
     return (
         <div className="signInPage">
             <header>
-                <GymGraphLogo />
+                <Link to="/">
+                    <GymGraphLogo />
+                </Link>
             </header>
             <div className="signInPage__content">
                 <h1>Login to GymGraph</h1>
