@@ -1,11 +1,13 @@
 import { Button } from "@mui/material";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
-import { useState } from "react";
+import { auth } from "../../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
 import { validationFunctionMapper } from './utils/validationFunctionMapper';
 import areAllAttributesNull from "../../utils/areAllAttributesNull";
 import validateConfirmPassword from '../../utils/formUtils/validateConfirmPassword';
+import { useState } from "react";
 
 /**
  * SignUpForm component
@@ -17,6 +19,9 @@ const SignUpForm = () => {
     // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery("(width <= 750px)");
     const size = isSmallScreen ? "small" : "medium";
+
+    // State for form submission errors
+    const [formSubmissionError, setFormSubmissionError] = useState(null);
 
     // State to manage form data
     const [formData, setFormData] = useState({
@@ -86,17 +91,30 @@ const SignUpForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
 
         // Return if not all form inputs are valid
         if (!areAllAttributesNull(formErrors)) return;
 
-        alert("All form input is correct!");
+        try {
+            // Create user
+            await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        }
+        catch (err) {
+            const  error = err.code;
+            
+            if (error == 'auth/email-already-in-use') {
+                // 
+                setFormSubmissionError("This email is already associated with an account, please sign in with your email and password")
+            }
+
+            console.error(`sign-in error: ${err}`);
+        }
     };
 
     return (
-        <form className="signUpEmail" onSubmit={handleSubmit} noValidate>
+        <form className="signUpEmail" onSubmit={handleSignup} noValidate>
             <div className="inputContainer">
                 <TextField
                     variant="outlined"
@@ -175,6 +193,7 @@ const SignUpForm = () => {
                     helperText={formErrors.confirmPassword}
                 />
             </div>
+            {formSubmissionError ? <div data-testid="errorMessage" className="formError">{formSubmissionError}</div> : null}
             <Button variant="contained" sx={CTAButtonStyle} type="submit">
                 Start Your Journey
             </Button>
