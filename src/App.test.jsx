@@ -15,9 +15,9 @@ describe("App routing tests", () => {
     });
 
     it("correctly routes to sign up page after clicking signup button", async () => {
-        render(<App />, { wrapper: MemoryRouter });
-
         const user = userEvent.setup();
+        
+        render(<App />, { wrapper: MemoryRouter });
 
         const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
         await user.click(signUpButton);
@@ -25,10 +25,10 @@ describe("App routing tests", () => {
     });
 
     it("correctly routes to sign in page after clicking signin link", async () => {
-        render(<App />, { wrapper: MemoryRouter });
-
         const user = userEvent.setup();
-
+        
+        render(<App />, { wrapper: MemoryRouter });
+        
         const signInButton = screen.getByRole("link", { name: "Sign in" });
         await user.click(signInButton);
         expect(screen.getByText(/Login to GymGraph/i)).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe("App routing tests", () => {
                 <App />
             </MemoryRouter>
         );
-
+        
         expect(screen.getByText(/404/i)).toBeInTheDocument();
     });
 });
