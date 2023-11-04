@@ -1,13 +1,14 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
-import { validationFunctionMapper } from './utils/validationFunctionMapper';
+import { validationFunctionMapper } from "./utils/validationFunctionMapper";
 import areAllAttributesNull from "../../utils/areAllAttributesNull";
-import validateConfirmPassword from '../../utils/formUtils/validateConfirmPassword';
+import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  * SignUpForm component
@@ -20,8 +21,12 @@ const SignUpForm = () => {
     const isSmallScreen = useMediaQuery("(width <= 750px)");
     const size = isSmallScreen ? "small" : "medium";
 
-    // State for form submission errors
+    // Set up navigation
+    const navigate = useNavigate();
+
+    // State
     const [formSubmissionError, setFormSubmissionError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     // State to manage form data
     const [formData, setFormData] = useState({
@@ -93,21 +98,34 @@ const SignUpForm = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         // Return if not all form inputs are valid
         if (!areAllAttributesNull(formErrors)) return;
 
         try {
             // Create user
-            await createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        }
-        catch (err) {
-            const  error = err.code;
-            
-            if (error == 'auth/email-already-in-use') {
-                // 
-                setFormSubmissionError("This email is already associated with an account, please sign in with your email and password")
+            await createUserWithEmailAndPassword(
+                auth,
+                formData.email,
+                formData.password
+            );
+
+            // Add user information to database
+
+            // Navigate user to user dashboard page
+            navigate("/user/");
+        } catch (err) {
+            const error = err.code;
+
+            if (error == "auth/email-already-in-use") {
+                //
+                setFormSubmissionError(
+                    "This email is already associated with an account, please sign in with your email and password"
+                );
             }
+
+            setLoading(false);
 
             console.error(`sign-in error: ${err}`);
         }
@@ -193,9 +211,18 @@ const SignUpForm = () => {
                     helperText={formErrors.confirmPassword}
                 />
             </div>
-            {formSubmissionError ? <div data-testid="errorMessage" className="formError">{formSubmissionError}</div> : null}
-            <Button variant="contained" sx={CTAButtonStyle} type="submit">
-                Start Your Journey
+            {formSubmissionError ? (
+                <div data-testid="errorMessage" className="formError">
+                    {formSubmissionError}
+                </div>
+            ) : null}
+            <Button
+                variant="contained"
+                sx={{ ...CTAButtonStyle, width: "220px", height: "38px" }}
+                type="submit"
+            >
+                {loading ? <CircularProgress size="1.5rem" sx={{ color: "white" }} /> : "Start Your Journey"}
+                
             </Button>
         </form>
     );
