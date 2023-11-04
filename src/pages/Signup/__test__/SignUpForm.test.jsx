@@ -1,10 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import SignUpForm from "../SignUpForm";
 import userEvent from "@testing-library/user-event";
+import { testUserObject } from "../../../data/constants";
 
 // Render the SignUpForm before all tests
 beforeEach(() => {
@@ -23,22 +24,68 @@ describe("SignUpForm component tests", () => {
     });
 
     it("renders submit button", () => {
-        const submitButton = screen.getByRole("button");
+        const submitButton = screen.getByRole("button", {
+            name: "Start Your Journey",
+        });
 
         expect(submitButton).toBeInTheDocument();
     });
 
     it("doesn't render form submission error element", () => {
-        const errorElement = screen.queryByTestId('errorMessage');
+        const errorElement = screen.queryByTestId("errorMessage");
 
-        expect(errorElement).not.toBeInTheDocument()
-    })
+        expect(errorElement).not.toBeInTheDocument();
+    });
+
+    it("renders submit button with submit button text", () => {
+        const submitButton = screen.getByRole("button", {
+            name: "Start Your Journey",
+        });
+
+        expect(submitButton.textContent).toBe("Start Your Journey");
+    });
+
+    it("doesnt show loading spinner on submit button on initial render", () => {
+        const loadingSpinner = screen.queryByRole("progressbar");
+
+        expect(loadingSpinner).not.toBeInTheDocument();
+    });
+
+    it("doesnt show loading spinner when on submit button clicked before form is completed", async () => {
+        const user = userEvent.setup();
+
+        const firstNameInput = screen.getByLabelText("First name");
+        const submitButton = screen.getByRole("button", {
+            name: "Start Your Journey",
+        });
+        
+        await user.type(firstNameInput, "John")
+        await user.click(submitButton);
+        
+        await waitFor(() => {
+            const loadingSpinner = screen.queryByRole("progressbar");
+
+            expect(loadingSpinner).not.toBeInTheDocument();
+        });
+    });
 });
 
 // SignUpForm submission tests
-describe("SignUpForm submission tests", () => {
-    it.todo()
-})
+describe.todo("SignUpForm submission tests", () => {
+    // const testUser = testUserObject;
+    // const firstNameInput = screen.getByLabelText("First name");
+    // const lastNameInput = screen.getByLabelText("Last name");
+    // const emailInput = screen.getByLabelText("Email Address");
+    // const dobInput = screen.getByLabelText("Date of Birth");
+    // const passwordInput = screen.getByLabelText("Password");
+    // const confirmPasswordInput = screen.getByLabelText("Confirm Password");
+    // await user.type(firstNameInput, testUser.firstName);
+    // await user.type(lastNameInput, testUser.lastName);
+    // await user.type(emailInput, testUser.email);
+    // await user.type(dobInput, testUser.dob);
+    // await user.type(passwordInput, testUser.password);
+    // await user.type(confirmPasswordInput, testUser.password);
+});
 
 // SignUpForm individual input tests
 describe("First name input tests", () => {
@@ -188,14 +235,14 @@ describe("date of birth input tests", () => {
         const user = userEvent.setup();
 
         await user.type(input, "01013000");
-        expect(input).toHaveAttribute('aria-invalid', 'true')
+        expect(input).toHaveAttribute("aria-invalid", "true");
     });
 
     it("doesnt render with the 'invalid input' styling when a valid date is entered", async () => {
         const user = userEvent.setup();
 
         await user.type(input, "01012000");
-        expect(input).toHaveAttribute('aria-invalid', 'false')
+        expect(input).toHaveAttribute("aria-invalid", "false");
     });
 });
 
