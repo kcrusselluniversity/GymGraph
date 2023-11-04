@@ -24,7 +24,17 @@ const CTAButtonStyle = {
 export { CTAButtonStyle };
 
 // DateTime constants
-const minDate = dayjs().set('year', 1900).set('month', 0).set('date', 1);
-const maxDate = dayjs().set('year', 2020).set('month', 0).set('date', 1);
+const minDate = dayjs().set("year", 1900).set("month", 0).set("date", 1);
+const maxDate = dayjs().set("year", 2020).set("month", 0).set("date", 1);
 
-export { minDate, maxDate }
+export { minDate, maxDate };
+
+const testUserObject = {
+    firstName: "John",
+    lastName: "Smith",
+    email: "johnsmith@gmail.com",
+    dob: "01012000",
+    password: "Password1",
+};
+
+export { testUserObject }
