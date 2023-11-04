@@ -1,9 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import userEvent from "@testing-library/user-event";
 import Signup from "../Signup";
+import App from "../../../App";
 
 describe("Sign up page tests", () => {
     beforeEach(() => {
@@ -41,3 +43,19 @@ describe("Sign up page tests", () => {
         expect(signUpButton).toBeInTheDocument();
     });
 });
+
+describe("Sign up page routing tests", () => {
+    it("routes to the landing page when logo clicked", async () => {
+        const user = userEvent.setup();
+
+        render(<MemoryRouter initialEntries={["/signup"]}>
+            <App />
+        </MemoryRouter>)
+
+        const logo = screen.getByAltText("GymGraph");
+        const link = logo.closest('a');
+
+        await user.click(link);
+        expect(screen.getByText(/discover strength unleashed/i)).toBeInTheDocument()
+    })
+})
