@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { addDoc, collection } from "firebase/firestore";
 import { testUserObject } from "../../../data/constants";
 import { addUserToDb } from "../utils/addUserToDb";
