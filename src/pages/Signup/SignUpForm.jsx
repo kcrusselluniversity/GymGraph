@@ -9,6 +9,7 @@ import areAllAttributesNull from "../../utils/areAllAttributesNull";
 import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addUserToDb } from "./utils/addUserToDb";
 
 /**
  * SignUpForm component
@@ -105,6 +106,15 @@ const SignUpForm = () => {
         setIsLoading(true);
 
         try {
+            // Note we use the toDate method on the dob field to convert it from
+            // a dayjs object to a JS Date object (as Firebase only supports storing
+            // JS Date objects)
+            const user = {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                dob: formData.dob.toDate(),
+            };
             // Create user
             await createUserWithEmailAndPassword(
                 auth,
@@ -113,6 +123,7 @@ const SignUpForm = () => {
             );
 
             // Add user information to database
+            addUserToDb(user);
 
             // Navigate user to user dashboard page
             navigate("/user/");
@@ -223,10 +234,7 @@ const SignUpForm = () => {
                 type="submit"
             >
                 {isLoading ? (
-                    <CircularProgress
-                        size="1.5rem"
-                        sx={{ color: "white" }}
-                    />
+                    <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                     "Start Your Journey"
                 )}
