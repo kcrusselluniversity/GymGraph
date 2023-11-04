@@ -33,7 +33,7 @@ const testUserObject = {
     firstName: "John",
     lastName: "Smith",
     email: "johnsmith@gmail.com",
-    dob: "01012000",
+    dob: dayjs(new Date(2000,1,1)),
     password: "Password1",
 };
 
