@@ -69,3 +69,17 @@ form > .inputContainer {
         gap: 4px;
     }
 }
+
+.formError {
+    color: red;
+    font-style: italic;
+    padding-bottom: 0.5rem;
+    width: calc(2 * var(--text-input-width-standard-screen));
+    text-align: center;
+}
+
+@media screen and (width <= 750px) {
+    .formError {
+        width: var(--text-input-width-small-screen);
+    }
+}
