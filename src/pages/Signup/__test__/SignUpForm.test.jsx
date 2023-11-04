@@ -27,10 +27,16 @@ describe("SignUpForm component tests", () => {
 
         expect(submitButton).toBeInTheDocument();
     });
+
+    it("doesn't render form submission error element", () => {
+        const errorElement = screen.queryByTestId('errorMessage');
+
+        expect(errorElement).not.toBeInTheDocument()
+    })
 });
 
 // SignUpForm submission tests
-describe.only("SignUpForm submission tests", () => {
+describe("SignUpForm submission tests", () => {
     it.todo()
 })
 
