@@ -1,15 +1,12 @@
 import { Button, CircularProgress } from "@mui/material";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
-import { auth } from "../../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
 import { validationFunctionMapper } from "./utils/validationFunctionMapper";
-import areAllAttributesNull from "../../utils/areAllAttributesNull";
 import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addUserToDb } from "./utils/addUserToDb";
+import { handleSignup } from "./utils/handleSignup";
 
 /**
  * SignUpForm component
@@ -97,54 +94,11 @@ const SignUpForm = () => {
         });
     };
 
-    const handleSignup = async (e) => {
-        e.preventDefault();
-
-        // Return if not all form inputs are valid
-        if (!areAllAttributesNull(formErrors)) return;
-
-        setIsLoading(true);
-
-        try {
-            // Note we use the toDate method on the dob field to convert it from
-            // a dayjs object to a JS Date object (as Firebase only supports storing
-            // JS Date objects)
-            const user = {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                email: formData.email,
-                dob: formData.dob.toDate(),
-            };
-            // Create user
-            await createUserWithEmailAndPassword(
-                auth,
-                formData.email,
-                formData.password
-            );
-
-            // Add user information to database
-            addUserToDb(user);
-
-            // Navigate user to user dashboard page
-            navigate("/user/");
-        } catch (err) {
-            const error = err.code;
-
-            if (error == "auth/email-already-in-use") {
-                //
-                setFormSubmissionError(
-                    "This email is already associated with an account, please sign in with your email and password"
-                );
-            }
-
-            setIsLoading(false);
-
-            console.error(`sign-in error: ${err}`);
-        }
-    };
+    // Forms on submit function
+    const handleSubmit = (e) => handleSignup(e, formErrors, formData, setIsLoading, setFormSubmissionError, navigate)
 
     return (
-        <form className="signUpEmail" onSubmit={handleSignup} noValidate>
+        <form className="signUpEmail" onSubmit={handleSubmit} noValidate>
             <div className="inputContainer">
                 <TextField
                     variant="outlined"
