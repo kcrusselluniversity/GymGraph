@@ -29,12 +29,16 @@ const maxDate = dayjs().set("year", 2020).set("month", 0).set("date", 1);
 
 export { minDate, maxDate };
 
+// This is used for testing a user in RTL tests. 
+// It specifically represents what information a user would input into
+// the sign up form. 
 const testUserObject = {
     firstName: "John",
     lastName: "Smith",
     email: "johnsmith@gmail.com",
-    dob: dayjs(new Date(2000,1,1)),
+    dob: '01012000',
     password: "Password1",
+    confirmPassword: "Password1",
 };
 
-export { testUserObject }
+export { testUserObject };
