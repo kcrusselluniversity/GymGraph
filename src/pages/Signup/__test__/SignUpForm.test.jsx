@@ -5,7 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import SignUpForm from "../SignUpForm";
 import userEvent from "@testing-library/user-event";
-import { testUserObject } from "../../../data/constants";
+import { handleSignup } from "../utils/handleSignup";
 
 // Render the SignUpForm before all tests
 beforeEach(() => {
@@ -17,9 +17,8 @@ beforeEach(() => {
     );
 });
 
-// Mock functions that make API calls
-// TODO ONCE REFACTORED SignUpForm component
-// vi.mock("")
+// Mock functions
+vi.mock("../utils/handleSignup");
 
 // Clean up mocks after each test
 afterEach(() => {
@@ -62,6 +61,7 @@ describe("SignUpForm component tests", () => {
 
     it("doesnt show loading spinner when on submit button clicked before form is completed", async () => {
         const user = userEvent.setup();
+        handleSignup.mockImplementation((e) => e.preventDefault())
 
         const firstNameInput = screen.getByLabelText("First name");
         const submitButton = screen.getByRole("button", {
@@ -80,31 +80,18 @@ describe("SignUpForm component tests", () => {
 });
 
 // SignUpForm submission tests
+// This test is to confirm the the handleSignup function is called
+// when the button is clicked. We do all the event handling inside
+// that function and so test it separately. 
 describe("SignUpForm submission tests", () => {
-    it("Calls the forms onSubmit function when form submit button clicked", async () => {
+    it("calls the handleSignup function when the submit button is clicked", async () => {
         const user = userEvent.setup();
-        const testUser = testUserObject;
-        const inputLabelsMapper = {
-            "First name": testUser.firstName,
-            "Last name": testUser.lastName,
-            "Email Address": testUser.email,
-            "Date of Birth": testUser.dob,
-            "Password": testUser.password,
-            "Confirm Password": testUser.confirmPassword,
-        };
-
-        for (const [label, value] of Object.entries(inputLabelsMapper)) {
-            const input = screen.getByLabelText(label);
-            await user.type(input, value);
-        }
-
-        const signUpButton = screen.getByRole("button", {
-            name: "Start Your Journey",
-        });
-
-        await user.click(signUpButton);
-
-
+        const submitButton = screen.getByRole("button");
+        handleSignup.mockImplementation((e) => e.preventDefault())
+        
+        await user.click(submitButton);
+        
+        expect(handleSignup).toBeCalled();
     });
 });
 
