@@ -80,10 +80,10 @@ describe("SignUpForm component tests", () => {
 });
 
 // SignUpForm submission tests
-// This test is to confirm the the handleSignup function is called
-// when the button is clicked. We do all the event handling inside
-// that function and so test it separately. 
 describe("SignUpForm submission tests", () => {
+    // This test is to confirm the the handleSignup function is called
+    // when the button is clicked. We do all the event handling inside
+    // that function and so test it separately. 
     it("calls the handleSignup function when the submit button is clicked", async () => {
         const user = userEvent.setup();
         const submitButton = screen.getByRole("button");
