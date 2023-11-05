@@ -3,6 +3,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { testUserObject } from "../../../data/constants";
 import { addUserToDb } from "../utils/addUserToDb";
 
+// Mock the modules that make API calls
 vi.mock("../../../config/firebase", () => {
     return {
         db: {},
