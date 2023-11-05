@@ -5,7 +5,7 @@ import { addUserToDb } from "./addUserToDb";
 
 /**
  * Handle the submission of the SignUpForm form component
- * 
+ *
  * @param {object} e: The event passed when the form is submit
  * @param {object} formErrors: State containing any inputs errors
  * @param {object} formData: State containing the forms input
