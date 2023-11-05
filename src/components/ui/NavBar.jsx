@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import LogoutButton from "./LogoutButton";
 
 const NavBar = () => {
     return (
@@ -9,7 +10,7 @@ const NavBar = () => {
                 <NavLink to="/user/metrics">Metrics</NavLink>
                 <NavLink to="/user/profile">Profile</NavLink>
                 <NavLink to="/user/settings">Settings</NavLink>
-                <NavLink to="/">Log Out</NavLink>
+                <LogoutButton />
             </nav>
     );
 };
