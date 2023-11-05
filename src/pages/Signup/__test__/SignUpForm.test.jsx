@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -15,6 +15,15 @@ beforeEach(() => {
         </LocalizationProvider>,
         { wrapper: BrowserRouter }
     );
+});
+
+// Mock functions that make API calls
+// TODO ONCE REFACTORED SignUpForm component
+// vi.mock("")
+
+// Clean up mocks after each test
+afterEach(() => {
+    vi.restoreAllMocks();
 });
 
 // SignUpForm general tests
@@ -58,10 +67,10 @@ describe("SignUpForm component tests", () => {
         const submitButton = screen.getByRole("button", {
             name: "Start Your Journey",
         });
-        
-        await user.type(firstNameInput, "John")
+
+        await user.type(firstNameInput, "John");
         await user.click(submitButton);
-        
+
         await waitFor(() => {
             const loadingSpinner = screen.queryByRole("progressbar");
 
@@ -71,20 +80,32 @@ describe("SignUpForm component tests", () => {
 });
 
 // SignUpForm submission tests
-describe.todo("SignUpForm submission tests", () => {
-    // const testUser = testUserObject;
-    // const firstNameInput = screen.getByLabelText("First name");
-    // const lastNameInput = screen.getByLabelText("Last name");
-    // const emailInput = screen.getByLabelText("Email Address");
-    // const dobInput = screen.getByLabelText("Date of Birth");
-    // const passwordInput = screen.getByLabelText("Password");
-    // const confirmPasswordInput = screen.getByLabelText("Confirm Password");
-    // await user.type(firstNameInput, testUser.firstName);
-    // await user.type(lastNameInput, testUser.lastName);
-    // await user.type(emailInput, testUser.email);
-    // await user.type(dobInput, testUser.dob);
-    // await user.type(passwordInput, testUser.password);
-    // await user.type(confirmPasswordInput, testUser.password);
+describe("SignUpForm submission tests", () => {
+    it("Calls the forms onSubmit function when form submit button clicked", async () => {
+        const user = userEvent.setup();
+        const testUser = testUserObject;
+        const inputLabelsMapper = {
+            "First name": testUser.firstName,
+            "Last name": testUser.lastName,
+            "Email Address": testUser.email,
+            "Date of Birth": testUser.dob,
+            "Password": testUser.password,
+            "Confirm Password": testUser.confirmPassword,
+        };
+
+        for (const [label, value] of Object.entries(inputLabelsMapper)) {
+            const input = screen.getByLabelText(label);
+            await user.type(input, value);
+        }
+
+        const signUpButton = screen.getByRole("button", {
+            name: "Start Your Journey",
+        });
+
+        await user.click(signUpButton);
+
+
+    });
 });
 
 // SignUpForm individual input tests
