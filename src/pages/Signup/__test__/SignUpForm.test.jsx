@@ -20,7 +20,7 @@ beforeEach(() => {
 // Mock functions
 vi.mock("../utils/handleSignup");
 
-// Clean up mocks after each test
+// Clean up mocks afgter each test
 afterEach(vi.restoreAllMocks);
 
 // SignUpForm general tests
