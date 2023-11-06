@@ -1,8 +1,9 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LogoutButton from "../LogoutButton";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, BrowserRouter } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 const mockNavigate = vi.fn();
 
@@ -14,6 +15,13 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
+vi.mock("firebase/auth", () => {
+    return {
+        signOut: vi.fn(),
+        getAuth: vi.fn(),
+    };
+});
+
 afterEach(vi.restoreAllMocks);
 
 describe("LogoutButton component tests", () => {
@@ -21,17 +29,17 @@ describe("LogoutButton component tests", () => {
         render(<LogoutButton />, { wrapper: MemoryRouter });
 
         const logoutButton = screen.getByRole("button", { name: /log out/i });
-        
+
         expect(logoutButton).toBeInTheDocument();
     });
 
-    it("redirects to root route after click", async () => {
+    it("redirects to root route after LogoutButton is clicked", async () => {
         const user = userEvent.setup();
         render(<LogoutButton />, { wrapper: MemoryRouter });
 
         const logoutButton = screen.getByRole("button", { name: /log out/i });
         await user.click(logoutButton);
-        
+
         expect(mockNavigate).toBeCalledWith("/");
     });
 
@@ -39,5 +47,30 @@ describe("LogoutButton component tests", () => {
         render(<LogoutButton />, { wrapper: MemoryRouter });
 
         expect(mockNavigate).not.toHaveBeenCalled();
+    });
+
+    it("calls the firebase signOut method when button is clicked", async () => {
+        const user = userEvent.setup();
+        render(<LogoutButton />, { wrapper: MemoryRouter });
+        const logoutButton = screen.getByRole("button", { name: /log out/i });
+
+        await user.click(logoutButton);
+
+        expect(signOut).toHaveBeenCalled();
+    });
+
+    it("handles errors with signing out gracefully", async () => {
+        const user = userEvent.setup();
+        render(<LogoutButton />, { wrapper: MemoryRouter });
+
+        const logoutButton = screen.getByRole("button", { name: /log out/i });
+        signOut.mockRejectedValue(new Error("Error signing out"));
+        vi.spyOn(console, "error").mockImplementation(() => {});
+
+        await user.click(logoutButton);
+
+        expect(console.error).toHaveBeenCalledWith(
+            new Error("Error signing out")
+        );
     });
 });
