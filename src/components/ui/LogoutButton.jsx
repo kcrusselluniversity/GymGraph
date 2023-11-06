@@ -1,7 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
-    return <NavLink to="/">Log Out</NavLink>;
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/")
+    }
+
+    return <Button onClick={handleClick}>Log Out</Button>;
 };
 
 export default LogoutButton;
