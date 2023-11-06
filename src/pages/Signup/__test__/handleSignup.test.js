@@ -1,23 +1,8 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { handleSignup } from "../utils/handleSignup";
 import { testUserObject } from "../../../data/constants";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import dayjs from "dayjs";
-
-// Mock dependencies
-vi.mock("firebase/auth", () => {
-    return {
-        createUserWithEmailAndPassword: vi.fn(),
-    };
-});
-
-vi.mock("../../../config/firebase", () => {
-    return { auth: {} };
-});
-
-vi.mock("../utils/addUserToDb", () => {
-    return { addUserToDb: vi.fn() };
-});
 
 /**
  * Helper function to set up the handleSignup function call with default mock
@@ -41,9 +26,26 @@ const setup = (
     };
 };
 
-afterEach(() => {
-    vi.restoreAllMocks();
+// Mock dependencies
+vi.mock("firebase/auth", () => {
+    return {
+        createUserWithEmailAndPassword: vi.fn(),
+    };
 });
+
+vi.mock("../../../config/firebase", () => {
+    return { auth: {} };
+});
+
+vi.mock("../utils/addUserToDb", () => {
+    return { addUserToDb: vi.fn() };
+});
+
+beforeEach(() => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+});
+
+afterEach(vi.restoreAllMocks);
 
 describe("handleSignup function tests", () => {
     it("should return early if form has errors", async () => {
