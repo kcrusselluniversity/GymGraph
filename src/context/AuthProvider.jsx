@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import authContext from "./authContext";
+import AuthContext from "./authContext";
 import { auth } from "../config/firebase";
 import { object } from "prop-types";
 
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
         return unsubscribe;
     }, []);
 
-    return <authContext.Provider value={user}>{children}</authContext.Provider>;
+    return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
 
 AuthProvider.propTypes = {
