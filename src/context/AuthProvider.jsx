@@ -4,11 +4,17 @@ import AuthContext from "./authContext";
 import { auth } from "../config/firebase";
 import { object } from "prop-types";
 
+/**
+ * Context Provider to share global state of user
+ * 
+ * @param {object} children: The component that is being wrapped
+ * @returns A Provider for the user auth context
+ */
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Set up firebase auth listener
+        // Set up firebase auth listener on mount
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
         });
