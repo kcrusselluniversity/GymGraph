@@ -18,9 +18,7 @@ vi.mock("firebase/firestore", () => {
 });
 
 describe("addUserToDb tests", () => {
-    afterEach(() => {
-        vi.restoreAllMocks();
-    });
+    afterEach(vi.restoreAllMocks);
 
     it("add a user to Firestore database", async () => {
         const user = testUserObject;

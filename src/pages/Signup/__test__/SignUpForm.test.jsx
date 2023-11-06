@@ -21,9 +21,7 @@ beforeEach(() => {
 vi.mock("../utils/handleSignup");
 
 // Clean up mocks after each test
-afterEach(() => {
-    vi.restoreAllMocks();
-});
+afterEach(vi.restoreAllMocks);
 
 // SignUpForm general tests
 describe("SignUpForm component tests", () => {
