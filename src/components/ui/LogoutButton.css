@@ -1,0 +1,10 @@
+.logoutButton {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-weight: bold;
+    color: var(--dashboard-font-color);
+    font-size: var(--dashboard-font-size);
+    text-align: center;
+    align-self: stretch;
+}
