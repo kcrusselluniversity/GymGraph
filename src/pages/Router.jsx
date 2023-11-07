@@ -13,6 +13,7 @@ import Error from "./Error";
 import UnderConstruction from "./UnderConstruction";
 import UserPageLayout from "./UserPageLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Loading from "../components/ui/Loading";
 
 /**
  * Router component
@@ -26,10 +27,8 @@ import ProtectedRoute from "../components/ProtectedRoute";
  */
 const Router = () => {
     const { user, isLoading } = useContext(AuthContext);
-    console.log("isLoading: ", isLoading)
-    console.log("user :", user)
 
-    if(isLoading) return <h1>Loading ...</h1>
+    if(isLoading) return <Loading></Loading>
     
     return (
         <Routes>
