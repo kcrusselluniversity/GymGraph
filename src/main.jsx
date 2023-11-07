@@ -7,10 +7,10 @@ import "./assets/global.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <AuthProvider>
+        <AuthProvider>
+            <BrowserRouter>
                 <App />
-            </AuthProvider>
-        </BrowserRouter>
+            </BrowserRouter>
+        </AuthProvider>
     </React.StrictMode>
 );
