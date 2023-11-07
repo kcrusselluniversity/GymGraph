@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -6,6 +6,20 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import userEvent from "@testing-library/user-event";
 import Signup from "../Signup";
 import App from "../../../App";
+
+vi.mock("react", async () => {
+    const library = await vi.importActual("react");
+
+    const defaultTestUser = {
+        user: "John",
+        isLoading: false,
+    };
+
+    return {
+        ...library,
+        useContext: vi.fn().mockReturnValue(defaultTestUser),
+    };
+});
 
 describe("Sign up page tests", () => {
     beforeEach(() => {

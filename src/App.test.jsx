@@ -1,8 +1,22 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+
+vi.mock("react", async () => {
+    const library = await vi.importActual("react");
+
+    const defaultTestUser = {
+        user: "John",
+        isLoading: false,
+    };
+
+    return {
+        ...library,
+        useContext: vi.fn().mockReturnValue(defaultTestUser),
+    };
+});
 
 describe("App routing tests", () => {
     it("renders default route correctly", async () => {
@@ -16,19 +30,22 @@ describe("App routing tests", () => {
 
     it("correctly routes to sign up page after clicking signup button", async () => {
         const user = userEvent.setup();
-        
+        // useContext.mockReturnValue({user:"John", isLoading: true});
+
         render(<App />, { wrapper: MemoryRouter });
 
         const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
         await user.click(signUpButton);
-        expect(screen.getByText(/create your gymgraph account/i)).toBeInTheDocument();
+        expect(
+            screen.getByText(/create your gymgraph account/i)
+        ).toBeInTheDocument();
     });
 
     it("correctly routes to sign in page after clicking signin link", async () => {
         const user = userEvent.setup();
-        
+
         render(<App />, { wrapper: MemoryRouter });
-        
+
         const signInButton = screen.getByRole("link", { name: "Sign in" });
         await user.click(signInButton);
         expect(screen.getByText(/Login to GymGraph/i)).toBeInTheDocument();
@@ -40,7 +57,7 @@ describe("App routing tests", () => {
                 <App />
             </MemoryRouter>
         );
-        
+
         expect(screen.getByText(/404/i)).toBeInTheDocument();
     });
 });

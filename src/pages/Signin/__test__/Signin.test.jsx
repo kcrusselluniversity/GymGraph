@@ -1,9 +1,23 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect , vi} from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Signin from "../Signin";
 import userEvent from "@testing-library/user-event";
 import App from '../../../App';
+
+vi.mock("react", async () => {
+    const library = await vi.importActual("react");
+
+    const defaultTestUser = {
+        user: "John",
+        isLoading: false,
+    };
+
+    return {
+        ...library,
+        useContext: vi.fn().mockReturnValue(defaultTestUser),
+    };
+});
 
 describe("Signin page", () => {
     it("renders without crashing", () => {
