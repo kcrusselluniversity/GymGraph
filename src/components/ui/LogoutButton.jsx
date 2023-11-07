@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
+import "./LogoutButton.css"
 
 const LogoutButton = () => {
     const navigate = useNavigate();
@@ -15,7 +16,11 @@ const LogoutButton = () => {
         navigate("/");
     };
 
-    return <button onClick={handleClick}>Log Out</button>;
+    return (
+        <button className="logoutButton" onClick={handleClick}>
+            Log Out
+        </button>
+    );
 };
 
 export default LogoutButton;
