@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 import Landing from "./Landing";
 import Signin from "./Signin";
 import Signup from "./Signup";
@@ -10,6 +12,7 @@ import Dashboard from "./Dashboard";
 import Error from "./Error";
 import UnderConstruction from "./UnderConstruction";
 import UserPageLayout from "./UserPageLayout";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 /**
  * Router component
@@ -22,18 +25,33 @@ import UserPageLayout from "./UserPageLayout";
  * readable code.
  */
 const Router = () => {
+    const { user, isLoading } = useContext(AuthContext);
+    console.log("isLoading: ", isLoading)
+    console.log("user :", user)
+
+    if(isLoading) return <h1>Loading ...</h1>
+    
     return (
         <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/user" element={<UserPageLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="workout" element={<Workout />} />
-                <Route path="history" element={<History />} />
-                <Route path="metrics" element={<Metrics />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="settings" element={<UnderConstruction />} />
+            <Route
+                element={
+                    <ProtectedRoute
+                        isAuthorised={Boolean(user)}
+                        redirectPath="/"
+                    />
+                }
+            >
+                <Route path="/user" element={<UserPageLayout />}>
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="workout" element={<Workout />} />
+                    <Route path="history" element={<History />} />
+                    <Route path="metrics" element={<Metrics />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="settings" element={<UnderConstruction />} />
+                </Route>
             </Route>
             <Route path="underConstruction" element={<UnderConstruction />} />
             <Route path="*" element={<Error />} />
