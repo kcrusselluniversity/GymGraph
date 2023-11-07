@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom"
 import NavBar from "../../components/ui/NavBar"
+import "./UserPageLayout.css"
 
 /**
  * UserPageLayout component
