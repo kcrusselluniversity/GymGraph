@@ -14,8 +14,8 @@ const Loading = () => {
             className="loading_container"
         >
             <CircularProgress
-                thickness={2}
-                size={100}
+                thickness={3}
+                size={75}
                 variant="indeterminate"
             />
         </div>
