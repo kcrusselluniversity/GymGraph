@@ -8,3 +8,7 @@
     text-align: center;
     align-self: stretch;
 }
+
+.logoutButton:hover {
+    cursor: pointer;
+}
