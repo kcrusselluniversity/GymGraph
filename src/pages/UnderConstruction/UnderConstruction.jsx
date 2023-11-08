@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import GymGraphLogo from "../../components/ui/GymGraphLogo";
-import "./underConstruction.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import UnderConstructionContent from "./UnderConstructionConent";
+import GymGraphLogo from "../../components/ui/GymGraphLogo";
+import "./underConstruction.css";
 
 const UnderConstruction = () => {
     const { user } = useContext(AuthContext);
-    const logoRoute = user ? "user" : "/";
+    const logoRoute = user ? "/user" : "/";
+
     return (
         <div className="underConstruction">
             <header>
