@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import Dashboard from "./Dashboard";
 import Error from "./Error";
 import UnderConstruction from "./UnderConstruction";
+import UnderConstructionContent from "./UnderConstruction/UnderConstructionConent";
 import UserPageLayout from "./UserPageLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Loading from "../components/ui/Loading";
@@ -28,8 +29,8 @@ import Loading from "../components/ui/Loading";
 const Router = () => {
     const { user, isLoading } = useContext(AuthContext);
 
-    if(isLoading) return <Loading></Loading>
-    
+    if (isLoading) return <Loading></Loading>;
+
     return (
         <Routes>
             <Route path="/" element={<Landing />} />
@@ -49,7 +50,15 @@ const Router = () => {
                     <Route path="history" element={<History />} />
                     <Route path="metrics" element={<Metrics />} />
                     <Route path="profile" element={<Profile />} />
-                    <Route path="settings" element={<UnderConstruction />} />
+                    <Route
+                        path="settings"
+                        element={
+                            <>
+                                <h1>Settings</h1>
+                                <UnderConstructionContent />
+                            </>
+                        }
+                    />
                 </Route>
             </Route>
             <Route path="underConstruction" element={<UnderConstruction />} />
