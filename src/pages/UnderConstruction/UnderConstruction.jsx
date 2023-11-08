@@ -1,24 +1,21 @@
 import { Link } from "react-router-dom";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
-import underConstructionImage from "../../assets/images/under_construction_image_compressed.png";
 import "./underConstruction.css";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import UnderConstructionContent from "./UnderConstructionConent";
 
 const UnderConstruction = () => {
+    const { user } = useContext(AuthContext);
+    const logoRoute = user ? "user" : "/";
     return (
         <div className="underConstruction">
             <header>
-                <Link to="/">
+                <Link to={logoRoute}>
                     <GymGraphLogo />
                 </Link>
             </header>
-            <main className="content">
-                <h1>Sorry, this page is still under construction</h1>
-                <img
-                    className="content__image"
-                    src={underConstructionImage}
-                    alt="page under construction"
-                />
-            </main>
+            <UnderConstructionContent />
         </div>
     );
 };
