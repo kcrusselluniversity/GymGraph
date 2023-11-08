@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
-import "./Error.css";
 import heroImage from "../../assets/images/404_hero_image_compressed.png";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import "./Error.css";
 
 const Error = () => {
+    const { user } = useContext(AuthContext);
+    const logoRoute = user ? "/user" : "/";
+
     return (
         <div className="errorPage">
             <header>
-                <Link to="/">
+                <Link to={logoRoute}>
                     <GymGraphLogo />
                 </Link>
             </header>
