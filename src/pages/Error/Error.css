@@ -1,0 +1,58 @@
+.errorPage {
+    height: 100%;
+    padding: 2rem;
+    padding-left: 4rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.errorPage__content {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.content__heroImage {
+    max-width: 100%; 
+    height: auto;    
+    display: block; 
+}
+
+.content__text > h1 {
+    margin-bottom: 1rem;
+}
+
+@media screen and (width <= 950px) {
+    .errorPage {
+        height: 100vh;
+        padding: 1rem;
+        padding-left: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .errorPage__content {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .content__text {
+        width: 70%;
+    }
+
+    .content__text > h1, h3 {
+        text-align: center; 
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .content__heroImage {
+        width: 450px;
+    }
+}
