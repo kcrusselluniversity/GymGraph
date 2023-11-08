@@ -14,13 +14,13 @@
     gap: 2rem;
 }
 
-.content__heroImage {
+.errorPageContent__heroImage {
     max-width: 100%; 
     height: auto;    
     display: block; 
 }
 
-.content__text > h1 {
+.errorPageContent__text > h1 {
     margin-bottom: 1rem;
 }
 
@@ -39,20 +39,20 @@
         height: 100%;
     }
 
-    .content__text {
+    .errorPageContent__text {
         width: 70%;
     }
 
-    .content__text > h1, h3 {
+    .errorPageContent__text > h1, h3 {
         text-align: center; 
     }
 
-    header {
+    .errorPage  > header {
         display: flex;
         justify-content: center;
     }
 
-    .content__heroImage {
+    .errorPageContent__heroImage {
         width: 450px;
     }
 }

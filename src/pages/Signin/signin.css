@@ -52,6 +52,10 @@
 }
 
 @media screen and (width <= 750px) {
+    .signInPage {
+        height: 100dvh;
+    }
+
     .divider {
         flex-direction: row;
         width: 80%;
@@ -72,6 +76,7 @@
 @media screen and (width <= 750px) {
     .signInPage > header {
         padding-left: 0px;
+        text-align: center;
     }
     
     .signInPage__content > h1 {
