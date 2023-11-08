@@ -22,7 +22,7 @@ const Signup = () => {
                 </Link>
             </header>
             <div className="signUpPage__content">
-                <h1>Create your GymGraph account</h1>
+                <h1>Create your account</h1>
                 <div className="content__signUpContainer">
                     <SignUpForm />
                     <Divider text="or" direction="horizontal" />
