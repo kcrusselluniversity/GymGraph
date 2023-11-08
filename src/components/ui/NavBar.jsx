@@ -1,12 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
-import "./NavBar.css";
 import GymGraphLogo from "./GymGraphLogo";
+import "./NavBar.css";
 
 const NavBar = () => {
     return (
         <nav className="navbar">
-            <GymGraphLogo />
+            <Link to="/user/dashboard">
+                <GymGraphLogo />
+            </Link>
             <div className="navbar__links">
                 <NavLink className="link" to="/user/dashboard">
                     Dashboard
