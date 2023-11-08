@@ -1,0 +1,30 @@
+.underConstructionContent {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.underConstructionContent > .content__image {
+    max-width: 100%; 
+    height: auto;    
+    display: block; 
+}
+
+@media screen and (width <= 750px) {
+    .underConstructionContent {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        min-height: 550px;
+        width: 80%;
+        gap: 1rem;
+    }
+
+    .underConstructionContent > h1 {
+        text-align: center;
+    }
+
+    .underConstructionContent > .content__image {
+        width: 400px;
+    }
+}
