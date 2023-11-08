@@ -12,7 +12,7 @@ const Error = () => {
                 </Link>
             </header>
             <div className="errorPage__content">
-                <div className="content__text">
+                <div className="errorPageContent__text">
                     <h1>Gym Fail!</h1>
                     <h3>
                         This page decided not to work out today. While it&apos;s
@@ -21,7 +21,7 @@ const Error = () => {
                     </h3>
                 </div>
                 <img
-                    className="content__heroImage"
+                    className="errorPageContent__heroImage"
                     src={heroImage}
                     alt="404 error image"
                 />
