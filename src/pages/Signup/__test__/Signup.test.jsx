@@ -33,7 +33,7 @@ describe("Sign up page tests", () => {
 
     it("renders without crashing", () => {
         const heading = screen.getByRole("heading");
-        expect(heading.textContent).toBe("Create your GymGraph account");
+        expect(heading.textContent).toMatch(/create your account/i);
     });
 
     it("renders logo", () => {

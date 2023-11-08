@@ -4,7 +4,7 @@ import UnderConstruction from "../UnderConstruction";
 import underConstructionImage from "../../../assets/images/under_construction_image_compressed.png";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import App from '../../../App';
+import App from "../../../App";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
@@ -24,7 +24,7 @@ describe("underConstruction page", () => {
     beforeEach(() => {
         render(<UnderConstruction />, { wrapper: MemoryRouter });
     });
-    
+
     it("renders without crashing", () => {
         expect(screen.getByRole("heading")).toBeInTheDocument();
     });
@@ -44,17 +44,21 @@ describe("underConstruction page", () => {
 });
 
 describe("underConstruction page routing", () => {
-    it("routes to landing page when logo clicked", async () => {
+    it("routes to the dashboard when logo clicked if the user is signed in", async () => {
         const user = userEvent.setup();
 
-        render(<MemoryRouter initialEntries={["/underConstruction"]}>
-            <App />
-        </MemoryRouter>)
-      
+        render(
+            <MemoryRouter initialEntries={["/underConstruction"]}>
+                <App />
+            </MemoryRouter>
+        );
+
         const logo = screen.getByAltText("GymGraph");
-        const link = logo.closest('a');
+        const link = logo.closest("a");
 
         await user.click(link);
-        expect(screen.getByText(/discover strength unleashed/i)).toBeInTheDocument()
-    })
-})
+        expect(
+            screen.getByText(/dashboard/i)
+        ).toBeInTheDocument();
+    });
+});

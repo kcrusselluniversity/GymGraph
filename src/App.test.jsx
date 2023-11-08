@@ -37,7 +37,7 @@ describe("App routing tests", () => {
         const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
         await user.click(signUpButton);
         expect(
-            screen.getByText(/create your gymgraph account/i)
+            screen.getByText(/create your account/i)
         ).toBeInTheDocument();
     });
 
@@ -58,6 +58,6 @@ describe("App routing tests", () => {
             </MemoryRouter>
         );
 
-        expect(screen.getByText(/404/i)).toBeInTheDocument();
+        expect(screen.getByText(/fail/i)).toBeInTheDocument();
     });
 });
