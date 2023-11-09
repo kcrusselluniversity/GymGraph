@@ -33,9 +33,18 @@ const Router = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route
+                path="/"
+                element={user ? <Navigate to="/user" /> : <Landing />}
+            />
+            <Route
+                path="/signin"
+                element={user ? <Navigate to="/user" /> : <Signin />}
+            />
+            <Route
+                path="/signup"
+                element={user ? <Navigate to="/user" /> : <Signup />}
+            />
             <Route
                 element={
                     <ProtectedRoute
