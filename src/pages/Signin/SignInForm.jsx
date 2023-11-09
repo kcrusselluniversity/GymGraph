@@ -1,4 +1,4 @@
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, CircularProgress } from "@mui/material";
 import { CTAButtonStyle } from "../../data/constants.js";
 import { useState } from "react";
 import handleSignIn from "./utils/handleSignIn.js";
@@ -20,17 +20,18 @@ const SignInForm = () => {
         password: "",
     });
     const [formSubmissionError, setFormSubmissionError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
-        // If an error has been shown to a user, when they 
+        // If an error has been shown to a user, when they
         // enter more input remove the error
         if (formSubmissionError) setFormSubmissionError(null);
     };
 
     const handleSubmit = (e) =>
-        handleSignIn(e, formData, setFormSubmissionError, navigate);
+        handleSignIn(e, formData, setFormSubmissionError, setIsLoading, navigate);
 
     const validFormInput = formData.email && formData.password;
 
@@ -67,7 +68,11 @@ const SignInForm = () => {
                 sx={CTAButtonStyle}
                 onClick={handleSubmit}
             >
-                Log In
+                {isLoading ? (
+                    <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+                ) : (
+                    "Log In"
+                )}
             </Button>
             {formSubmissionError ? (
                 <div data-testid="errorMessage" className="signin__formError">
