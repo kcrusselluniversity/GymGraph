@@ -1,6 +1,7 @@
 .logoutButton {
     background: none;
     border: none;
+    border-radius: var(--link-border-radius);
     font-family: inherit;
     font-weight: bold;
     color: var(--dashboard-font-color);
