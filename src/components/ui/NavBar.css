@@ -37,3 +37,14 @@
     border-radius: 1rem;
     color: white !important;
 }
+
+:not(.active).link:hover,
+.logoutButton:hover {
+    background-color:var(--secondary-color);
+    border-radius: 1rem;
+    color: white !important;
+}
+
+.link, .logoutButton {
+    transition: color 0.1s;
+}
