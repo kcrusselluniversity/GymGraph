@@ -30,6 +30,13 @@
     gap: 1rem;
 }
 
+.signin__formError {
+    color: red;
+    font-style: italic;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
 /* Divider styling */
 .divider {
     display: flex;
@@ -72,7 +79,6 @@
 }
 
 /* Responsiveness styling */
-
 @media screen and (width <= 750px) {
     .signInPage > header {
         padding-left: 0px;
