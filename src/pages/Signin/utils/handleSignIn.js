@@ -1,8 +1,16 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 
-const handleSignIn = async (e, formData, setFormSubmissionError, navigate) => {
+const handleSignIn = async (
+    e,
+    formData,
+    setFormSubmissionError,
+    setIsLoading,
+    navigate
+) => {
     e.preventDefault();
+    setIsLoading(true);
+
     const { email, password } = formData;
 
     if (email == "" || password == "") {
@@ -17,6 +25,7 @@ const handleSignIn = async (e, formData, setFormSubmissionError, navigate) => {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
         const errorCode = err.code;
+        setIsLoading(false);
         if (
             errorCode == "auth/invalid-login-credentials" ||
             errorCode == "auth/invalid-email"
@@ -30,6 +39,7 @@ const handleSignIn = async (e, formData, setFormSubmissionError, navigate) => {
 
     // Route valid user to dashbaord
     navigate("/user/dashboard");
+    setIsLoading(false);
 };
 
 export default handleSignIn;
