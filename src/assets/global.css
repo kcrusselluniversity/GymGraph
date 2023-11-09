@@ -13,12 +13,12 @@
 
     --screen-small: 750px;
 
-    --card-border-radius: 2rem;
+    --card-border-radius: 12px;
     --card-box-shadow: 0px 4px 8px 6px var(--accent-color-with-opacity);
     --card-box-shadow--hover: 0px 4px 12px 10px var(--accent-color-with-opacity);
 
     --link-padding: 8px;
-    --link-border-radius: 0.6rem;
+    --link-border-radius: 0.5rem;
     --link-logo-height: 25px;
 }
 
