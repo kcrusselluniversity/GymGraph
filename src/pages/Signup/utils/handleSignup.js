@@ -55,7 +55,6 @@ export const handleSignup = async (
         const error = err.code;
 
         if (error == "auth/email-already-in-use") {
-            //
             setFormSubmissionError(
                 "This email is already associated with an account, please sign in with your email and password"
             );
