@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import Landing from "./Landing";
@@ -45,6 +45,10 @@ const Router = () => {
                 }
             >
                 <Route path="/user" element={<UserPageLayout />}>
+                    <Route
+                        index
+                        element={<Navigate to="dashboard" replace />}
+                    />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="workout" element={<Workout />} />
                     <Route path="history" element={<History />} />
