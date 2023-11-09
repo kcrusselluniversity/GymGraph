@@ -58,7 +58,7 @@ describe("underConstruction page routing", () => {
 
         await user.click(link);
         expect(
-            screen.getByText(/dashboard/i)
+            screen.getByRole("heading", {name:"Dashboard"})
         ).toBeInTheDocument();
     });
 });
