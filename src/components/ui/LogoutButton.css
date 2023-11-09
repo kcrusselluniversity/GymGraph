@@ -5,6 +5,7 @@
     font-weight: bold;
     color: var(--dashboard-font-color);
     font-size: var(--dashboard-font-size);
+    padding: var(--link-padding);
     text-align: center;
     align-self: stretch;
 }
