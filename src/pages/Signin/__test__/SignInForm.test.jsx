@@ -2,9 +2,10 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignInForm from "../SignInForm";
+import { MemoryRouter } from "react-router-dom";
 
 beforeEach(() => {
-    render(<SignInForm />)
+    render(<SignInForm />, {wrapper: MemoryRouter})
 });
 
 describe("Initial render tests", () => {
