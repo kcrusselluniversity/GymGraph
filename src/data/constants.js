@@ -42,3 +42,18 @@ const testUserObject = {
 };
 
 export { testUserObject };
+
+// These objects are used for testing routes
+// This object represents the Auth when a user has not yet signed in
+const defaultAuthContext = {
+    user: "",
+    isLoading: false,
+};
+
+// This object represents the Auth when a user is signed in
+const userAuthContext = {
+    user: "John",
+    isLoading: false,
+};
+
+export { defaultAuthContext, userAuthContext }
