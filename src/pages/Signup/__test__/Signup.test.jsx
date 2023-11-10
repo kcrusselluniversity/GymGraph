@@ -1,24 +1,25 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { useContext } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import userEvent from "@testing-library/user-event";
 import Signup from "../Signup";
 import App from "../../../App";
+import { defaultAuthContext } from "../../../data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
 
-    const defaultTestUser = {
-        user: "John",
-        isLoading: false,
-    };
-
     return {
         ...library,
-        useContext: vi.fn().mockReturnValue(defaultTestUser),
+        useContext: vi.fn()
     };
+});
+
+afterEach(() => {
+    vi.restoreAllMocks();
 });
 
 describe("Sign up page tests", () => {
@@ -61,15 +62,20 @@ describe("Sign up page tests", () => {
 describe("Sign up page routing tests", () => {
     it("routes to the landing page when logo clicked", async () => {
         const user = userEvent.setup();
+        useContext.mockReturnValue(defaultAuthContext)
 
-        render(<MemoryRouter initialEntries={["/signup"]}>
-            <App />
-        </MemoryRouter>)
+        render(
+            <MemoryRouter initialEntries={["/signup"]}>
+                <App />
+            </MemoryRouter>
+        );
 
         const logo = screen.getByAltText("GymGraph");
-        const link = logo.closest('a');
+        const link = logo.closest("a");
 
         await user.click(link);
-        expect(screen.getByText(/discover strength unleashed/i)).toBeInTheDocument()
-    })
-})
+        expect(
+            screen.getByText(/discover strength unleashed/i)
+        ).toBeInTheDocument();
+    });
+});

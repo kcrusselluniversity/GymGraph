@@ -1,25 +1,28 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { useContext } from "react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+import { defaultAuthContext } from "./data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
 
-    const defaultTestUser = {
-        user: "John",
-        isLoading: false,
-    };
-
     return {
         ...library,
-        useContext: vi.fn().mockReturnValue(defaultTestUser),
+        useContext: vi.fn(),
     };
+});
+
+afterEach(() => {
+    vi.restoreAllMocks();
 });
 
 describe("App routing tests", () => {
     it("renders default route correctly", async () => {
+        useContext.mockReturnValue(defaultAuthContext);
+
         render(<App />, { wrapper: MemoryRouter });
 
         // Confirm landing page is first page rendered
@@ -30,19 +33,18 @@ describe("App routing tests", () => {
 
     it("correctly routes to sign up page after clicking signup button", async () => {
         const user = userEvent.setup();
-        // useContext.mockReturnValue({user:"John", isLoading: true});
+        useContext.mockReturnValue(defaultAuthContext);
 
         render(<App />, { wrapper: MemoryRouter });
 
         const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
         await user.click(signUpButton);
-        expect(
-            screen.getByText(/create your account/i)
-        ).toBeInTheDocument();
+        expect(screen.getByText(/create your account/i)).toBeInTheDocument();
     });
 
     it("correctly routes to sign in page after clicking signin link", async () => {
         const user = userEvent.setup();
+        useContext.mockReturnValue(defaultAuthContext);
 
         render(<App />, { wrapper: MemoryRouter });
 
@@ -52,6 +54,8 @@ describe("App routing tests", () => {
     });
 
     it("correctly render a bad page", () => {
+        useContext.mockReturnValue(defaultAuthContext);
+
         render(
             <MemoryRouter initialEntries={["/nonsensePageRequest"]}>
                 <App />
