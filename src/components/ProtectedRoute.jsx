@@ -6,7 +6,7 @@ import { node, bool, string } from "prop-types";
  * requirements for that page
  *
  * @param {boolean} isAuthorised: whether the user is allowed to access that path
- * @param {string} redirectPath: path to redirect if user does not have access
+ * @param {string} redirectPath: path to redirect if user does not have access. Default value: root route (landing page)
  * @param {object} children: component to render if access allowed
  *
  * Acknowledgement:
@@ -14,7 +14,7 @@ import { node, bool, string } from "prop-types";
  * that shows how to best implement a protected route
  * URL: https://www.robinwieruch.de/react-router-private-routes/
  */
-const ProtectedRoute = ({ isAuthorised, redirectPath, children }) => {
+const ProtectedRoute = ({ isAuthorised, redirectPath="/", children }) => {
     if (!isAuthorised) {
         return <Navigate to={redirectPath} replace />;
     }
