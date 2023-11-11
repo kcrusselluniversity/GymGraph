@@ -68,7 +68,5 @@ describe("Form submission tests", async () => {
         await user.type(emailField, "example@gmail.com");
         await user.type(passwordField, "password");
         await user.click(submitButton);    
-        
-        // TODO: Write test to test the outcome of the handle submit function
     });
 });
