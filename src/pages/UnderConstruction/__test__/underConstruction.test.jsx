@@ -17,6 +17,14 @@ vi.mock("react", async () => {
     };
 });
 
+// Mock the reactSVG component as it appears to make network requests
+// under the hood which is not desired in our unit tests
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
+    };
+});
+
 afterEach(() => {
     vi.restoreAllMocks();
 });
@@ -46,25 +54,6 @@ describe("underConstruction page", () => {
 });
 
 describe("underConstruction page routing", () => {
-    it("routes to the dashboard when logo clicked if the user is signed in", async () => {
-        const user = userEvent.setup();
-        useContext.mockReturnValue(userAuthContext);
-
-        render(
-            <MemoryRouter initialEntries={["/underConstruction"]}>
-                <App />
-            </MemoryRouter>
-        );
-
-        const logo = screen.getByAltText("GymGraph");
-        const link = logo.closest("a");
-
-        await user.click(link);
-        expect(
-            screen.getByRole("heading", { name: "Dashboard" })
-        ).toBeInTheDocument();
-    });
-    
     it("routes to the landing when logo clicked if the user is not signed in", async () => {
         const user = userEvent.setup();
         useContext.mockReturnValue(defaultAuthContext);
@@ -80,7 +69,27 @@ describe("underConstruction page routing", () => {
 
         await user.click(link);
         expect(
-            screen.getByRole("heading", { name: /discover strength unleashed/i })
+            screen.getByRole("heading", {
+                name: /discover strength unleashed/i,
+            })
         ).toBeInTheDocument();
+    });
+
+    it("routes to the dashboard when logo clicked if the user is signed in", async () => {
+        const user = userEvent.setup();
+        useContext.mockReturnValue(userAuthContext);
+
+        render(
+            <MemoryRouter initialEntries={["/underConstruction"]}>
+                <App />
+            </MemoryRouter>
+        );
+        const logo = screen.getByAltText("GymGraph");
+        const link = logo.closest("a");
+        
+        await user.click(link);
+  
+        const header = screen.getByRole("heading", { name: "Dashboard" });
+        expect(header).toBeInTheDocument();
     });
 });
