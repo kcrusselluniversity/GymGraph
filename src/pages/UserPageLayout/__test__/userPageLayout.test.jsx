@@ -11,6 +11,15 @@ vi.mock('react-router-dom', async () => {
     }
 })
 
+// Mock the reactSVG component as it appears to make network requests
+// under the hood which is not desired in our unit tests
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
+    };
+});
+
+
 describe("UserPageLayout tests", () => {
     it("renders without crashing", () => {
         render(<UserPageLayout />, { wrapper: MemoryRouter });
