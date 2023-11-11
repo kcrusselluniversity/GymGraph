@@ -25,9 +25,7 @@ vi.mock("react-svg", () => {
     };
 });
 
-afterEach(() => {
-    vi.restoreAllMocks();
-});
+afterEach(vi.restoreAllMocks);
 
 describe("underConstruction page", () => {
     beforeEach(() => {

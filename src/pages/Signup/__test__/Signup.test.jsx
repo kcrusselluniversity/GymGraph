@@ -18,9 +18,7 @@ vi.mock("react", async () => {
     };
 });
 
-afterEach(() => {
-    vi.restoreAllMocks();
-});
+afterEach(vi.restoreAllMocks);
 
 describe("Sign up page tests", () => {
     beforeEach(() => {

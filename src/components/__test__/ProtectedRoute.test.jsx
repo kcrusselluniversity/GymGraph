@@ -3,9 +3,7 @@ import { render, screen } from "@testing-library/react";
 import ProtectedRoute from "../ProtectedRoute";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
-afterEach(() => {
-    vi.restoreAllMocks();
-});
+afterEach(vi.restoreAllMocks);
 
 describe("ProtectedRoute component tests", () => {
     describe("User is unauthorised tests", () => {
