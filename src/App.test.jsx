@@ -1,10 +1,10 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { useContext } from "react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { defaultAuthContext } from "./data/constants";
+import { defaultAuthContext, userAuthContext } from "./data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
@@ -15,53 +15,138 @@ vi.mock("react", async () => {
     };
 });
 
-afterEach(() => {
-    vi.restoreAllMocks();
+// Mock the reactSVG component as it appears to make network requests
+// under the hood which is not desired in our unit tests
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
+    };
 });
 
+afterEach(vi.restoreAllMocks);
+
 describe("App routing tests", () => {
-    it("renders default route correctly", async () => {
-        useContext.mockReturnValue(defaultAuthContext);
-
-        render(<App />, { wrapper: MemoryRouter });
-
-        // Confirm landing page is first page rendered
-        expect(
-            screen.getByText(/Discover Strength Unleashed./i)
-        ).toBeInTheDocument();
+    beforeEach(() => {
+        useContext.mockReturnValue({ user: "", isLoading: true });
     });
 
-    it("correctly routes to sign up page after clicking signup button", async () => {
-        const user = userEvent.setup();
-        useContext.mockReturnValue(defaultAuthContext);
-
-        render(<App />, { wrapper: MemoryRouter });
-
-        const signUpButton = screen.getByRole("link", { name: "Sign Up Now" });
-        await user.click(signUpButton);
-        expect(screen.getByText(/create your account/i)).toBeInTheDocument();
+    describe("loading routes tests", () => {
+        it("renders a loading spinner when the page is loading", () => {
+            render(<App />, { wrapper: MemoryRouter });
+            expect(screen.getByRole("progressbar")).toBeInTheDocument();
+        });
     });
 
-    it("correctly routes to sign in page after clicking signin link", async () => {
-        const user = userEvent.setup();
-        useContext.mockReturnValue(defaultAuthContext);
+    describe("user not signed in tests", () => {
+        beforeEach(() => {
+            // Set the auth to reflect no user signed in yet
+            useContext.mockReturnValue(defaultAuthContext);
+        });
 
-        render(<App />, { wrapper: MemoryRouter });
+        it("renders default route correctly", async () => {
+            render(<App />, { wrapper: MemoryRouter });
 
-        const signInButton = screen.getByRole("link", { name: "Sign in" });
-        await user.click(signInButton);
-        expect(screen.getByText(/Login to GymGraph/i)).toBeInTheDocument();
+            // Confirm landing page is first page rendered
+            expect(
+                screen.getByText(/Discover Strength Unleashed./i)
+            ).toBeInTheDocument();
+        });
+
+        it("correctly routes to sign up page after clicking signup button", async () => {
+            const user = userEvent.setup();
+            render(<App />, { wrapper: MemoryRouter });
+
+            const signUpButton = screen.getByRole("link", {
+                name: "Sign Up Now",
+            });
+
+            await user.click(signUpButton);
+            expect(
+                screen.getByText(/create your account/i)
+            ).toBeInTheDocument();
+        });
+
+        it("correctly routes to sign in page after clicking signin link", async () => {
+            const user = userEvent.setup();
+
+            render(<App />, { wrapper: MemoryRouter });
+
+            const signInButton = screen.getByRole("link", { name: "Sign in" });
+            await user.click(signInButton);
+            expect(screen.getByText(/Login to GymGraph/i)).toBeInTheDocument();
+        });
+
+        it("correctly render a bad page", () => {
+            render(
+                <MemoryRouter initialEntries={["/nonsensePageRequest"]}>
+                    <App />
+                </MemoryRouter>
+            );
+
+            expect(screen.getByText(/fail/i)).toBeInTheDocument();
+        });
     });
 
-    it("correctly render a bad page", () => {
-        useContext.mockReturnValue(defaultAuthContext);
+    describe("user signed in routing tests", () => {
+        beforeEach(() => {
+            // Set the auth to reflect a user is signed in
+            useContext.mockReturnValue(userAuthContext);
+        });
 
-        render(
-            <MemoryRouter initialEntries={["/nonsensePageRequest"]}>
-                <App />
-            </MemoryRouter>
-        );
+        it("routes to the users dashboard for the root route", () => {
+            render(<App />, { wrapper: MemoryRouter });
 
-        expect(screen.getByText(/fail/i)).toBeInTheDocument();
+            const dashboardNavBarElement = screen.getByRole("link", {
+                name: /dashboard/i,
+            });
+
+            // Check that the dashboard is the active page
+            expect(dashboardNavBarElement).toHaveClass("active");
+        });
+
+        it("routes to the dashboard when the user manually tries to route to the signin page", () => {
+            render(
+                <MemoryRouter initialEntries={["/signin"]}>
+                    <App />
+                </MemoryRouter>
+            );
+
+            const dashboardNavBarElement = screen.getByRole("link", {
+                name: /dashboard/i,
+            });
+
+            // Check that the dashboard is the active page
+            expect(dashboardNavBarElement).toHaveClass("active");
+        });
+
+        it("routes to the dashboard when the user manually tries to route to the signup page", () => {
+            render(
+                <MemoryRouter initialEntries={["/signup"]}>
+                    <App />
+                </MemoryRouter>
+            );
+
+            const dashboardNavBarElement = screen.getByRole("link", {
+                name: /dashboard/i,
+            });
+
+            // Check that the dashboard is the active page
+            expect(dashboardNavBarElement).toHaveClass("active");
+        });
+
+        it("routes to the dashboard when the user manually tries to route to the landing page", () => {
+            render(
+                <MemoryRouter initialEntries={["/"]}>
+                    <App />
+                </MemoryRouter>
+            );
+
+            const dashboardNavBarElement = screen.getByRole("link", {
+                name: /dashboard/i,
+            });
+
+            // Check that the dashboard is the active page
+            expect(dashboardNavBarElement).toHaveClass("active");
+        });
     });
 });
