@@ -1,7 +1,7 @@
 import areAllAttributesNull from "../../../utils/areAllAttributesNull";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
-import { addUserToDb } from "./addUserToDb";
+import { addUserToDb } from "../../../utils/firebaseUtils/addUserToDb";
 
 /**
  * Handle the submission of the SignUpForm form component
