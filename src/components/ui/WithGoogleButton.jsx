@@ -1,6 +1,6 @@
 import googleIconSVG from "../../assets/icons/google.svg";
 import { Button } from "@mui/material";
-import { string } from "prop-types";
+import { string, func } from "prop-types";
 
 /**
  * WithGoogleButton Component
@@ -12,7 +12,7 @@ import { string } from "prop-types";
  * @param {string} {text}: The text you want to be displayed in the template
  * string.
  */
-const WithGoogleButton = ({ text }) => {
+const WithGoogleButton = ({ text, onClick }) => {
     const googleIconHeight = "30px";
     const googleIcon = (
         <img src={googleIconSVG} height={googleIconHeight} alt="Google Icon" />
@@ -29,7 +29,12 @@ const WithGoogleButton = ({ text }) => {
     };
 
     return (
-        <Button variant="outlined" startIcon={googleIcon} sx={buttonStyle}>
+        <Button
+            variant="outlined"
+            startIcon={googleIcon}
+            sx={buttonStyle}
+            onClick={onClick}
+        >
             {text} with Google
         </Button>
     );
@@ -37,6 +42,7 @@ const WithGoogleButton = ({ text }) => {
 
 WithGoogleButton.propTypes = {
     text: string.isRequired,
+    onClick: func,
 };
 
 export default WithGoogleButton;
