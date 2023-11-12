@@ -93,6 +93,39 @@ describe("SignUpForm submission tests", () => {
     });
 });
 
+// SignUpForm submission rendering tests
+describe("SignUpForm submission rendering tests", () => {
+    it("renders a loading spinner when the form is submitted", async () => {
+        const user = userEvent.setup();
+        const submitButton = screen.getByRole("button");
+        handleSignup.mockImplementation((e, errors, data, setIsLoading) => {
+            e.preventDefault();
+            setIsLoading(true);
+        });
+
+        await user.click(submitButton);
+
+        const loadingSpinner = screen.getByRole("progressbar");
+        expect(loadingSpinner).toBeInTheDocument();
+    });
+
+    it("renders an error message if there is a form submission error", async () => {
+        const user = userEvent.setup();
+        const submitButton = screen.getByRole("button");
+        handleSignup.mockImplementation(
+            (e, errors, data, loading, setFormSubmissionError) => {
+                e.preventDefault();
+                setFormSubmissionError("Test Error Message");
+            }
+        );
+
+        await user.click(submitButton);
+
+        const errorMessageElement = screen.getByTestId("errorMessage");
+        expect(errorMessageElement).toBeInTheDocument();
+    });
+});
+
 // SignUpForm individual input tests
 describe("First name input tests", () => {
     let input;
