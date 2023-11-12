@@ -37,7 +37,7 @@ vi.mock("../../../config/firebase", () => {
     return { auth: {} };
 });
 
-vi.mock("../utils/addUserToDb", () => {
+vi.mock("../../../utils/firebaseUtils/addUserToDb", () => {
     return { addUserToDb: vi.fn() };
 });
 
