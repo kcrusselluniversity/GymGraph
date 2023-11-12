@@ -20,7 +20,7 @@ beforeEach(() => {
 // Mock functions
 vi.mock("../utils/handleSignup");
 
-// Clean up mocks afgter each test
+// Clean up mocks after each test
 afterEach(vi.restoreAllMocks);
 
 // SignUpForm general tests
@@ -59,7 +59,7 @@ describe("SignUpForm component tests", () => {
 
     it("doesnt show loading spinner when on submit button clicked before form is completed", async () => {
         const user = userEvent.setup();
-        handleSignup.mockImplementation((e) => e.preventDefault())
+        handleSignup.mockImplementation((e) => e.preventDefault());
 
         const firstNameInput = screen.getByLabelText("First name");
         const submitButton = screen.getByRole("button", {
@@ -81,14 +81,14 @@ describe("SignUpForm component tests", () => {
 describe("SignUpForm submission tests", () => {
     // This test is to confirm the the handleSignup function is called
     // when the button is clicked. We do all the event handling inside
-    // that function and so test it separately. 
+    // that function and so test it separately.
     it("calls the handleSignup function when the submit button is clicked", async () => {
         const user = userEvent.setup();
         const submitButton = screen.getByRole("button");
-        handleSignup.mockImplementation((e) => e.preventDefault())
-        
+        handleSignup.mockImplementation((e) => e.preventDefault());
+
         await user.click(submitButton);
-        
+
         expect(handleSignup).toBeCalled();
     });
 });
