@@ -4,8 +4,7 @@ import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import { Link } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../config/firebase";
+import handleSignInWithGoogle from "./utils/handleSignInWithGoogle";
 
 /**
  * Signin page component
@@ -15,16 +14,6 @@ import { auth, provider } from "../../config/firebase";
  * to sign in with Google.
  */
 const Signin = () => {
-    const handleSignInWithGoogle = async () => {
-        try {
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            console.log(user);
-        } catch (err) {
-            const errorCode = err.code;
-            console.error(errorCode);
-        }
-    };
 
     return (
         <div className="signInPage">
