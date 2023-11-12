@@ -85,6 +85,31 @@ describe("Form submission tests", async () => {
         expect(handleSignIn).toHaveBeenCalledTimes(1);
     });
 
+    it("displays a loading spinner when the form is submitted", async () => {
+        handleSignIn.mockImplementation(
+            (e, formData, setFormSubmissionError, setIsLoading) => {
+                e.preventDefault();
+                setIsLoading(true);
+            }
+        );
+
+        const user = userEvent.setup();
+        render(<SignInForm />, { wrapper: MemoryRouter });
+
+        const emailField = screen.getByLabelText("Email Address");
+        const passwordField = screen.getByLabelText("Password");
+        const submitButton = screen.getByRole("button", { name: /log in/i });
+
+        await user.type(emailField, "example@gmail.com");
+        await user.type(passwordField, "password");
+        await user.click(submitButton);
+
+        await waitFor(() => {
+            const loadingSpinner = screen.getByRole("progressbar");
+            expect(loadingSpinner).toBeInTheDocument();
+        })
+    });
+
     it("renders an error message if the input is invalid", async () => {
         handleSignIn.mockImplementation(
             (e, formData, setFormSubmissionError) => {
