@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { addDoc, collection } from "firebase/firestore";
-import { testUserObject } from "../../../data/constants";
-import { addUserToDb } from "../utils/addUserToDb";
+import { testUserObject } from "../../data/constants";
+import { addUserToDb } from "../firebaseUtils/addUserToDb";
 
 // Mock the modules that make API calls
 vi.mock("../../../config/firebase", () => {
@@ -10,8 +10,9 @@ vi.mock("../../../config/firebase", () => {
     };
 });
 
-vi.mock("firebase/firestore", () => {
+vi.mock("firebase/firestore", async () => {
     return {
+        getFirestore: vi.fn(),
         addDoc: vi.fn(),
         collection: vi.fn(),
     };
