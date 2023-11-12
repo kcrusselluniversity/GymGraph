@@ -123,4 +123,30 @@ describe("handleSignup function tests", () => {
 
         expect(navigate).toBeCalledWith("/user/");
     });
+    
+    it("should set the loading state to true if the user has been successfully created and added to the database", async () => {
+        const {
+            e,
+            formErrors,
+            navigate,
+            setIsLoading,
+            setFormSubmissionError,
+        } = setup();
+
+        const formData = {
+            ...testUserObject,
+            dob: dayjs(new Date(2000, 1, 1)),
+        };
+
+        await handleSignup(
+            e,
+            formErrors,
+            formData,
+            setIsLoading,
+            setFormSubmissionError,
+            navigate
+        );
+
+        expect(setIsLoading).toBeCalledWith(true);
+    });
 });
