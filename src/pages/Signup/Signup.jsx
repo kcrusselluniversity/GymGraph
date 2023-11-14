@@ -4,6 +4,7 @@ import SignUpForm from "./SignUpForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import { Link } from "react-router-dom";
+import handleSignInWithGoogle from "../../utils/firebaseUtils/handleSignInWithGoogle";
 
 /**
  * Signup page component
@@ -26,7 +27,10 @@ const Signup = () => {
                 <div className="content__signUpContainer">
                     <SignUpForm />
                     <Divider text="or" direction="horizontal" />
-                    <WithGoogleButton text="Sign up" />
+                    <WithGoogleButton
+                        text="Sign up"
+                        onClick={handleSignInWithGoogle}
+                    />
                 </div>
             </div>
         </div>
