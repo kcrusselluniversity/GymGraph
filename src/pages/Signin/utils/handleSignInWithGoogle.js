@@ -17,8 +17,8 @@ const handleSignInWithGoogle = async () => {
 
         await addGoogleUserToDb(userObject);
     } catch (err) {
-        const errorCode = err.code;
-        console.error(errorCode);
+        const errorCode = err?.code;
+        console.error(errorCode || err);
     }
 };
 
