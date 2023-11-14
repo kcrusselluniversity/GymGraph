@@ -6,7 +6,6 @@ import DashboardIcon from "../../assets/icons/Dashboard_Icon.svg";
 import WorkoutIcon from "../../assets/icons/Workout_Icon.svg";
 import HistoryIcon from "../../assets/icons/History_Icon.svg";
 import MetricsIcon from "../../assets/icons/Metrics_Icon.svg";
-import ProfileIcon from "../../assets/icons/Profile_Icon.svg";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -31,10 +30,6 @@ const NavBar = () => {
                 <NavLink className="link" to="/user/metrics">
                     <ReactSVG src={MetricsIcon} className="links__icon" />
                     <p>Metrics</p>
-                </NavLink>
-                <NavLink className="link" to="/user/profile">
-                    <ReactSVG src={ProfileIcon} className="links__icon" />
-                    <p>Profile</p>
                 </NavLink>
             </div>
             <LogoutButton />
