@@ -51,11 +51,11 @@
     height: var(--link-logo-height);
 }
 
-:not(.active) svg {
+.navbar__links > :not(.active) svg {
     fill: var(--dashboard-font-color);
 }
 
-.active svg {
+.navbar__links > .active svg {
     fill: white ;
 }
 :not(.active).link:hover svg,
@@ -72,4 +72,15 @@
 .active {
     background-color: var(--accent-color);
     color: white ;
+}
+
+@media screen and (width <= 950px) {
+    .navbar {
+        width: fit-content;
+        align-items: center;
+    }
+
+    .link {
+        justify-content: center;
+    }
 }
