@@ -7,6 +7,11 @@ const accentColor = "#4b86aa";
 
 export { dominantColor, secondaryColor, accentColor };
 
+// NavBar display settings
+const NavBarDisplaySmallScreen = "950px";
+
+export { NavBarDisplaySmallScreen };
+
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
 // or a 'Log in' button.
@@ -29,14 +34,14 @@ const maxDate = dayjs().set("year", 2020).set("month", 0).set("date", 1);
 
 export { minDate, maxDate };
 
-// This is used for testing a user in RTL tests. 
+// This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
-// the sign up form. 
+// the sign up form.
 const testUserObject = {
     firstName: "John",
     lastName: "Smith",
     email: "johnsmith@gmail.com",
-    dob: '01012000',
+    dob: "01012000",
     password: "Password1",
     confirmPassword: "Password1",
 };
@@ -56,4 +61,4 @@ const userAuthContext = {
     isLoading: false,
 };
 
-export { defaultAuthContext, userAuthContext }
+export { defaultAuthContext, userAuthContext };
