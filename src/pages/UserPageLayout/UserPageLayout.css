@@ -9,7 +9,7 @@
 }
 
 .userPageContainer {
-    height: 100%;
+    height: 100dvh;
     padding: 1rem;
     display: grid;
     column-gap: 2rem;
@@ -21,3 +21,4 @@
 .navbar {
     grid-area: dashboard;
 }
+
