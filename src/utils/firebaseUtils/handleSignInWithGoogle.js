@@ -1,6 +1,6 @@
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../../config/firebase";
-import { addGoogleUserToDb } from "../../../utils/firebaseUtils/addGoogleUserToDb";
+import { auth, provider } from "../../config/firebase";
+import { addGoogleUserToDb } from "./addGoogleUserToDb";
 
 const handleSignInWithGoogle = async () => {
     try {

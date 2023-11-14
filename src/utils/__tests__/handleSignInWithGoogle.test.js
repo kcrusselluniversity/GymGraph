@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { signInWithPopup } from "firebase/auth";
-import handleSignInWithGoogle from "../utils/handleSignInWithGoogle";
-import { addGoogleUserToDb } from "../../../utils/firebaseUtils/addGoogleUserToDb";
-import FirebaseAuthCustomError from "../../../utils/firebaseUtils/FirebaseAuthCustomError";
+import handleSignInWithGoogle from "../firebaseUtils/handleSignInWithGoogle";
+import { addGoogleUserToDb } from "../firebaseUtils/addGoogleUserToDb"
+import FirebaseAuthCustomError from "../firebaseUtils/FirebaseAuthCustomError";
 
-vi.mock("../../../utils/firebaseUtils/addGoogleUserToDb");
+vi.mock("../firebaseUtils/addGoogleUserToDb");
 vi.mock("firebase/auth", () => {
     return {
         signInWithPopup: vi.fn(),

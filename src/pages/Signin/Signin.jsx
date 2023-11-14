@@ -4,7 +4,7 @@ import SignInForm from "./SignInForm";
 import WithGoogleButton from "../../components/ui/WithGoogleButton";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import { Link } from "react-router-dom";
-import handleSignInWithGoogle from "./utils/handleSignInWithGoogle";
+import handleSignInWithGoogle from "../../utils/firebaseUtils/handleSignInWithGoogle";
 
 /**
  * Signin page component
