@@ -1,10 +1,11 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import handleSignIn from "../utils/handleSignIn";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import FirebaseAuthCustomError from '../../../utils/firebaseUtils/FirebaseAuthCustomError';
 
 /**
  * Helper function to set up the handleSignup function call with default mock
- * values
+ * values.
  */
 const setup = (
     formData = {},
@@ -53,7 +54,27 @@ describe("handleSignIn function tests", () => {
         );
     });
 
-    it("should set an error message if the user is not found in firebase auth backend", async () => {
+    it("should set the correct error message based on the error thrown by Firebase/auth if the user is not found", async () => {
+        const { e, setFormSubmissionError, setIsLoading, navigate } = setup();
+
+        const formData = { user: "testUser", password: "password" };
+
+        signInWithEmailAndPassword.mockImplementation(() => {
+            throw new FirebaseAuthCustomError("firebase auth test error", "auth/invalid-login-credentials");
+        });
+
+        await handleSignIn(
+            e,
+            formData,
+            setFormSubmissionError,
+            setIsLoading,
+            navigate
+        );
+
+        expect(setFormSubmissionError).toBeCalledWith("Invalid login credentials");
+    });
+
+    it("should set an error message if an error occurs when attemping to signin", async () => {
         const { e, setFormSubmissionError, setIsLoading, navigate } = setup();
 
         const formData = { user: "testUser", password: "password" };
