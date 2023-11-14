@@ -107,7 +107,7 @@ describe("Form submission tests", async () => {
         await waitFor(() => {
             const loadingSpinner = screen.getByRole("progressbar");
             expect(loadingSpinner).toBeInTheDocument();
-        })
+        });
     });
 
     it("renders an error message if the input is invalid", async () => {
@@ -133,5 +133,33 @@ describe("Form submission tests", async () => {
             const errorElement = screen.getByTestId("errorMessage");
             expect(errorElement).toBeInTheDocument();
         });
+    });
+
+    it("removes error message when user changes the input field", async () => {
+        handleSignIn.mockImplementation(
+            (e, formData, setFormSubmissionError) => {
+                e.preventDefault();
+                setFormSubmissionError("Test Error Message");
+            }
+        );
+
+        const user = userEvent.setup();
+        render(<SignInForm />, { wrapper: MemoryRouter });
+
+        const emailField = screen.getByLabelText("Email Address");
+        const passwordField = screen.getByLabelText("Password");
+        const submitButton = screen.getByRole("button", { name: /log in/i });
+
+        await user.type(emailField, "email@email.com");
+        await user.type(passwordField, "PasswordNumber1");
+        await user.click(submitButton);
+
+        const errorElement = screen.getByTestId("errorMessage");
+        expect(errorElement).toBeInTheDocument();
+    
+        // Update the input field
+        await user.type(emailField, "e");    
+    
+        expect(errorElement).not.toBeInTheDocument();
     });
 });
