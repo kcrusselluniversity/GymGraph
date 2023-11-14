@@ -1,6 +1,17 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 
+/**
+ * Handles signing a user in using their email and password as provided
+ * to the SignInForm component.
+ * 
+ * @param {object} e: Form submission event object.
+ * @param {object} formData: Object containing the form input values.
+ * @param {function} setFormSubmissionError: setter for form error state.
+ * @param {function} setIsLoading: setter for isLoading state.
+ * @param {function} navigate: function to send users to a different.
+ * react-router route.
+ */
 const handleSignIn = async (
     e,
     formData,
