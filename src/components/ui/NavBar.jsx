@@ -18,12 +18,6 @@ const linkData = [
     { path: "/user/metrics", title: "Metrics", icon: MetricsIcon },
 ];
 
-const linkData = [
-    { path: "/user/dashboard", title: "Dashboard", icon: DashboardIcon },
-    { path: "/user/workout", title: "Workout", icon: WorkoutIcon },
-    { path: "/user/history", title: "History", icon: HistoryIcon },
-    { path: "/user/metrics", title: "Metrics", icon: MetricsIcon },
-];
 const NavBar = () => {
     // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery(
