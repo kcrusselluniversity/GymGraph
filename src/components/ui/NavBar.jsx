@@ -44,7 +44,11 @@ const NavBar = () => {
                     return (
                         <NavLink className="link" to={path} key={title}>
                             {isSmallScreen ? (
-                                <IconWithTooltip title={title} icon={icon} />
+                                <IconWithTooltip
+                                    title={title}
+                                    icon={icon}
+                                    disableHoverListener={isMobileScreen}
+                                />
                             ) : (
                                 <>
                                     <ReactSVG
