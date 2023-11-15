@@ -49,25 +49,6 @@ const NavBar = () => {
                         </NavLink>
                     );
                 })}
-                {linkData.map((link) => {
-                    const { path, title, icon } = link;
-
-                    return (
-                        <NavLink className="link" to={path} key={title}>
-                            {isSmallScreen ? (
-                                <IconWithTooltip title={title} icon={icon} />
-                            ) : (
-                                <>
-                                    <ReactSVG
-                                        src={icon}
-                                        className="links__icon"
-                                    />
-                                    <p>{title}</p>
-                                </>
-                            )}
-                        </NavLink>
-                    );
-                })}
             </div>
             <LogoutButton />
         </nav>
