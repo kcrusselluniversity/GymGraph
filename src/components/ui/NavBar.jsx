@@ -7,7 +7,10 @@ import DashboardIcon from "../../assets/icons/Dashboard_Icon.svg";
 import WorkoutIcon from "../../assets/icons/Workout_Icon.svg";
 import HistoryIcon from "../../assets/icons/History_Icon.svg";
 import MetricsIcon from "../../assets/icons/Metrics_Icon.svg";
-import { NavBarDisplaySmallScreen } from "../../data/constants.js";
+import {
+    NavBarDisplaySmallScreen,
+    NavBarDisplayMobileScreen,
+} from "../../data/constants.js";
 import IconWithTooltip from "./IconWithTooltip.jsx";
 import "./NavBar.css";
 
@@ -23,12 +26,17 @@ const NavBar = () => {
     const isSmallScreen = useMediaQuery(
         `(width <= ${NavBarDisplaySmallScreen})`
     );
+    const isMobileScreen = useMediaQuery(
+        `(width <= ${NavBarDisplayMobileScreen})`
+    );
 
     return (
         <nav className="navbar">
-            <Link to="/user/dashboard">
-                <GymGraphLogo />
-            </Link>
+            {isMobileScreen ? null : (
+                <Link to="/user/dashboard">
+                    <GymGraphLogo />
+                </Link>
+            )}
             <div className="navbar__links">
                 {linkData.map((link) => {
                     const { path, title, icon } = link;
@@ -50,7 +58,7 @@ const NavBar = () => {
                     );
                 })}
             </div>
-            <LogoutButton />
+            {isMobileScreen ? null : <LogoutButton />}
         </nav>
     );
 };
