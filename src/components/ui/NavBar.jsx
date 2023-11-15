@@ -11,6 +11,12 @@ import { NavBarDisplaySmallScreen } from "../../data/constants.js";
 import IconWithTooltip from "./IconWithTooltip.jsx";
 import "./NavBar.css";
 
+const linkData = [
+    { path: "/user/dashboard", title: "Dashboard", icon: DashboardIcon },
+    { path: "/user/workout", title: "Workout", icon: WorkoutIcon },
+    { path: "/user/history", title: "History", icon: HistoryIcon },
+    { path: "/user/metrics", title: "Metrics", icon: MetricsIcon },
+];
 const NavBar = () => {
     // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery(
@@ -23,61 +29,25 @@ const NavBar = () => {
                 <GymGraphLogo />
             </Link>
             <div className="navbar__links">
-                <NavLink className="link" to="/user/dashboard">
-                    {isSmallScreen ? (
-                        <IconWithTooltip
-                            title="Dashboard"
-                            icon={DashboardIcon}
-                        />
-                    ) : (
-                        <>
-                            <ReactSVG
-                                src={DashboardIcon}
-                                className="links__icon"
-                            />
-                            <p>Dashboard</p>
-                        </>
-                    )}
-                </NavLink>
-                <NavLink className="link" to="/user/workout">
-                    {isSmallScreen ? (
-                        <IconWithTooltip title="Workout" icon={WorkoutIcon} />
-                    ) : (
-                        <>
-                            <ReactSVG
-                                src={WorkoutIcon}
-                                className="links__icon"
-                            />
-                            <p>Workout</p>
-                        </>
-                    )}
-                </NavLink>
-                <NavLink className="link" to="/user/history">
-                    {isSmallScreen ? (
-                        <IconWithTooltip title="History" icon={HistoryIcon} />
-                    ) : (
-                        <>
-                            <ReactSVG
-                                src={HistoryIcon}
-                                className="links__icon"
-                            />
-                            <p>History</p>
-                        </>
-                    )}
-                </NavLink>
-                <NavLink className="link" to="/user/metrics">
-                    {isSmallScreen ? (
-                        <IconWithTooltip title="Metrics" icon={MetricsIcon} />
-                    ) : (
-                        <>
-                            <ReactSVG
-                                src={MetricsIcon}
-                                className="links__icon"
-                            />
-                            <p>Metrics</p>
-                        </>
-                    )}
-                </NavLink>
+                {linkData.map((link) => {
+                    const { path, title, icon } = link;
+
+                    return (
+                        <NavLink className="link" to={path} key={title}>
+                            {isSmallScreen ? (
+                                <IconWithTooltip title={title} icon={icon} />
+                            ) : (
+                                <>
+                                    <ReactSVG
+                                        src={icon}
+                                        className="links__icon"
+                                    />
+                                    <p>{title}</p>
+                                </>
+                            )}
+                        </NavLink>
+                    );
+                })}
             </div>
             <LogoutButton />
         </nav>
