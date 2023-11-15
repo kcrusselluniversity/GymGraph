@@ -1,6 +1,7 @@
 :root {
     --header-height: 100px;
     --navbar-width: 250px;
+    --navbar-width-small: 125px;
 
     --dashboard-font-color: rgb(60, 60, 60);
     --dashboard-font-size: 16px;
@@ -20,5 +21,12 @@
 
 .navbar {
     grid-area: dashboard;
+}
+
+@media screen and (width <= 950px) {
+    .userPageContainer {
+        grid-template: var(--header-height) 1fr / var(--navbar-width-small) 1fr;
+        grid-template-areas: "dashboard header" "dashboard content";
+    }  
 }
 
