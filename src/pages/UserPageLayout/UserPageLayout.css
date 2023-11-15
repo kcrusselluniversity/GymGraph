@@ -30,3 +30,9 @@
     }  
 }
 
+@media screen and (width <= 500px) {
+    .userPageContainer {
+        padding: 0px;
+        display: block;
+    }
+}
