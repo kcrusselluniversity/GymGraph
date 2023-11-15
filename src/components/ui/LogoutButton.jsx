@@ -4,6 +4,7 @@ import { auth } from "../../config/firebase";
 import { useMediaQuery } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import { NavBarDisplaySmallScreen } from "../../data/constants";
+import LightTooltip from "./LightTooltip";
 import logoutIcon from '../../assets/icons/Logout_Icon.svg'
 import "./LogoutButton.css"
 
@@ -24,7 +25,11 @@ const LogoutButton = () => {
 
     return (
         <button className="logoutButton" onClick={handleClick}>
-            {isSmallScreen ? <ReactSVG src={logoutIcon}/> : "Log Out"}
+            {isSmallScreen ? <LightTooltip title="Log out">
+                <span>
+                    <ReactSVG src={logoutIcon}/> 
+                </span>
+            </LightTooltip>: "Log Out"}
         </button>
     );
 };
