@@ -9,8 +9,9 @@ export { dominantColor, secondaryColor, accentColor };
 
 // NavBar display settings
 const NavBarDisplaySmallScreen = "950px";
+const NavBarDisplayMobileScreen = "500px";
 
-export { NavBarDisplaySmallScreen };
+export { NavBarDisplaySmallScreen, NavBarDisplayMobileScreen };
 
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
