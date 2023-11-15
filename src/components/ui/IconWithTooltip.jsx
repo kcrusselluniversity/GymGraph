@@ -4,9 +4,9 @@ import { string } from "prop-types";
 
 const IconWithTooltip = ({ icon, title }) => {
     return (
-        <LightTooltip title={title}>
+        <LightTooltip title={title} data-testid="tooltip">
             <span>
-                <ReactSVG src={icon} className="links__icon" />
+                <ReactSVG src={icon} className="links__icon"/>
             </span>
         </LightTooltip>
     );
