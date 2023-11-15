@@ -18,6 +18,12 @@ const linkData = [
     { path: "/user/metrics", title: "Metrics", icon: MetricsIcon },
 ];
 
+const linkData = [
+    { path: "/user/dashboard", title: "Dashboard", icon: DashboardIcon },
+    { path: "/user/workout", title: "Workout", icon: WorkoutIcon },
+    { path: "/user/history", title: "History", icon: HistoryIcon },
+    { path: "/user/metrics", title: "Metrics", icon: MetricsIcon },
+];
 const NavBar = () => {
     // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery(
@@ -30,6 +36,25 @@ const NavBar = () => {
                 <GymGraphLogo />
             </Link>
             <div className="navbar__links">
+                {linkData.map((link) => {
+                    const { path, title, icon } = link;
+
+                    return (
+                        <NavLink className="link" to={path} key={title}>
+                            {isSmallScreen ? (
+                                <IconWithTooltip title={title} icon={icon} />
+                            ) : (
+                                <>
+                                    <ReactSVG
+                                        src={icon}
+                                        className="links__icon"
+                                    />
+                                    <p>{title}</p>
+                                </>
+                            )}
+                        </NavLink>
+                    );
+                })}
                 {linkData.map((link) => {
                     const { path, title, icon } = link;
 
