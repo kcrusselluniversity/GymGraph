@@ -74,6 +74,7 @@
     color: white ;
 }
 
+/* Responsive styling for small width browser windows */
 @media screen and (width <= 950px) {
     .navbar {
         width: fit-content;
@@ -82,5 +83,28 @@
 
     .link {
         justify-content: center;
+    }
+}
+
+/* Responsive styling for mobile sized devices */
+@media screen and (width <= 500px) {
+    /* The navbar will be positioned absoluted on the bottom */
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+        flex-direction: row;
+        min-height: 0;
+        margin: 0;
+        padding: 4px 12px;
+        width: 100%;
+    }
+
+    .navbar__links {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 0;
+        justify-content: space-around;
     }
 }
