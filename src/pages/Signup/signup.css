@@ -84,4 +84,8 @@ form > .inputContainer {
     .formError {
         width: var(--text-input-width-small-screen);
     }
+
+    .signUpPage__content {
+        display: block;
+    }
 }
