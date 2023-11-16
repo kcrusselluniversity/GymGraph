@@ -2,6 +2,7 @@
     --header-height: 100px;
     --navbar-width: 250px;
     --navbar-width-small: 125px;
+    --navbar-high-small: 55px;
 
     --dashboard-font-color: rgb(60, 60, 60);
     --dashboard-font-size: 16px;
@@ -34,5 +35,6 @@
     .userPageContainer {
         padding: 0px;
         display: block;
+        height: calc(100dvh - var(--navbar-high-small));
     }
 }
