@@ -2,9 +2,9 @@ import CircularProgressbar from "./CircularProgressbar";
 import { number } from "prop-types";
 import "./RestTimer.css";
 
-const RestTimer = ({ percentage }) => {
+const RestTimer = ({ percentage, diameter }) => {
     return (
-        <CircularProgressbar percentage={percentage}>
+        <CircularProgressbar percentage={percentage} diameter={diameter}>
             <div className="RestTimer__content">
                 <span className="RestTimer__chosenTime">2:30</span>
                 <span className="RestTimer__remainingTime">1:59</span>
@@ -15,6 +15,7 @@ const RestTimer = ({ percentage }) => {
 
 RestTimer.propTypes = {
     percentage: number,
+    diameter: number,
 };
 
 export default RestTimer;
