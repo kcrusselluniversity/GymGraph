@@ -1,17 +1,40 @@
 import { node, number } from "prop-types";
 import "./CircularProgressbar.css";
-import { circularProgressbarCircum } from "../../data/constants";
+import {
+    circularProgressbarCircum,
+    innerToOuterCircleRatio,
+} from "../../data/constants";
 
 /**
  * Component to represent the percentage of progress of a desired
  * quantity in a circular format
  * @param {object} children: The children prop
  * @param {number} percentage: The percentage of completion
+ * @param {number} diameter: Diameter of circle progressbar in pixels
  */
-const CircularProgressbar = ({ children, percentage=0 }) => {
+const CircularProgressbar = ({
+    children,
+    percentage = 100,
+    diameter = 200,
+}) => {
     return (
-        <div className="circularProgressbar__outerCircle">
-            <div className="circularProgressbar__innerCircle">{children}</div>
+        <div
+            className="circularProgressbar__outerCircle"
+            style={{
+                width: `${diameter}px`,
+                height: `${diameter}px`,
+                border: "1px solid black",
+            }}
+        >
+            <div
+                className="circularProgressbar__innerCircle"
+                style={{
+                    width: `${innerToOuterCircleRatio * diameter}px`,
+                    height: `${innerToOuterCircleRatio * diameter}px`,
+                }}
+            >
+                {children}
+            </div>
             <svg className="circularProgressbar__circle" viewBox="0 0 100 100">
                 <circle
                     r="45"
@@ -20,7 +43,7 @@ const CircularProgressbar = ({ children, percentage=0 }) => {
                     cy="50"
                     strokeDasharray={circularProgressbarCircum}
                     strokeDashoffset={
-                        (100 - percentage)/100 * circularProgressbarCircum
+                        ((100 - percentage) / 100) * circularProgressbarCircum
                     }
                 />
             </svg>
@@ -31,6 +54,7 @@ const CircularProgressbar = ({ children, percentage=0 }) => {
 CircularProgressbar.propTypes = {
     children: node.isRequired,
     percentage: number,
+    diameter: number, 
 };
 
 export default CircularProgressbar;
