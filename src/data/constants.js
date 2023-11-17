@@ -14,10 +14,11 @@ const NavBarDisplayMobileScreen = "500px";
 export { NavBarDisplaySmallScreen, NavBarDisplayMobileScreen };
 
 // CircularProgressbar constants
-const circularProgressbarRadius = 45;
-const circularProgressbarCircum = 2 * Math.PI * circularProgressbarRadius;
+const innerToOuterCircleRatio = 0.8;
+const circularProgressbarSVGRadius = 45;
+const circularProgressbarCircum = 2 * Math.PI * circularProgressbarSVGRadius;
 
-export { circularProgressbarCircum };
+export { circularProgressbarCircum, innerToOuterCircleRatio };
 
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
