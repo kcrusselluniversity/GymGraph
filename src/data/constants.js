@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { CircularProgress } from "@mui/material";
 
 // Colour palette for the sites design.
 const dominantColor = "white";
@@ -12,6 +13,12 @@ const NavBarDisplaySmallScreen = "950px";
 const NavBarDisplayMobileScreen = "500px";
 
 export { NavBarDisplaySmallScreen, NavBarDisplayMobileScreen };
+
+// CircularProgressbar constants
+const circularProgressbarRadius = 45;
+const circularProgressbarCircum = 2 * Math.PI * circularProgressbarRadius;
+
+export { circularProgressbarCircum };
 
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
