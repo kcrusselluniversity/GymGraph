@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import { CircularProgress } from "@mui/material";
 
 // Colour palette for the sites design.
 const dominantColor = "white";
