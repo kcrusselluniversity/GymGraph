@@ -63,14 +63,14 @@ const RestTimer = ({ diameter }) => {
                     sx={SecondaryButtonStyle}
                     onClick={handleTimeSubtracted}
                 >
-                    -{timeAdjustmentInSeconds}
+                    - {timeAdjustmentInSeconds} sec
                 </Button>
                 <Button
                     variant="contained"
                     sx={SecondaryButtonStyle}
                     onClick={handleTimeAdded}
                 >
-                    +{timeAdjustmentInSeconds}
+                    + {timeAdjustmentInSeconds} sec
                 </Button>
             </div>
             {isFinished ? (
