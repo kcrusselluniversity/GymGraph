@@ -20,6 +20,12 @@ const circularProgressbarCircum = 2 * Math.PI * circularProgressbarSVGRadius;
 
 export { circularProgressbarCircum, innerToOuterCircleRatio };
 
+// RestTimer constants
+export const timeAdjustmentInSeconds = 15;
+// export const maxRestTimerDurationInSeconds = 599;
+export const maxRestTimerDurationInSeconds = 350;
+export const initialRestTime = 180;
+
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
 // or a 'Log in' button.
@@ -35,6 +41,13 @@ const CTAButtonStyle = {
 };
 
 export { CTAButtonStyle };
+
+const SecondaryButtonStyle = {
+    ...CTAButtonStyle,
+    bgcolor: secondaryColor,
+};
+
+export { SecondaryButtonStyle };
 
 // DateTime constants
 const minDate = dayjs().set("year", 1900).set("month", 0).set("date", 1);
