@@ -1,8 +1,18 @@
-.RestTimer__content {
-    /* display: flex;
+.RestTimer {
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px; */
+}
+
+.RestTimer > .circularProgressbar__outerCircle {
+    margin-bottom: 2rem;
+}
+
+.RestTimer__content {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     place-items: center;
@@ -10,7 +20,6 @@
 }
 
 .RestTimer__chosenTime {
-    /* margin-top: 1.8rem; */
     font-size: 20px;
     opacity: 0.6;
 }
@@ -18,4 +27,13 @@
 .RestTimer__remainingTime {
     font-size: 2.5rem;
     font-weight: 600;
+}
+
+.RestTimer__timeAdjustmentButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.RestTimer__timeAdjustmentButtons > * {
+    flex-grow: 1;
 }
