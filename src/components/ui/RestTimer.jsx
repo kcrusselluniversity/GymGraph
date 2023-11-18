@@ -10,7 +10,7 @@ import {
     initialRestTime,
 } from "../../data/constants";
 
-const RestTimer = ({ percentage, diameter }) => {
+const RestTimer = ({ diameter }) => {
     const {
         chosenTime,
         setChosenTime,
@@ -44,6 +44,9 @@ const RestTimer = ({ percentage, diameter }) => {
         setIsFinished(false);
     };
 
+    // Derived state 
+    const percentage = (remainingTime/chosenTime)*100;
+    
     return (
         <div className="RestTimer">
             <CircularProgressbar percentage={percentage} diameter={diameter}>
