@@ -10,6 +10,7 @@
 
 .RestTimer > .circularProgressbar__outerCircle {
     margin-bottom: 2rem;
+    align-self: center;
 }
 
 .RestTimer__content {
