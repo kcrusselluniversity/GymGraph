@@ -23,7 +23,6 @@ const CircularProgressbar = ({
             style={{
                 width: `${diameter}px`,
                 height: `${diameter}px`,
-                border: "1px solid black",
             }}
         >
             <div
