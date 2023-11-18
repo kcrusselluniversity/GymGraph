@@ -1,7 +1,6 @@
 import CircularProgressbar from "./CircularProgressbar";
 import { Button } from "@mui/material";
-import { number } from "prop-types";
-import "./RestTimer.css";
+import { number, string, func } from "prop-types";
 import useCountdown from "../../hooks/useCountdown";
 import useRestTimer from "../../hooks/useRestTimer";
 import {
@@ -9,8 +8,34 @@ import {
     timeAdjustmentInSeconds,
     initialRestTime,
 } from "../../data/constants";
+import "./RestTimer.css";
 
+/**
+ * Reusable Component to simplify RestTimer component
+ * @param {string} text: The content text of the button
+ * @param {function} onClick: Button click handler
+ */
+const TimeAdjustmentButton = ({ text, onClick }) => {
+    return (
+        <Button variant="contained" sx={SecondaryButtonStyle} onClick={onClick}>
+            {text}
+        </Button>
+    );
+};
+
+/**
+ * RestTimer is a countdown timer used for managing the rest period between
+ * sets. 
+ * This component allows the user to set a timer, pause the timer, as well
+ * as update the timer in real time if the user wants to increase or decrease 
+ * the duration of their rest for that particular rest session. 
+ * Once the timer has finished, the user can reset it to use again.
+ * 
+ * @param {number} diameter: Prop for the desired diameter of the 
+ * UI element (in pixels)
+ */
 const RestTimer = ({ diameter }) => {
+    // Destructure the useRestTimer custom hook state
     const {
         chosenTime,
         setChosenTime,
@@ -24,7 +49,7 @@ const RestTimer = ({ diameter }) => {
         setIsFinished,
     } = useRestTimer();
 
-    // use the Countdown hook
+    // use the Countdown custom hook
     useCountdown(
         isActive,
         setIsActive,
@@ -34,19 +59,19 @@ const RestTimer = ({ diameter }) => {
         setIsFinished
     );
 
-    const handleToggleRestTimerClick = () => {
+    const toggleRestTimer = () => {
         setIsActive((prevState) => !prevState);
     };
 
-    const handleRestartRestTimerClick = () => {
+    const restartRestTimer = () => {
         setRemainingTime(initialRestTime);
         setChosenTime(initialRestTime);
         setIsFinished(false);
     };
 
-    // Derived state 
-    const percentage = (remainingTime/chosenTime)*100;
-    
+    // Derived state
+    const percentage = (remainingTime / chosenTime) * 100;
+
     return (
         <div className="RestTimer">
             <CircularProgressbar percentage={percentage} diameter={diameter}>
@@ -58,44 +83,34 @@ const RestTimer = ({ diameter }) => {
                 </div>
             </CircularProgressbar>
             <div className="RestTimer__timeAdjustmentButtons">
-                <Button
-                    variant="contained"
-                    sx={SecondaryButtonStyle}
+                <TimeAdjustmentButton
+                    text={`- ${timeAdjustmentInSeconds} sec`}
                     onClick={handleTimeSubtracted}
-                >
-                    - {timeAdjustmentInSeconds} sec
-                </Button>
-                <Button
-                    variant="contained"
-                    sx={SecondaryButtonStyle}
+                />
+                <TimeAdjustmentButton
+                    text={`+ ${timeAdjustmentInSeconds} sec`}
                     onClick={handleTimeAdded}
-                >
-                    + {timeAdjustmentInSeconds} sec
-                </Button>
+                />
             </div>
-            {isFinished ? (
+            {
                 <Button
                     variant="contained"
                     sx={SecondaryButtonStyle}
-                    onClick={handleRestartRestTimerClick}
+                    onClick={isFinished ? restartRestTimer : toggleRestTimer}
                 >
-                    Restart
+                    {isFinished ? "Reset" : isActive ? "Pause" : "Start"}
                 </Button>
-            ) : (
-                <Button
-                    variant="contained"
-                    sx={SecondaryButtonStyle}
-                    onClick={handleToggleRestTimerClick}
-                >
-                    {isActive ? "Pause" : "Start"}
-                </Button>
-            )}
+            }
         </div>
     );
 };
 
+TimeAdjustmentButton.propTypes = {
+    text: string,
+    onClick: func,
+};
+
 RestTimer.propTypes = {
-    percentage: number,
     diameter: number,
 };
 
