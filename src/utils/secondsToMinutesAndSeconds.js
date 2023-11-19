@@ -1,7 +1,7 @@
 const SECONDS_IN_MINUTES = 60;
 
 /**
- * Coverts a duration given in seconds into minutes and seconds
+ * Converts a duration given in seconds into minutes and seconds
  * i.e. of the form 'M:SS'.
  * @param {number} durationInSeconds
  * @returns {string}: String representation of the duration as minutes
