@@ -38,3 +38,7 @@
 .RestTimer__timeAdjustmentButtons > * {
     flex-grow: 1;
 }
+
+.RestTimer button:hover {
+    color: white;
+}
