@@ -7,6 +7,8 @@ const accentColor = "#4b86aa";
 
 export { dominantColor, secondaryColor, accentColor };
 
+export const lighterFontColor = "#232323"
+
 // NavBar display settings
 const NavBarDisplaySmallScreen = "950px";
 const NavBarDisplayMobileScreen = "500px";
@@ -45,6 +47,7 @@ export { CTAButtonStyle };
 const SecondaryButtonStyle = {
     ...CTAButtonStyle,
     bgcolor: secondaryColor,
+    color: lighterFontColor,
 };
 
 export { SecondaryButtonStyle };
