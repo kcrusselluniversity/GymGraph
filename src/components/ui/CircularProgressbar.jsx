@@ -9,12 +9,13 @@ import {
  * Component to represent the percentage of progress of a desired
  * quantity in a circular format
  * @param {object} children: The children prop
- * @param {number} percentage: The percentage of completion
+ * @param {number} percentage: The percentage of completion (as represented as
+ * a number between 0 and 1 inclusive)
  * @param {number} diameter: Diameter of circle progressbar in pixels
  */
 const CircularProgressbar = ({
     children,
-    percentage = 100,
+    percentage = 1.0,
     diameter = 200,
 }) => {
     return (
@@ -34,16 +35,18 @@ const CircularProgressbar = ({
             >
                 {children}
             </div>
-            <svg className="circularProgressbar__circle" viewBox="0 0 100 100">
+            <svg
+                data-testid="svg"
+                className="circularProgressbar__circle"
+                viewBox="0 0 100 100"
+            >
                 <circle
                     r="45"
                     strokeWidth="10px"
                     cx="50"
                     cy="50"
                     strokeDasharray={circularProgressbarCircum}
-                    strokeDashoffset={
-                        ((100 - percentage) / 100) * circularProgressbarCircum
-                    }
+                    strokeDashoffset={(1 - percentage) * circularProgressbarCircum}
                 />
             </svg>
         </div>
@@ -51,9 +54,9 @@ const CircularProgressbar = ({
 };
 
 CircularProgressbar.propTypes = {
-    children: node.isRequired,
+    children: node,
     percentage: number,
-    diameter: number, 
+    diameter: number,
 };
 
 export default CircularProgressbar;

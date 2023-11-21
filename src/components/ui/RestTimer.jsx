@@ -72,7 +72,7 @@ const RestTimer = ({ diameter }) => {
     };
 
     // Derived state
-    const percentage = (remainingTime / chosenTime) * 100;
+    const percentage = remainingTime / chosenTime;
     const chosenTimeFormatted = secondsToMinutesAndSeconds(chosenTime);
     const remainingTimeFormatted = secondsToMinutesAndSeconds(remainingTime);
 
