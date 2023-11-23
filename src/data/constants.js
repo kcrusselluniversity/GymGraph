@@ -24,8 +24,7 @@ export { circularProgressbarCircum, innerToOuterCircleRatio };
 
 // RestTimer constants
 export const timeAdjustmentInSeconds = 15;
-// export const maxRestTimerDurationInSeconds = 599;
-export const maxRestTimerDurationInSeconds = 350;
+export const maxRestTimerDurationInSeconds = 599;
 export const initialRestTime = 180;
 
 // This constant holds the style used to modify the MUI Button component
