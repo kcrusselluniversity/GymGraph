@@ -35,7 +35,7 @@ const useCountdown = (
 ) => {
     useEffect(() => {
         let timer;
-        if (isActive & !isFinished && remainingTime > 0) {
+        if (isActive && !isFinished && remainingTime > 0) {
             // Remove one second from the remaining time after every second
             timer = setInterval(
                 () => setRemainingTime((prevTime) => prevTime - 1),
@@ -51,6 +51,9 @@ const useCountdown = (
 
         return () => clearInterval(timer);
     }, [isActive, remainingTime]);
+
+    // State returned in order to test hook
+    return {isActive, remainingTime, isFinished}
 };
 
 export default useCountdown;
