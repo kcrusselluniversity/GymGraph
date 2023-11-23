@@ -27,7 +27,7 @@ const TimeAdjustmentButton = ({ text, onClick }) => {
 /**
  * RestTimer is a countdown timer used for managing the rest period between
  * sets.
- * 
+ *
  * This component allows the user to set a timer, pause the timer, as well
  * as update the timer in real time if the user wants to increase or decrease
  * the duration of their rest for that particular rest session.
@@ -80,10 +80,16 @@ const RestTimer = ({ diameter }) => {
         <div className="RestTimer">
             <CircularProgressbar percentage={percentage} diameter={diameter}>
                 <div className="RestTimer__content">
-                    <span className="RestTimer__chosenTime">
+                    <span
+                        className="RestTimer__chosenTime"
+                        data-testid="chosenTime"
+                    >
                         {chosenTimeFormatted}
                     </span>
-                    <span className="RestTimer__remainingTime">
+                    <span
+                        className="RestTimer__remainingTime"
+                        data-testid="remainingTime"
+                    >
                         {remainingTimeFormatted}
                     </span>
                 </div>
