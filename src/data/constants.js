@@ -4,12 +4,12 @@ import dayjs from "dayjs";
 const dominantColor = "white";
 const secondaryColor = "#a8dadc";
 const accentColor = "#4b86aa";
+const lighterFontColor = "#232323";
 const pinkColor = "#C070FF99";
 const pinkColorLite = "#C070FF55";
 
-export { dominantColor, secondaryColor, accentColor };
+export { dominantColor, secondaryColor, accentColor, lighterFontColor };
 
-export const lighterFontColor = "#232323";
 
 // NavBar display settings
 const NavBarDisplaySmallScreen = "950px";
