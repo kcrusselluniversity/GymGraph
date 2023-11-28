@@ -1,13 +1,15 @@
 import dayjs from "dayjs";
 
-// Colour palette for the sites design.
+// Colour palette for the sites design
 const dominantColor = "white";
 const secondaryColor = "#a8dadc";
 const accentColor = "#4b86aa";
+const pinkColor = "#C070FF99";
+const pinkColorLite = "#C070FF55";
 
 export { dominantColor, secondaryColor, accentColor };
 
-export const lighterFontColor = "#232323"
+export const lighterFontColor = "#232323";
 
 // NavBar display settings
 const NavBarDisplaySmallScreen = "950px";
@@ -49,7 +51,20 @@ const SecondaryButtonStyle = {
     color: lighterFontColor,
 };
 
-export { SecondaryButtonStyle };
+const PinkCTAButtonStyle = {
+    ...CTAButtonStyle,
+    color: lighterFontColor,
+    bgcolor: pinkColor,
+    fontWeight: "500",
+
+    // Hover styles
+    "&:hover": {
+        color: "white !important",
+        bgcolor: pinkColorLite,
+    },
+};
+
+export { SecondaryButtonStyle, PinkCTAButtonStyle };
 
 // DateTime constants
 const minDate = dayjs().set("year", 1900).set("month", 0).set("date", 1);
