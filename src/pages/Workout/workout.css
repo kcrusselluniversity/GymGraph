@@ -1,0 +1,16 @@
+.workoutPage {
+    padding: 0 15%;
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.workoutPage > .startWorkoutButton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.startWorkoutButton > .addSymbol {
+    font-size: 26px;
+}
