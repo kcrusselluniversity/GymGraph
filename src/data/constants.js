@@ -12,10 +12,10 @@ export { dominantColor, secondaryColor, accentColor, lighterFontColor };
 
 
 // NavBar display settings
-const NavBarDisplaySmallScreen = "950px";
-const NavBarDisplayMobileScreen = "500px";
+const DisplaySmallScreen = "950px";
+const DisplayMobileScreen = "500px";
 
-export { NavBarDisplaySmallScreen, NavBarDisplayMobileScreen };
+export { DisplaySmallScreen, DisplayMobileScreen };
 
 // CircularProgressbar constants
 const innerToOuterCircleRatio = 0.8;
