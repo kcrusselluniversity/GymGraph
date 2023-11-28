@@ -15,7 +15,7 @@ const StartWorkoutButton = ({ handleClick }) => {
             className="startWorkoutButton"
             sx={startWorkoutButtonStyle}
         >
-            <span>Start New Workout</span>
+            <span>Start Workout</span>
             <span className="addSymbol">+</span>
         </Button>
     );
