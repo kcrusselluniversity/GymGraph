@@ -4,7 +4,9 @@ import userEvent from "@testing-library/user-event";
 import LogoutButton from "../LogoutButton";
 import { MemoryRouter } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import { useMediaQuery } from "@mui/material";
 
+// Mock functions and libraries
 const mockNavigate = vi.fn();
 
 vi.mock("react-router-dom", async () => {
@@ -20,6 +22,20 @@ vi.mock("firebase/auth", () => {
         signOut: vi.fn(),
         getAuth: vi.fn(),
         GoogleAuthProvider: vi.fn(),
+    };
+});
+
+vi.mock("@mui/material", async () => {
+    const library = await vi.importActual("@mui/material")
+    return {
+        ...library,
+        useMediaQuery: vi.fn()
+    }
+})
+
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
     };
 });
 
@@ -74,4 +90,19 @@ describe("LogoutButton component tests", () => {
             new Error("Error signing out")
         );
     });
+
+    it("has a tooltip element when the screen size is small", () => {
+        useMediaQuery.mockReturnValueOnce(true);
+        render(<LogoutButton />, { wrapper: MemoryRouter });
+
+        expect(screen.getByTestId("tooltip")).toBeInTheDocument()
+    })
+
+    it("renders just an icon when the screen size is small", () => {
+        useMediaQuery.mockReturnValueOnce(true);
+        render(<LogoutButton />, { wrapper: MemoryRouter });
+
+        expect(screen.getByText(/icon/i)).toBeInTheDocument()
+        expect(screen.queryByText(/log out/i)).not.toBeInTheDocument()
+    })
 });
