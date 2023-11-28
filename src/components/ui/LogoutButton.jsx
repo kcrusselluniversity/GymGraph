@@ -25,7 +25,7 @@ const LogoutButton = () => {
 
     return (
         <button className="logoutButton" onClick={handleClick}>
-            {isSmallScreen ? <LightTooltip title="Log out">
+            {isSmallScreen ? <LightTooltip title="Log out" data-testid="tooltip">
                 <span>
                     <ReactSVG src={logoutIcon}/> 
                 </span>
