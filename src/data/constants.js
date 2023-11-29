@@ -7,6 +7,8 @@ const accentColor = "#4b86aa";
 const lighterFontColor = "#232323";
 const pinkColor = "#C070FF99";
 const pinkColorLite = "#C070FF55";
+const greyColor = "#555";
+const greyColorLite = "#555555CC";
 
 export { dominantColor, secondaryColor, accentColor, lighterFontColor };
 
@@ -64,7 +66,20 @@ const PinkCTAButtonStyle = {
     },
 };
 
-export { SecondaryButtonStyle, PinkCTAButtonStyle };
+const GreyButtonStyle = {
+    ...CTAButtonStyle,
+    color: 'white',
+    bgcolor: greyColor,
+    fontWeight: "500",
+
+    // Hover styles
+    "&:hover": {
+        color: "white !important",
+        bgcolor: greyColorLite,
+    },
+};
+
+export { SecondaryButtonStyle, PinkCTAButtonStyle, GreyButtonStyle };
 
 // DateTime constants
 const minDate = dayjs().set("year", 1900).set("month", 0).set("date", 1);
