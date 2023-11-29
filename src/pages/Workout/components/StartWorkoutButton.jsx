@@ -4,7 +4,6 @@ import { func } from "prop-types";
 
 const startWorkoutButtonStyle = {
     ...PinkCTAButtonStyle,
-    fontSize: "20px",
     width: "80%",
 };
 
