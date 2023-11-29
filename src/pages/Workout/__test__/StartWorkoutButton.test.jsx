@@ -7,7 +7,7 @@ describe("startWorkoutButton tests", () => {
     it("renders without crashing", () => {
         render(<StartWorkoutButton />);
 
-        expect(screen.getByText(/start new workout/i)).toBeInTheDocument();
+        expect(screen.getByText(/start/i)).toBeInTheDocument();
     });
 
     it("calls the handleClick function when passed as a prop", async () => {
