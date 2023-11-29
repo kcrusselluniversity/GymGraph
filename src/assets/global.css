@@ -79,6 +79,11 @@ p {
     height: var(--logo-height)
 }
 
+.addSymbol {
+    font-size: 26px;
+    margin: 0px 8px;
+}
+
 /* GLOBAL COMPONENTS */
 
 /* DIVIDER */
