@@ -1,5 +1,23 @@
 import { useState, useEffect } from "react";
 
+/**
+ * useLocalStorage hook
+ * 
+ * This hook wraps around a useState hook in order to store a state value
+ * in local storage and keep the locally stored value in sync with the state. 
+ * 
+ * The motivation for this was to persist data between refreshes for the 
+ * application to be more versitile, as well as to be used for storing 
+ * locally a users Exercise data during a training session.
+ * This is more desirable than making a network request with every change 
+ * (and thus improving fluidity and user experience). 
+ * 
+ * When the session is complete then all the data is saved to 
+ * the backend database in one single request. 
+ * 
+ * @param {string} key: The key to store the value in local storage
+ * @param {any} initialValue: The initial value to store
+ */
 const useLocalStorage = (key, initialValue) => {
     const [value, setValue] = useState(() => {
         try {
