@@ -1,16 +1,85 @@
 .workoutPage {
-    padding: 0 15%;
+    margin: 0 20%;
     grid-area: content;
     display: flex;
     flex-direction: column;
+    max-width: 650px;
     align-items: center;
+}
+
+.workoutPage * {
+    font-size: 18px;
 }
 
 .workoutPage > .startWorkoutButton {
     display: flex;
     justify-content: space-between;
+    align-self: stretch;
 }
 
-.startWorkoutButton > .addSymbol {
-    font-size: 26px;
+.workoutPage .addExerciseButton {
+    display: flex;
+    justify-content: center;
+}
+
+.workoutPage svg {
+    height: var(--link-logo-height);
+}
+
+.RestTimerButton > div > div {
+    display: grid;
+    place-content: center;
+}
+
+/* SECTION: Exercise Session component */
+.exerciseSession {
+    width: 100%;
+    min-width: 350px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* SECTION: Exercise Item component */
+.ExerciseItem {
+    background-color: rgba(80,80,80,0.1);
+    border-radius: var(--card-border-radius);
+    padding: 8px 1rem;
+}
+
+.ExerciseItem > table * {
+    padding: 4px;
+    font-family: inherit;
+    border: none;
+}
+
+.ExerciseItem thead {
+    border-bottom: 1px solid rgba(80,80,80,0.6);
+}
+
+/* SECTION: Media Queries */
+
+@media screen and (width <= 500px) {
+    .workoutPage {
+        margin: 0.75rem 0;
+    }
+    
+    .workoutPage * {
+        font-size: 16px;
+    }
+    
+    .exerciseSession {
+        min-width: 275px;
+    }
+    
+    .workoutPage {
+        padding: 0 10%;
+    }
+}
+
+@media screen and (width <= 950px) {
+
+    .exerciseSession {
+        min-width: 300px;
+    }
 }
