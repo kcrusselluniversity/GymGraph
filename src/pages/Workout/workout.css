@@ -1,10 +1,11 @@
 .workoutPage {
-    margin: 0 20%;
     grid-area: content;
+    justify-self: center;
     display: flex;
     flex-direction: column;
-    max-width: 650px;
     align-items: center;
+    max-width: 600px;
+    width: 100%;
 }
 
 .workoutPage * {
@@ -34,8 +35,6 @@
 /* SECTION: Exercise Session component */
 .exerciseSession {
     width: 100%;
-    min-width: 350px;
-    max-width: 600px;
     display: flex;
     flex-direction: column;
 }
@@ -74,12 +73,5 @@
     
     .workoutPage {
         padding: 0 10%;
-    }
-}
-
-@media screen and (width <= 950px) {
-
-    .exerciseSession {
-        min-width: 300px;
     }
 }
