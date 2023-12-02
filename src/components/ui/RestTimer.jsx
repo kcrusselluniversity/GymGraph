@@ -1,15 +1,15 @@
-import CircularProgressbar from "./CircularProgressbar";
 import { Button } from "@mui/material";
-import { number, string, func } from "prop-types";
-import useCountdown from "../../hooks/useCountdown";
-import useRestTimer from "../../hooks/useRestTimer";
-import "./RestTimer.css";
+import CircularProgressbar from "./CircularProgressbar";
+import secondsToMinutesAndSeconds from "../../utils/secondsToMinutesAndSeconds";
 import {
     SecondaryButtonStyle,
     timeAdjustmentInSeconds,
     initialRestTime,
 } from "../../data/constants";
-import secondsToMinutesAndSeconds from "../../utils/secondsToMinutesAndSeconds";
+import { number, string, func, PropTypes, bool } from "prop-types";
+import "./RestTimer.css";
+import { RestTimerContext } from '../../context/restTimerContext';
+import { useContext } from 'react';
 
 /**
  * Reusable Component to simplify RestTimer component.
@@ -37,7 +37,7 @@ const TimeAdjustmentButton = ({ text, onClick }) => {
  * UI element (in pixels).
  */
 const RestTimer = ({ diameter }) => {
-    // Destructure the useRestTimer custom hook state
+    // Destructure the rest timers context state
     const {
         chosenTime,
         setChosenTime,
@@ -49,17 +49,7 @@ const RestTimer = ({ diameter }) => {
         setIsActive,
         isFinished,
         setIsFinished,
-    } = useRestTimer();
-
-    // use the Countdown custom hook
-    useCountdown(
-        isActive,
-        setIsActive,
-        remainingTime,
-        setRemainingTime,
-        isFinished,
-        setIsFinished
-    );
+    } = useContext(RestTimerContext)
 
     const toggleRestTimer = () => {
         setIsActive((prevState) => !prevState);
