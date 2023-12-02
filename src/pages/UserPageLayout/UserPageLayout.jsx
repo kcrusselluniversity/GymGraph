@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom"
+import RestTimerProvider from "../../context/RestTimerProvider"
 import NavBar from "../../components/ui/NavBar"
 import "./UserPageLayout.css"
 
@@ -10,10 +11,12 @@ import "./UserPageLayout.css"
  * the navbar everytime a user changes pages. 
  */
 const UserPageLayout = () => {
-    return <div className="userPageContainer">
-        <NavBar />
-        <Outlet />        
-    </div>
+    return <RestTimerProvider>
+        <div className="userPageContainer">
+            <NavBar />
+            <Outlet />
+        </div>
+    </RestTimerProvider>
 }
 
 export default UserPageLayout
