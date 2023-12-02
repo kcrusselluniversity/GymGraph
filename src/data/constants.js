@@ -115,3 +115,31 @@ const userAuthContext = {
 };
 
 export { defaultAuthContext, userAuthContext };
+
+// This is used for Testing exercises on the workout page
+export const TEST_EXERCISE_LIST = [
+    {
+        name: "push up",
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    {
+        name: "leg press",
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    {
+        name: "cable lat raise",
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+];
