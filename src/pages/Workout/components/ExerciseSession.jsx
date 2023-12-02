@@ -1,27 +1,35 @@
-import { string } from "prop-types";
 import AddExerciseButton from "./AddExerciseButton";
 import RestTimerButton from "./RestTimerButton";
 import ExerciseItem from "./ExerciseItem";
+import { PropTypes, func, number, string } from "prop-types";
 
-const exercise = {
-    name: "pushing up forever",
-    sets: [
-        { weight: 20, reps: 10 },
-        { weight: 20, reps: 9 },
-        { weight: 20, reps: 8 },
-    ],
-};
+const ExerciseSession = ({ exercises, setExercises }) => {
+    const exerciseItems = exercises?.map((exercise) => {
+        return <ExerciseItem key={exercise.name} exercise={exercise} />;
+    });
 
-const ExerciseSession = (props) => {
-    return <div className="exerciseSession">
-        <AddExerciseButton />
-        <ExerciseItem exercise={exercise}/>
-        <RestTimerButton />
-    </div>;
+    return (
+        <div className="exerciseSession">
+            <AddExerciseButton />
+            {exerciseItems}
+            <RestTimerButton />
+        </div>
+    );
 };
 
 ExerciseSession.propTypes = {
-    sessionId: string,
-}
+    exercises: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: string,
+            sets: PropTypes.arrayOf(
+                PropTypes.shape({
+                    weight: number,
+                    reps: number,
+                })
+            ),
+        })
+    ),
+    setExercises: func,
+};
 
 export default ExerciseSession;
