@@ -6,7 +6,7 @@ import {
     timeAdjustmentInSeconds,
     initialRestTime,
 } from "../../data/constants";
-import { number, string, func, PropTypes, bool } from "prop-types";
+import { number, string, func } from "prop-types";
 import "./RestTimer.css";
 import { RestTimerContext } from '../../context/restTimerContext';
 import { useContext } from 'react';
