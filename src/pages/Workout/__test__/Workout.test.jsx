@@ -1,7 +1,15 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Workout from "../Workout";
 import userEvent from "@testing-library/user-event";
+
+// Mock the reactSVG component as it appears to make network requests
+// under the hood which is not desired in our unit tests
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
+    };
+});
 
 describe("Workout page tests", () => {
     it("renders without crashing", () => {
