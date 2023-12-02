@@ -16,6 +16,15 @@ SetData.propTypes = {
     reps: number,
 };
 
+/**
+ * ExerciseItem component
+ * 
+ * This component takes in an exercise object and generates a table
+ * to display this information.
+ * 
+ * @param {object} exercise: an object that contains the exercise name
+ * and an array of the reps/weight for that exercise for the current session.
+ */
 const ExerciseItem = ({ exercise }) => {
     if (exercise?.sets == undefined || exercise.sets.length == 0) return null;
 
