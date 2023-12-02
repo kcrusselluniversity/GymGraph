@@ -4,6 +4,7 @@ import { render, screen } from "@testing-library/react";
 import RestTimer from "../ui/RestTimer";
 import { initialRestTime } from "../../data/constants";
 import secondsToMinutesAndSeconds from "../../utils/secondsToMinutesAndSeconds";
+import RestTimerProvider from "../../context/RestTimerProvider";
 
 beforeEach(vi.restoreAllMocks);
 const testingInitialRestTime = 2;
@@ -21,14 +22,14 @@ vi.mock("../../data/constants", async () => {
 
 describe("RestTimer tests", () => {
     it("renders without crashing with no props given", () => {
-        render(<RestTimer />);
+         render(<RestTimer />, {wrapper: RestTimerProvider});
         expect(
             screen.getByRole("button", { name: /start/i })
         ).toBeInTheDocument();
     });
 
     it("renders without crashing with custom props", () => {
-        render(<RestTimer diameter={100} />);
+        render(<RestTimer diameter={100} />, {wrapper: RestTimerProvider});
         expect(
             screen.getByRole("button", { name: /start/i })
         ).toBeInTheDocument();
@@ -37,7 +38,7 @@ describe("RestTimer tests", () => {
     it("updates the timer correctly after 1 second has passed", async () => {
         const user = userEvent.setup({ delay: null });
 
-        render(<RestTimer />);
+         render(<RestTimer />, {wrapper: RestTimerProvider});
 
         const startBtn = screen.getByRole("button", { name: /start/i });
 
@@ -64,7 +65,7 @@ describe("RestTimer tests", () => {
     it("updates the start button to a reset button when timer has run out", async () => {
         const user = userEvent.setup({ delay: null });
 
-        render(<RestTimer />);
+         render(<RestTimer />, {wrapper: RestTimerProvider});
         const startBtn = screen.getByRole("button", { name: /start/i });
         await user.click(startBtn);
 
@@ -80,7 +81,7 @@ describe("RestTimer tests", () => {
     it("does nothing if clicking the time adjustment btn would lead to a negative time if applied", async () => {
         const user = userEvent.setup({ delay: null });
 
-        render(<RestTimer />);
+         render(<RestTimer />, {wrapper: RestTimerProvider});
 
         const timeSubtractedBtn = screen.getByRole("button", { name: /-/i });
 
@@ -96,7 +97,7 @@ describe("RestTimer tests", () => {
     it("resets the clock to the initial rest time once the reset button has been pressed", async () => {
         const user = userEvent.setup({ delay: null });
 
-        render(<RestTimer />);
+         render(<RestTimer />, {wrapper: RestTimerProvider});
         const startBtn = screen.getByRole("button", { name: /start/i });
         await user.click(startBtn);
 
