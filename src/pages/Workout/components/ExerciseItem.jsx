@@ -45,7 +45,7 @@ const ExerciseItem = ({ exercise }) => {
                         return (
                             <TableRow key={index}>
                                 {index == 0 && (
-                                    <TableCell rowSpan={setCount}>
+                                    <TableCell rowSpan={setCount} className="ExerciseItem__exerciseName">
                                         {exercise?.name}
                                     </TableCell>
                                 )}
