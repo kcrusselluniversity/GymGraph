@@ -6,6 +6,10 @@ import "./workout.css";
 
 import { TEST_EXERCISE_LIST } from "../../data/constants";
 
+/**
+ * Workout page component
+ *  
+ */
 const Workout = () => {
     const [workoutActive, setWorkout, removeWorkout] = useLocalStorage(
         "isWorkoutActive",
@@ -13,7 +17,7 @@ const Workout = () => {
     );
     const [sessionId, setSessionId , removeSessionId] = useLocalStorage("sessionId", null);
     const [exercises, setExercises, removeExercises] = useLocalStorage(
-        uuid(),
+        "exercises",
         TEST_EXERCISE_LIST
     );
 
