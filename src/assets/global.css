@@ -148,3 +148,9 @@ p {
     display: inline-block;
     padding: 8px 16px;
 }
+
+/* SearchBar global styling */
+.searchBar {
+    display: flex;
+    align-items: center;
+}
