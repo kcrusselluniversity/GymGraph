@@ -5,6 +5,7 @@ import AddExerciseButton from "./AddExerciseButton";
 import ExerciseItem from "./ExerciseItem";
 import { PropTypes, func, number, string } from "prop-types";
 import { useState } from "react";
+import ExerciseModal from "./ExerciseModal";
 
 /**
  * Exercise Session component
@@ -21,6 +22,7 @@ import { useState } from "react";
  */
 const ExerciseSession = ({ exercises, setExercises }) => {
     const [isRestTimerOpen, setIsRestTimerOpen] = useState(false);
+    const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
     const exerciseItems = exercises?.map((exercise) => {
         return <ExerciseItem key={exercise.name} exercise={exercise} />;
@@ -28,7 +30,7 @@ const ExerciseSession = ({ exercises, setExercises }) => {
 
     return (
         <div className="exerciseSession">
-            <AddExerciseButton />
+            <AddExerciseButton handleClick={() => setIsExerciseModalOpen(true)}/>
             {exerciseItems}
             <RestTimerButton
                 handleClick={() => setIsRestTimerOpen(!isRestTimerOpen)}
@@ -38,6 +40,14 @@ const ExerciseSession = ({ exercises, setExercises }) => {
                 onClose={() => setIsRestTimerOpen(false)}
             >
                 <RestTimer />
+            </Dialog>
+            <Dialog
+                open={isExerciseModalOpen}
+                fullWidth
+                maxWidth="sm"
+                onClose={() => setIsExerciseModalOpen(false)}
+            >
+                <ExerciseModal />
             </Dialog>
         </div>
     );
