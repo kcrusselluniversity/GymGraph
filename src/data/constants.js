@@ -1,4 +1,13 @@
 import dayjs from "dayjs";
+// List of exercise muscle groups
+export const EXERCISE_GROUPS = [
+    "abs",
+    "arms",
+    "back",
+    "chest",
+    "legs",
+    "shoulders",
+];
 
 // Colour palette for the sites design
 const dominantColor = "white";
@@ -11,7 +20,6 @@ const greyColor = "#555";
 const greyColorLite = "#555555CC";
 
 export { dominantColor, secondaryColor, accentColor, lighterFontColor };
-
 
 // NavBar display settings
 const DisplaySmallScreen = "950px";
@@ -68,7 +76,7 @@ const PinkCTAButtonStyle = {
 
 const GreyButtonStyle = {
     ...CTAButtonStyle,
-    color: 'white',
+    color: "white",
     bgcolor: greyColor,
     fontWeight: "500",
 
