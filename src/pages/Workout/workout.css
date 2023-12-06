@@ -66,6 +66,18 @@
     width: 150px;
 }
 
+/* SECTION: Exercise Group List styling */
+
+
+.exerciseGroupList__item {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid black;
+}
+
+.accordionDetails .exerciseGroupList__item:last-child {
+    border-bottom: none;
+}
+
 /* SECTION: Media Queries */
 
 @media screen and (width <= 500px) {
