@@ -2,7 +2,7 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
 import { EXERCISE_GROUPS } from "../../../data/constants";
-import exerciseGroupList from "./exerciseGroupList";
+import exerciseGroupList from "../utils/exerciseGroupList";
 import { func, string } from "prop-types";
 
 /**
@@ -54,11 +54,11 @@ const AccordionPanel = ({
 
 /**
  * ExercisesAccordion
- * 
+ *
  * An accordion that has each muscle group as a title, and each muscle groups
- * exercises as the body of the accordion panel. 
- * 
- * It takes the list of exercise groups from the constants file, then 
+ * exercises as the body of the accordion panel.
+ *
+ * It takes the list of exercise groups from the constants file, then
  * generates the list of exercises associated with each muscle group
  * by calling the exerciseGroupList function.
  */
