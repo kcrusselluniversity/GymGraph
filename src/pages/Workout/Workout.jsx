@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import "./workout.css";
 
 import { TEST_EXERCISE_LIST } from "../../data/constants";
+import ExerciseModalProvider from "../../context/exerciseModalProvider";
 
 /**
  * Workout page component
@@ -27,23 +28,25 @@ const Workout = () => {
     };
 
     return (
-        <div className="workoutPage">
-            <button
-                onClick={() => {
-                    removeWorkout();
-                    removeSessionId();
-                    removeExercises();
-                }}
-            >
-                Remove
-            </button>
-            <button onClick={() => setWorkout(!workoutActive)}>Toggle</button>
-            {workoutActive ? (
-                <ExerciseSession exercises={exercises} setExercises={setExercises}/>
-            ) : (
-                <StartWorkoutButton handleClick={handleClick} />
-            )}
-        </div>
+        <ExerciseModalProvider>
+            <div className="workoutPage">
+                <button
+                    onClick={() => {
+                        removeWorkout();
+                        removeSessionId();
+                        removeExercises();
+                    }}
+                >
+                    Remove
+                </button>
+                <button onClick={() => setWorkout(!workoutActive)}>Toggle</button>
+                {workoutActive ? (
+                    <ExerciseSession exercises={exercises} setExercises={setExercises}/>
+                ) : (
+                    <StartWorkoutButton handleClick={handleClick} />
+                )}
+            </div>
+        </ExerciseModalProvider>
     );
 };
 
