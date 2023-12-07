@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-// Create context for user authentication
+// Create context for rest timer
 export const RestTimerContext = createContext(null);
