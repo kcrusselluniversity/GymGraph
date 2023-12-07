@@ -32,7 +32,7 @@ const exerciseGroupList = (exerciseGroup) => {
     // Map each exercise string to a component
     const exerciseComponentArray = exerciseObjectList.map((exerciseObject) => {
         const { uid, exercise } = exerciseObject;
-        return <ExerciseNameItem key={uid} exerciseName={exercise} />;
+        return <ExerciseNameItem key={uid} uid={uid} exerciseName={exercise} />;
     });
 
     return exerciseComponentArray;
