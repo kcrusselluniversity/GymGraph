@@ -3,7 +3,7 @@ import { ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
 import { EXERCISE_GROUPS } from "../../../data/constants";
 import exerciseGroupList from "../utils/exerciseGroupList";
-import { func, string } from "prop-types";
+import { func, string, array } from "prop-types";
 
 /**
  * AccordionPanel component
@@ -15,7 +15,7 @@ import { func, string } from "prop-types";
  * @param {function} setCurrentPanel: Function to set the current panel.
  * @param {string} panelName
  * @param {string} title: The title of the accordion panel.
- * @param {string} details: The details of the accordion panel.
+ * @param {array} details: The details of the accordion panel.
  */
 const AccordionPanel = ({
     currentPanel,
@@ -88,7 +88,7 @@ AccordionPanel.propTypes = {
     setCurrentPanel: func,
     panelName: string,
     title: string,
-    details: string,
+    details: array,
 };
 
 export default ExercisesAccordion;
