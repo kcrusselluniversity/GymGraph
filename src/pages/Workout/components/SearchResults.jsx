@@ -20,7 +20,11 @@ const SearchResults = ({ input }) => {
             exerciseObject.exercise.toLowerCase().includes(input)
         )
         .map((object) => (
-            <ExerciseNameItem key={object.uid} exerciseName={object.exercise} />
+            <ExerciseNameItem
+                key={object.uid}
+                uid={object.uid}
+                exerciseName={object.exercise}
+            />
         ));
 
     return <>{matchingExercises}</>;
