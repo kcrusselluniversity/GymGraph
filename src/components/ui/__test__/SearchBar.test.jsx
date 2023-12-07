@@ -7,42 +7,28 @@ afterEach(vi.restoreAllMocks);
 
 describe("SearchBar component tests", () => {
     it("renders without crashing", () => {
-        render(<SearchBar />);
-        expect(
-            screen.getByRole("button", { name: "search" })
-        ).toBeInTheDocument();
+        render(
+            <SearchBar
+                placeholder="Search ..."
+                state={{ searchInput: "", setSearchInput: () => {} }}
+            />
+        );
+        expect(screen.getByRole("textbox")).toBeInTheDocument();
     });
 
-    it("renders without crashing when no props supplied", () => {
-        render(<SearchBar />);
-        expect(
-            screen.getByRole("button", { name: "search" })
-        ).toBeInTheDocument();
-    });
-
-    it("renders without crashing when named prop supplied", () => {
-        render(<SearchBar handleSearch={() => {}} />);
-        expect(
-            screen.getByRole("button", { name: "search" })
-        ).toBeInTheDocument();
-    });
-
-    it("renders correct element when extra props are supplied", () => {
-        render(<SearchBar name="exercise" id="exerciseSearch" />);
-        const input = screen.getByRole("textbox");
-
-        expect(input).toHaveAttribute("name", "exercise");
-        expect(input).toHaveAttribute("id", "exerciseSearch");
-    });
-
-    it("calls the handleSearch function when user submits the form", async () => {
-        const handleSearchMock = vi.fn();
+    it("updates the textbox field when user enters text", async () => {
         const user = userEvent.setup();
+        const setSearchInputMock = vi.fn();
 
-        render(<SearchBar handleSearch={handleSearchMock} />);
-
-        await user.click(screen.getByRole("button", { name: "search" }));
-
-        expect(handleSearchMock).toHaveBeenCalledTimes(1);
-    });
+        render(
+            <SearchBar
+                placeholder="Search ..."
+                state={{ searchInput: "", setSearchInput: setSearchInputMock }}
+            />
+        ); 
+        
+        const textbox = screen.getByRole("textbox");
+        await user.type(textbox, "t")
+        expect(setSearchInputMock).toBeCalledWith("t");
+    })
 });

@@ -5,21 +5,17 @@ import { PropTypes, func, string } from "prop-types";
 /**
  * SearchBar component
  *
- * @param {object} state: This object contains the state value and setter function
- * for the text field inputs value.
- * @param extraProps: This is an object containing any additional props passed
- * to this component. Intented to be used to pass custom attribute values
- * for the search bars input field.
+ * UI component for inputting a search query.
+ * @param {string} placeholder: The placeholder text for the input field.
+ * @param {object} state: The state to control the input.
  */
-const SearchBar = ({ state, ...extraProps }) => {
+const SearchBar = ({ placeholder, state }) => {
     const { searchInput, setSearchInput } = state;
 
     return (
         <TextField
             className="searchBarInput"
-            placeholder={extraProps?.placeholder}
-            name={extraProps?.name}
-            id={extraProps?.id}
+            placeholder={placeholder}
             size="small"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -31,6 +27,7 @@ const SearchBar = ({ state, ...extraProps }) => {
 };
 
 SearchBar.propTypes = {
+    placeholder: string,
     state: PropTypes.shape({
         searchInput: string,
         setSearchInput: func,
