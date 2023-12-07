@@ -39,6 +39,15 @@
     flex-direction: column;
 }
 
+/* SECTION: Exercise Modal component */
+.ExerciseModal {
+    padding: 12px 8px;
+}
+
+.ExerciseModal .searchBarInput {
+    width: 100%;
+}
+
 /* SECTION: Exercise Item component */
 .ExerciseItem {
     background-color: rgba(80,80,80,0.1);
@@ -67,15 +76,20 @@
 }
 
 /* SECTION: Exercise Group List styling */
-
-
 .exerciseGroupList__item {
     padding: 1rem 0.5rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--accent-color-with-opacity);
 }
 
 .accordionDetails .exerciseGroupList__item:last-child {
     border-bottom: none;
+}
+
+.exerciseGroupList__item:hover {
+    cursor: pointer;
+    background-color: var(--accent-color-with-opacity);
+    border-radius: var(--link-border-radius);
+    scale: 1.005;
 }
 
 /* SECTION: Media Queries */
