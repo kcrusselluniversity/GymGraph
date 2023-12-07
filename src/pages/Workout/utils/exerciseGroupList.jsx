@@ -1,19 +1,6 @@
-import { string } from "prop-types";
 import { EXERCISE_GROUPS } from "../../../data/constants";
 import exerciseList from "../../../data/exerciseList.json";
-
-/**
- * ExerciseItem component
- *
- * Takes in an exercise name and returns a UI component displaying the exercise
- */
-const ExerciseItem = ({ exerciseName }) => {
-    return <div className="exerciseGroupList__item">{exerciseName}</div>;
-};
-
-ExerciseItem.propTypes = {
-    exerciseName: string,
-};
+import ExerciseNameItem from "../components/ExerciseNameItem";
 
 /**
  * exerciseGroupList
@@ -45,7 +32,7 @@ const exerciseGroupList = (exerciseGroup) => {
     // Map each exercise string to a component
     const exerciseComponentArray = exerciseObjectList.map((exerciseObject) => {
         const { uid, exercise } = exerciseObject;
-        return <ExerciseItem key={uid} exerciseName={exercise} />;
+        return <ExerciseNameItem key={uid} exerciseName={exercise} />;
     });
 
     return exerciseComponentArray;
