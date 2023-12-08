@@ -92,6 +92,24 @@
     scale: 1.005;
 }
 
+/* SECTION: Exercise Details component styling */
+.exerciseDetails__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.exerciseDetails .links__icon > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.exerciseDetails__addExerciseBtn {
+    justify-self: center;
+    min-width: max-content;
+    width: 60%;
+}
+
 /* SECTION: Media Queries */
 
 @media screen and (width <= 500px) {
