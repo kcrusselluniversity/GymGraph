@@ -2,10 +2,9 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
 import { v4 as uuid } from "uuid";
-import "./workout.css";
-
 import { TEST_EXERCISE_LIST } from "../../data/constants";
 import ExerciseModalProvider from "../../context/exerciseModalProvider";
+import "./workout.css";
 
 /**
  * Workout page component
