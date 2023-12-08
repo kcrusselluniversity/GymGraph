@@ -39,6 +39,12 @@ export const timeAdjustmentInSeconds = 15;
 export const maxRestTimerDurationInSeconds = 599;
 export const initialRestTime = 180;
 
+// Exercise API constants
+export const gifStandardSize = 360;
+
+// NOTE: This API endpoint is self hosted by me, thus is hardcoded
+export const exerciseGifUrlEndpoint = 'https://gymgraph-gifs.web.app/exercises'
+
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
 // or a 'Log in' button.
