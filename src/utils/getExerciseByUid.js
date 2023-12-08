@@ -6,8 +6,14 @@ import exerciseList from "../data/exerciseList.json";
  * @param {string} uid: The unique identifier of the exercise
  * @returns {object} exercise object associated with uid
  */
+
+export const errorMessage = "no exercise found"
+
 const getExerciseByUid = (uid) => {
-    return exerciseList.find((exerciseObject) => exerciseObject.uid === uid);
+    return (
+        exerciseList.find((exerciseObject) => exerciseObject.uid === uid) ||
+        errorMessage
+    );
 };
 
 export default getExerciseByUid;
