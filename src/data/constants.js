@@ -31,7 +31,8 @@ export { DISPLAY_SMALL_SCREEN, DISPLAY_MOBILE_SCREEN };
 // CircularProgressbar constants
 const INNER_TO_OUTER_CIRCLE_RATIO = 0.8;
 const CIRCULAR_PROGRESSBAR_SVG_RADIUS = 45;
-const CIRCULAR_PROGRESSBAR_CIRCUM = 2 * Math.PI * CIRCULAR_PROGRESSBAR_SVG_RADIUS;
+const CIRCULAR_PROGRESSBAR_CIRCUM =
+    2 * Math.PI * CIRCULAR_PROGRESSBAR_SVG_RADIUS;
 
 export { CIRCULAR_PROGRESSBAR_CIRCUM, INNER_TO_OUTER_CIRCLE_RATIO };
 
@@ -44,7 +45,8 @@ export const INITIAL_REST_TIME = 180;
 export const GIF_SIZE_STANDARD = 360;
 
 // NOTE: This API endpoint is self hosted by me, thus is hardcoded
-export const EXERCISE_GIF_URL_ENDPOINT = 'https://gymgraph-gifs.web.app/exercises'
+export const EXERCISE_GIF_URL_ENDPOINT =
+    "https://gymgraph-gifs.web.app/exercises";
 
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
@@ -102,6 +104,8 @@ const MAX_DATE = dayjs().set("year", 2020).set("month", 0).set("date", 1);
 
 export { MIN_DATE, MAX_DATE };
 
+// TESTING CONSTANTS
+
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
 // the sign up form.
@@ -158,3 +162,9 @@ export const TEST_EXERCISE_LIST = [
         ],
     },
 ];
+
+export const TEST_EXERCISE = {
+    uid: "23001301",
+    muscleGroup: "back",
+    exercise: "Inverted Row Bent Knees",
+};
