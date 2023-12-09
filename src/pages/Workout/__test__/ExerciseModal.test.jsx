@@ -27,12 +27,11 @@ describe("Exercise Modal component tests", () => {
     it("initially renders with accordion panels closed", () => {
         render(<ExerciseModal />, { wrapper: ExerciseModalProvider });
 
-        const accordionPanels = screen.getAllByTestId("exerciseGroupPanel")
+        const accordionPanels = screen.getAllByTestId("exerciseGroupPanel");
 
-        accordionPanels.forEach(panel => {
-            expect(panel).toHaveAttribute("aria-expanded", "false")
+        accordionPanels.forEach((panel) => {
+            expect(panel).toHaveAttribute("aria-expanded", "false");
         });
-
     });
 
     it("opens the selected accordion panel on click", async () => {
@@ -45,12 +44,12 @@ describe("Exercise Modal component tests", () => {
         await user.click(firstPanelButton);
 
         const accordionPanels = screen.getAllByTestId("exerciseGroupPanel");
-        const firstPanel = accordionPanels[0]
+        const firstPanel = accordionPanels[0];
         const remainingPanels = accordionPanels.slice(1);
-        expect(firstPanel).toHaveAttribute("aria-expanded", "true")
-        remainingPanels.forEach(panel => {
-            expect(panel).toHaveAttribute("aria-expanded", "false")
-        })
+        expect(firstPanel).toHaveAttribute("aria-expanded", "true");
+        remainingPanels.forEach((panel) => {
+            expect(panel).toHaveAttribute("aria-expanded", "false");
+        });
     });
 
     it.only("displays the search results given user input into the search bar", async () => {
@@ -59,10 +58,9 @@ describe("Exercise Modal component tests", () => {
         render(<ExerciseModal />, { wrapper: ExerciseModalProvider });
 
         const searchBar = screen.getByRole("textbox");
-        
+
         await user.type(searchBar, "chest");
 
         expect(screen.getAllByText(/chest press/i)).not.toHaveLength(0);
     });
-
 });
