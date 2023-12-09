@@ -41,6 +41,7 @@ const AccordionPanel = ({
         >
             <AccordionSummary
                 className="accordionSummary"
+                data-testid="exerciseGroupPanel"
                 expandIcon={<ExpandMore />}
             >
                 <b>{title}</b>
