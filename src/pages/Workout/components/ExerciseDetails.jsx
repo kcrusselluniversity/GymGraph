@@ -1,7 +1,11 @@
 import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import getExerciseByUid from "../../../utils/getExerciseByUid";
-import { GREY_STYLE_BUTTON, EXERCISE_GIF_URL_ENDPOINT, GIF_SIZE_STANDARD } from "../../../data/constants";
+import {
+    GREY_STYLE_BUTTON,
+    EXERCISE_GIF_URL_ENDPOINT,
+    GIF_SIZE_STANDARD,
+} from "../../../data/constants";
 import { Button, Skeleton } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
@@ -75,6 +79,7 @@ const ExerciseDetails = () => {
                         <Skeleton
                             className="exerciseDetails__skeleton"
                             variant="rectangular"
+                            data-testid="exerciseDetailsSkeleton"
                             height={GIF_SIZE_STANDARD}
                             width={GIF_SIZE_STANDARD}
                             sx={{
