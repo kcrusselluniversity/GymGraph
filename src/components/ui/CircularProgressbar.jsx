@@ -1,8 +1,8 @@
 import { node, number } from "prop-types";
 import "./CircularProgressbar.css";
 import {
-    circularProgressbarCircum,
-    innerToOuterCircleRatio,
+    CIRCULAR_PROGRESSBAR_CIRCUM,
+    INNER_TO_OUTER_CIRCLE_RATIO,
 } from "../../data/constants";
 
 /**
@@ -29,8 +29,8 @@ const CircularProgressbar = ({
             <div
                 className="circularProgressbar__innerCircle"
                 style={{
-                    width: `${innerToOuterCircleRatio * diameter}px`,
-                    height: `${innerToOuterCircleRatio * diameter}px`,
+                    width: `${INNER_TO_OUTER_CIRCLE_RATIO * diameter}px`,
+                    height: `${INNER_TO_OUTER_CIRCLE_RATIO * diameter}px`,
                 }}
             >
                 {children}
@@ -45,8 +45,8 @@ const CircularProgressbar = ({
                     strokeWidth="10px"
                     cx="50"
                     cy="50"
-                    strokeDasharray={circularProgressbarCircum}
-                    strokeDashoffset={(1 - percentage) * circularProgressbarCircum}
+                    strokeDasharray={CIRCULAR_PROGRESSBAR_CIRCUM}
+                    strokeDashoffset={(1 - percentage) * CIRCULAR_PROGRESSBAR_CIRCUM}
                 />
             </svg>
         </div>

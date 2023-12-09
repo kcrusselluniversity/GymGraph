@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { GreyButtonStyle } from "../../../data/constants";
+import { GREY_STYLE_BUTTON } from "../../../data/constants";
 import { func } from "prop-types";
 import { ReactSVG } from "react-svg";
 import restTimerIcon from '../../../assets/icons/RestTimer__Icon.svg'
@@ -9,7 +9,7 @@ const RestTimerButton = ({ handleClick }) => {
         <Button
             onClick={handleClick}
             className="RestTimerButton"
-            sx={GreyButtonStyle}
+            sx={GREY_STYLE_BUTTON}
         >
             <ReactSVG src={restTimerIcon} />
             <span>Rest Timer</span>

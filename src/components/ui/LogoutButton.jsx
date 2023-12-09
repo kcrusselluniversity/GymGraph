@@ -3,14 +3,14 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { useMediaQuery } from "@mui/material";
 import { ReactSVG } from "react-svg";
-import { DisplaySmallScreen } from "../../data/constants";
+import { DISPLAY_SMALL_SCREEN } from "../../data/constants";
 import LightTooltip from "./LightTooltip";
 import logoutIcon from '../../assets/icons/Logout_Icon.svg'
 import "./LogoutButton.css"
 
 const LogoutButton = () => {
     const navigate = useNavigate();
-    const isSmallScreen =  useMediaQuery(`(width <= ${DisplaySmallScreen})`);
+    const isSmallScreen =  useMediaQuery(`(width <= ${DISPLAY_SMALL_SCREEN})`);
 
 
     const handleClick = async () => {

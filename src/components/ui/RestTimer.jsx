@@ -2,9 +2,9 @@ import { Button } from "@mui/material";
 import CircularProgressbar from "./CircularProgressbar";
 import secondsToMinutesAndSeconds from "../../utils/secondsToMinutesAndSeconds";
 import {
-    SecondaryButtonStyle,
-    timeAdjustmentInSeconds,
-    initialRestTime,
+    SECONDARY_BUTTON_STYLE,
+    TIME_ADJUSTMENT_IN_SECONDS,
+    INITIAL_REST_TIME,
 } from "../../data/constants";
 import { number, string, func } from "prop-types";
 import "./RestTimer.css";
@@ -18,7 +18,7 @@ import { useContext } from 'react';
  */
 const TimeAdjustmentButton = ({ text, onClick }) => {
     return (
-        <Button variant="contained" sx={SecondaryButtonStyle} onClick={onClick}>
+        <Button variant="contained" sx={SECONDARY_BUTTON_STYLE} onClick={onClick}>
             {text}
         </Button>
     );
@@ -56,8 +56,8 @@ const RestTimer = ({ diameter }) => {
     };
 
     const restartRestTimer = () => {
-        setRemainingTime(initialRestTime);
-        setChosenTime(initialRestTime);
+        setRemainingTime(INITIAL_REST_TIME);
+        setChosenTime(INITIAL_REST_TIME);
         setIsFinished(false);
     };
 
@@ -86,18 +86,18 @@ const RestTimer = ({ diameter }) => {
             </CircularProgressbar>
             <div className="RestTimer__timeAdjustmentButtons">
                 <TimeAdjustmentButton
-                    text={`- ${timeAdjustmentInSeconds} sec`}
+                    text={`- ${TIME_ADJUSTMENT_IN_SECONDS} sec`}
                     onClick={handleTimeSubtracted}
                 />
                 <TimeAdjustmentButton
-                    text={`+ ${timeAdjustmentInSeconds} sec`}
+                    text={`+ ${TIME_ADJUSTMENT_IN_SECONDS} sec`}
                     onClick={handleTimeAdded}
                 />
             </div>
             {
                 <Button
                     variant="contained"
-                    sx={SecondaryButtonStyle}
+                    sx={SECONDARY_BUTTON_STYLE}
                     onClick={isFinished ? restartRestTimer : toggleRestTimer}
                 >
                     {isFinished ? "Reset" : isActive ? "Pause" : "Start"}

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import underConstructionImage from "../../../assets/images/under_construction_image_compressed.png";
 import UnderConstruction from "../UnderConstruction";
 import App from "../../../App";
-import { defaultAuthContext, userAuthContext } from "../../../data/constants";
+import { DEFAULT_AUTH_CONTEXT, USER_AUTH_CONTEXT } from "../../../data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
@@ -29,7 +29,7 @@ afterEach(vi.restoreAllMocks);
 
 describe("underConstruction page", () => {
     beforeEach(() => {
-        useContext.mockReturnValue(defaultAuthContext);
+        useContext.mockReturnValue(DEFAULT_AUTH_CONTEXT);
         render(<UnderConstruction />, { wrapper: MemoryRouter });
     });
 
@@ -54,7 +54,7 @@ describe("underConstruction page", () => {
 describe("underConstruction page routing", () => {
     it("routes to the landing when logo clicked if the user is not signed in", async () => {
         const user = userEvent.setup();
-        useContext.mockReturnValue(defaultAuthContext);
+        useContext.mockReturnValue(DEFAULT_AUTH_CONTEXT);
 
         render(
             <MemoryRouter initialEntries={["/underConstruction"]}>
@@ -75,7 +75,7 @@ describe("underConstruction page routing", () => {
 
     it("routes to the dashboard when logo clicked if the user is signed in", async () => {
         const user = userEvent.setup();
-        useContext.mockReturnValue(userAuthContext);
+        useContext.mockReturnValue(USER_AUTH_CONTEXT);
 
         render(
             <MemoryRouter initialEntries={["/underConstruction"]}>

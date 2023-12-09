@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { handleSignup } from "../utils/handleSignup";
-import { testUserObject } from "../../../data/constants";
+import { TEST_USER_OBJECT } from "../../../data/constants";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import dayjs from "dayjs";
 
@@ -76,7 +76,7 @@ describe("handleSignup function tests", () => {
 
         // We add a dayjs date so that our user in a valid form
         const formData = {
-            ...testUserObject,
+            ...TEST_USER_OBJECT,
             dob: dayjs(new Date(2000, 1, 1)),
         };
 
@@ -108,7 +108,7 @@ describe("handleSignup function tests", () => {
         } = setup();
 
         const formData = {
-            ...testUserObject,
+            ...TEST_USER_OBJECT,
             dob: dayjs(new Date(2000, 1, 1)),
         };
 
@@ -134,7 +134,7 @@ describe("handleSignup function tests", () => {
         } = setup();
 
         const formData = {
-            ...testUserObject,
+            ...TEST_USER_OBJECT,
             dob: dayjs(new Date(2000, 1, 1)),
         };
 

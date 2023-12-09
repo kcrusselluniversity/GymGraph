@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 import RestTimer from "../ui/RestTimer";
-import { initialRestTime } from "../../data/constants";
+import { INITIAL_REST_TIME } from "../../data/constants";
 import secondsToMinutesAndSeconds from "../../utils/secondsToMinutesAndSeconds";
 import RestTimerProvider from "../../context/RestTimerProvider";
 
@@ -16,7 +16,7 @@ vi.mock("../../data/constants", async () => {
     const library = await vi.importActual("../../data/constants");
     return {
         ...library,
-        initialRestTime: testingInitialRestTime,
+        INITIAL_REST_TIME: testingInitialRestTime,
     };
 });
 
@@ -56,7 +56,7 @@ describe("RestTimer tests", () => {
         await new Promise((res) => setTimeout(res, 1000));
 
         const remainingTimeElement = screen.getByTestId("remainingTime");
-        const timeAfterOneSecond = initialRestTime - 1;
+        const timeAfterOneSecond = INITIAL_REST_TIME - 1;
         expect(remainingTimeElement.textContent).toBe(
             secondsToMinutesAndSeconds(timeAfterOneSecond)
         );
@@ -90,7 +90,7 @@ describe("RestTimer tests", () => {
         const remainingTimeElement = screen.getByTestId("remainingTime");
 
         expect(remainingTimeElement.textContent).toBe(
-            secondsToMinutesAndSeconds(initialRestTime)
+            secondsToMinutesAndSeconds(INITIAL_REST_TIME)
         );
     });
 

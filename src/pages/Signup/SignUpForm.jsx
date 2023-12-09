@@ -1,7 +1,7 @@
 import { Button, CircularProgress } from "@mui/material";
 import { TextField, useMediaQuery } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
-import { minDate, maxDate, CTAButtonStyle } from "../../data/constants";
+import { MIN_DATE, MAX_DATE, CTA_BUTTON_STYLE } from "../../data/constants";
 import { validationFunctionMapper } from "./utils/validationFunctionMapper";
 import validateConfirmPassword from "../../utils/formUtils/validateConfirmPassword";
 import { useState } from "react";
@@ -95,7 +95,15 @@ const SignUpForm = () => {
     };
 
     // Forms on submit function
-    const handleSubmit = (e) => handleSignup(e, formErrors, formData, setIsLoading, setFormSubmissionError, navigate)
+    const handleSubmit = (e) =>
+        handleSignup(
+            e,
+            formErrors,
+            formData,
+            setIsLoading,
+            setFormSubmissionError,
+            navigate
+        );
 
     return (
         <form className="signUpEmail" onSubmit={handleSubmit} noValidate>
@@ -142,8 +150,8 @@ const SignUpForm = () => {
                     name="dob"
                     label="Date of Birth"
                     format="DD/MM/YYYY"
-                    minDate={minDate}
-                    maxDate={maxDate}
+                    minDate={MIN_DATE}
+                    maxDate={MAX_DATE}
                     value={formData.dob}
                     onChange={handleDateChange}
                     onError={(error) =>
@@ -184,7 +192,7 @@ const SignUpForm = () => {
             ) : null}
             <Button
                 variant="contained"
-                sx={{ ...CTAButtonStyle, width: "220px", height: "38px" }}
+                sx={{ ...CTA_BUTTON_STYLE, width: "220px", height: "38px" }}
                 type="submit"
             >
                 {isLoading ? (

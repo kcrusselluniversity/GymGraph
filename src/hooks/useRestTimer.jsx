@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {
-    timeAdjustmentInSeconds,
-    maxRestTimerDurationInSeconds,
-    initialRestTime,
+    TIME_ADJUSTMENT_IN_SECONDS,
+    MAX_REST_TIMER_DURATION_IN_SECONDS,
+    INITIAL_REST_TIME,
 } from "../data/constants";
 
 /**
@@ -20,22 +20,22 @@ import {
  * page then comes back).
  */
 const useRestTimer = () => {
-    const [chosenTime, setChosenTime] = useState(initialRestTime);
-    const [remainingTime, setRemainingTime] = useState(initialRestTime);
+    const [chosenTime, setChosenTime] = useState(INITIAL_REST_TIME);
+    const [remainingTime, setRemainingTime] = useState(INITIAL_REST_TIME);
     const [isActive, setIsActive] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
 
     const handleTimeAdded = () => {
-        if (remainingTime < maxRestTimerDurationInSeconds - timeAdjustmentInSeconds) {
-            setChosenTime((prevTime) => prevTime + timeAdjustmentInSeconds);
-            setRemainingTime((prevTime) => prevTime + timeAdjustmentInSeconds);
+        if (remainingTime < MAX_REST_TIMER_DURATION_IN_SECONDS - TIME_ADJUSTMENT_IN_SECONDS) {
+            setChosenTime((prevTime) => prevTime + TIME_ADJUSTMENT_IN_SECONDS);
+            setRemainingTime((prevTime) => prevTime + TIME_ADJUSTMENT_IN_SECONDS);
         }
     };
 
     const handleTimeSubtracted = () => {
-        if (remainingTime > timeAdjustmentInSeconds) {
-            setChosenTime((prevTime) => prevTime - timeAdjustmentInSeconds);
-            setRemainingTime((prevTime) => prevTime - timeAdjustmentInSeconds);
+        if (remainingTime > TIME_ADJUSTMENT_IN_SECONDS) {
+            setChosenTime((prevTime) => prevTime - TIME_ADJUSTMENT_IN_SECONDS);
+            setRemainingTime((prevTime) => prevTime - TIME_ADJUSTMENT_IN_SECONDS);
         }
     };
 

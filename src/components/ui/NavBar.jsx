@@ -8,8 +8,8 @@ import WorkoutIcon from "../../assets/icons/Workout_Icon.svg";
 import HistoryIcon from "../../assets/icons/History_Icon.svg";
 import MetricsIcon from "../../assets/icons/Metrics_Icon.svg";
 import {
-    DisplaySmallScreen,
-    DisplayMobileScreen,
+    DISPLAY_SMALL_SCREEN,
+    DISPLAY_MOBILE_SCREEN,
 } from "../../data/constants.js";
 import IconWithTooltip from "./IconWithTooltip.jsx";
 import "./NavBar.css";
@@ -24,10 +24,10 @@ const linkData = [
 const NavBar = () => {
     // Determine the screen size based on the screen width
     const isSmallScreen = useMediaQuery(
-        `(width <= ${DisplaySmallScreen})`
+        `(width <= ${DISPLAY_SMALL_SCREEN})`
     );
     const isMobileScreen = useMediaQuery(
-        `(width <= ${DisplayMobileScreen})`
+        `(width <= ${DISPLAY_MOBILE_SCREEN})`
     );
 
     return (

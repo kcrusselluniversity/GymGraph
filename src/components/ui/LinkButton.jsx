@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { string } from "prop-types";
-import { CTAButtonStyle } from "../../data/constants";
+import { CTA_BUTTON_STYLE  } from "../../data/constants";
 
 /**
  * LinkButton Component
@@ -24,7 +24,7 @@ const LinkButton = ({ text, className, to }) => {
             className={className}
             component={Link}
             to={to}
-            sx={CTAButtonStyle}
+            sx={CTA_BUTTON_STYLE }
         >
             {text}
         </Button>

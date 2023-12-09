@@ -1,5 +1,5 @@
 import { TextField, Button, CircularProgress } from "@mui/material";
-import { CTAButtonStyle } from "../../data/constants.js";
+import { CTA_BUTTON_STYLE } from "../../data/constants.js";
 import { useState } from "react";
 import handleSignIn from "./utils/handleSignIn.js";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,13 @@ const SignInForm = () => {
     };
 
     const handleSubmit = (e) =>
-        handleSignIn(e, formData, setFormSubmissionError, setIsLoading, navigate);
+        handleSignIn(
+            e,
+            formData,
+            setFormSubmissionError,
+            setIsLoading,
+            navigate
+        );
 
     const validFormInput = formData.email && formData.password;
 
@@ -65,7 +71,7 @@ const SignInForm = () => {
                 type="submit"
                 disabled={!validFormInput}
                 variant="contained"
-                sx={CTAButtonStyle}
+                sx={CTA_BUTTON_STYLE}
                 onClick={handleSubmit}
             >
                 {isLoading ? (

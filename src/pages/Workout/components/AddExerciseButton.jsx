@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { GreyButtonStyle } from "../../../data/constants";
+import { GREY_STYLE_BUTTON } from "../../../data/constants";
 import { func } from "prop-types";
 
 const AddExerciseButton = ({ handleClick }) => {
@@ -7,7 +7,7 @@ const AddExerciseButton = ({ handleClick }) => {
         <Button
             onClick={handleClick}
             className="addExerciseButton"
-            sx={GreyButtonStyle}
+            sx={GREY_STYLE_BUTTON}
         >
             <span className="addSymbol">+</span>
             <span>Exercise</span>

@@ -7,7 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import userEvent from "@testing-library/user-event";
 import Signup from "../Signup";
 import App from "../../../App";
-import { defaultAuthContext } from "../../../data/constants";
+import { DEFAULT_AUTH_CONTEXT } from "../../../data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
@@ -60,7 +60,7 @@ describe("Sign up page tests", () => {
 describe("Sign up page routing tests", () => {
     it("routes to the landing page when logo clicked", async () => {
         const user = userEvent.setup();
-        useContext.mockReturnValue(defaultAuthContext)
+        useContext.mockReturnValue(DEFAULT_AUTH_CONTEXT)
 
         render(
             <MemoryRouter initialEntries={["/signup"]}>

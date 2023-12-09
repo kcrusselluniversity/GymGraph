@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { useContext } from "react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { defaultAuthContext, userAuthContext } from "./data/constants";
+import { DEFAULT_AUTH_CONTEXT, USER_AUTH_CONTEXT } from "./data/constants";
 
 vi.mock("react", async () => {
     const library = await vi.importActual("react");
@@ -40,7 +40,7 @@ describe("App routing tests", () => {
     describe("user not signed in tests", () => {
         beforeEach(() => {
             // Set the auth to reflect no user signed in yet
-            useContext.mockReturnValue(defaultAuthContext);
+            useContext.mockReturnValue(DEFAULT_AUTH_CONTEXT);
         });
 
         it("renders default route correctly", async () => {
@@ -90,7 +90,7 @@ describe("App routing tests", () => {
     describe("user signed in routing tests", () => {
         beforeEach(() => {
             // Set the auth to reflect a user is signed in
-            useContext.mockReturnValue(userAuthContext);
+            useContext.mockReturnValue(USER_AUTH_CONTEXT);
         });
 
         it("routes to the users dashboard for the root route", () => {

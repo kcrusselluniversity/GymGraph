@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import useRestTimer from "../useRestTimer";
-import { initialRestTime, timeAdjustmentInSeconds } from "../../data/constants";
+import { INITIAL_REST_TIME, TIME_ADJUSTMENT_IN_SECONDS } from "../../data/constants";
 
 describe("useRestTimer hook tests", () => {
     it("should initialise with the correct default values", () => {
         const { result } = renderHook(useRestTimer);
 
-        expect(result.current.chosenTime).toEqual(initialRestTime);
-        expect(result.current.remainingTime).toEqual(initialRestTime);
+        expect(result.current.chosenTime).toEqual(INITIAL_REST_TIME);
+        expect(result.current.remainingTime).toEqual(INITIAL_REST_TIME);
         expect(result.current.isActive).toEqual(false);
         expect(result.current.isFinished).toEqual(false);
     });
@@ -23,11 +23,11 @@ describe("useRestTimer hook tests", () => {
         });
 
         expect(result.current.chosenTime).toEqual(
-            initialChosenTime + timeAdjustmentInSeconds
+            initialChosenTime + TIME_ADJUSTMENT_IN_SECONDS
         );
 
         expect(result.current.remainingTime).toEqual(
-            initialRemainingTime + timeAdjustmentInSeconds
+            initialRemainingTime + TIME_ADJUSTMENT_IN_SECONDS
         );
     });
 
@@ -41,11 +41,11 @@ describe("useRestTimer hook tests", () => {
         });
 
         expect(result.current.chosenTime).toEqual(
-            initialChosenTime - timeAdjustmentInSeconds
+            initialChosenTime - TIME_ADJUSTMENT_IN_SECONDS
         );
 
         expect(result.current.remainingTime).toEqual(
-            initialRemainingTime - timeAdjustmentInSeconds
+            initialRemainingTime - TIME_ADJUSTMENT_IN_SECONDS
         );
     });
 });

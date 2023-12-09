@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import getExerciseByUid from "../../../utils/getExerciseByUid";
-import { GreyButtonStyle, exerciseGifUrlEndpoint, gifStandardSize } from "../../../data/constants";
+import { GREY_STYLE_BUTTON, EXERCISE_GIF_URL_ENDPOINT, GIF_SIZE_STANDARD } from "../../../data/constants";
 import { Button, Skeleton } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
@@ -26,7 +26,7 @@ const ExerciseDetails = () => {
             <div className="exerciseDetails">
                 <div className="exerciseDetails__header">
                     <Button
-                        sx={{ ...GreyButtonStyle, padding: "0px" }}
+                        sx={{ ...GREY_STYLE_BUTTON, padding: "0px" }}
                         onClick={handleBackArrowClick}
                     >
                         <ReactSVG className="links__icon" src={BackIcon} />
@@ -38,19 +38,19 @@ const ExerciseDetails = () => {
 
     // Destructure the exercise object
     const { exercise: name, muscleGroup, uid } = exercise;
-    const exerciseGifUrl = `${exerciseGifUrlEndpoint}/${uid}.gif`;
+    const exerciseGifUrl = `${EXERCISE_GIF_URL_ENDPOINT}/${uid}.gif`;
 
     return (
         <div className="exerciseDetails">
             <div className="exerciseDetails__header">
                 <Button
-                    sx={GreyButtonStyle}
+                    sx={GREY_STYLE_BUTTON}
                     className="exerciseDetails__addExerciseBtn"
                 >
                     Add Exercise
                 </Button>
                 <Button
-                    sx={{ ...GreyButtonStyle, padding: "0px" }}
+                    sx={{ ...GREY_STYLE_BUTTON, padding: "0px" }}
                     onClick={handleBackArrowClick}
                 >
                     <ReactSVG className="links__icon" src={BackIcon} />
@@ -62,8 +62,8 @@ const ExerciseDetails = () => {
                 <div
                     className="gifContainer"
                     style={{
-                        height: `${gifStandardSize}px`,
-                        width: `${gifStandardSize}px`,
+                        height: `${GIF_SIZE_STANDARD}px`,
+                        width: `${GIF_SIZE_STANDARD}px`,
                     }}
                 >
                     <img
@@ -75,8 +75,8 @@ const ExerciseDetails = () => {
                         <Skeleton
                             className="exerciseDetails__skeleton"
                             variant="rectangular"
-                            height={gifStandardSize}
-                            width={gifStandardSize}
+                            height={GIF_SIZE_STANDARD}
+                            width={GIF_SIZE_STANDARD}
                             sx={{
                                 borderRadius: "1rem",
                                 opacity: isGifLoading ? 1 : 0,
