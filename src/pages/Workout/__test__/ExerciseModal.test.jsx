@@ -52,7 +52,7 @@ describe("Exercise Modal component tests", () => {
         });
     });
 
-    it.only("displays the search results given user input into the search bar", async () => {
+    it("displays the search results given user input into the search bar", async () => {
         const user = userEvent.setup();
 
         render(<ExerciseModal />, { wrapper: ExerciseModalProvider });
