@@ -44,7 +44,8 @@ const ExerciseDetails = () => {
         if (exerciseAdded) {
             setExerciseModalState("exercise_session_data");
         } else {
-            const newModalState = searchInput === "" ? "default" : "user_search";
+            const newModalState =
+                searchInput === "" ? "default" : "user_search";
             setExerciseModalState(newModalState);
         }
     };
@@ -79,6 +80,7 @@ const ExerciseDetails = () => {
 
     return (
         <div className="exerciseDetails">
+            <BackButton handleBackArrowClick={handleBackArrowClick} />
             <div className="exerciseDetails__header">
                 {!exerciseAdded && (
                     <Button
@@ -89,7 +91,6 @@ const ExerciseDetails = () => {
                         Add Exercise
                     </Button>
                 )}
-                <BackButton handleBackArrowClick={handleBackArrowClick} />
             </div>
             <div className="exerciseDetails__body">
                 <h2 style={{ textAlign: "center" }}>{name}</h2>
