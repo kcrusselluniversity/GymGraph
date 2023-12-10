@@ -12,6 +12,7 @@ const ExerciseModalProvider = ({ children }) => {
     const [exerciseModalState, setExerciseModalState] = useState("default");
     const [searchInput, setSearchInput] = useState("");
     const [selectedExerciseInfo, setSelectedExerciseInfo] = useState(null);
+    const [exerciseAdded, setExerciseAdded] = useState(null);
 
     useEffect(() => {
         if (searchInput != "") setExerciseModalState("user_search");
@@ -24,6 +25,8 @@ const ExerciseModalProvider = ({ children }) => {
         setSearchInput,
         selectedExerciseInfo,
         setSelectedExerciseInfo,
+        exerciseAdded,
+        setExerciseAdded,
     };
     return (
         <exerciseModalContext.Provider value={state}>
