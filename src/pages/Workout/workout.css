@@ -61,6 +61,13 @@
     align-items: center;
 }
 
+/* SECTION: Search Results component */
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 /* SECTION: Exercise Item component */
 .ExerciseItem {
     background-color: rgba(85,85,85,0.0078);
@@ -146,6 +153,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin: 1rem 0px;
 }
 
 .exerciseSessionData__controlBtns {
