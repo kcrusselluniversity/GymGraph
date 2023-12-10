@@ -48,6 +48,14 @@
     width: 100%;
 }
 
+.exerciseModal__restTimer {
+    padding: 1rem 0px 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
 /* SECTION: Exercise Item component */
 .ExerciseItem {
     background-color: rgba(80,80,80,0.1);
@@ -126,6 +134,18 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* SECTION: Exercise Session Data component styling */
+.exerciseSessionData {
+    margin: 0px 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.exerciseSessionData__controlBtns {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* SECTION: Media Queries */
