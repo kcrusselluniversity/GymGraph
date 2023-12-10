@@ -9,6 +9,7 @@ const BackButton = ({ handleBackArrowClick }) => {
         <Button
             sx={{ ...GREY_STYLE_BUTTON, padding: "0px" }}
             onClick={handleBackArrowClick}
+            className="backButton"
         >
             <ReactSVG className="links__icon" src={BackIcon} fallback="Back"/>
         </Button>
