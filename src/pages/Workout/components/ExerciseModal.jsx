@@ -5,6 +5,8 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import SearchResults from "./SearchResults";
 import ExerciseDetails from "./ExerciseDetails";
 import ExerciseSessionData from "./ExerciseSessionData";
+import BackButton from "../../../components/ui/BackButton";
+import RestTimer from "../../../components/ui/RestTimer";
 
 /**
  * Exercise Modal component
@@ -15,8 +17,12 @@ import ExerciseSessionData from "./ExerciseSessionData";
  * component (which would make it hard to maintain and understand).
  */
 const ExerciseModal = () => {
-    const { exerciseModalState, searchInput, setSearchInput } =
-        useContext(exerciseModalContext);
+    const {
+        exerciseModalState,
+        setExerciseModalState,
+        searchInput,
+        setSearchInput,
+    } = useContext(exerciseModalContext);
 
     // Determine which UI to render based on the current state of the modal
     let content;
@@ -37,6 +43,18 @@ const ExerciseModal = () => {
             break;
         case "exercise_session_data":
             content = <ExerciseSessionData />;
+            break;
+        case "rest_timer":
+            content = (
+                <div className="exerciseModal__restTimer">
+                    <RestTimer />
+                    <BackButton
+                        handleBackArrowClick={() =>
+                            setExerciseModalState("exercise_session_data")
+                        }
+                    />
+                </div>
+            );
             break;
         default:
             content = (
