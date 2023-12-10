@@ -47,12 +47,12 @@ const ExerciseModal = () => {
         case "rest_timer":
             content = (
                 <div className="exerciseModal__restTimer">
-                    <RestTimer />
                     <BackButton
                         handleBackArrowClick={() =>
                             setExerciseModalState("exercise_session_data")
                         }
                     />
+                    <RestTimer />
                 </div>
             );
             break;
