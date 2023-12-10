@@ -75,10 +75,13 @@
     box-shadow: var(--sml-card-box-shadow);
     padding: 8px 1rem;
     margin: 10px 0px;
+    transition: transform 50ms;
 }
 
 .ExerciseItem:hover {
     box-shadow: var(--sml-card-box-shadow--hover);
+    transform: scale(1.01);
+    cursor: pointer;
 }
 
 .ExerciseItem > table * {
