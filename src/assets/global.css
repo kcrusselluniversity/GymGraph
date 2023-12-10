@@ -91,14 +91,21 @@ p {
     margin: 0px 8px;
 }
 
-/* GLOBAL COMPONENTS */
-.addButton svg, 
-.deleteButton svg {
-    height: 25px;
+/* GLOBAL COMPONENTS */ 
+.controlButton svg {
+    height: 20px;
+    width: 20px;
+    margin: 4px 0px;
+}
+
+.controlButton > div {
+    display: grid;
 }
 
 .backButton {
-    justify-self: center; 
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .backButton > div > div {
