@@ -4,6 +4,7 @@ import ExercisesAccordion from "./ExercisesAccordion";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import SearchResults from "./SearchResults";
 import ExerciseDetails from "./ExerciseDetails";
+import ExerciseSessionData from "./ExerciseSessionData";
 
 /**
  * Exercise Modal component
@@ -33,6 +34,9 @@ const ExerciseModal = () => {
             break;
         case "selected_exercise_info":
             content = <ExerciseDetails />;
+            break;
+        case "exercise_session_data":
+            content = <ExerciseSessionData />;
             break;
         default:
             content = (
