@@ -18,9 +18,16 @@ const FONT_COLOR_LITE = "#232323";
 const PINK_COLOR = "#C070FF99";
 const PINK_COLOR_LITE = "#C070FF55";
 const GREY_COLOR = "#555";
-const GREY_COLOR_LITE = "#555555CC";
+const GREY_COLOR_LITE = "#55555555";
+const GREY_COLOR_ULTRA_LITE = "#55555502";
 
-export { DOMINANT_COLOR, SECONDARY_COLOR, ACCENT_COLOR, FONT_COLOR_LITE };
+export {
+    DOMINANT_COLOR,
+    SECONDARY_COLOR,
+    ACCENT_COLOR,
+    FONT_COLOR_LITE,
+    GREY_COLOR_ULTRA_LITE,
+};
 
 // NavBar display settings
 const DISPLAY_SMALL_SCREEN = "950px";
@@ -96,7 +103,19 @@ const GREY_STYLE_BUTTON = {
     },
 };
 
-export { SECONDARY_BUTTON_STYLE, PINK_CTA_BUTTON_STYLE, GREY_STYLE_BUTTON };
+const BUTTON_BORDER_STYLE = {
+    border: "1px solid black",
+    borderRadius: "1rem",
+    padding: "0px",
+    height: "fit-content",
+};
+
+export {
+    SECONDARY_BUTTON_STYLE,
+    PINK_CTA_BUTTON_STYLE,
+    GREY_STYLE_BUTTON,
+    BUTTON_BORDER_STYLE,
+};
 
 // DateTime constants
 const MIN_DATE = dayjs().set("year", 1900).set("month", 0).set("date", 1);
