@@ -27,7 +27,7 @@ const SearchResults = ({ input }) => {
             />
         ));
 
-    return <>{matchingExercises}</>;
+    return <div className="searchResults">{matchingExercises}</div>;
 };
 
 SearchResults.propTypes = {
