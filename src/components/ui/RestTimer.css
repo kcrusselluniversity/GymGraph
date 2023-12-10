@@ -42,3 +42,9 @@
 .RestTimer button:hover {
     color: white;
 }
+
+@media screen and (width <= 500px) {
+    .RestTimer {
+        padding: 1rem;
+    }
+}
