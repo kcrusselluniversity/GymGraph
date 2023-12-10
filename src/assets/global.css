@@ -92,6 +92,20 @@ p {
 }
 
 /* GLOBAL COMPONENTS */
+.addButton svg, 
+.deleteButton svg {
+    height: 25px;
+}
+
+.backButton {
+    justify-self: center; 
+}
+
+.backButton > div > div {
+    display: grid;
+    place-items: center;
+    padding: 4px;
+}
 
 /* DIVIDER */
 /* Divider - Vertical */
