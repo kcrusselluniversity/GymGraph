@@ -7,11 +7,16 @@ import { func } from "prop-types";
 const BackButton = ({ handleBackArrowClick }) => {
     return (
         <Button
-            sx={{ ...GREY_STYLE_BUTTON, padding: "0px" }}
+            sx={{
+                ...GREY_STYLE_BUTTON,
+                padding: "0px",
+                position: "absolute",
+                margin: "1rem",
+            }}
             onClick={handleBackArrowClick}
             className="backButton"
         >
-            <ReactSVG className="links__icon" src={BackIcon} fallback="Back"/>
+            <ReactSVG className="links__icon" src={BackIcon} fallback="Back" />
         </Button>
     );
 };
