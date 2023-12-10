@@ -41,7 +41,12 @@
 
 /* SECTION: Exercise Modal component */
 .ExerciseModal {
-    padding: 12px;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ExerciseModal .searchBarInput {
@@ -49,7 +54,7 @@
 }
 
 .exerciseModal__restTimer {
-    padding: 1rem 0px 0.5rem;
+    padding: 4px 0px 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -58,7 +63,7 @@
 
 /* SECTION: Exercise Item component */
 .ExerciseItem {
-    background-color: rgba(80,80,80,0.1);
+    background-color: rgba(85,85,85,0.0078);
     border-radius: var(--card-border-radius);
     box-shadow: var(--sml-card-box-shadow);
     padding: 8px 1rem;
@@ -101,11 +106,6 @@
 }
 
 /* SECTION: Exercise Details component styling */
-.exerciseDetails__header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-}
-
 .exerciseDetails .links__icon > div {
     display: flex;
     flex-direction: column;
@@ -116,6 +116,10 @@
     justify-self: center;
     min-width: max-content !important;
     width: 90%;
+}
+
+.exerciseDetails__header > button {
+    margin: 0px;
 }
 
 .exerciseDetails__body {
@@ -138,14 +142,29 @@
 
 /* SECTION: Exercise Session Data component styling */
 .exerciseSessionData {
-    margin: 0px 10%;
+    width: 280px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 1.5rem;
 }
+
 .exerciseSessionData__controlBtns {
     display: flex;
     justify-content: space-between;
+}
+
+.exerciseSessionData button {
+    margin: 0px;
+}
+
+.exerciseSessionData > h2 {
+    margin: 8px 0px;
+}
+
+.exerciseSessionData .sessionLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;   
 }
 
 /* SECTION: Media Queries */
@@ -165,5 +184,27 @@
     
     .workoutPage {
         padding: 0 10%;
+    }
+
+    .exerciseSessionData {
+        width: 240px;
+    }
+
+    .exerciseDetails {
+        margin-top: 2rem;
+    }
+
+    .exerciseDetails__header > button {
+        margin-top: 8px;
+    }
+}
+
+@media screen and (width <= 600px) {
+    .exerciseDetails {
+        width: 80%;
+    }
+
+    .exerciseModal__restTimer {
+        margin-top: 2.5rem;
     }
 }
