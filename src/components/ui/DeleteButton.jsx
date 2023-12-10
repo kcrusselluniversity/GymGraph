@@ -9,6 +9,7 @@ const DeleteButton = ({ handleClick }) => {
         <Button
             onClick={handleClick}
             color="error"
+            aria-label="delete"
             sx={{ ...BUTTON_BORDER_STYLE }}
         >
             <ReactSVG

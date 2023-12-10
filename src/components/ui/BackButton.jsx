@@ -15,6 +15,7 @@ const BackButton = ({ handleBackArrowClick }) => {
             }}
             onClick={handleBackArrowClick}
             className="backButton"
+            aria-label="back"
         >
             <ReactSVG className="links__icon" src={BackIcon} fallback="Back" />
         </Button>

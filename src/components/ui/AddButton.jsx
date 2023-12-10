@@ -9,6 +9,7 @@ const AddButton = ({ handleClick }) => {
         <Button
             onClick={handleClick}
             color="success"
+            aria-label="add"
             sx={{ ...BUTTON_BORDER_STYLE }}
         >
             <ReactSVG className="controlButton" src={AddIcon} fallback="Add" />
