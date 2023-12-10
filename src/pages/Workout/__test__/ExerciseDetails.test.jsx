@@ -15,6 +15,14 @@ vi.mock("react", async () => {
     };
 });
 
+// Mock the reactSVG component as it makes network requests
+// under the hood which is not desired in our unit tests
+vi.mock("react-svg", () => {
+    return {
+        ReactSVG: vi.fn(() => <div>icon</div>),
+    };
+});
+
 afterEach(vi.restoreAllMocks);
 
 describe("ExerciseDetails tests", () => {
