@@ -2,9 +2,8 @@ import { Button } from "@mui/material";
 import { GREY_STYLE_BUTTON } from "../../../data/constants";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import { useContext } from "react";
-import AddButton from "../../../components/ui/AddButton";
-import DeleteButton from "../../../components/ui/DeleteButton";
 import ExerciseSessionTable from "./ExerciseSessionTable";
+import ControlButton from "../../../components/ui/ControlButton";
 
 const ExerciseSessionData = () => {
     const { exerciseAdded, setExerciseModalState } =
@@ -22,8 +21,8 @@ const ExerciseSessionData = () => {
     return (
         <div className="exerciseSessionData">
             <div className="exerciseSessionData__controlBtns">
-                <DeleteButton />
-                <AddButton />
+                <ControlButton buttonType="delete" />
+                <ControlButton buttonType="add" />
             </div>
             <h2 style={{ textAlign: "center" }}>{name}</h2>
             <ExerciseSessionTable />
