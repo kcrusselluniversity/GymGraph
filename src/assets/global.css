@@ -31,6 +31,10 @@
     --control-button-svg-size: 16px;
 
     --gif-size-small: 250px;
+
+    --exercise-table-font-reg: 18px;
+    --exersise-table-font-sml: 16px;
+    --exercise-table-data-font-sml: 14px;
 }
 
 * {
@@ -182,4 +186,17 @@ p {
 .divider__text-horizontal {
     display: inline-block;
     padding: 8px 16px;
+}
+
+/* Remove default spinners on the numberic input html element */
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
