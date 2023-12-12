@@ -26,6 +26,10 @@
     --link-border-radius: 0.5rem;
     --link-logo-height: 25px;
     --link-font-size-small-screen: 12px;
+
+    --control-button-size: 20px;
+
+    --gif-size-small: 250px;
 }
 
 * {
@@ -92,14 +96,19 @@ p {
 }
 
 /* GLOBAL COMPONENTS */ 
-.controlButton svg {
+.controlButton {
+    min-width: calc(var(--control-button-size) + 25px) !important;
+}
+
+.controlButton__svg svg {
     height: 20px;
     width: 20px;
     margin: 4px 0px;
 }
 
-.controlButton > div {
+.controlButton__svg > div {
     display: grid;
+    margin: 4px 0px;
 }
 
 .backButton {
