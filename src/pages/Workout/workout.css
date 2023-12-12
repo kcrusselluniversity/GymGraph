@@ -123,9 +123,14 @@
 }
 
 .exerciseDetails__addExerciseBtn {
-    justify-self: center;
     min-width: max-content !important;
-    width: 90%;
+    width: 80%;
+
+}
+
+.exerciseDetails__header {
+    display: grid;
+    place-items: center;
 }
 
 .exerciseDetails__header > button {
@@ -152,7 +157,7 @@
 
 /* SECTION: Exercise Session Data component styling */
 .exerciseSessionData {
-    width: 280px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -176,6 +181,21 @@
     display: flex;
     flex-direction: column;
     gap: 6px;   
+}
+
+/* Exercise Session Table component styling */
+.exerciseSessionTable th,
+.exerciseSessionTable td {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.exerciseSessionTable td {
+    font-weight: 400;
+}
+
+.exerciseSessionTable__controlBtns > button {
+    margin: 2px;
 }
 
 /* SECTION: Media Queries */
@@ -207,6 +227,20 @@
 
     .exerciseDetails__header > button {
         margin-top: 8px;
+    }
+
+    .exerciseSessionTable th {
+        font-size: 16px;
+    }
+
+    .exerciseSessionTable td {
+        font-size: 14px;
+    }
+
+    .exerciseDetails__body .gifContainer,
+    .exerciseDetails__body .gifContainer > img {
+        width: var(--gif-size-small) !important;
+        height: var(--gif-size-small) !important;
     }
 }
 
