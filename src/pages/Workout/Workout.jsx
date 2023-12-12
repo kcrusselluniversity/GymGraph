@@ -15,7 +15,6 @@ const Workout = () => {
         workoutActive,
         setWorkout,
         removeWorkout,
-        sessionId,
         setSessionId,
         removeSessionId,
         sessionExercises,
