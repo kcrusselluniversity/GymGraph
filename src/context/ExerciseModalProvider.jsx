@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { exerciseModalContext } from "./exerciseModalContext";
 import { node } from "prop-types";
+import { TEST_EXERCISE_LIST } from "../data/constants";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 /**
  * Context Provider to share the related state of the exercise modal component
@@ -10,6 +12,16 @@ import { node } from "prop-types";
  */
 const ExerciseModalProvider = ({ children }) => {
     const [exerciseModalState, setExerciseModalState] = useState("default");
+    const [workoutActive, setWorkout, removeWorkout] = useLocalStorage(
+        "isWorkoutActive",
+        false
+    );
+    const [sessionId, setSessionId, removeSessionId] = useLocalStorage(
+        "sessionId",
+        null
+    );
+    const [sessionExercises, setSessionExercises, removeExercises] =
+        useLocalStorage("sessionExercises", TEST_EXERCISE_LIST);
     const [searchInput, setSearchInput] = useState("");
     const [selectedExerciseInfo, setSelectedExerciseInfo] = useState(null);
     const [exerciseAdded, setExerciseAdded] = useState(null);
@@ -18,9 +30,18 @@ const ExerciseModalProvider = ({ children }) => {
         if (searchInput != "") setExerciseModalState("user_search");
     }, [searchInput]);
 
-    const state = {
+    const sharedState = {
         exerciseModalState,
         setExerciseModalState,
+        workoutActive,
+        setWorkout,
+        removeWorkout,
+        sessionId,
+        setSessionId,
+        removeSessionId,
+        sessionExercises,
+        setSessionExercises,
+        removeExercises,
         searchInput,
         setSearchInput,
         selectedExerciseInfo,
@@ -29,7 +50,7 @@ const ExerciseModalProvider = ({ children }) => {
         setExerciseAdded,
     };
     return (
-        <exerciseModalContext.Provider value={state}>
+        <exerciseModalContext.Provider value={sharedState}>
             {children}
         </exerciseModalContext.Provider>
     );
