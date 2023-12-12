@@ -22,7 +22,7 @@ const ExerciseSessionData = () => {
         <div className="exerciseSessionData">
             <div className="exerciseSessionData__controlBtns">
                 <ControlButton buttonType="delete" />
-                <ControlButton buttonType="add" />
+                <ControlButton buttonType="done" />
             </div>
             <h2 style={{ textAlign: "center" }}>{name}</h2>
             <ExerciseSessionTable />
