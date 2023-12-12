@@ -11,6 +11,7 @@ import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
 import { errorMessage } from "../../../utils/getExerciseByUid";
 import BackButton from "../../../components/ui/BackButton";
+import { bool, func, string } from "prop-types";
 
 /**
  * Exercise Details component
@@ -81,49 +82,101 @@ const ExerciseDetails = () => {
     return (
         <div className="exerciseDetails">
             <BackButton handleBackArrowClick={handleBackArrowClick} />
-            <div className="exerciseDetails__header">
-                {!exerciseAdded && (
-                    <Button
-                        sx={GREY_STYLE_BUTTON}
-                        className="exerciseDetails__addExerciseBtn"
-                        onClick={handleAddExerciseClick}
-                    >
-                        Add Exercise
-                    </Button>
-                )}
-            </div>
+            <ExerciseHeader
+                exerciseAdded={exerciseAdded}
+                handleAddExerciseClick={handleAddExerciseClick}
+            />
             <div className="exerciseDetails__body">
                 <h2 style={{ textAlign: "center" }}>{name}</h2>
                 <h4>{muscleGroup}</h4>
-                <div
-                    className="gifContainer"
-                    style={{
-                        height: `${GIF_SIZE_STANDARD}px`,
-                        width: `${GIF_SIZE_STANDARD}px`,
-                    }}
-                >
-                    <img
-                        alt={name}
-                        src={exerciseGifUrl}
-                        onLoad={() => setIsGifLoading(false)}
-                    />
-                    {isGifLoading && (
-                        <Skeleton
-                            className="exerciseDetails__skeleton"
-                            variant="rectangular"
-                            data-testid="exerciseDetailsSkeleton"
-                            height={GIF_SIZE_STANDARD}
-                            width={GIF_SIZE_STANDARD}
-                            sx={{
-                                borderRadius: "1rem",
-                                opacity: isGifLoading ? 1 : 0,
-                            }}
-                        />
-                    )}
-                </div>
+                <GifContainer
+                    name={name}
+                    exerciseGifUrl={exerciseGifUrl}
+                    isGifLoading={isGifLoading}
+                    setIsGifLoading={setIsGifLoading}
+                />
             </div>
         </div>
     );
+};
+
+/**
+ * Exercise Header component
+ *
+ * This is a helper component for the ExerciseDetails component above.
+ * It displays the add exercise button in the exercise details component if
+ * the user hasn't already added an exercise, and does not render it if they
+ * have added an exercise.
+ */
+const ExerciseHeader = ({ exerciseAdded, handleAddExerciseClick }) => {
+    return (
+        <div className="exerciseDetails__header">
+            {!exerciseAdded && (
+                <Button
+                    sx={GREY_STYLE_BUTTON}
+                    className="exerciseDetails__addExerciseBtn"
+                    onClick={handleAddExerciseClick}
+                >
+                    Add Exercise
+                </Button>
+            )}
+        </div>
+    );
+};
+
+ExerciseHeader.propTypes = {
+    exerciseAdded: string,
+    handleAddExerciseClick: func,
+};
+
+/**
+ * Gif Container
+ *
+ * This is a helper component for the ExerciseDetails componant.
+ * It renders the exercise gif associated with the selected exercise,
+ * and shows a skeleton loading image if the gif is still loading.
+ */
+const GifContainer = ({
+    name,
+    exerciseGifUrl,
+    isGifLoading,
+    setIsGifLoading,
+}) => {
+    return (
+        <div
+            className="gifContainer"
+            style={{
+                height: `${GIF_SIZE_STANDARD}px`,
+                width: `${GIF_SIZE_STANDARD}px`,
+            }}
+        >
+            <img
+                alt={name}
+                src={exerciseGifUrl}
+                onLoad={() => setIsGifLoading(false)}
+            />
+            {isGifLoading && (
+                <Skeleton
+                    className="exerciseDetails__skeleton"
+                    variant="rectangular"
+                    data-testid="exerciseDetailsSkeleton"
+                    height={GIF_SIZE_STANDARD}
+                    width={GIF_SIZE_STANDARD}
+                    sx={{
+                        borderRadius: "1rem",
+                        opacity: isGifLoading ? 1 : 0,
+                    }}
+                />
+            )}
+        </div>
+    );
+};
+
+GifContainer.propTypes = {
+    name: string,
+    exerciseGifUrl: string,
+    isGifLoading: bool,
+    setIsGifLoading: func,
 };
 
 export default ExerciseDetails;
