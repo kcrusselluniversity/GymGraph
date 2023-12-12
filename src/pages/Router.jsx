@@ -14,6 +14,7 @@ import UnderConstruction from "./UnderConstruction";
 import UserPageLayout from "./UserPageLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Loading from "../components/ui/Loading";
+import ExerciseModalProvider from "../context/ExerciseModalProvider";
 
 /**
  * Router component
@@ -58,7 +59,14 @@ const Router = () => {
                         element={<Navigate to="dashboard" replace />}
                     />
                     <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="workout" element={<Workout />} />
+                    <Route
+                        path="workout"
+                        element={
+                            <ExerciseModalProvider>
+                                <Workout />
+                            </ExerciseModalProvider>
+                        }
+                    />
                     <Route path="history" element={<History />} />
                     <Route path="metrics" element={<Metrics />} />
                     <Route path="profile" element={<Profile />} />

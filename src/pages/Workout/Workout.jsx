@@ -3,7 +3,6 @@ import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
 import { v4 as uuid } from "uuid";
 import { TEST_EXERCISE_LIST } from "../../data/constants";
-import ExerciseModalProvider from "../../context/exerciseModalProvider";
 import "./workout.css";
 
 /**
@@ -27,7 +26,7 @@ const Workout = () => {
     };
 
     return (
-        <ExerciseModalProvider>
+
             <div className="workoutPage">
                 <button
                     onClick={() => {
@@ -45,7 +44,6 @@ const Workout = () => {
                     <StartWorkoutButton handleClick={handleClick} />
                 )}
             </div>
-        </ExerciseModalProvider>
     );
 };
 
