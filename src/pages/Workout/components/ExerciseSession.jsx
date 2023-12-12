@@ -14,17 +14,17 @@ import ExerciseModal from "./ExerciseModal";
  * It is responsible for providing the UI to add exercises and view the
  * data of the current workout session.
  *
- * @param {object} exercises: Object containing the data on the current workout
+ * @param {object} sessionExercises: Object containing the data on the current workout
  * sessions exercises
- * @param {function} setExercises: State setter function to update the
+ * @param {function} setSessionExercises: State setter function to update the
  * exercises object state
  * @returns {any}
  */
-const ExerciseSession = ({ exercises, setExercises }) => {
+const ExerciseSession = ({ sessionExercises, setSessionExercises }) => {
     const [isRestTimerOpen, setIsRestTimerOpen] = useState(false);
     const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
-    const exerciseItems = exercises?.map((exercise) => {
+    const exerciseItems = sessionExercises?.map((exercise) => {
         return <ExerciseItem key={exercise.name} exercise={exercise} />;
     });
 
@@ -54,7 +54,7 @@ const ExerciseSession = ({ exercises, setExercises }) => {
 };
 
 ExerciseSession.propTypes = {
-    exercises: PropTypes.arrayOf(
+    sessionExercises: PropTypes.arrayOf(
         PropTypes.shape({
             name: string,
             sets: PropTypes.arrayOf(
@@ -65,7 +65,7 @@ ExerciseSession.propTypes = {
             ),
         })
     ),
-    setExercises: func,
+    setSessionExercises: func,
 };
 
 export default ExerciseSession;

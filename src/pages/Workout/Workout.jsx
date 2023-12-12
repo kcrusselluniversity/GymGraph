@@ -16,8 +16,8 @@ const Workout = () => {
         false
     );
     const [sessionId, setSessionId , removeSessionId] = useLocalStorage("sessionId", null);
-    const [exercises, setExercises, removeExercises] = useLocalStorage(
-        "exercises",
+    const [sessionExercises, setSessionExercises, removeExercises] = useLocalStorage(
+        "sessionExercises",
         TEST_EXERCISE_LIST
     );
 
@@ -40,7 +40,7 @@ const Workout = () => {
                 </button>
                 <button onClick={() => setWorkout(!workoutActive)}>Toggle</button>
                 {workoutActive ? (
-                    <ExerciseSession exercises={exercises} setExercises={setExercises}/>
+                    <ExerciseSession sessionExercises={sessionExercises} setSessionExercises={setSessionExercises}/>
                 ) : (
                     <StartWorkoutButton handleClick={handleClick} />
                 )}
