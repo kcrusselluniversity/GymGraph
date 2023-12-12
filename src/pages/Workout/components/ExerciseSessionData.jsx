@@ -5,6 +5,14 @@ import { useContext } from "react";
 import ExerciseSessionTable from "./ExerciseSessionTable";
 import ControlButton from "../../../components/ui/ControlButton";
 
+/**
+ * Exercise Session Data component
+ * 
+ * When the user selects an exercise from the database of exercises, this 
+ * component renders inside the exercise modal to allow the user to add 
+ * the information on their current workouts weight, reps and sets for the
+ * selected exercise. 
+ */
 const ExerciseSessionData = () => {
     const { exerciseAdded, setExerciseModalState } =
         useContext(exerciseModalContext);

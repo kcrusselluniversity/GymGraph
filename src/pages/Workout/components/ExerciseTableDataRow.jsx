@@ -4,8 +4,9 @@ import { number } from "prop-types";
 
 /**
  * ExerciseTableDataRow component
- * This component is for the UI of each row in the exercise table. It
- * displays the weight and number of reps for the given exercise of the table.
+ * This component is to display each data row in the exercise table. It
+ * displays the weight and number of reps for the exercise the user has already
+ * completed in their current session.
  *
  * @param {number} weight: The weight used for the exercise.
  * @param {number} reps: The number of repetitions of the exercise completed.
