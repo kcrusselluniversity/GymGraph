@@ -116,6 +116,10 @@
 }
 
 /* SECTION: Exercise Details component styling */
+.exerciseDetails {
+    width: 80%;
+}
+
 .exerciseDetails .links__icon > div {
     display: flex;
     flex-direction: column;
@@ -141,7 +145,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 0px;
+    margin: 3rem 0px;
     gap: 0.75rem;
 }
 
@@ -186,7 +190,7 @@
 /* Exercise Session Table component styling */
 .exerciseSessionTable th,
 .exerciseSessionTable td {
-    font-size: 18px;
+    font-size: var(--exercise-table-font-reg);
     font-weight: 500;
 }
 
@@ -194,8 +198,18 @@
     font-weight: 400;
 }
 
-.exerciseSessionTable__controlBtns > button {
+.exerciseSessionTable button {
     margin: 2px;
+}
+
+/* Exercise Table Components styling */
+.exerciseTableInput {
+    width: 60px;
+    font-size: var(--exercise-table-font-reg);
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
 }
 
 /* SECTION: Media Queries */
@@ -230,11 +244,16 @@
     }
 
     .exerciseSessionTable th {
-        font-size: 16px;
+        font-size: var(--exersise-table-font-sml);
     }
 
-    .exerciseSessionTable td {
-        font-size: 14px;
+    .exerciseSessionTable td,
+    .exerciseTableInput {
+        font-size: var(--exercise-table-data-font-sml);
+    }
+
+    .exerciseTableInput {
+        width: 45px;
     }
 
     .exerciseDetails__body .gifContainer,
@@ -245,10 +264,6 @@
 }
 
 @media screen and (width <= 600px) {
-    .exerciseDetails {
-        width: 80%;
-    }
-
     .exerciseModal__restTimer {
         margin-top: 2.5rem;
     }
