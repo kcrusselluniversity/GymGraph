@@ -27,7 +27,8 @@
     --link-logo-height: 25px;
     --link-font-size-small-screen: 12px;
 
-    --control-button-size: 20px;
+    --control-button-size: 18px;
+    --control-button-svg-size: 16px;
 
     --gif-size-small: 250px;
 }
@@ -101,8 +102,8 @@ p {
 }
 
 .controlButton__svg svg {
-    height: 20px;
-    width: 20px;
+    height: var(--control-button-svg-size);
+    width: var(--control-button-svg-size);
     margin: 4px 0px;
 }
 
