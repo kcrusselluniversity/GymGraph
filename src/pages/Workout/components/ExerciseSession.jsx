@@ -4,8 +4,9 @@ import RestTimer from "../../../components/ui/RestTimer";
 import AddExerciseButton from "./AddExerciseButton";
 import ExerciseItem from "./ExerciseItem";
 import { PropTypes, func, number, string } from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ExerciseModal from "./ExerciseModal";
+import { exerciseModalContext } from "../../../context/exerciseModalContext";
 
 /**
  * Exercise Session component
@@ -20,9 +21,12 @@ import ExerciseModal from "./ExerciseModal";
  * exercises object state
  * @returns {any}
  */
-const ExerciseSession = ({ sessionExercises, setSessionExercises }) => {
+const ExerciseSession = () => {
     const [isRestTimerOpen, setIsRestTimerOpen] = useState(false);
     const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
+
+    const { sessionExercises, setSessionExercises } =
+        useContext(exerciseModalContext);
 
     const exerciseItems = sessionExercises?.map((exercise) => {
         return <ExerciseItem key={exercise.name} exercise={exercise} />;
@@ -30,7 +34,9 @@ const ExerciseSession = ({ sessionExercises, setSessionExercises }) => {
 
     return (
         <div className="exerciseSession">
-            <AddExerciseButton handleClick={() => setIsExerciseModalOpen(true)}/>
+            <AddExerciseButton
+                handleClick={() => setIsExerciseModalOpen(true)}
+            />
             {exerciseItems}
             <RestTimerButton
                 handleClick={() => setIsRestTimerOpen(!isRestTimerOpen)}

@@ -14,9 +14,7 @@ const Workout = () => {
     const {
         workoutActive,
         setWorkout,
-        setSessionId,
-        sessionExercises,
-        setSessionExercises,
+        setSessionId
     } = useContext(exerciseModalContext);
 
     const handleClick = () => {
@@ -27,10 +25,7 @@ const Workout = () => {
     return (
         <div className="workoutPage">
             {workoutActive ? (
-                <ExerciseSession
-                    sessionExercises={sessionExercises}
-                    setSessionExercises={setSessionExercises}
-                />
+                <ExerciseSession />
             ) : (
                 <StartWorkoutButton handleClick={handleClick} />
             )}
