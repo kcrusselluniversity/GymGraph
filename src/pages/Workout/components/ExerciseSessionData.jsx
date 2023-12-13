@@ -13,7 +13,7 @@ import ControlButton from "../../../components/ui/ControlButton";
  * the information on their current workouts weight, reps and sets for the
  * selected exercise. 
  */
-const ExerciseSessionData = () => {
+const ExerciseSessionData = () => {    
     const { exerciseAdded, setExerciseModalState } =
         useContext(exerciseModalContext);
     const { exercise: name } = exerciseAdded;
