@@ -11,7 +11,7 @@ import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
 import { errorMessage } from "../../../utils/getExerciseByUid";
 import BackButton from "../../../components/ui/BackButton";
-import { bool, func, string } from "prop-types";
+import { bool, func, string, PropTypes } from "prop-types";
 
 /**
  * Exercise Details component
@@ -109,6 +109,7 @@ const ExerciseDetails = () => {
  * have added an exercise.
  */
 const ExerciseHeader = ({ exerciseAdded, handleAddExerciseClick }) => {
+
     return (
         <div className="exerciseDetails__header">
             {!exerciseAdded && (
@@ -125,7 +126,11 @@ const ExerciseHeader = ({ exerciseAdded, handleAddExerciseClick }) => {
 };
 
 ExerciseHeader.propTypes = {
-    exerciseAdded: string,
+    exerciseAdded: PropTypes.shape({
+        uid: string,
+        muscleGroup: string,
+        exercise: string,
+    }),
     handleAddExerciseClick: func,
 };
 
