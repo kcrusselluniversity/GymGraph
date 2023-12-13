@@ -44,38 +44,41 @@ const ExerciseTableInputRow = () => {
         // Check if the input fields are invalid
         if (invalidWeightInput || invalidRepsInput) return;
 
-        // Add exercise row to session data
+        /* Add exercise row to session data */
+        // Create a variable to hold the updated sets array
+        let updatedSets;
+
         // Check if exercise has already been added to session
         const isExerciseAlreadyInSession =
             Object.keys(sessionExercises).includes(currentExerciseUid);
 
         if (isExerciseAlreadyInSession) {
+            // Get the current exercises set data
             const currentExercise = sessionExercises[currentExerciseUid];
             const currentSets = currentExercise.sets;
-            const updatedSets = [
+
+            // Update the sets data with the new set
+            updatedSets = [
                 ...currentSets,
                 { weight: +weightInput, reps: +repsInput },
             ];
-
-            // Override the current exercise in the session exercises object
-            // given the updated exercise
-
-            console.log({
-                ...sessionExercises,
-                currentExerciseUid: {
-                    exerciseObject: exerciseAdded,
-                    sets: updatedSets
-                }
-            })
-            
-            setSessionExercises({
-                ...sessionExercises,
-                [currentExerciseUid]: {
-                    exerciseObject: exerciseAdded,
-                    sets: updatedSets
-                }
-            })
+        } else {
+            // Create a new sets array to add to the session exercise object
+            updatedSets = [{ weight: +weightInput, reps: +repsInput }];
         }
+
+        // Update the session exercises object
+        setSessionExercises({
+            ...sessionExercises,
+            [currentExerciseUid]: {
+                exerciseObject: exerciseAdded,
+                sets: updatedSets,
+            },
+        });
+
+        // Clear the input fields
+        setRepsInput("");
+        setWeightInput("");
     };
 
     return (
