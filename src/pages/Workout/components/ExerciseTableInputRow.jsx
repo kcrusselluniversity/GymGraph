@@ -11,7 +11,7 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
  * current exercise.
  */
 const ExerciseTableInputRow = () => {
-    // Destructure modal context to get the required properties
+    // Destructure modal context to get the required state to control the input
     const {
         weightInput,
         setWeightInput,
@@ -22,6 +22,13 @@ const ExerciseTableInputRow = () => {
         invalidRepsInput,
         setInvalidRepsInput,
     } = useContext(exerciseModalContext);
+
+    // Destructure modal context for the required state to update the session
+    // exercises state
+    const { exerciseAdded, sessionExercises } =
+        useContext(exerciseModalContext);
+
+    const currentExerciseUid = exerciseAdded.uid;
 
     const handleAddBtnClick = () => {
         // Check if any input fields have not had values entered
@@ -38,7 +45,19 @@ const ExerciseTableInputRow = () => {
         if (invalidWeightInput || invalidRepsInput) return;
 
         // Add exercise row to session data
-        
+        // addSetToExerciseSession()
+        // Check if the exercise exists in the session already
+        const isExerciseInSession = sessionExercises
+            .map((element) => element?.exercise.uid)
+            .includes(currentExerciseUid);
+
+        if (isExerciseInSession) {
+            // Add set to exercise
+            const exerciseIndex = sessionExercises
+                .map((element) => element.exercise.uid)
+                .indexOf(currentExerciseUid);
+            
+        }
     };
 
     return (
@@ -82,6 +101,8 @@ const ExerciseTableInputRow = () => {
     );
 };
 
+export default ExerciseTableInputRow;
+
 /**
  * Handle input change function
  *
@@ -104,4 +125,4 @@ const handleInputChange = (e, setInvalidFunction, setValueFunction) => {
     setValueFunction(inputString);
 };
 
-export default ExerciseTableInputRow;
+const addSetToExerciseSession = () => {};
