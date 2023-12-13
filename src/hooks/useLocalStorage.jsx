@@ -17,6 +17,8 @@ import { useState, useEffect } from "react";
  * 
  * @param {string} key: The key to store the value in local storage
  * @param {any} initialValue: The initial value to store
+ * 
+ * @returns {array}: The array given by [value, setValue, removeValue]
  */
 const useLocalStorage = (key, initialValue) => {
     const [value, setValue] = useState(() => {
