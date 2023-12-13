@@ -25,7 +25,7 @@ const ExerciseTableInputRow = () => {
 
     // Destructure modal context for the required state to update the session
     // exercises state
-    const { exerciseAdded, sessionExercises } =
+    const { exerciseAdded, sessionExercises, setSessionExercises } =
         useContext(exerciseModalContext);
 
     const currentExerciseUid = exerciseAdded.uid;
@@ -45,18 +45,36 @@ const ExerciseTableInputRow = () => {
         if (invalidWeightInput || invalidRepsInput) return;
 
         // Add exercise row to session data
-        // addSetToExerciseSession()
-        // Check if the exercise exists in the session already
-        const isExerciseInSession = sessionExercises
-            .map((element) => element?.exercise.uid)
-            .includes(currentExerciseUid);
+        // Check if exercise has already been added to session
+        const isExerciseAlreadyInSession =
+            Object.keys(sessionExercises).includes(currentExerciseUid);
 
-        if (isExerciseInSession) {
-            // Add set to exercise
-            const exerciseIndex = sessionExercises
-                .map((element) => element.exercise.uid)
-                .indexOf(currentExerciseUid);
+        if (isExerciseAlreadyInSession) {
+            const currentExercise = sessionExercises[currentExerciseUid];
+            const currentSets = currentExercise.sets;
+            const updatedSets = [
+                ...currentSets,
+                { weight: +weightInput, reps: +repsInput },
+            ];
+
+            // Override the current exercise in the session exercises object
+            // given the updated exercise
+
+            console.log({
+                ...sessionExercises,
+                currentExerciseUid: {
+                    exerciseObject: exerciseAdded,
+                    sets: updatedSets
+                }
+            })
             
+            setSessionExercises({
+                ...sessionExercises,
+                [currentExerciseUid]: {
+                    exerciseObject: exerciseAdded,
+                    sets: updatedSets
+                }
+            })
         }
     };
 
@@ -69,6 +87,7 @@ const ExerciseTableInputRow = () => {
                     }`}
                     type="number"
                     placeholder="kg"
+                    name="weight"
                     value={weightInput}
                     onChange={(e) =>
                         handleInputChange(
@@ -85,6 +104,7 @@ const ExerciseTableInputRow = () => {
                         invalidRepsInput && "invalidInputStyle"
                     }`}
                     type="number"
+                    name="reps"
                     value={repsInput}
                     onChange={(e) =>
                         handleInputChange(e, setInvalidRepsInput, setRepsInput)
@@ -124,5 +144,3 @@ const handleInputChange = (e, setInvalidFunction, setValueFunction) => {
 
     setValueFunction(inputString);
 };
-
-const addSetToExerciseSession = () => {};
