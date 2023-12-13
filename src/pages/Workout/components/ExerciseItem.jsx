@@ -18,17 +18,21 @@ SetData.propTypes = {
 
 /**
  * ExerciseItem component
- * 
- * This component takes in an exercise object and generates a table
+ *
+ * This component takes in an sessionExercise object and generates a table
  * to display this information.
- * 
- * @param {object} exercise: an object that contains the exercise name
- * and an array of the reps/weight for that exercise for the current session.
+ *
+ * @param {array} sets: An array of objects that each represent the weight
+ * and number of repetitions (reps) of a given set in the session.
+ * @param {object} exerciseObject: An object that contains the exercise uid,
+ * muscleGroup and exerise (name).
  */
-const ExerciseItem = ({ exercise }) => {
-    if (exercise?.sets == undefined || exercise.sets.length == 0) return null;
+const ExerciseItem = ({ sets, exerciseObject }) => {
+    // Return nothing if there are no sets for this exercise
+    if (sets == undefined || sets.length == 0) return null;
 
-    const setCount = exercise.sets.length;
+    const setCount = sets.length;
+    const { exercise: exerciseName } = exerciseObject;
 
     return (
         <div className="ExerciseItem">
@@ -41,12 +45,15 @@ const ExerciseItem = ({ exercise }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {exercise.sets.map((set, index) => {
+                    {sets.map((set, index) => {
                         return (
                             <TableRow key={index}>
                                 {index == 0 && (
-                                    <TableCell rowSpan={setCount} className="ExerciseItem__exerciseName">
-                                        {exercise?.name}
+                                    <TableCell
+                                        rowSpan={setCount}
+                                        className="ExerciseItem__exerciseName"
+                                    >
+                                        {exerciseName}
                                     </TableCell>
                                 )}
                                 <SetData weight={set.weight} reps={set.reps} />
@@ -60,15 +67,17 @@ const ExerciseItem = ({ exercise }) => {
 };
 
 ExerciseItem.propTypes = {
-    exercise: PropTypes.shape({
-        name: string,
-        sets: PropTypes.arrayOf(
-            PropTypes.shape({
-                weight: number,
-                reps: number,
-            })
-        ),
+    exerciseObject: PropTypes.shape({
+        uid: string,
+        muscleGroup: string,
+        exercise: string,
     }),
+    sets: PropTypes.arrayOf(
+        PropTypes.shape({
+            weight: number,
+            reps: number,
+        })
+    ),
 };
 
 export default ExerciseItem;
