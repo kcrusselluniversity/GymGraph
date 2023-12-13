@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { exerciseModalContext } from "./exerciseModalContext";
 import { node } from "prop-types";
-import { TEST_EXERCISE_LIST } from "../data/constants";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 /**
@@ -22,7 +21,7 @@ const ExerciseModalProvider = ({ children }) => {
         null
     );
     const [sessionExercises, setSessionExercises, removeExercises] =
-        useLocalStorage("sessionExercises", TEST_EXERCISE_LIST);
+        useLocalStorage("sessionExercises", []);
 
     // Search bar state
     const [searchInput, setSearchInput] = useState("");
