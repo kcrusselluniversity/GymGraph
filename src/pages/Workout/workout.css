@@ -32,6 +32,10 @@
     place-content: center;
 }
 
+.invalidInputStyle {
+    border: 1px solid red !important;
+}
+
 /* SECTION: Exercise Session component */
 .exerciseSession {
     width: 100%;
