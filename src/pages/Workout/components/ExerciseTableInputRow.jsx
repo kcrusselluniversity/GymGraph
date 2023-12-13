@@ -38,9 +38,7 @@ const ExerciseTableInputRow = () => {
         if (invalidWeightInput || invalidRepsInput) return;
 
         // Add exercise row to session data
-        console.log("added");
-
-        // Clear the input fields and reset invalid state
+        
     };
 
     return (
