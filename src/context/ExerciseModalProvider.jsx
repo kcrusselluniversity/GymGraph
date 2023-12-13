@@ -11,6 +11,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
  * @returns A Provider for the exercise modal context
  */
 const ExerciseModalProvider = ({ children }) => {
+    // Top level exercise modal state
     const [exerciseModalState, setExerciseModalState] = useState("default");
     const [workoutActive, setWorkout, removeWorkout] = useLocalStorage(
         "isWorkoutActive",
@@ -22,9 +23,20 @@ const ExerciseModalProvider = ({ children }) => {
     );
     const [sessionExercises, setSessionExercises, removeExercises] =
         useLocalStorage("sessionExercises", TEST_EXERCISE_LIST);
+
+    // Search bar state
     const [searchInput, setSearchInput] = useState("");
+
+    // State to track a users path through the exercise selection portion
+    // of the modal
     const [selectedExerciseInfo, setSelectedExerciseInfo] = useState(null);
     const [exerciseAdded, setExerciseAdded] = useState(null);
+
+    // State for the added exercises sets and reps input
+    const [weightInput, setWeightInput] = useState("");
+    const [repsInput, setRepsInput] = useState("");
+    const [invalidWeightInput, setInvalidWeightInput] = useState(false);
+    const [invalidRepsInput, setInvalidRepsInput] = useState(false);
 
     useEffect(() => {
         if (searchInput != "") setExerciseModalState("user_search");
@@ -48,6 +60,14 @@ const ExerciseModalProvider = ({ children }) => {
         setSelectedExerciseInfo,
         exerciseAdded,
         setExerciseAdded,
+        weightInput,
+        setWeightInput,
+        repsInput,
+        setRepsInput,
+        invalidWeightInput,
+        setInvalidWeightInput,
+        invalidRepsInput,
+        setInvalidRepsInput,
     };
     return (
         <exerciseModalContext.Provider value={sharedState}>
