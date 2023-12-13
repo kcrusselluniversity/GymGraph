@@ -14,7 +14,7 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
  */
 const ExerciseSessionTable = () => {
     // Destructure the exercise modal context for the required state
-    const { sessionExercises, exerciseAdded } =
+    const { sessionExercises, setSessionExercises, exerciseAdded } =
         useContext(exerciseModalContext);
 
     const { uid: addedExerciseUid } = exerciseAdded;
@@ -23,6 +23,23 @@ const ExerciseSessionTable = () => {
     const isSetsAlreadyAddedToSession =
         Object.keys(sessionExercises).includes(addedExerciseUid);
 
+    const handleRowDelete = (deleted_element_index) => {
+        // Update this exercises sets
+        const currentExercise = sessionExercises[addedExerciseUid];
+        const currentSets = currentExercise.sets;
+        const updatedSets = currentSets.filter((element, element_index) => element_index != deleted_element_index )
+
+        // Override the current exercise in the session exercises object
+        // given the updated exercise            
+        setSessionExercises({
+            ...sessionExercises,
+            [addedExerciseUid]: {
+                exerciseObject: exerciseAdded,
+                sets: updatedSets
+            }
+        })
+    }
+    
     if (isSetsAlreadyAddedToSession) {
         // Generate the rows of this exercise data
         const sets = sessionExercises[addedExerciseUid].sets;
@@ -31,6 +48,7 @@ const ExerciseSessionTable = () => {
                 key={index}
                 weight={set.weight}
                 reps={set.reps}
+                handleRowDelete={() => handleRowDelete(index)}
             />
         ));
     }
