@@ -2,22 +2,44 @@ import { Table, TableContainer, Paper } from "@mui/material";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import ExerciseTableDataRow from "./ExerciseTableDataRow";
 import ExerciseTableInputRow from "./ExerciseTableInputRow";
+import { useContext } from "react";
+import { exerciseModalContext } from "../../../context/exerciseModalContext";
 
 /**
  * Exercise Session Table
- * 
- * Once the user has selected an exercise (eg bench press) this table is used
+ *
+ * Once the user has added an exercise (eg bench press) this table is used
  * by the user to add the weight, reps and sets for this user during their
- * workout session. 
+ * workout session.
  */
 const ExerciseSessionTable = () => {
+    // Destructure the exercise modal context for the required state
+    const { sessionExercises, exerciseAdded } =
+        useContext(exerciseModalContext);
+
+    const { uid: addedExerciseUid } = exerciseAdded;
+
+    let currentSessionSets = null;
+    const isSetsAlreadyAddedToSession =
+        Object.keys(sessionExercises).includes(addedExerciseUid);
+
+    if (isSetsAlreadyAddedToSession) {
+        // Generate the rows of this exercise data
+        const sets = sessionExercises[addedExerciseUid].sets;
+        currentSessionSets = sets.map((set, index) => (
+            <ExerciseTableDataRow
+                key={index}
+                weight={set.weight}
+                reps={set.reps}
+            />
+        ));
+    }
     return (
         <TableContainer component={Paper}>
             <Table className="exerciseSessionTable">
                 <ExerciseTableHead />
                 <TableBody>
-                    <ExerciseTableDataRow weight={20} reps={12} />
-                    <ExerciseTableDataRow weight={20} reps={10} />
+                    {currentSessionSets}
                     <ExerciseTableInputRow />
                 </TableBody>
             </Table>
@@ -27,9 +49,9 @@ const ExerciseSessionTable = () => {
 
 /**
  * Exercise table head component
- * 
- * This is a helper component for the above exercise session table. 
- * It has been separated from the main component of this module in order 
+ *
+ * This is a helper component for the above exercise session table.
+ * It has been separated from the main component of this module in order
  * for the main component to be more readable.
  */
 const ExerciseTableHead = () => {
@@ -47,6 +69,5 @@ const ExerciseTableHead = () => {
         </TableHead>
     );
 };
-
 
 export default ExerciseSessionTable;
