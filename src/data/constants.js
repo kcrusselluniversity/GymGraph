@@ -155,35 +155,50 @@ const USER_AUTH_CONTEXT = {
 export { DEFAULT_AUTH_CONTEXT, USER_AUTH_CONTEXT };
 
 // This is used for Testing exercises on the workout page
-export const TEST_EXERCISE_LIST = [
-    {
-        name: "push up",
-        sets: [
-            { weight: 20, reps: 10 },
-            { weight: 20, reps: 8 },
-            { weight: 20, reps: 6 },
-        ],
-    },
-    {
-        name: "leg press",
-        sets: [
-            { weight: 20, reps: 10 },
-            { weight: 20, reps: 8 },
-            { weight: 20, reps: 6 },
-        ],
-    },
-    {
-        name: "cable lat raise",
-        sets: [
-            { weight: 20, reps: 10 },
-            { weight: 20, reps: 8 },
-            { weight: 20, reps: 6 },
-        ],
-    },
-];
-
 export const TEST_EXERCISE = {
     uid: "23001301",
     muscleGroup: "back",
-    exercise: "Inverted Row Bent Knees",
+    exercise: "Inverted Row",
+};
+
+export const TEST_EXERCISE_2 = {
+    uid: "23001302",
+    muscleGroup: "arms",
+    exercise: "Bicep Curl",
+};
+
+export const TEST_EXERCISE_3 = {
+    uid: "23001303",
+    muscleGroup: "shoulders",
+    exercise: "Shoulder Press",
+};
+
+// The Exercise UID is the key for the session exercises list, and each keys
+// value is an object with the exercise object and a sets array as the
+// properties.
+export const TEST_EXERCISE_LIST = {
+    23001301: {
+        exerciseObject: TEST_EXERCISE,
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    23001302: {
+        exerciseObject: TEST_EXERCISE_2,
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    23001303: {
+        exerciseObject: TEST_EXERCISE_3,
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
 };
