@@ -1,9 +1,9 @@
 import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
-import { v4 as uuid } from "uuid";
-import "./workout.css";
 import { exerciseModalContext } from "../../context/exerciseModalContext";
 import { useContext } from "react";
+import { v4 as uuid } from "uuid";
+import "./workout.css";
 
 /**
  * Workout page component
@@ -14,12 +14,9 @@ const Workout = () => {
     const {
         workoutActive,
         setWorkout,
-        removeWorkout,
         setSessionId,
-        removeSessionId,
         sessionExercises,
         setSessionExercises,
-        removeExercises,
     } = useContext(exerciseModalContext);
 
     const handleClick = () => {
@@ -29,16 +26,6 @@ const Workout = () => {
 
     return (
         <div className="workoutPage">
-            <button
-                onClick={() => {
-                    removeWorkout();
-                    removeSessionId();
-                    removeExercises();
-                }}
-            >
-                Remove
-            </button>
-            <button onClick={() => setWorkout(!workoutActive)}>Toggle</button>
             {workoutActive ? (
                 <ExerciseSession
                     sessionExercises={sessionExercises}
