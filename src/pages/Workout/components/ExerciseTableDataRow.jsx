@@ -1,6 +1,6 @@
 import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
-import { number } from "prop-types";
+import { func, number } from "prop-types";
 
 /**
  * ExerciseTableDataRow component
@@ -10,8 +10,9 @@ import { number } from "prop-types";
  *
  * @param {number} weight: The weight used for the exercise.
  * @param {number} reps: The number of repetitions of the exercise completed.
+ * @param {function} handleRowDelete: Function to handle the removal of a row
  */
-const ExerciseTableDataRow = ({ weight, reps }) => {
+const ExerciseTableDataRow = ({ weight, reps, handleRowDelete }) => {
     return (
         <TableRow>
             <TableCell size="small" align="center">
@@ -25,7 +26,11 @@ const ExerciseTableDataRow = ({ weight, reps }) => {
                 align="right"
                 className="exerciseSessionTable__controlBtns"
             >
-                <ControlButton buttonType="trash" label="trash" />
+                <ControlButton
+                    buttonType="trash"
+                    label="trash"
+                    handleClick={handleRowDelete}
+                />
                 <ControlButton buttonType="edit" label="edit" />
             </TableCell>
         </TableRow>
@@ -35,6 +40,7 @@ const ExerciseTableDataRow = ({ weight, reps }) => {
 ExerciseTableDataRow.propTypes = {
     weight: number,
     reps: number,
+    handleRowDelete: func,
 };
 
 export default ExerciseTableDataRow;
