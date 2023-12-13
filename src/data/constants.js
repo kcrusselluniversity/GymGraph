@@ -158,19 +158,19 @@ export { DEFAULT_AUTH_CONTEXT, USER_AUTH_CONTEXT };
 export const TEST_EXERCISE = {
     uid: "23001301",
     muscleGroup: "back",
-    exercise: "Inverted Row",
+    exercise: "Inverted Row Bent Knees",
 };
 
 export const TEST_EXERCISE_2 = {
-    uid: "23001302",
-    muscleGroup: "arms",
-    exercise: "Bicep Curl",
+    uid: "05481301",
+    muscleGroup: "back",
+    exercise: "Kettlebell Sumo High Pull",
 };
 
 export const TEST_EXERCISE_3 = {
-    uid: "23001303",
-    muscleGroup: "shoulders",
-    exercise: "Shoulder Press",
+    uid: "14311301",
+    muscleGroup: "back",
+    exercise: "Lever Assisted Standing Chin Up",
 };
 
 // The Exercise UID is the key for the session exercises list, and each keys
@@ -185,7 +185,7 @@ export const TEST_EXERCISE_LIST = {
             { weight: 20, reps: 6 },
         ],
     },
-    23001302: {
+    "05481301": {
         exerciseObject: TEST_EXERCISE_2,
         sets: [
             { weight: 20, reps: 10 },
@@ -193,7 +193,7 @@ export const TEST_EXERCISE_LIST = {
             { weight: 20, reps: 6 },
         ],
     },
-    23001303: {
+    14311301: {
         exerciseObject: TEST_EXERCISE_3,
         sets: [
             { weight: 20, reps: 10 },
