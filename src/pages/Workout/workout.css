@@ -168,17 +168,13 @@
     width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin: 1rem 0px;
+    gap: 2rem;
+    margin: 2rem 0px;
 }
 
 .exerciseSessionData__controlBtns {
     display: flex;
     justify-content: space-between;
-}
-
-.exerciseSessionData button {
-    margin: 0px;
 }
 
 .exerciseSessionData > h2 {
@@ -188,7 +184,10 @@
 .exerciseSessionData .sessionLinks {
     display: flex;
     flex-direction: column;
-    gap: 6px;   
+}
+
+.exerciseSessionData .sessionLinks > button {
+    margin: 4px 0px;
 }
 
 /* Exercise Session Table component styling */
