@@ -43,11 +43,12 @@ const ExerciseSessionTable = () => {
     if (isSetsAlreadyAddedToSession) {
         // Generate the rows of this exercise data
         const sets = sessionExercises[addedExerciseUid].sets;
+        
         currentSessionSets = sets.map((set, index) => (
             <ExerciseTableDataRow
                 key={index}
-                weight={set.weight}
-                reps={set.reps}
+                weight={set.weight.toString()}
+                reps={set.reps.toString()}
                 index={index}
                 handleRowDelete={() => handleRowDelete(index)}
             />
