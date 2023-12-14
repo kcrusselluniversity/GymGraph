@@ -9,8 +9,8 @@ import { func, string, array } from "prop-types";
  * AccordionPanel component
  *
  * An accordion panel component that displays the exercise Group as the title
- * (eg legs, chest etc) as well as containing the accordion details
- * which contains all exercises associated with the given muscle group.
+ * (eg legs, chest etc) as well as the accordion details which contains all 
+ * exercises associated with the given muscle group.
  * @param {string} currentPanel: The panel currently open.
  * @param {function} setCurrentPanel: Function to set the current panel.
  * @param {string} panelName
