@@ -77,7 +77,7 @@ const ExerciseTableInputRow = () => {
     };
 
     return (
-        <TableRow>
+        <TableRow className="exerciseTableInputRow">
             <TableCell align="center">
                 <ExerciseTableInput
                     input={weightInput}
