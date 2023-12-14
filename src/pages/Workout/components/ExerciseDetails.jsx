@@ -82,10 +82,7 @@ const ExerciseDetails = () => {
     return (
         <div className="exerciseDetails">
             <BackButton handleBackArrowClick={handleBackArrowClick} />
-            <ExerciseHeader
-                exerciseAdded={exerciseAdded}
-                handleAddExerciseClick={handleAddExerciseClick}
-            />
+            <ExerciseHeader handleAddExerciseClick={handleAddExerciseClick} />
             <div className="exerciseDetails__body">
                 <h2 style={{ textAlign: "center" }}>{name}</h2>
                 <h4>{muscleGroup}</h4>
@@ -104,23 +101,18 @@ const ExerciseDetails = () => {
  * Exercise Header component
  *
  * This is a helper component for the ExerciseDetails component above.
- * It displays the add exercise button in the exercise details component if
- * the user hasn't already added an exercise, and does not render it if they
- * have added an exercise.
+ * It displays the exercise details components header.
  */
-const ExerciseHeader = ({ exerciseAdded, handleAddExerciseClick }) => {
-
+const ExerciseHeader = ({ handleAddExerciseClick }) => {
     return (
         <div className="exerciseDetails__header">
-            {!exerciseAdded && (
-                <Button
-                    sx={GREY_STYLE_BUTTON}
-                    className="exerciseDetails__addExerciseBtn"
-                    onClick={handleAddExerciseClick}
-                >
-                    Add Exercise
-                </Button>
-            )}
+            <Button
+                sx={GREY_STYLE_BUTTON}
+                className="exerciseDetails__addExerciseBtn"
+                onClick={handleAddExerciseClick}
+            >
+                Add Exercise
+            </Button>
         </div>
     );
 };
