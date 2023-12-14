@@ -3,7 +3,7 @@ import { GREY_STYLE_BUTTON } from "../../../data/constants";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import { useContext } from "react";
 import ExerciseSessionTable from "./ExerciseSessionTable";
-import ControlButton from "../../../components/ui/ControlButton";
+import BackButton from '../../../components/ui/BackButton';
 
 /**
  * Exercise Session Data component
@@ -14,7 +14,7 @@ import ControlButton from "../../../components/ui/ControlButton";
  * selected exercise. 
  */
 const ExerciseSessionData = () => {    
-    const { exerciseAdded, setExerciseModalState } =
+    const { exerciseAdded, setExerciseModalState, searchInput } =
         useContext(exerciseModalContext);
     const { exercise: name } = exerciseAdded;
 
@@ -25,13 +25,15 @@ const ExerciseSessionData = () => {
     const handleRestTimerBtnClick = () => {
         setExerciseModalState("rest_timer");
     };
+    
+    const handleBackArrowClick = () => {
+        const newState = searchInput ? "user_search" : "default"
+        setExerciseModalState(newState);
+    }
 
     return (
         <div className="exerciseSessionData">
-            <div className="exerciseSessionData__controlBtns">
-                <ControlButton buttonType="delete" />
-                <ControlButton buttonType="done" />
-            </div>
+            <BackButton handleBackArrowClick={handleBackArrowClick}/>
             <h2 style={{ textAlign: "center" }}>{name}</h2>
             <ExerciseSessionTable />
             <div className="sessionLinks">
