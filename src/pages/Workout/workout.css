@@ -215,6 +215,10 @@
     border-radius: 4px;
 }
 
+.exerciseTableInputRow > td {
+    padding: 6px 16px;
+}
+
 /* SECTION: Media Queries */
 
 @media screen and (width <= 500px) {
