@@ -12,13 +12,21 @@ import ExerciseTableEditRow from "./ExerciseTableEditRow";
  *
  * @param {number} weight: The weight used for the exercise.
  * @param {number} reps: The number of repetitions of the exercise completed.
+ * @param {number} index: The position of this row in the sets array data for this exercise.
  * @param {function} handleRowDelete: Function to handle the removal of a row
  */
 const ExerciseTableDataRow = ({ weight, reps, index, handleRowDelete }) => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     if (isEditMode) {
-        return <ExerciseTableEditRow weight={weight} reps={reps} index={index} setIsEditMode={setIsEditMode}/>
+        return (
+            <ExerciseTableEditRow
+                weight={weight}
+                reps={reps}
+                index={index}
+                setIsEditMode={setIsEditMode}
+            />
+        );
     }
 
     return (
@@ -39,7 +47,11 @@ const ExerciseTableDataRow = ({ weight, reps, index, handleRowDelete }) => {
                     label="trash"
                     handleClick={handleRowDelete}
                 />
-                <ControlButton buttonType="edit" label="edit" handleClick={() => setIsEditMode(true)}/>
+                <ControlButton
+                    buttonType="edit"
+                    label="edit"
+                    handleClick={() => setIsEditMode(true)}
+                />
             </TableCell>
         </TableRow>
     );
