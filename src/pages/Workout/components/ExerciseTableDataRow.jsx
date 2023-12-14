@@ -1,6 +1,6 @@
 import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
-import { func, number } from "prop-types";
+import { func, number, string } from "prop-types";
 import { useState } from "react";
 import ExerciseTableEditRow from "./ExerciseTableEditRow";
 
@@ -10,8 +10,8 @@ import ExerciseTableEditRow from "./ExerciseTableEditRow";
  * displays the weight and number of reps for the exercise the user has already
  * completed in their current session.
  *
- * @param {number} weight: The weight used for the exercise.
- * @param {number} reps: The number of repetitions of the exercise completed.
+ * @param {string} weight: The weight used for the exercise.
+ * @param {string} reps: The number of repetitions of the exercise completed.
  * @param {number} index: The position of this row in the sets array data for this exercise.
  * @param {function} handleRowDelete: Function to handle the removal of a row
  */
@@ -58,8 +58,8 @@ const ExerciseTableDataRow = ({ weight, reps, index, handleRowDelete }) => {
 };
 
 ExerciseTableDataRow.propTypes = {
-    weight: number,
-    reps: number,
+    weight: string,
+    reps: string,
     index: number,
     handleRowDelete: func,
 };

@@ -3,7 +3,7 @@ import ControlButton from "../../../components/ui/ControlButton";
 import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import ExerciseTableInput from "./ExerciseTableInput";
-import { func, number } from "prop-types";
+import { func, number, string } from "prop-types";
 
 /**
  * Exercise Table Edit Row component
@@ -12,8 +12,8 @@ import { func, number } from "prop-types";
  * when the user clicks on the rows edit button.
  * The user can edit the current rows data and commit it to the current
  * exercise session. 
- * @param {number} weight: The current weight stored in the row.
- * @param {number} reps: The current reps stored in the row.
+ * @param {string} weight: The current weight stored in the row.
+ * @param {string} reps: The current reps stored in the row.
  * @param {number} index: The index of the row in the table.
  * @param {function} setIsEditMode: State setter function to set the edit mode
  * of the current row.
@@ -100,8 +100,8 @@ const ExerciseTableEditRow = ({ weight, reps, index, setIsEditMode }) => {
 };
 
 ExerciseTableEditRow.propTypes = {
-    weight: number,
-    reps: number,
+    weight: string,
+    reps: string,
     index: number,
     setIsEditMode: func,
 };
