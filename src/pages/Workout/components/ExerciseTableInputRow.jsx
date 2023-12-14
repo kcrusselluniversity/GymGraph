@@ -2,6 +2,7 @@ import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
 import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import ExerciseTableInput from "./ExerciseTableInput";
 
 /**
  * Exercise Table Input Row component
@@ -78,34 +79,22 @@ const ExerciseTableInputRow = () => {
     return (
         <TableRow>
             <TableCell align="center">
-                <input
-                    className={`exerciseTableInput ${
-                        invalidWeightInput ? "invalidInputStyle" : ""
-                    }`}
-                    type="number"
+                <ExerciseTableInput
+                    input={weightInput}
+                    setInput={setWeightInput}
+                    invalidInput={invalidWeightInput}
+                    setInvalidInput={setInvalidWeightInput}
+                    handleInputChange={handleInputChange}
                     placeholder="kg"
-                    name="weight"
-                    value={weightInput}
-                    onChange={(e) =>
-                        handleInputChange(
-                            e,
-                            setInvalidWeightInput,
-                            setWeightInput
-                        )
-                    }
                 />
             </TableCell>
             <TableCell align="center">
-                <input
-                    className={`exerciseTableInput ${
-                        invalidRepsInput && "invalidInputStyle"
-                    }`}
-                    type="number"
-                    name="reps"
-                    value={repsInput}
-                    onChange={(e) =>
-                        handleInputChange(e, setInvalidRepsInput, setRepsInput)
-                    }
+                <ExerciseTableInput
+                    input={repsInput}
+                    setInput={setRepsInput}
+                    invalidInput={invalidRepsInput}
+                    setInvalidInput={setInvalidRepsInput}
+                    handleInputChange={handleInputChange}
                 />
             </TableCell>
             <TableCell align="right">
