@@ -48,10 +48,12 @@ const ExerciseSessionTable = () => {
                 key={index}
                 weight={set.weight}
                 reps={set.reps}
+                index={index}
                 handleRowDelete={() => handleRowDelete(index)}
             />
         ));
     }
+
     return (
         <TableContainer component={Paper}>
             <Table className="exerciseSessionTable">
