@@ -16,9 +16,14 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
  */
 const ExerciseSession = () => {
     const [isRestTimerOpen, setIsRestTimerOpen] = useState(false);
-    const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
-
-    const { sessionExercises } = useContext(exerciseModalContext);
+    const {
+        sessionExercises,
+        setExerciseAdded,
+        isExerciseModalOpen,
+        setIsExerciseModalOpen,
+        setExerciseModalState,
+        setSelectedExerciseInfo,
+    } = useContext(exerciseModalContext);
 
     const exerciseItems = Object.keys(sessionExercises).map((exerciseUid) => {
         return (
@@ -26,16 +31,20 @@ const ExerciseSession = () => {
                 key={exerciseUid}
                 sets={sessionExercises[exerciseUid].sets}
                 exerciseObject={sessionExercises[exerciseUid].exerciseObject}
-                setIsExerciseModalOpen={setIsExerciseModalOpen}
             />
         );
     });
 
+    const handleAddExerciseBtnClick = () => {
+        setExerciseModalState("default");
+        setSelectedExerciseInfo(null),
+        setExerciseAdded(null);
+        setIsExerciseModalOpen(true);
+    };
+
     return (
         <div className="exerciseSession">
-            <AddExerciseButton
-                handleClick={() => setIsExerciseModalOpen(true)}
-            />
+            <AddExerciseButton handleClick={handleAddExerciseBtnClick} />
             {exerciseItems}
             <RestTimerButton
                 handleClick={() => setIsRestTimerOpen(!isRestTimerOpen)}
