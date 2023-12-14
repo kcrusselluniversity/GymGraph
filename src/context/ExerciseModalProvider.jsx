@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { exerciseModalContext } from "./exerciseModalContext";
 import { node } from "prop-types";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { TEST_EXERCISE_LIST } from "../data/constants";
 
 /**
- * Context Provider to share the related state of the exercise modal component
+ * Context Provider to share the related state of the exercise modal component.
  *
- * @param {object} children: The component that is being wrapped
- * @returns A Provider for the exercise modal context
+ * @param {object} children: The component that is being wrapped.
+ * @returns A Provider for the exercise modal context.
  */
 const ExerciseModalProvider = ({ children }) => {
     // Top level exercise modal state
     const [exerciseModalState, setExerciseModalState] = useState("default");
+    const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
     const [workoutActive, setWorkout, removeWorkout] = useLocalStorage(
         "isWorkoutActive",
         false
@@ -21,7 +23,7 @@ const ExerciseModalProvider = ({ children }) => {
         null
     );
     const [sessionExercises, setSessionExercises, removeExercises] =
-        useLocalStorage("sessionExercises", []);
+        useLocalStorage("sessionExercises", TEST_EXERCISE_LIST);
 
     // Search bar state
     const [searchInput, setSearchInput] = useState("");
@@ -30,12 +32,7 @@ const ExerciseModalProvider = ({ children }) => {
     // of the modal
     const [selectedExerciseInfo, setSelectedExerciseInfo] = useState(null);
     const [exerciseAdded, setExerciseAdded] = useState(null);
-
-    // State for the added exercises sets and reps input
-    const [weightInput, setWeightInput] = useState("");
-    const [repsInput, setRepsInput] = useState("");
-    const [invalidWeightInput, setInvalidWeightInput] = useState(false);
-    const [invalidRepsInput, setInvalidRepsInput] = useState(false);
+    const [isExerciseItemSelected, setIsExerciseItemSelected] = useState(false);
 
     useEffect(() => {
         if (searchInput != "") setExerciseModalState("user_search");
@@ -59,14 +56,10 @@ const ExerciseModalProvider = ({ children }) => {
         setSelectedExerciseInfo,
         exerciseAdded,
         setExerciseAdded,
-        weightInput,
-        setWeightInput,
-        repsInput,
-        setRepsInput,
-        invalidWeightInput,
-        setInvalidWeightInput,
-        invalidRepsInput,
-        setInvalidRepsInput,
+        isExerciseItemSelected,
+        setIsExerciseItemSelected,
+        isExerciseModalOpen,
+        setIsExerciseModalOpen,
     };
     return (
         <exerciseModalContext.Provider value={sharedState}>

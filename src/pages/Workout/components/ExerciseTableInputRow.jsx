@@ -1,6 +1,6 @@
 import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 
 /**
@@ -11,17 +11,11 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
  * current exercise.
  */
 const ExerciseTableInputRow = () => {
-    // Destructure modal context to get the required state to control the input
-    const {
-        weightInput,
-        setWeightInput,
-        repsInput,
-        setRepsInput,
-        invalidWeightInput,
-        setInvalidWeightInput,
-        invalidRepsInput,
-        setInvalidRepsInput,
-    } = useContext(exerciseModalContext);
+    // State for the exercises sets and reps input
+    const [weightInput, setWeightInput] = useState("");
+    const [repsInput, setRepsInput] = useState("");
+    const [invalidWeightInput, setInvalidWeightInput] = useState(false);
+    const [invalidRepsInput, setInvalidRepsInput] = useState(false);
 
     // Destructure modal context for the required state to update the session
     // exercises state
