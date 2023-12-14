@@ -11,7 +11,7 @@ import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
 import { errorMessage } from "../../../utils/getExerciseByUid";
 import BackButton from "../../../components/ui/BackButton";
-import { bool, func, string, PropTypes } from "prop-types";
+import { bool, func, string } from "prop-types";
 
 /**
  * Exercise Details component
@@ -36,6 +36,7 @@ const ExerciseDetails = () => {
         exerciseAdded,
         setExerciseAdded,
         setExerciseModalState,
+        setSelectedExerciseInfo,
     } = useContext(exerciseModalContext);
 
     const handleBackArrowClick = () => {
@@ -48,6 +49,7 @@ const ExerciseDetails = () => {
             const newModalState =
                 searchInput === "" ? "default" : "user_search";
             setExerciseModalState(newModalState);
+            setSelectedExerciseInfo(null);
         }
     };
 
@@ -82,7 +84,11 @@ const ExerciseDetails = () => {
     return (
         <div className="exerciseDetails">
             <BackButton handleBackArrowClick={handleBackArrowClick} />
-            <ExerciseHeader handleAddExerciseClick={handleAddExerciseClick} />
+            {!exerciseAdded && (
+                <ExerciseHeader
+                    handleAddExerciseClick={handleAddExerciseClick}
+                />
+            )}
             <div className="exerciseDetails__body">
                 <h2 style={{ textAlign: "center" }}>{name}</h2>
                 <h4>{muscleGroup}</h4>
@@ -118,11 +124,6 @@ const ExerciseHeader = ({ handleAddExerciseClick }) => {
 };
 
 ExerciseHeader.propTypes = {
-    exerciseAdded: PropTypes.shape({
-        uid: string,
-        muscleGroup: string,
-        exercise: string,
-    }),
     handleAddExerciseClick: func,
 };
 
