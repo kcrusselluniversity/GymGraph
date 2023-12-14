@@ -26,6 +26,7 @@ const ExerciseSession = () => {
                 key={exerciseUid}
                 sets={sessionExercises[exerciseUid].sets}
                 exerciseObject={sessionExercises[exerciseUid].exerciseObject}
+                setIsExerciseModalOpen={setIsExerciseModalOpen}
             />
         );
     });
