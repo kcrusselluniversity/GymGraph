@@ -23,6 +23,7 @@ const ExerciseSession = () => {
         setIsExerciseModalOpen,
         setExerciseModalState,
         setSelectedExerciseInfo,
+        setSearchInput,
     } = useContext(exerciseModalContext);
 
     const exerciseItems = Object.keys(sessionExercises).map((exerciseUid) => {
@@ -37,9 +38,9 @@ const ExerciseSession = () => {
 
     const handleAddExerciseBtnClick = () => {
         setExerciseModalState("default");
-        setSelectedExerciseInfo(null),
-        setExerciseAdded(null);
+        setSelectedExerciseInfo(null), setExerciseAdded(null);
         setIsExerciseModalOpen(true);
+        setSearchInput("");
     };
 
     return (
