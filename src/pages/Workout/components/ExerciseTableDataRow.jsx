@@ -1,6 +1,8 @@
 import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
 import { func, number } from "prop-types";
+import { useState } from "react";
+import ExerciseTableEditRow from "./ExerciseTableEditRow";
 
 /**
  * ExerciseTableDataRow component
@@ -12,7 +14,13 @@ import { func, number } from "prop-types";
  * @param {number} reps: The number of repetitions of the exercise completed.
  * @param {function} handleRowDelete: Function to handle the removal of a row
  */
-const ExerciseTableDataRow = ({ weight, reps, handleRowDelete }) => {
+const ExerciseTableDataRow = ({ weight, reps, index, handleRowDelete }) => {
+    const [isEditMode, setIsEditMode] = useState(false);
+
+    if (isEditMode) {
+        return <ExerciseTableEditRow weight={weight} reps={reps} index={index} setIsEditMode={setIsEditMode}/>
+    }
+
     return (
         <TableRow>
             <TableCell size="small" align="center">
@@ -31,7 +39,7 @@ const ExerciseTableDataRow = ({ weight, reps, handleRowDelete }) => {
                     label="trash"
                     handleClick={handleRowDelete}
                 />
-                <ControlButton buttonType="edit" label="edit" />
+                <ControlButton buttonType="edit" label="edit" handleClick={() => setIsEditMode(true)}/>
             </TableCell>
         </TableRow>
     );
@@ -40,6 +48,7 @@ const ExerciseTableDataRow = ({ weight, reps, handleRowDelete }) => {
 ExerciseTableDataRow.propTypes = {
     weight: number,
     reps: number,
+    index: number,
     handleRowDelete: func,
 };
 
