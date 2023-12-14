@@ -4,20 +4,6 @@ import { number, string, PropTypes } from "prop-types";
 import { useContext } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 
-const SetData = ({ weight, reps }) => {
-    return (
-        <>
-            <TableCell align="center">{weight} kg</TableCell>
-            <TableCell align="center">{reps}</TableCell>
-        </>
-    );
-};
-
-SetData.propTypes = {
-    weight: number,
-    reps: number,
-};
-
 /**
  * ExerciseItem component
  *
@@ -97,6 +83,20 @@ ExerciseItem.propTypes = {
             reps: number,
         })
     ),
+};
+
+const SetData = ({ weight, reps }) => {
+    return (
+        <>
+            <TableCell align="center">{weight} kg</TableCell>
+            <TableCell align="center">{reps}</TableCell>
+        </>
+    );
+};
+
+SetData.propTypes = {
+    weight: number,
+    reps: number,
 };
 
 export default ExerciseItem;
