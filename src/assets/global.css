@@ -76,6 +76,11 @@ p {
     padding: 4px 0px;
 }
 
+/* Override the MUI default font */
+td, input {
+    font-family: inherit !important;
+}
+
 @media screen and (width <= 750px) {
     h1 {
         font-size: 28px;
