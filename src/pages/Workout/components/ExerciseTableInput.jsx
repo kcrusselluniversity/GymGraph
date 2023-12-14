@@ -2,7 +2,7 @@ import { bool, func, string } from "prop-types";
 
 /**
  * ExerciseTableInput component
- * 
+ *
  * The input html element for the user to input training data.
  */
 const ExerciseTableInput = ({
@@ -11,7 +11,7 @@ const ExerciseTableInput = ({
     invalidInput,
     setInvalidInput,
     handleInputChange,
-    placeholder=""
+    placeholder = "",
 }) => {
     return (
         <input
@@ -22,9 +22,7 @@ const ExerciseTableInput = ({
             placeholder={placeholder}
             name="weight"
             value={input}
-            onChange={(e) =>
-                handleInputChange(e, setInvalidInput, setInput)
-            }
+            onChange={(e) => handleInputChange(e, setInvalidInput, setInput)}
         />
     );
 };
@@ -35,7 +33,7 @@ ExerciseTableInput.propTypes = {
     invalidInput: bool,
     setInvalidInput: func,
     handleInputChange: func,
-    placeholder: string,    
-}
+    placeholder: string,
+};
 
 export default ExerciseTableInput;
