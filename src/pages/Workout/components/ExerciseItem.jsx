@@ -1,6 +1,6 @@
 import { Table } from "@mui/material";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
-import { number, string, PropTypes, func } from "prop-types";
+import { number, string, PropTypes } from "prop-types";
 import { useContext } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 
@@ -28,13 +28,16 @@ SetData.propTypes = {
  * and number of repetitions (reps) of a given set in the session.
  * @param {object} exerciseObject: An object that contains the exercise uid,
  * muscleGroup and exerise (name).
- * @param {function} setIsExerciseModalOpen: The state setter that controls
- * the exercise modal.
  */
-const ExerciseItem = ({ sets, exerciseObject, setIsExerciseModalOpen }) => {
+const ExerciseItem = ({ sets, exerciseObject }) => {
     // Destructure the required exercise modal state
-    const { setExerciseAdded, setExerciseModalState } =
-        useContext(exerciseModalContext);
+    const {
+        setExerciseAdded,
+        setExerciseModalState,
+        setIsExerciseItemSelected,
+        setIsExerciseModalOpen,
+        setSelectedExerciseInfo,
+    } = useContext(exerciseModalContext);
 
     // Return nothing if there are no sets for this exercise
     if (sets == undefined || sets.length == 0) return null;
@@ -43,6 +46,8 @@ const ExerciseItem = ({ sets, exerciseObject, setIsExerciseModalOpen }) => {
     const { exercise: exerciseName } = exerciseObject;
 
     const handleExerciseItemClick = () => {
+        setIsExerciseItemSelected(true);
+        setSelectedExerciseInfo(exerciseObject.uid);
         setExerciseAdded(exerciseObject);
         setExerciseModalState("exercise_session_data");
         setIsExerciseModalOpen(true);
@@ -92,7 +97,6 @@ ExerciseItem.propTypes = {
             reps: number,
         })
     ),
-    setIsExerciseModalOpen: func,
 };
 
 export default ExerciseItem;
