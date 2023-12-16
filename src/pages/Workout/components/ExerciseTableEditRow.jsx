@@ -7,11 +7,11 @@ import { func, number, string } from "prop-types";
 
 /**
  * Exercise Table Edit Row component
- * 
- * This component renders in place of a Exercise Table Row Data component 
+ *
+ * This component renders in place of a Exercise Table Row Data component
  * when the user clicks on the rows edit button.
  * The user can edit the current rows data and commit it to the current
- * exercise session. 
+ * exercise session.
  * @param {string} weight: The current weight stored in the row.
  * @param {string} reps: The current reps stored in the row.
  * @param {number} index: The index of the row in the table.
@@ -59,7 +59,7 @@ const ExerciseTableEditRow = ({ weight, reps, index, setIsEditMode }) => {
         setSessionExercises({
             ...sessionExercises,
             [currentExerciseUid]: {
-                exerciseObject: exerciseAdded,
+                ...currentExercise,
                 sets: updatedSets,
             },
         });
@@ -69,7 +69,7 @@ const ExerciseTableEditRow = ({ weight, reps, index, setIsEditMode }) => {
     };
 
     return (
-        <TableRow className="exerciseTableInputRow"> 
+        <TableRow className="exerciseTableInputRow">
             <TableCell align="center">
                 <ExerciseTableInput
                     input={weightInput}
