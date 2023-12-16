@@ -27,23 +27,33 @@ const ExerciseSessionTable = () => {
         // Update this exercises sets
         const currentExercise = sessionExercises[addedExerciseUid];
         const currentSets = currentExercise.sets;
-        const updatedSets = currentSets.filter((element, element_index) => element_index != deleted_element_index )
+        const updatedSets = currentSets.filter(
+            (_, element_index) => element_index != deleted_element_index
+        );
 
-        // Override the current exercise in the session exercises object
-        // given the updated exercise            
-        setSessionExercises({
-            ...sessionExercises,
-            [addedExerciseUid]: {
-                exerciseObject: exerciseAdded,
-                sets: updatedSets
-            }
-        })
-    }
-    
+        // Remove exercise from session if no sets left
+        if (updatedSets.length === 0) {
+            const updatedSessionExercises = { ...sessionExercises };
+            delete updatedSessionExercises[addedExerciseUid];
+            setSessionExercises({ ...updatedSessionExercises });
+            return;
+        } else {
+            // Override the current exercise in the session exercises object
+            // given the updated exercise
+            setSessionExercises({
+                ...sessionExercises,
+                [addedExerciseUid]: {
+                    ...currentExercise,
+                    sets: updatedSets,
+                },
+            });
+        }
+    };
+
     if (isSetsAlreadyAddedToSession) {
         // Generate the rows of this exercise data
         const sets = sessionExercises[addedExerciseUid].sets;
-        
+
         currentSessionSets = sets.map((set, index) => (
             <ExerciseTableDataRow
                 key={index}

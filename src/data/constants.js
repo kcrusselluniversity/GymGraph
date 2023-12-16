@@ -179,6 +179,7 @@ export const TEST_EXERCISE_3 = {
 export const TEST_EXERCISE_LIST = {
     23001301: {
         exerciseObject: TEST_EXERCISE,
+        startTime: new Date(2023, 11, 1, 10, 0, 0),
         sets: [
             { weight: 20, reps: 10 },
             { weight: 20, reps: 8 },
@@ -187,6 +188,7 @@ export const TEST_EXERCISE_LIST = {
     },
     "05481301": {
         exerciseObject: TEST_EXERCISE_2,
+        startTime: new Date(2023, 11, 1, 10, 10, 0),
         sets: [
             { weight: 20, reps: 10 },
             { weight: 20, reps: 8 },
@@ -195,6 +197,7 @@ export const TEST_EXERCISE_LIST = {
     },
     14311301: {
         exerciseObject: TEST_EXERCISE_3,
+        startTime: new Date(2023, 11, 1, 10, 20, 0),
         sets: [
             { weight: 20, reps: 10 },
             { weight: 20, reps: 8 },

@@ -40,9 +40,6 @@ const ExerciseTableInputRow = () => {
         if (invalidWeightInput || invalidRepsInput) return;
 
         /* Add exercise row to session data */
-        // Create a variable to hold the updated sets array
-        let updatedSets;
-
         // Check if exercise has already been added to session
         const isExerciseAlreadyInSession =
             Object.keys(sessionExercises).includes(currentExerciseUid);
@@ -53,23 +50,33 @@ const ExerciseTableInputRow = () => {
             const currentSets = currentExercise.sets;
 
             // Update the sets data with the new set
-            updatedSets = [
+            const updatedSets = [
                 ...currentSets,
                 { weight: +weightInput, reps: +repsInput },
             ];
-        } else {
-            // Create a new sets array to add to the session exercise object
-            updatedSets = [{ weight: +weightInput, reps: +repsInput }];
-        }
 
-        // Update the session exercises object
-        setSessionExercises({
-            ...sessionExercises,
-            [currentExerciseUid]: {
-                exerciseObject: exerciseAdded,
-                sets: updatedSets,
-            },
-        });
+            // Update the sets session exercises object
+            setSessionExercises({
+                ...sessionExercises,
+                [currentExerciseUid]: {
+                    ...currentExercise,
+                    sets: updatedSets,
+                },
+            });
+        } else {
+            // Create a new sets array
+            const firstSet = [{ weight: +weightInput, reps: +repsInput }];
+
+            // Add the new exercise to the session exercises object
+            setSessionExercises({
+                ...sessionExercises,
+                [currentExerciseUid]: {
+                    exerciseObject: exerciseAdded,
+                    startTime: new Date(),
+                    sets: firstSet,
+                },
+            });
+        }
 
         // Clear the input fields
         setRepsInput("");
