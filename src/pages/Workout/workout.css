@@ -272,7 +272,8 @@
     }
 
     .exerciseDetails__body .gifContainer,
-    .exerciseDetails__body .gifContainer > img {
+    .exerciseDetails__body .gifContainer > img,
+    .exerciseDetails__skeleton {
         width: var(--gif-size-small) !important;
         height: var(--gif-size-small) !important;
     }
