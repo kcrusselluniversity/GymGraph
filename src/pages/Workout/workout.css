@@ -221,9 +221,10 @@
 
 /* SECTION: Media Queries */
 
-@media screen and (width <= 500px) {
+@media screen and (width <= 500px) {    
     .workoutPage {
-        margin: 0.75rem 0;
+        padding: 1rem 10% 0px;
+        height: calc(100dvh - var(--navbar-high-small));
     }
     
     .workoutPage * {
@@ -232,11 +233,18 @@
     
     .exerciseSession {
         min-width: 275px;
+        overflow: scroll;
+        padding: 1rem 10% 0px;
+
+        /* Hide scroll bar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     
-    .workoutPage {
-        padding: 0 10%;
-    }
+
 
     .exerciseSessionData {
         width: 240px;

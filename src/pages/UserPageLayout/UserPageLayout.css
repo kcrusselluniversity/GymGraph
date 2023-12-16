@@ -35,6 +35,5 @@
     .userPageContainer {
         padding: 0px;
         display: block;
-        height: calc(100dvh - var(--navbar-high-small));
     }
 }
