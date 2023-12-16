@@ -6,6 +6,7 @@ import ExerciseItem from "./ExerciseItem";
 import { useContext, useState } from "react";
 import ExerciseModal from "./ExerciseModal";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import sortExerciseByStartTime from "../utils/sortExerciseByStartTime";
 
 /**
  * Exercise Session component
@@ -26,12 +27,18 @@ const ExerciseSession = () => {
         setSearchInput,
     } = useContext(exerciseModalContext);
 
-    const exerciseItems = Object.keys(sessionExercises).map((exerciseUid) => {
+    // Sort session exercises chronologically
+    const sortedSessionExercises = Object.values(sessionExercises).sort(
+        sortExerciseByStartTime
+    );
+
+    // Map the session exercises to JSX ExerciseItem components
+    const exerciseItems = sortedSessionExercises.map((exerciseItem) => {
         return (
             <ExerciseItem
-                key={exerciseUid}
-                sets={sessionExercises[exerciseUid].sets}
-                exerciseObject={sessionExercises[exerciseUid].exerciseObject}
+                key={exerciseItem.exerciseObject.uid}
+                sets={exerciseItem.sets}
+                exerciseObject={exerciseItem.exerciseObject}
             />
         );
     });
