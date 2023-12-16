@@ -173,6 +173,18 @@ export const TEST_EXERCISE_3 = {
     exercise: "Lever Assisted Standing Chin Up",
 };
 
+export const TEST_EXERCISE_4 = {
+    uid: "02381301",
+    muscleGroup: "back",
+    exercise: "Cable Straight Arm Pulldown",
+};
+
+export const TEST_EXERCISE_5 = {
+    uid: "06701301",
+    muscleGroup: "back",
+    exercise: "Rear Pull up",
+};
+
 // The Exercise UID is the key for the session exercises list, and each keys
 // value is an object with the exercise object and a sets array as the
 // properties.
@@ -198,6 +210,24 @@ export const TEST_EXERCISE_LIST = {
     14311301: {
         exerciseObject: TEST_EXERCISE_3,
         startTime: new Date(2023, 11, 1, 10, 20, 0),
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    "02381301": {
+        exerciseObject: TEST_EXERCISE_4,
+        startTime: new Date(2023, 11, 1, 10, 30, 0),
+        sets: [
+            { weight: 20, reps: 10 },
+            { weight: 20, reps: 8 },
+            { weight: 20, reps: 6 },
+        ],
+    },
+    "06701301": {
+        exerciseObject: TEST_EXERCISE_5,
+        startTime: new Date(2023, 11, 1, 10, 40, 0),
         sets: [
             { weight: 20, reps: 10 },
             { weight: 20, reps: 8 },
