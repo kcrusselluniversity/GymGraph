@@ -26,13 +26,14 @@ class SessionExercises {
         return this.clone();
     }
 
-    // removeSetFromExercise(exerciseUid, setIndex) {
-        
-    // }
+    removeSetFromExercise(exerciseUid, setIndex) {
+        const exercise = this._exercises[exerciseUid];
+        exercise.removeSet(setIndex);
 
-    // updateSetFromExercise(exerciseUid, setIndex, updatedSet) {
+        return this.clone();
+    }
 
-    // }
+    // TODO: updateSetFromExercise(exerciseUid, setIndex, updatedSet) {}
 
     clone() {
         // Create a copy of the current session exercise object
@@ -44,7 +45,7 @@ class SessionExercises {
 }
 
 class Exercise {
-    constructor(name, uid, muscleGroup) {
+    constructor(uid, name, muscleGroup) {
         this.uid = uid;
         this.name = name;
         this.muscleGroup = muscleGroup;
@@ -58,6 +59,10 @@ class Exercise {
         }
 
         this.sets.push(set);
+    }
+
+    removeSet(index) {
+        this.sets.splice(index, 1);
     }
 }
 
