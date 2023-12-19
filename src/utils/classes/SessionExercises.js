@@ -12,28 +12,77 @@ class SessionExercises {
             throw new Error(INVALID_EXERCISE_MESSAGE);
         }
 
+        // Make a copy of the current object
+        const updatedSessionExercises = this.clone();
+
         // Add the exercise to the object
         const exerciseUid = exercise.uid;
-        this._exercises[exerciseUid] = exercise;
+        updatedSessionExercises._exercises[exerciseUid] = exercise;
 
-        return this.clone();
+        return updatedSessionExercises;
     }
 
     addSetToExercise(exerciseUid, set) {
-        const exercise = this._exercises[exerciseUid];
-        exercise.addSet(set);
+        // Make a copy of the current object
+        const updatedSessionExercises = this.clone();
 
+        const exercise = updatedSessionExercises._exercises[exerciseUid];
+        if (exercise === null) {
+            throw new Error("Invalid exerciseUid provided to method");
+        }
+        
+        if (!(set instanceof Set)) {
+            throw new Error("Invalid set provided to method");
+        }
+
+        exercise.addSet(set);
         return this.clone();
     }
 
     removeSetFromExercise(exerciseUid, setIndex) {
-        const exercise = this._exercises[exerciseUid];
+        // Make a copy of the current object
+        const updatedSessionExercises = this.clone();
+
+        const exercise = updatedSessionExercises._exercises[exerciseUid];
+
+        if (exercise === undefined) {
+            throw new Error("Invalid exerciseUid provided to method");
+        }
+
         exercise.removeSet(setIndex);
 
         return this.clone();
     }
 
-    // TODO: updateSetFromExercise(exerciseUid, setIndex, updatedSet) {}
+    updateSetFromExercise(exerciseUid, setIndex, updatedSet) {
+        // Make a copy of the current object
+        const updatedSessionExercises = this.clone();
+
+        const exercise = updatedSessionExercises.getExercises()[exerciseUid];
+
+        // Validate parameter values
+        if (exercise === undefined) {
+            throw new Error("Invalid exerciseUid provided to method");
+        }
+
+        if (setIndex < 0 || setIndex >= exercise.sets.length) {
+            throw new Error("Invalid setIndex provided to method");
+        }
+
+        if (!(updatedSet instanceof Set)) {
+            throw new Error("Invalid updatedSet value provided to method");
+        }
+
+        // Update set
+        updatedSessionExercises._exercises[exerciseUid].sets[setIndex] =
+            updatedSet;
+
+        return updatedSessionExercises;
+    }
+
+    getExercises() {
+        return this._exercises;
+    }
 
     clone() {
         // Create a copy of the current session exercise object
@@ -62,6 +111,10 @@ class Exercise {
     }
 
     removeSet(index) {
+        if (index < 0 || index >= this.sets.length) {
+            throw new Error("Invalid index provided");
+        }
+
         this.sets.splice(index, 1);
     }
 }
