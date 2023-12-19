@@ -196,7 +196,6 @@ describe("SessionExercises class tests", () => {
 
         it("throws an error if provided an invalid exerciseUid", () => {
             // Set up
-            let updatedSessionExercises = null;
             const sessionExercises = new SessionExercises();
             const invalidExerciseUid = "1234";
             const set = new Set(20, 20);
