@@ -4,6 +4,7 @@ import { exerciseModalContext } from "../../context/exerciseModalContext";
 import { useContext } from "react";
 import { v4 as uuid } from "uuid";
 import "./workout.css";
+import { SessionExercises } from "../../utils/classes/SessionExercises";
 
 /**
  * Workout page component
@@ -14,12 +15,14 @@ const Workout = () => {
     const {
         workoutActive,
         setWorkout,
-        setSessionId
+        setSessionId,
+        setSessionExercises
     } = useContext(exerciseModalContext);
 
     const handleClick = () => {
         setWorkout(true);
         setSessionId(uuid());
+        setSessionExercises(new SessionExercises())
     };
 
     return (
