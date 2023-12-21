@@ -17,9 +17,53 @@ const INVALID_EXERCISE_MESSAGE =
  * is used as State in the exercise modal context and as such a new object
  * must be passed to the state setter for it to correctly update the state.
  */
+
 class SessionExercises {
-    constructor() {
-        this._exercises = {};
+    constructor(parsedLocalStorage) {
+        if (parsedLocalStorage === undefined) {
+            this._exercises = {};
+            return;
+        }
+
+        // Rehydrate the plain object received by the constructor
+        // We must do this because the JSON stored in local storage representing
+        // the session exercises object does not store the class methods, nor
+        // does it store the data as their respective class objects such as Set
+        // and Exercise.
+        // Thus we must take the plain JS object, then convert it into a new
+        // object with the methods rehydrated.
+        const parsedLocalStorageRehydrated = {};
+
+        // We want to loop over each key (which is an exercise) then convert
+        // that into an exercise object and add it to the rehydrated local storage.
+        // To do so we must take the sets property and rehydrate them as well.
+        Object.keys(parsedLocalStorage._exercises).forEach((exerciseUid) => {
+            // Get the exercise associated with the uid
+            const plainExerciseObject =
+                parsedLocalStorage._exercises[exerciseUid];
+
+            const { uid, name, muscleGroup, startTime, sets } =
+                plainExerciseObject;
+
+            // Convert the sets array into an array of Set objects
+            const rehydratedSets = sets.map(
+                (set) => new Set(set.weight, set.reps)
+            );
+
+            // Create the exercise object
+            const rehydratedExercise = new Exercise(
+                uid,
+                name,
+                muscleGroup,
+                startTime,
+                rehydratedSets
+            );
+
+            // Add exercise to rehydrated local storage object
+            parsedLocalStorageRehydrated[uid] = rehydratedExercise;
+        });
+
+        this._exercises = parsedLocalStorageRehydrated;
     }
 
     addExercise(exercise) {
@@ -51,7 +95,7 @@ class SessionExercises {
         }
 
         exercise.addSet(set);
-        return this.clone();
+        return updatedSessionExercises;
     }
 
     removeSetFromExercise(exerciseUid, setIndex) {
@@ -66,7 +110,12 @@ class SessionExercises {
 
         exercise.removeSet(setIndex);
 
-        return this.clone();
+        if (exercise.sets.length === 0) {
+            // Remove exercise from session
+            delete updatedSessionExercises._exercises[exerciseUid];
+        }
+
+        return updatedSessionExercises;
     }
 
     updateSetFromExercise(exerciseUid, setIndex, updatedSet) {
@@ -117,12 +166,12 @@ class SessionExercises {
  * an array to contain the sets performed of this exercise in this session.
  */
 class Exercise {
-    constructor(uid, name, muscleGroup) {
+    constructor(uid, name, muscleGroup, startTime, sets) {
         this.uid = uid;
         this.name = name;
         this.muscleGroup = muscleGroup;
-        this.startTime = new Date();
-        this.sets = [];
+        this.startTime = startTime || new Date();
+        this.sets = sets || [];
     }
 
     addSet(set) {

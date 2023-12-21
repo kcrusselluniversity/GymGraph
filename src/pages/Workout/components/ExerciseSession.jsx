@@ -26,26 +26,27 @@ const ExerciseSession = () => {
         setSelectedExerciseInfo,
         setSearchInput,
     } = useContext(exerciseModalContext);
-
+    
     // Sort session exercises chronologically
-    const sortedSessionExercises = Object.values(sessionExercises).sort(
+    const sortedSessionExercises = Object.values(sessionExercises.getExercises()).sort(
         sortExerciseByStartTime
     );
 
     // Map the session exercises to JSX ExerciseItem components
-    const exerciseItems = sortedSessionExercises.map((exerciseItem) => {
+    const exerciseItems = sortedSessionExercises.map((exerciseObject) => {
         return (
             <ExerciseItem
-                key={exerciseItem.exerciseObject.uid}
-                sets={exerciseItem.sets}
-                exerciseObject={exerciseItem.exerciseObject}
+                key={exerciseObject.uid}
+                sets={exerciseObject.sets}
+                exerciseObject={exerciseObject}
             />
         );
     });
 
     const handleAddExerciseBtnClick = () => {
         setExerciseModalState("default");
-        setSelectedExerciseInfo(null), setExerciseAdded(null);
+        setSelectedExerciseInfo(null);
+        setExerciseAdded(null);
         setIsExerciseModalOpen(true);
         setSearchInput("");
     };

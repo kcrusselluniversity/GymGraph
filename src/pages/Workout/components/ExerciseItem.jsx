@@ -3,6 +3,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { number, string, PropTypes } from "prop-types";
 import { useContext } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import getExerciseByUid from "../../../utils/getExerciseByUid";
 
 /**
  * ExerciseItem component
@@ -29,12 +30,12 @@ const ExerciseItem = ({ sets, exerciseObject }) => {
     if (sets == undefined || sets.length == 0) return null;
 
     const setCount = sets.length;
-    const { exercise: exerciseName } = exerciseObject;
+    const { name: exerciseName } = exerciseObject;
 
     const handleExerciseItemClick = () => {
         setIsExerciseItemSelected(true);
         setSelectedExerciseInfo(exerciseObject.uid);
-        setExerciseAdded(exerciseObject);
+        setExerciseAdded(getExerciseByUid(exerciseObject.uid));
         setExerciseModalState("exercise_session_data");
         setIsExerciseModalOpen(true);
     };
@@ -75,7 +76,7 @@ ExerciseItem.propTypes = {
     exerciseObject: PropTypes.shape({
         uid: string,
         muscleGroup: string,
-        exercise: string,
+        name: string,
     }),
     sets: PropTypes.arrayOf(
         PropTypes.shape({

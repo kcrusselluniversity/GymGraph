@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import ExerciseTableInput from "./ExerciseTableInput";
 import { func, number, string } from "prop-types";
+import { Set } from "../../../utils/classes/SessionExercises";
 
 /**
  * Exercise Table Edit Row component
@@ -46,23 +47,11 @@ const ExerciseTableEditRow = ({ weight, reps, index, setIsEditMode }) => {
         // Check if the input fields are invalid
         if (invalidWeightInput || invalidRepsInput) return;
 
-        /* Update exercise set data */
-        // Get the current exercises set data
-        const currentExercise = sessionExercises[currentExerciseUid];
-        const currentSets = currentExercise.sets;
+        // Create Set object for new set
+        const updatedSet = new Set(+weightInput, +repsInput)
 
-        // Create a new array to edit the current sets array
-        const updatedSets = [...currentSets];
-        updatedSets[index] = { weight: +weightInput, reps: +repsInput };
-
-        // Update the session exercises object
-        setSessionExercises({
-            ...sessionExercises,
-            [currentExerciseUid]: {
-                ...currentExercise,
-                sets: updatedSets,
-            },
-        });
+        // Update session exercises exercise set data
+        setSessionExercises(sessionExercises.updateSetFromExercise(currentExerciseUid, index, updatedSet))
 
         // Finish the edit mode
         setIsEditMode(false);

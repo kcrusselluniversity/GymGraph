@@ -3,6 +3,7 @@ import ControlButton from "../../../components/ui/ControlButton";
 import { useContext, useState } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import ExerciseTableInput from "./ExerciseTableInput";
+import { Exercise, Set } from "../../../utils/classes/SessionExercises";
 
 /**
  * Exercise Table Input Row component
@@ -24,6 +25,8 @@ const ExerciseTableInputRow = () => {
         useContext(exerciseModalContext);
 
     const currentExerciseUid = exerciseAdded.uid;
+    const currentExerciseName = exerciseAdded.exercise;
+    const currentExerciseMuscleGroup = exerciseAdded.muscleGroup;
 
     const handleAddBtnClick = () => {
         // Check if any input fields have not had values entered
@@ -39,43 +42,34 @@ const ExerciseTableInputRow = () => {
         // Check if the input fields are invalid
         if (invalidWeightInput || invalidRepsInput) return;
 
-        /* Add exercise row to session data */
+        /* Add exercise row (ie the new set) to the current session data */
+        const newSet = new Set(+weightInput, +repsInput);
+
         // Check if exercise has already been added to session
-        const isExerciseAlreadyInSession =
-            Object.keys(sessionExercises).includes(currentExerciseUid);
+        const isExerciseAlreadyInSession = Object.keys(
+            sessionExercises.getExercises()
+        ).includes(currentExerciseUid);
 
         if (isExerciseAlreadyInSession) {
-            // Get the current exercises set data
-            const currentExercise = sessionExercises[currentExerciseUid];
-            const currentSets = currentExercise.sets;
-
-            // Update the sets data with the new set
-            const updatedSets = [
-                ...currentSets,
-                { weight: +weightInput, reps: +repsInput },
-            ];
-
-            // Update the sets session exercises object
-            setSessionExercises({
-                ...sessionExercises,
-                [currentExerciseUid]: {
-                    ...currentExercise,
-                    sets: updatedSets,
-                },
-            });
+            setSessionExercises(
+                sessionExercises.addSetToExercise(currentExerciseUid, newSet)
+            );
         } else {
-            // Create a new sets array
-            const firstSet = [{ weight: +weightInput, reps: +repsInput }];
-
             // Add the new exercise to the session exercises object
-            setSessionExercises({
-                ...sessionExercises,
-                [currentExerciseUid]: {
-                    exerciseObject: exerciseAdded,
-                    startTime: new Date(),
-                    sets: firstSet,
-                },
-            });
+            const newExercise = new Exercise(
+                currentExerciseUid,
+                currentExerciseName,
+                currentExerciseMuscleGroup
+            );
+            let updatedSessionExercises =
+                sessionExercises.addExercise(newExercise);
+
+            setSessionExercises(
+                updatedSessionExercises.addSetToExercise(
+                    currentExerciseUid,
+                    newSet
+                )
+            );
         }
 
         // Clear the input fields

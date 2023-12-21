@@ -14,45 +14,41 @@ import { exerciseModalContext } from "../../../context/exerciseModalContext";
  */
 const ExerciseSessionTable = () => {
     // Destructure the exercise modal context for the required state
-    const { sessionExercises, setSessionExercises, exerciseAdded } =
-        useContext(exerciseModalContext);
+    const {
+        sessionExercises,
+        setSessionExercises,
+        exerciseAdded,
+        setIsExerciseModalOpen,
+    } = useContext(exerciseModalContext);
 
     const { uid: addedExerciseUid } = exerciseAdded;
 
     let currentSessionSets = null;
-    const isSetsAlreadyAddedToSession =
-        Object.keys(sessionExercises).includes(addedExerciseUid);
+    const isSetsAlreadyAddedToSession = Object.keys(
+        sessionExercises.getExercises()
+    ).includes(addedExerciseUid);
 
     const handleRowDelete = (deleted_element_index) => {
-        // Update this exercises sets
-        const currentExercise = sessionExercises[addedExerciseUid];
-        const currentSets = currentExercise.sets;
-        const updatedSets = currentSets.filter(
-            (_, element_index) => element_index != deleted_element_index
+        const updatedSessionExercises = sessionExercises.removeSetFromExercise(
+            addedExerciseUid,
+            deleted_element_index
         );
+        
+        // Check if the exercise has been removed from the session given 
+        // the removal of the set by the user
+        const isExerciseRemovedFromSession = 
+            updatedSessionExercises.getExercises()[addedExerciseUid] === undefined;
 
-        // Remove exercise from session if no sets left
-        if (updatedSets.length === 0) {
-            const updatedSessionExercises = { ...sessionExercises };
-            delete updatedSessionExercises[addedExerciseUid];
-            setSessionExercises({ ...updatedSessionExercises });
-            return;
-        } else {
-            // Override the current exercise in the session exercises object
-            // given the updated exercise
-            setSessionExercises({
-                ...sessionExercises,
-                [addedExerciseUid]: {
-                    ...currentExercise,
-                    sets: updatedSets,
-                },
-            });
-        }
+        // Close modal if no sets remaining for this exercise
+        if (isExerciseRemovedFromSession) setIsExerciseModalOpen(false);
+
+        // Update session exercises object
+        setSessionExercises(updatedSessionExercises);
     };
 
     if (isSetsAlreadyAddedToSession) {
         // Generate the rows of this exercise data
-        const sets = sessionExercises[addedExerciseUid].sets;
+        const sets = sessionExercises.getExercises()[addedExerciseUid].sets;
 
         currentSessionSets = sets.map((set, index) => (
             <ExerciseTableDataRow

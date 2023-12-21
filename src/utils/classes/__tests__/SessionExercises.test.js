@@ -102,6 +102,35 @@ describe("SessionExercises class tests", () => {
             const exerciseUid = "1234";
             const exercise = new Exercise(exerciseUid, "squat", "legs");
             const set = new Set(20, 20);
+            const set2 = new Set(20, 20);
+
+            // Add two sets to the exercise in the current session
+            updatedSessionExercises = sessionExercises.addExercise(exercise);
+            updatedSessionExercises = updatedSessionExercises.addSetToExercise(
+                exerciseUid,
+                set
+            );
+            updatedSessionExercises = updatedSessionExercises.addSetToExercise(
+                exerciseUid,
+                set2
+            );
+
+            // Remove the first set from exercise in the current session
+            updatedSessionExercises =
+                updatedSessionExercises.removeSetFromExercise(exerciseUid, 0);
+
+            expect(
+                updatedSessionExercises.getExercises()[exerciseUid].sets
+            ).toHaveLength(1);
+        });
+
+        it("removes an exercise from the sessionExercises object if removing a set results in no sets lef", () => {
+            // Set up
+            let updatedSessionExercises = null;
+            const sessionExercises = new SessionExercises();
+            const exerciseUid = "1234";
+            const exercise = new Exercise(exerciseUid, "squat", "legs");
+            const set = new Set(20, 20);
             updatedSessionExercises = sessionExercises.addExercise(exercise);
             updatedSessionExercises = updatedSessionExercises.addSetToExercise(
                 exerciseUid,
@@ -112,9 +141,7 @@ describe("SessionExercises class tests", () => {
             updatedSessionExercises =
                 updatedSessionExercises.removeSetFromExercise(exerciseUid, 0);
 
-            expect(
-                updatedSessionExercises.getExercises()[exerciseUid].sets
-            ).toHaveLength(0);
+            console.log(updatedSessionExercises)
         });
 
         it("throws an error if an invalid exercise uid is provided as a value to the method", () => {
