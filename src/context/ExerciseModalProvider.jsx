@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { exerciseModalContext } from "./exerciseModalContext";
 import { node } from "prop-types";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { TEST_EXERCISE_LIST } from "../data/constants";
+import { SessionExercises } from "../utils/classes/SessionExercises";
 
 /**
  * Context Provider to share the related state of the exercise modal component.
@@ -23,7 +23,7 @@ const ExerciseModalProvider = ({ children }) => {
         null
     );
     const [sessionExercises, setSessionExercises, removeExercises] =
-        useLocalStorage("sessionExercises", TEST_EXERCISE_LIST);
+        useLocalStorage("sessionExercises", {}, SessionExercises);
 
     // Search bar state
     const [searchInput, setSearchInput] = useState("");
