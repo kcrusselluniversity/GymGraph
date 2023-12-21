@@ -17,16 +17,35 @@ import { useState, useEffect } from "react";
  * 
  * @param {string} key: The key to store the value in local storage
  * @param {any} initialValue: The initial value to store
+ * @param {object} ClassName: Option parameter to pass to the hook if the 
+ * value stored in local storage is an object created from a class.
  * 
  * @returns {array}: The array given by [value, setValue, removeValue]
  */
-const useLocalStorage = (key, initialValue) => {
+const useLocalStorage = (key, initialValue, ClassName) => {
     const [value, setValue] = useState(() => {
+        // try {
+        //     // Initialise state with stored local storage value
+        //     // (if it already exists)
+        //     const item = window.localStorage.getItem(key);
+        //     return item ? JSON.parse(item) : initialValue;
+        // } catch (err) {
+        //     console.error(err);
+        //     return initialValue;
+        // }
+
         try {
+            const item = window.localStorage.getItem(key);
+            if (item === null) return initialValue;
+
             // Initialise state with stored local storage value
             // (if it already exists)
-            const item = window.localStorage.getItem(key);
-            return item ? JSON.parse(item) : initialValue;
+            const parsedItem = JSON.parse(item);
+            if (ClassName === undefined) {
+                return parsedItem
+            } else {
+                return new ClassName(parsedItem);
+            }
         } catch (err) {
             console.error(err);
             return initialValue;
