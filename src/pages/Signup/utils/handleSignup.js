@@ -40,14 +40,16 @@ export const handleSignup = async (
             startDate: new Date(),
         };
         // Create user
-        await createUserWithEmailAndPassword(
+        const userCredentials = await createUserWithEmailAndPassword(
             auth,
             formData.email,
             formData.password
         );
+        
+        const uid = userCredentials.user.uid;
 
         // Add user information to database
-        addEmailUserToDb(user);
+        addEmailUserToDb(uid, user);
 
         // Navigate user to user dashboard page
         navigate("/user/");
