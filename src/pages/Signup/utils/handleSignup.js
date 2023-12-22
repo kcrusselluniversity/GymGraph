@@ -1,7 +1,7 @@
 import areAllAttributesNull from "../../../utils/areAllAttributesNull";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
-import { addEmailUserToDb } from "../../../utils/firebaseUtils/addEmailUserToDb";
+import { addUserToDb } from "../../../utils/firebaseUtils/addUserToDb";
 
 /**
  * Handle the submission of the SignUpForm form component
@@ -45,11 +45,10 @@ export const handleSignup = async (
             formData.email,
             formData.password
         );
-        
-        const uid = userCredentials.user.uid;
 
+        const uid = userCredentials.user.uid;
         // Add user information to database
-        addEmailUserToDb(uid, user);
+        await addUserToDb(uid, user);
 
         // Navigate user to user dashboard page
         navigate("/user/");

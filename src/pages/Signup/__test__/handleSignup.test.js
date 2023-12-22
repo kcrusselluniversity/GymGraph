@@ -37,8 +37,8 @@ vi.mock("../../../config/firebase", () => {
     return { auth: {} };
 });
 
-vi.mock("../../../utils/firebaseUtils/addEmailUserToDb", () => {
-    return { addEmailUserToDb: vi.fn() };
+vi.mock("../../../utils/firebaseUtils/addUserToDb", () => {
+    return { addUserToDb: vi.fn() };
 });
 
 beforeEach(() => {
@@ -111,6 +111,8 @@ describe("handleSignup function tests", () => {
             ...TEST_USER_OBJECT,
             dob: dayjs(new Date(2000, 1, 1)),
         };
+        
+        createUserWithEmailAndPassword.mockResolvedValue({user: {uid: 123}})
 
         await handleSignup(
             e,
@@ -123,7 +125,7 @@ describe("handleSignup function tests", () => {
 
         expect(navigate).toBeCalledWith("/user/");
     });
-    
+
     it("should set the loading state to true if the user has been successfully created and added to the database", async () => {
         const {
             e,

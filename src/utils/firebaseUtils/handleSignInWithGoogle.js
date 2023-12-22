@@ -1,21 +1,22 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../config/firebase";
-import { addGoogleUserToDb } from "./addGoogleUserToDb";
+import { addUserToDb } from "./addUserToDb";
 
 const handleSignInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        const { email } = user;
+        const { email, uid } = user;
 
         const userObject = {
             firstName: "",
             lastName: "",
+            dob: "",
             email: email,
             startDate: new Date(),
         };
 
-        await addGoogleUserToDb(userObject);
+        await addUserToDb(uid, userObject);
     } catch (err) {
         const errorCode = err?.code;
         console.error(errorCode || err);
