@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import ExerciseModal from "./ExerciseModal";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import sortExerciseByStartTime from "../utils/sortExerciseByStartTime";
+import FinishSessionButton from "./FinishSessionButton";
 
 /**
  * Exercise Session component
@@ -26,11 +27,11 @@ const ExerciseSession = () => {
         setSelectedExerciseInfo,
         setSearchInput,
     } = useContext(exerciseModalContext);
-    
+
     // Sort session exercises chronologically
-    const sortedSessionExercises = Object.values(sessionExercises.getExercises()).sort(
-        sortExerciseByStartTime
-    );
+    const sortedSessionExercises = Object.values(
+        sessionExercises.getExercises()
+    ).sort(sortExerciseByStartTime);
 
     // Map the session exercises to JSX ExerciseItem components
     const exerciseItems = sortedSessionExercises.map((exerciseObject) => {
@@ -58,6 +59,7 @@ const ExerciseSession = () => {
             <RestTimerButton
                 handleClick={() => setIsRestTimerOpen(!isRestTimerOpen)}
             />
+            <FinishSessionButton />
             <Dialog
                 open={isRestTimerOpen}
                 onClose={() => setIsRestTimerOpen(false)}
