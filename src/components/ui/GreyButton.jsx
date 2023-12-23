@@ -6,7 +6,7 @@ const GreyButton = ({ children, handleClick, className }) => {
     return (
         <Button
             onClick={handleClick}
-            className={className}
+            className={`greyButton ${className}`}
             sx={GREY_STYLE_BUTTON}
         >
             {children}
