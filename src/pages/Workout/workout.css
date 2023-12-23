@@ -230,6 +230,10 @@
     .workoutPage * {
         font-size: 16px;
     }
+
+    .exerciseGroupList__item {
+        font-size: 12px;
+    }
     
     .exerciseSession {
         min-width: 275px;
@@ -243,8 +247,6 @@
             display: none;
         }
     }
-    
-
 
     .exerciseSessionData {
         width: 240px;
@@ -252,6 +254,10 @@
 
     .exerciseDetails {
         margin-top: 2rem;
+    }
+
+    .exerciseDetails__body {
+        margin: 2rem;
     }
 
     .exerciseDetails__header > button {
