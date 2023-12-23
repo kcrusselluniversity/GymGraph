@@ -42,7 +42,7 @@ const ExerciseTableInputRow = () => {
         // Check if the input fields are invalid
         if (invalidWeightInput || invalidRepsInput) return;
 
-        /* Add exercise row (ie the new set) to the current session data */
+        // Create a new Set object given the valid input
         const newSet = new Set(+weightInput, +repsInput);
 
         // Check if exercise has already been added to session
