@@ -20,7 +20,12 @@ const INVALID_EXERCISE_MESSAGE =
 
 class SessionExercises {
     constructor(parsedLocalStorage) {
-        if (parsedLocalStorage === undefined) {
+        // Validate object passed from local storage to constructor
+        if (
+            parsedLocalStorage === undefined ||
+            parsedLocalStorage === null ||
+            JSON.stringify(parsedLocalStorage) === "{}"
+        ) {
             this._exercises = {};
             return;
         }
@@ -37,6 +42,7 @@ class SessionExercises {
         // We want to loop over each key (which is an exercise) then convert
         // that into an exercise object and add it to the rehydrated local storage.
         // To do so we must take the sets property and rehydrate them as well.
+
         Object.keys(parsedLocalStorage._exercises).forEach((exerciseUid) => {
             // Get the exercise associated with the uid
             const plainExerciseObject =
