@@ -25,16 +25,17 @@ import { useState, useEffect } from "react";
 const useLocalStorage = (key, initialValue, ClassName) => {
     const [value, setValue] = useState(() => {
         try {
-            const item = window.localStorage.getItem(key);
-            if (item === null) return initialValue;
+            const storedItem = window.localStorage.getItem(key);
+            const item = JSON.parse(storedItem);
+
+            // Return intial value if no value in local storage
+            if (item === undefined || item === null) return initialValue;
 
             // Initialise state with stored local storage value
-            // (if it already exists)
-            const parsedItem = JSON.parse(item);
             if (ClassName === undefined) {
-                return parsedItem;
+                return item;
             } else {
-                return new ClassName(parsedItem);
+                return new ClassName(item);
             }
         } catch (err) {
             console.error(err);
