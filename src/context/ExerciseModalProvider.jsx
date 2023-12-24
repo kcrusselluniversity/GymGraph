@@ -14,15 +14,13 @@ const ExerciseModalProvider = ({ children }) => {
     // Top level exercise modal state
     const [exerciseModalState, setExerciseModalState] = useState("default");
     const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
-    const [workoutActive, setWorkout, removeWorkout] = useLocalStorage(
+    const [workoutActive, setWorkoutActive, removeWorkoutActive] = useLocalStorage(
         "isWorkoutActive",
         false
     );
-    const [sessionId, setSessionId, removeSessionId] = useLocalStorage(
-        "sessionId",
-        null
-    );
-    const [sessionExercises, setSessionExercises, removeExercises] =
+    const [sessionStartTime, setSessionStartTime, removeSessionStartTime] =
+        useLocalStorage("sessionStartTime", null);
+    const [sessionExercises, setSessionExercises, removeSessionExercises] =
         useLocalStorage("sessionExercises", {}, SessionExercises);
 
     // Search bar state
@@ -42,14 +40,14 @@ const ExerciseModalProvider = ({ children }) => {
         exerciseModalState,
         setExerciseModalState,
         workoutActive,
-        setWorkout,
-        removeWorkout,
-        sessionId,
-        setSessionId,
-        removeSessionId,
+        setWorkoutActive,
+        removeWorkoutActive,
+        sessionStartTime,
+        setSessionStartTime,
+        removeSessionStartTime,
         sessionExercises,
         setSessionExercises,
-        removeExercises,
+        removeSessionExercises,
         searchInput,
         setSearchInput,
         selectedExerciseInfo,
