@@ -2,7 +2,6 @@ import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
 import { exerciseModalContext } from "../../context/exerciseModalContext";
 import { useContext } from "react";
-import { v4 as uuid } from "uuid";
 import "./workout.css";
 import { SessionExercises } from "../../utils/classes/SessionExercises";
 
@@ -14,14 +13,14 @@ const Workout = () => {
     // Destructure the Exercise modals context state
     const {
         workoutActive,
-        setWorkout,
-        setSessionId,
+        setWorkoutActive,
+        setSessionStartTime,
         setSessionExercises
     } = useContext(exerciseModalContext);
 
     const handleClick = () => {
-        setWorkout(true);
-        setSessionId(uuid());
+        setWorkoutActive(true);
+        setSessionStartTime(new Date());
         setSessionExercises(new SessionExercises())
     };
 
