@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { signInWithPopup } from "firebase/auth";
 import handleSignInWithGoogle from "../firebaseUtils/handleSignInWithGoogle";
-import { addGoogleUserToDb } from "../firebaseUtils/addGoogleUserToDb"
+import { addUserToDb } from "../firebaseUtils/addUserToDb"
 import FirebaseAuthCustomError from "../firebaseUtils/FirebaseAuthCustomError";
 
-vi.mock("../firebaseUtils/addGoogleUserToDb");
+vi.mock("../firebaseUtils/addUserToDb");
 vi.mock("firebase/auth", () => {
     return {
         signInWithPopup: vi.fn(),
@@ -27,7 +27,7 @@ describe("handleSignInWithGoogle function tests", () => {
 
         await handleSignInWithGoogle();
 
-        expect(addGoogleUserToDb).toBeCalledTimes(1);
+        expect(addUserToDb).toBeCalledTimes(1);
     });
 
     it("handles an error gracefully", async () => {
@@ -44,7 +44,7 @@ describe("handleSignInWithGoogle function tests", () => {
 
         await handleSignInWithGoogle();
 
-        expect(addGoogleUserToDb).not.toBeCalled();
+        expect(addUserToDb).not.toBeCalled();
         expect(errorMessageSpy).toHaveBeenCalledWith("auth/invalid-login");
     });
 });

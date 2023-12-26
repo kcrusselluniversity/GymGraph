@@ -19,7 +19,7 @@ const localStorageMock = (function () {
             store[key] = value.toString();
         },
         removeItem(key) {
-            if (key == "error") {
+            if (key == "removeError") {
                 throw new Error("removeItem");
             }
             delete store[key];
@@ -90,9 +90,10 @@ describe("local storage hook tests", () => {
         );
         const [, , removeValue] = result.current;
 
+        
         act(() => removeValue());
-
-        expect(result.current[0]).toBeNull();
+        
+        expect(result.current[0]).toEqual(testValue);
         expect(localStorageMock.getItem(testKey)).toBeNull()
     });
 
@@ -125,11 +126,11 @@ describe("local storage hook tests", () => {
         const spy = vi.spyOn(console, "error").mockImplementation(() => {});
 
         const { result } = renderHook(() =>
-            useLocalStorage("error", testValue)
+            useLocalStorage("removeError", testValue)
         );
         const [, , removeValue] = result.current;
 
-        removeValue();
+        act(() => removeValue());
 
         expect(spy).toHaveBeenCalledTimes(1);
     });

@@ -128,6 +128,7 @@ export { MIN_DATE, MAX_DATE };
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
 // the sign up form.
+const TEST_USER_UID = 12345;
 const TEST_USER_OBJECT = {
     firstName: "John",
     lastName: "Smith",
@@ -137,7 +138,7 @@ const TEST_USER_OBJECT = {
     confirmPassword: "Password1",
 };
 
-export { TEST_USER_OBJECT };
+export { TEST_USER_UID, TEST_USER_OBJECT };
 
 // These objects are used for testing routes
 // This object represents the Auth when a user has not yet signed in

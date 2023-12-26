@@ -14,7 +14,7 @@ import getExerciseByUid from "../../../utils/getExerciseByUid";
  * @param {array} sets: An array of objects that each represent the weight
  * and number of repetitions (reps) of a given set in the session.
  * @param {object} exerciseObject: An object that contains the exercise uid,
- * muscleGroup and exerise (name).
+ * muscleGroup and exercise (name).
  */
 const ExerciseItem = ({ sets, exerciseObject }) => {
     // Destructure the required exercise modal state

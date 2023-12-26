@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { addDoc, collection } from "firebase/firestore";
-import { TEST_USER_OBJECT } from "../../data/constants";
+import { setDoc } from "firebase/firestore";
+import { TEST_USER_UID, TEST_USER_OBJECT } from "../../data/constants";
 import { addUserToDb } from "../firebaseUtils/addUserToDb";
 
 // Mock the modules that make API calls
@@ -13,8 +13,8 @@ vi.mock("../../../config/firebase", () => {
 vi.mock("firebase/firestore", async () => {
     return {
         getFirestore: vi.fn(),
-        addDoc: vi.fn(),
-        collection: vi.fn(),
+        setDoc: vi.fn(),
+        doc: vi.fn().mockReturnValue(true),
     };
 });
 
@@ -22,26 +22,21 @@ describe("addUserToDb tests", () => {
     afterEach(vi.restoreAllMocks);
 
     it("adds a user to Firestore database", async () => {
-        const user = TEST_USER_OBJECT;
+        setDoc.mockResolvedValue(true); // Mocking successful addition
 
-        collection.mockReturnValue({});
-        addDoc.mockResolvedValue(true); // Mocking successful addition
+        await addUserToDb(TEST_USER_UID, TEST_USER_OBJECT);
 
-        await addUserToDb(user);
-
-        expect(addDoc).toBeCalledWith(expect.anything(), user);
+        expect(setDoc).toBeCalledWith(expect.anything(), TEST_USER_OBJECT);
     });
 
     it("handles an error gracefully", async () => {
         const consoleErrorSpy = vi
             .spyOn(console, "error")
             .mockImplementation(() => {});
-        const user = TEST_USER_OBJECT;
 
-        collection.mockReturnValue({});
-        addDoc.mockRejectedValue(new Error("An error has occured"));
+        setDoc.mockRejectedValue(new Error("An error has occured"));
 
-        await addUserToDb(user);
+        await addUserToDb(TEST_USER_OBJECT);
 
         expect(consoleErrorSpy).toHaveBeenCalledWith(
             new Error("An error has occured")

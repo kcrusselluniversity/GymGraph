@@ -140,8 +140,6 @@ describe("SessionExercises class tests", () => {
             // Remove set from exercise
             updatedSessionExercises =
                 updatedSessionExercises.removeSetFromExercise(exerciseUid, 0);
-
-            console.log(updatedSessionExercises)
         });
 
         it("throws an error if an invalid exercise uid is provided as a value to the method", () => {

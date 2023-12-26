@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
  * in local storage and keep the locally stored value in sync with the state.
  *
  * The motivation for this was to persist data between refreshes for the
- * application to be more versitile, as well as to be used for storing
+ * application to be more versatile, as well as to be used for storing
  * locally a users Exercise data during a training session.
  * This is more desirable than making a network request with every change
  * (and thus improving fluidity and user experience).
