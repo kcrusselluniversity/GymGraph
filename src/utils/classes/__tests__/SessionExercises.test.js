@@ -89,7 +89,7 @@ describe("SessionExercises class tests", () => {
                 exerciseUid,
                 set
             );
-
+            
             expect(updatedSessionExercises).not.toBe(sessionExercises);
         });
     });
@@ -124,7 +124,7 @@ describe("SessionExercises class tests", () => {
             ).toHaveLength(1);
         });
 
-        it("removes an exercise from the sessionExercises object if removing a set results in no sets lef", () => {
+        it("removes an exercise from the sessionExercises object if removing a set results in no sets left", () => {
             // Set up
             let updatedSessionExercises = null;
             const sessionExercises = new SessionExercises();
@@ -140,6 +140,8 @@ describe("SessionExercises class tests", () => {
             // Remove set from exercise
             updatedSessionExercises =
                 updatedSessionExercises.removeSetFromExercise(exerciseUid, 0);
+
+            expect(updatedSessionExercises.getExercises()).toEqual({});
         });
 
         it("throws an error if an invalid exercise uid is provided as a value to the method", () => {
