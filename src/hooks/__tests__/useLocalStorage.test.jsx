@@ -97,6 +97,8 @@ describe("local storage hook tests", () => {
         expect(localStorageMock.getItem(testKey)).toBeNull()
     });
 
+    it();
+
     it("logs an error when the local Storage setItem function errors", () => {
         // Spy on console.error
         const spy = vi.spyOn(console, "error").mockImplementation(() => {});
@@ -118,8 +120,6 @@ describe("local storage hook tests", () => {
 
         expect(spy).toHaveBeenCalledTimes(1);
     });
-
-
 
     it("logs an error when the local Storage removeItem function errors", () => {
         // Spy on console.error
