@@ -29,7 +29,11 @@ const ControlButton = ({ buttonType, handleClick, label }) => {
             className="controlButton"
             sx={{ ...BUTTON_BORDER_STYLE }}
         >
-            <ReactSVG className="controlButton__svg" src={icon} fallback={label} />
+            <ReactSVG
+                className="controlButton__svg"
+                src={icon}
+                fallback={label}
+            />
         </Button>
     );
 };
