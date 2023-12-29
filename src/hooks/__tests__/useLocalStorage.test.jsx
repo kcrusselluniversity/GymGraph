@@ -79,7 +79,7 @@ describe("local storage hook tests", () => {
         const [, setValue] = result.current;
 
         const differentValue = "differentInitialValue";
-        act(() => setValue(differentValue))
+        act(() => setValue(differentValue));
 
         expect(localStorageMock.getItem(testKey)).toMatch(differentValue);
     });
@@ -90,14 +90,31 @@ describe("local storage hook tests", () => {
         );
         const [, , removeValue] = result.current;
 
-        
         act(() => removeValue());
-        
+
         expect(result.current[0]).toEqual(testValue);
-        expect(localStorageMock.getItem(testKey)).toBeNull()
+        expect(localStorageMock.getItem(testKey)).toBeNull();
     });
 
-    it();
+    it("correctly initialises state with an object if a class is provided in the call", () => {
+        // Write a mock class to use for testing
+        class MockClass {
+            constructor(item) {
+                this.item = item;
+            }
+        }
+
+        // Set an initial value in local storage
+        localStorageMock.setInitialValue(testKey, testValue);
+
+        const { result } = renderHook(() =>
+            useLocalStorage(testKey, testValue, MockClass)
+        );
+
+        const [value, ,] = result.current;
+
+        expect(value instanceof MockClass).toBe(true);
+    });
 
     it("logs an error when the local Storage setItem function errors", () => {
         // Spy on console.error
