@@ -1,0 +1,4 @@
+.Dashboard__Calendar {
+    /* Override DateCalendar MUI component style for this component */
+    margin: 0px !important ;
+}

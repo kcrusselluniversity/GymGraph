@@ -1,4 +1,5 @@
 import Calendar from "./components/Calendar";
+import './dashboard.css'
 
 const Dashboard = () => {
     return (
