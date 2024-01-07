@@ -6,6 +6,14 @@ import { auth, db } from "../../../config/firebase";
 import { collection, query, getDocs } from "firebase/firestore";
 import dayjs from "dayjs";
 
+/**
+ * CustomDay Component
+ *
+ * This component is used in place of the day component in the Material UI
+ * DateCalendar component. We use a custom day component so we can display
+ * to the user a graphical representation of how many days they have gone
+ * to the gym in the given month.
+ */
 const CustomDayComponent = ({
     day,
     activeDays,
@@ -13,7 +21,7 @@ const CustomDayComponent = ({
     ...others
 }) => {
     const handleDaySelect = () => {};
-    
+
     // Current date today
     const now = dayjs();
 
@@ -50,6 +58,12 @@ CustomDayComponent.propTypes = {
     outsideCurrentMonth: bool,
 };
 
+/**
+ * Calendar Component
+ * This component renders a calendar. On mount it fetches the users session
+ * data and stores it in state in order to display useful information in the
+ * calendar.
+ */
 const Calendar = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [activeDays, setActiveDays] = useState([]);
@@ -72,9 +86,12 @@ const Calendar = () => {
                 activeDaysArray.push(startTime);
             });
 
+            // Map the activeDay strings to a dayjs objects
             activeDaysArray = activeDaysArray.map((activeDay) =>
                 dayjs(activeDay)
             );
+
+            // Update the state
             setActiveDays(activeDaysArray);
             setIsLoading(false);
         }
