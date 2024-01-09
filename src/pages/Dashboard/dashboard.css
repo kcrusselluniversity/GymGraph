@@ -2,3 +2,46 @@
     /* Override DateCalendar MUI component style for this component */
     margin: 0px !important ;
 }
+
+/* SECTION: SESSION HISTORY STYLING */
+.sessionHistorySummary {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    min-width: max-content;
+    max-width: 600px;
+}
+
+.sessionHistorySummary__date {
+    min-width: 150px;
+    text-align: center;
+}
+
+.sessionHistorySummary .ExerciseTable__lastRow {
+    border-bottom: var(--card-border-bottom-color)
+}
+
+.sessionHistorySummary .ExerciseTable__lastRow:last-child {
+    border-bottom: none;
+}
+
+/* SECTION: SESSION HISTORY MODAL STYLING */
+.SessionHistorySummaryModal .sessionHistorySummary {
+    margin: 0px;
+    width: 100%;
+}
+
+.SessionHistorySummaryModal .sessionHistorySummary:hover {
+    transform: none;
+}
+
+@media screen and (width <= 950px) {
+    .sessionHistorySummary__date {
+        min-width: min-content;
+        margin-right: 1rem;
+    }
+
+    .sessionHistorySummary {
+        min-width: min-content;
+    }
+}
