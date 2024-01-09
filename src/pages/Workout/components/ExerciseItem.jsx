@@ -41,7 +41,7 @@ const ExerciseItem = ({ sets, exerciseObject }) => {
     };
 
     return (
-        <div className="ExerciseItem" onClick={handleExerciseItemClick}>
+        <div className="ExerciseItem Card" onClick={handleExerciseItemClick}>
             <Table aria-label="exercise item">
                 <TableHead>
                     <TableRow>

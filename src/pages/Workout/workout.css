@@ -73,7 +73,7 @@
 }
 
 /* SECTION: Exercise Item component */
-.ExerciseItem {
+.Card {
     background-color: rgba(85,85,85,0.0078);
     border-radius: var(--card-border-radius);
     box-shadow: var(--sml-card-box-shadow);
@@ -82,19 +82,19 @@
     transition: transform 50ms;
 }
 
-.ExerciseItem:hover {
+.Card:hover {
     box-shadow: var(--sml-card-box-shadow--hover);
     transform: scale(1.01);
     cursor: pointer;
 }
 
-.ExerciseItem > table * {
+.Card > table * {
     padding: 4px;
     font-family: inherit;
     border: none;
 }
 
-.ExerciseItem thead {
+.Card thead {
     border-bottom: 1px solid rgba(80,80,80,0.6);
 }
 
