@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../../../config/firebase";
 import { collection, query, getDocs } from "firebase/firestore";
 import dayjs from "dayjs";
+import { doc, getDoc } from "firebase/firestore";
 
 /**
  * CustomDay Component
@@ -20,8 +21,6 @@ const CustomDayComponent = ({
     outsideCurrentMonth,
     ...others
 }) => {
-    const handleDaySelect = () => {};
-
     // Current date today
     const now = dayjs();
 
@@ -40,10 +39,32 @@ const CustomDayComponent = ({
         borderRadius: "100%",
     };
 
+    const handleDayClick = async () => {
+        if (!isHighlight) return;
+
+        const sessionObjects = [];
+        const userUid = auth.currentUser.uid;
+
+        // Get the timestamp/s associated with that day
+        const startTimes = activeDays.filter(activeDay => activeDay.isSame(day, 'day'))
+
+        // Get the data associated with that day
+        await startTimes.forEach(async (day) => {
+            const sessionUid = day.valueOf();
+            const docRef = doc(db, `users/${userUid}/exerciseHistory/${sessionUid}`)
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) sessionObjects.push(docSnap.data())
+        })
+        
+        // Render the modal with days history
+        
+        console.log(sessionObjects)
+    };
+
     return (
         <div style={dayStyle}>
             <PickersDay
-                onDaySelect={handleDaySelect}
+                onClick={handleDayClick}
                 day={day}
                 outsideCurrentMonth={outsideCurrentMonth}
                 {...others}
