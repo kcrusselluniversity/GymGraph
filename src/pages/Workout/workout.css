@@ -74,7 +74,7 @@
 
 /* SECTION: Exercise Item component */
 .Card {
-    background-color: rgba(85,85,85,0.0078);
+    background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     box-shadow: var(--sml-card-box-shadow);
     padding: 8px 1rem;
@@ -95,7 +95,7 @@
 }
 
 .Card thead {
-    border-bottom: 1px solid rgba(80,80,80,0.6);
+    border-bottom: var(--card-border-bottom-color);
 }
 
 .ExerciseItem__exerciseName {
