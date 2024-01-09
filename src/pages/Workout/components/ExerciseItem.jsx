@@ -4,7 +4,7 @@ import { number, string, PropTypes } from "prop-types";
 import { useContext } from "react";
 import { exerciseModalContext } from "../../../context/exerciseModalContext";
 import getExerciseByUid from "../../../utils/getExerciseByUid";
-
+import ExerciseTableDisplayRow from "../../../components/ui/ExerciseTableDisplayRow";
 /**
  * ExerciseItem component
  *
@@ -53,17 +53,13 @@ const ExerciseItem = ({ sets, exerciseObject }) => {
                 <TableBody>
                     {sets.map((set, index) => {
                         return (
-                            <TableRow key={index}>
-                                {index == 0 && (
-                                    <TableCell
-                                        rowSpan={setCount}
-                                        className="ExerciseItem__exerciseName"
-                                    >
-                                        {exerciseName}
-                                    </TableCell>
-                                )}
-                                <SetData weight={set.weight} reps={set.reps} />
-                            </TableRow>
+                            <ExerciseTableDisplayRow
+                                key={index}
+                                set={set}
+                                index={index}
+                                setCount={setCount}
+                                exerciseName={exerciseName}
+                            />
                         );
                     })}
                 </TableBody>
@@ -84,20 +80,6 @@ ExerciseItem.propTypes = {
             reps: number,
         })
     ),
-};
-
-const SetData = ({ weight, reps }) => {
-    return (
-        <>
-            <TableCell align="center">{weight} kg</TableCell>
-            <TableCell align="center">{reps}</TableCell>
-        </>
-    );
-};
-
-SetData.propTypes = {
-    weight: number,
-    reps: number,
 };
 
 export default ExerciseItem;
