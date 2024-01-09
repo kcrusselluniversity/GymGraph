@@ -37,9 +37,25 @@
 }
 
 @media screen and (width <= 500px) {
-    .SessionHistorySummaryModal .sessionHistorySummary {
-        padding: 0.5rem;
+    .dashboard__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+    .sessionHistorySummary {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .SessionHistorySummaryModal .sessionHistorySummary {
+        padding: 0.5rem 1rem;
+    }
+
+    .SessionHistorySummaryModal .sessionHistorySummary__date {
+        margin-bottom: 12px;
+    }
+
 }
 
 @media screen and (width <= 950px) {
