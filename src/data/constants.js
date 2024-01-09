@@ -236,3 +236,69 @@ export const TEST_EXERCISE_LIST = {
         ],
     },
 };
+
+export const TEST_SESSION_OBJECT =  {
+    "exercises": {
+        "13681301": {
+            "uid": "13681301",
+            "startTime": "2024-01-09T02:39:50.111Z",
+            "muscleGroup": "legs",
+            "sets": [
+                {
+                    "weight": 10,
+                    "reps": 10
+                },
+                {
+                    "weight": 10,
+                    "reps": 10
+                },
+                {
+                    "weight": 10,
+                    "reps": 10
+                }
+            ],
+            "name": "Ankle Circles"
+        },
+        "09781301": {
+            "uid": "09781301",
+            "muscleGroup": "shoulders",
+            "name": "Band front raise",
+            "sets": [
+                {
+                    "weight": 10,
+                    "reps": 10
+                },
+                {
+                    "weight": 10,
+                    "reps": 10
+                },
+                {
+                    "weight": 10,
+                    "reps": 10
+                }
+            ],
+            "startTime": "2024-01-09T02:39:57.431Z"
+        },
+        // "00111301": {
+        //     "muscleGroup": "abs",
+        //     "sets": [
+        //         {
+        //             "weight": 10,
+        //             "reps": 10
+        //         },
+        //         {
+        //             "weight": 10,
+        //             "reps": 10
+        //         },
+        //         {
+        //             "weight": 10,
+        //             "reps": 10
+        //         }
+        //     ],
+        //     "uid": "00111301",
+        //     "startTime": "2024-01-09T02:39:42.553Z",
+        //     "name": "Assisted Hanging Knee Raise"
+        // }
+    },
+    "startTime": "2024-01-09T02:39:36.977Z"
+}
