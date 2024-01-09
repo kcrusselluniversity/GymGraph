@@ -2,9 +2,9 @@ import { TableCell, TableRow } from "@mui/material";
 import { PropTypes, number, string } from "prop-types";
 import SetData from "./SetData";
 
-const ExerciseTableDisplayRow = ({ set, index, setCount, exerciseName }) => {
+const ExerciseTableDisplayRow = ({ set, index, setCount, exerciseName, ...others }) => {
     return (
-        <TableRow key={index}>
+        <TableRow key={index} {...others}>
             {index == 0 && (
                 <TableCell
                     rowSpan={setCount}
