@@ -1,7 +1,17 @@
+import { Dialog } from "@mui/material";
+import SessionHistorySummary from "../../components/ui/SessionHistorySummary";
 import Calendar from "./components/Calendar";
-import './dashboard.css'
+import { useContext } from "react";
+import { dashboardContext } from "../../context/DashboardContext";
+import "./dashboard.css";
 
 const Dashboard = () => {
+    const { selectedDateHistory, isSelectedDateModalOpen, setIsSelectedDateModalOpen } =
+        useContext(dashboardContext);
+
+    const handleSelectedDateModalClose = () =>
+        setIsSelectedDateModalOpen(false);
+
     return (
         <>
             <h1>Dashboard</h1>
@@ -10,6 +20,16 @@ const Dashboard = () => {
                 {/* <History /> */}
                 {/* <SetsGraph /> */}
             </div>
+            <Dialog
+                open={isSelectedDateModalOpen}
+                onClose={handleSelectedDateModalClose}
+            >
+                <div className="SessionHistorySummaryModal">
+                    <SessionHistorySummary
+                        sessionObject={selectedDateHistory}
+                    />
+                </div>
+            </Dialog>
         </>
     );
 };
