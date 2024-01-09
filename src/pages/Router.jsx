@@ -15,6 +15,7 @@ import UserPageLayout from "./UserPageLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Loading from "../components/ui/Loading";
 import ExerciseModalProvider from "../context/ExerciseModalProvider";
+import DashboardProvider from "../context/DashboardProvider";
 
 /**
  * Router component
@@ -58,7 +59,14 @@ const Router = () => {
                         index
                         element={<Navigate to="dashboard" replace />}
                     />
-                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route
+                        path="dashboard"
+                        element={
+                            <DashboardProvider>
+                                <Dashboard />
+                            </DashboardProvider>
+                        }
+                    />
                     <Route
                         path="workout"
                         element={
