@@ -29,10 +29,17 @@
 .SessionHistorySummaryModal .sessionHistorySummary {
     margin: 0px;
     width: 100%;
+    padding: 1rem 2rem;
 }
 
 .SessionHistorySummaryModal .sessionHistorySummary:hover {
     transform: none;
+}
+
+@media screen and (width <= 500px) {
+    .SessionHistorySummaryModal .sessionHistorySummary {
+        padding: 0.5rem;
+    }
 }
 
 @media screen and (width <= 950px) {
