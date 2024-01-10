@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { node } from "prop-types";
 import { dashboardContext } from "./DashboardContext";
 
@@ -6,6 +6,12 @@ const DashboardProvider = ({ children }) => {
     const [selectedDateHistory, setSelectedDateHistory] = useState(null);
     const [isSelectedDateModalOpen, setIsSelectedDateModalOpen] =
         useState(false);
+    
+    useEffect(() => {
+        if(selectedDateHistory === null) return;
+
+        setIsSelectedDateModalOpen(true);
+    }, [selectedDateHistory])
 
     const sharedState = {
         selectedDateHistory,
