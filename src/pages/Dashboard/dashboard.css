@@ -34,6 +34,7 @@
 
 .SessionHistorySummaryModal .sessionHistorySummary:hover {
     transform: none;
+    cursor: auto;
 }
 
 @media screen and (width <= 500px) {
