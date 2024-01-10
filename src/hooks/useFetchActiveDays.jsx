@@ -13,7 +13,7 @@ import dayjs from "dayjs";
  * the activeDays array.
  * @param {bool} isLoading: indicates whether the data is being fetched or 
  * the fetch has been complete. 
- * @param {array} activeDays: An array of dayjs objects representing the days
+ * @param {array} activeDays: An array of dayjs objects representing the timestamps of the users gym sessions
  * the user has completed a gym session.  
  */
 const useFetchActiveDays = () => {
