@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../../config/firebase";
 import { collection, query, getDocs } from "firebase/firestore";
 import dayjs from "dayjs";
 
 /**
  * useFetchActiveDays hook
- * 
- * This custom hook is used to fetch the days the user has completed 
+ *
+ * This custom hook is used to fetch the days the user has completed
  * a gym session from the database.
- * 
- * @returns {object}: An object that contains the isLoading bool and 
+ *
+ * @returns {object}: An object that contains the isLoading bool and
  * the activeDays array.
- * @param {bool} isLoading: indicates whether the data is being fetched or 
- * the fetch has been complete. 
+ * @param {bool} isLoading: indicates whether the data is being fetched or
+ * the fetch has been complete.
  * @param {array} activeDays: An array of dayjs objects representing the timestamps of the users gym sessions
- * the user has completed a gym session.  
+ * the user has completed a gym session.
  */
 const useFetchActiveDays = () => {
     const [isLoading, setIsLoading] = useState(true);

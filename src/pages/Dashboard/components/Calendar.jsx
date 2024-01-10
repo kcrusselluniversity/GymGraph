@@ -1,6 +1,6 @@
 import { DateCalendar, DayCalendarSkeleton } from "@mui/x-date-pickers";
 import CustomDayComponent from "./CustomDayComponent";
-import useFetchActiveDays from "../../../hooks/useFetchActiveDays";
+import useFetchActiveDays from "../hooks/useFetchActiveDays";
 
 /**
  * Calendar Component

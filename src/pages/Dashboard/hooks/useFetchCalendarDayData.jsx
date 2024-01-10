@@ -1,8 +1,8 @@
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useContext } from "react";
-import { dashboardContext } from "../context/DashboardContext";
-import compileDayExercises from "../utils/compileDayExercises";
+import { dashboardContext } from "../../../context/DashboardContext";
+import compileDayExercises from "../../../utils/compileDayExercises";
 
 /**
  * useFetchCalendarDayData

@@ -1,6 +1,6 @@
 import { PickersDay } from "@mui/x-date-pickers";
 import { array, bool, object } from "prop-types";
-import useFetchCalendarDayData from "../../../hooks/useFetchCalendarDayData";
+import useFetchCalendarDayData from "../hooks/useFetchCalendarDayData";
 import isActiveDay from "../utils/isActiveDay";
 
 /**
