@@ -120,8 +120,9 @@ export {
 // DateTime constants
 const MIN_DATE = dayjs().set("year", 1900).set("month", 0).set("date", 1);
 const MAX_DATE = dayjs().set("year", 2020).set("month", 0).set("date", 1);
+const YEAR_MONTH_DAY_FORMAT = "YYYY-MM-DD";
 
-export { MIN_DATE, MAX_DATE };
+export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 
 // TESTING CONSTANTS
 
