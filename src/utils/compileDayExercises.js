@@ -1,11 +1,11 @@
 /**
  * compileDayExercises
  * 
- * @param {array} sessionObjects
+ * @param {array} sessionObjects: an array of session objects.
  * 
  * This utility function takes in an array of session objects from the same
  * day and combines them into a single object to represent all exercises
- * completed on that day
+ * completed on that day. 
  */
 const compileDayExercises = (sessionObjects) => {
     // Compile all exercises for that day into a single exercise object
