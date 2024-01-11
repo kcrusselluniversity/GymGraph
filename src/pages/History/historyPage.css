@@ -7,3 +7,9 @@
 .History__content .sessionHistorySummary {
     cursor: auto;
 }
+
+.History__content .content__navBtns {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 12px;
+}

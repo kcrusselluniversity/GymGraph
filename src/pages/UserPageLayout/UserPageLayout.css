@@ -20,6 +20,10 @@
     background-color: var(--user-page-background-color)
 }
 
+.UserPage__title {
+    text-align: center;
+}
+
 .navbar {
     grid-area: dashboard;
 }
