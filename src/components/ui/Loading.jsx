@@ -9,7 +9,7 @@ const Loading = () => {
             style={{
                 display: "grid",
                 placeContent: "center",
-                height: "100dvh",
+                height: "100%",
             }}
             className="loading_container"
         >
