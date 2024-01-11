@@ -55,6 +55,10 @@ export const GIF_SIZE_STANDARD = 360;
 export const EXERCISE_GIF_URL_ENDPOINT =
     "https://gymgraph-gifs.web.app/exercises";
 
+
+// Firebase calls constants
+export const PAGINATION_LIMIT = 2;
+
 // This constant holds the style used to modify the MUI Button component
 // for all 'Call To Action' buttons such as a Link button to another page,
 // or a 'Log in' button.
@@ -125,7 +129,6 @@ const YEAR_MONTH_DAY_FORMAT = "YYYY-MM-DD";
 export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 
 // TESTING CONSTANTS
-
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
 // the sign up form.
