@@ -3,7 +3,13 @@
 A full stack weight lifting tracker app.
 
 ## Table of Contents
-[TOC]
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Purpose](#project-purpose)
+- [Lessons Learnt](#lessons-learnt)
+- [Future Features](#future-features)
+
 
 ## Screenshots
 
