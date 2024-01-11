@@ -20,4 +20,8 @@
         overflow-y: scroll;
         padding: 1.5rem 0px 1rem;
     }
+
+    .HistoryPage::-webkit-scrollbar {
+        display: none;
+    }
 }
