@@ -5,8 +5,14 @@ import "./historyPage.css";
 import { Button } from "@mui/material";
 
 const History = () => {
-    const { currentHistoryResults, isLoading, isLastPage, handleNextClick } =
-        usePaginateHistory();
+    const {
+        currentHistoryResults,
+        isLoading,
+        isFirstPage,
+        isLastPage,
+        handleNextClick,
+        handlePrevClick,
+    } = usePaginateHistory();
 
     const historySummaryComponents = currentHistoryResults.map(
         (session, index) => (
@@ -18,7 +24,10 @@ const History = () => {
         <>
             <h1>History</h1>
             <div className="History__content">
-                {!isLastPage && <Button onClick={handleNextClick}>Next</Button>}
+                {(!isLastPage && !isLoading) && <Button onClick={handleNextClick}>Next</Button>}
+                {(!isFirstPage && !isLoading) && (
+                    <Button onClick={handlePrevClick}>Prev</Button>
+                )}
                 {isLoading ? <Loading /> : historySummaryComponents}
             </div>
         </>
