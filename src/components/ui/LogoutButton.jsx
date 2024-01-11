@@ -5,13 +5,12 @@ import { useMediaQuery } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import { DISPLAY_SMALL_SCREEN } from "../../data/constants";
 import LightTooltip from "./LightTooltip";
-import logoutIcon from '../../assets/icons/Logout_Icon.svg'
-import "./LogoutButton.css"
+import logoutIcon from "../../assets/icons/Logout_Icon.svg";
+import "./LogoutButton.css";
 
 const LogoutButton = () => {
     const navigate = useNavigate();
-    const isSmallScreen =  useMediaQuery(`(width <= ${DISPLAY_SMALL_SCREEN})`);
-
+    const isSmallScreen = useMediaQuery(`(width <= ${DISPLAY_SMALL_SCREEN})`);
 
     const handleClick = async () => {
         try {
@@ -25,11 +24,15 @@ const LogoutButton = () => {
 
     return (
         <button className="logoutButton" onClick={handleClick}>
-            {isSmallScreen ? <LightTooltip title="Log out" data-testid="tooltip">
-                <span>
-                    <ReactSVG src={logoutIcon}/> 
-                </span>
-            </LightTooltip>: "Log Out"}
+            {isSmallScreen ? (
+                <LightTooltip title="Log out" data-testid="tooltip">
+                    <span>
+                        <ReactSVG src={logoutIcon} />
+                    </span>
+                </LightTooltip>
+            ) : (
+                "Log Out"
+            )}
         </button>
     );
 };

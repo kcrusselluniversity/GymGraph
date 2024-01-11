@@ -61,6 +61,7 @@ const NavBar = () => {
                         </NavLink>
                     );
                 })}
+                {isMobileScreen && <LogoutButton />}
             </div>
             {isMobileScreen ? null : <LogoutButton />}
         </nav>

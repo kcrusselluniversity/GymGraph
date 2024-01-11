@@ -14,3 +14,14 @@
 .logoutButton:hover {
     cursor: pointer;
 }
+
+@media screen and (width <= 500px) {
+    .logoutButton {
+        height: 100%;
+        margin-bottom: 0px !important;
+    }
+
+    .logoutButton svg {
+        fill: none !important;
+    }
+}
