@@ -1,6 +1,6 @@
 const Metrics = () => {
     return <>
-    <h1>Metrics</h1>
+    <h1 className="UserPage__title">Metrics</h1>
     </>
 }
 
