@@ -3,7 +3,7 @@
 A full stack weight lifting tracker app.
 
 ## Table of Contents
-<!-- toc -->
+[TOC]
 
 ## Screenshots
 
