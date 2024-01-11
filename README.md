@@ -12,6 +12,7 @@ A full stack weight lifting tracker app.
 -   **Progress Tracking and Analytics**: Features for tracking workouts, including sets, reps, and weights lifted. Graphs and charts to visualize progress over time.
 -   **Countdown Timer**: A timer you can use to ensure you rest for long enough between sets for optimal hypertrophy.
 -   **Calendar**: A calendar which highlights the days you have completed a gym session in green. When you click on the day in the calendar a modal opens and shows a summary of all exercises you have done for that day.  
+-   **History using Pagination**: View your exercise history. This feature uses pagination to query the backend for only the data needed to fill the page. This avoid unnecessary payloads of data being requested, reducing load times and backend costs. 
 -   **Mobile Responsiveness**: Designed to provide an excellent user experience on both mobile and desktop devices.
 
 ## Technologies Used
