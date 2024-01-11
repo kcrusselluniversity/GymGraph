@@ -13,3 +13,11 @@
     gap: 1rem;
     margin-bottom: 12px;
 }
+
+@media screen and (width <= 500px) {
+    .HistoryPage {
+        height: calc(100dvh - var(--navbar-high-small));
+        overflow-y: scroll;
+        padding: 1.5rem 0px 1rem;
+    }
+}

@@ -223,7 +223,7 @@
 
 @media screen and (width <= 500px) {    
     .workoutPage {
-        padding: 1rem 10% 0px;
+        padding: 1.5rem 10% 0px;
         height: calc(100dvh - var(--navbar-high-small));
     }
     
@@ -238,7 +238,7 @@
     .exerciseSession {
         min-width: 275px;
         overflow: scroll;
-        padding: 1rem 10% 0px;
+        padding: 1rem 10%;
 
         /* Hide scroll bar */
         -ms-overflow-style: none;

@@ -21,7 +21,7 @@ const History = () => {
     );
 
     return (
-        <>
+        <div className="HistoryPage">
             <h1 className="UserPage__title">History</h1>
             <div className="History__content">
                 <div className="content__navBtns">
@@ -38,7 +38,7 @@ const History = () => {
                 </div>
                 {isLoading ? <Loading /> : historySummaryComponents}
             </div>
-        </>
+        </div>
     );
 };
 
