@@ -17,12 +17,7 @@ const Dashboard = () => {
             <h2>Welcome, </h2>
             <div className="dashboard__content">
                 <Calendar />
-                <Calendar />
-                <Calendar />
-                <Calendar />
-                <Calendar />
-                <Calendar />
-                {/* <History /> */}
+                {/* <MuscleGroupHistory /> */}
                 {/* <SetsGraph /> */}
             </div>
             <Dialog

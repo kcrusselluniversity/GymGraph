@@ -13,7 +13,7 @@ const Calendar = () => {
 
     return (
         <DateCalendar
-            className="Dashboard__Calendar"
+            className="Dashboard__Calendar Card"
             disableFuture
             loading={isLoading}
             renderLoading={() => <DayCalendarSkeleton />}
