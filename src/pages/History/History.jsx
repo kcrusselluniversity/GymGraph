@@ -21,7 +21,7 @@ const History = () => {
     );
 
     return (
-        <div className="HistoryPage">
+        <div className="HistoryPage userPageGrid">
             <h1 className="UserPage__title">History</h1>
             <div className="History__content">
                 <div className="content__navBtns">

@@ -10,7 +10,6 @@ const StartWorkoutButton = ({ handleClick }) => {
             sx={PINK_CTA_BUTTON_STYLE}
         >
             <span>Start Workout</span>
-            <span className="addSymbol">+</span>
         </Button>
     );
 };

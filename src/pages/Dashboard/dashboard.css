@@ -1,3 +1,15 @@
+/* SECTION: DASHBOARD STYLING */
+.dashboardPage {
+    grid-area: content;
+}
+
+.dashboard__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-area: userPageContent;
+}
+
 .Dashboard__Calendar {
     /* Override DateCalendar MUI component style for this component */
     margin: 0px !important ;
@@ -38,10 +50,13 @@
 }
 
 @media screen and (width <= 500px) {
-    .dashboard__content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .dashboardPage {
+        height: calc(100dvh - var(--navbar-hight-small));
+        overflow-y: scroll;
+    }
+
+    .dashboardPage::-webkit-scrollbar {
+        display: none;
     }
 
     .sessionHistorySummary {

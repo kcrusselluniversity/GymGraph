@@ -13,9 +13,14 @@ const Dashboard = () => {
         setIsSelectedDateModalOpen(false);
 
     return (
-        <>
-            <h1>Dashboard</h1>
+        <div className="dashboardPage userPageGrid">
+            <h2>Welcome, </h2>
             <div className="dashboard__content">
+                <Calendar />
+                <Calendar />
+                <Calendar />
+                <Calendar />
+                <Calendar />
                 <Calendar />
                 {/* <History /> */}
                 {/* <SetsGraph /> */}
@@ -30,7 +35,7 @@ const Dashboard = () => {
                     />
                 </div>
             </Dialog>
-        </>
+        </div>
     );
 };
 

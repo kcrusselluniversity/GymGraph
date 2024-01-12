@@ -1,3 +1,7 @@
+.HistoryPage {
+    grid-area: content;
+}
+
 .History__content {
     display: flex;
     flex-direction: column;
@@ -16,7 +20,7 @@
 
 @media screen and (width <= 500px) {
     .HistoryPage {
-        height: calc(100dvh - var(--navbar-high-small));
+        height: calc(100dvh - var(--navbar-hight-small));
         overflow-y: scroll;
         padding: 1.5rem 0px 1rem;
     }

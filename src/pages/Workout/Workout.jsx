@@ -2,8 +2,8 @@ import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
 import { exerciseModalContext } from "../../context/exerciseModalContext";
 import { useContext } from "react";
-import "./workout.css";
 import { SessionExercises } from "../../utils/classes/SessionExercises";
+import "./workout.css";
 
 /**
  * Workout page component
@@ -25,12 +25,14 @@ const Workout = () => {
     };
 
     return (
-        <div className="workoutPage">
-            {workoutActive ? (
-                <ExerciseSession />
-            ) : (
-                <StartWorkoutButton handleClick={handleClick} />
-            )}
+        <div className="workoutPage userPageGrid">
+            <div className="workoutPage__content">
+                {workoutActive ? (
+                    <ExerciseSession />
+                ) : (
+                    <StartWorkoutButton handleClick={handleClick} />
+                )}
+            </div>
         </div>
     );
 };

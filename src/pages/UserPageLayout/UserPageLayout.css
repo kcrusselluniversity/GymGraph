@@ -1,8 +1,8 @@
 :root {
-    --header-height: 100px;
+    --header-height: 75px;
     --navbar-width: 250px;
     --navbar-width-small: 125px;
-    --navbar-high-small: 63px;
+    --navbar-hight-small: 70px;
 
     --dashboard-font-color: rgb(60, 60, 60);
     --dashboard-font-size: 16px;
@@ -15,9 +15,16 @@
     padding: 1rem;
     display: grid;
     column-gap: 2rem;
-    grid-template: var(--header-height) 1fr / var(--navbar-width) 1fr;
-    grid-template-areas: "dashboard header" "dashboard content";
+    grid-template: 1fr / var(--navbar-width) 1fr;
+    grid-template-areas: "dashboard content";
     background-color: var(--user-page-background-color)
+}
+
+.userPageGrid {
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-areas: "header" "userPageContent";
+    gap: 1rem;
 }
 
 .UserPage__title {
@@ -30,8 +37,8 @@
 
 @media screen and (width <= 950px) {
     .userPageContainer {
-        grid-template: var(--header-height) 1fr / var(--navbar-width-small) 1fr;
-        grid-template-areas: "dashboard header" "dashboard content";
+        grid-template: 1fr / var(--navbar-width-small) 1fr;
+        grid-template-areas: "dashboard content";
     }  
 }
 
@@ -39,5 +46,10 @@
     .userPageContainer {
         padding: 0px;
         display: block;
+    }
+
+    .userPageGrid {
+        display: block;
+        padding: 1.5rem 1rem;
     }
 }
