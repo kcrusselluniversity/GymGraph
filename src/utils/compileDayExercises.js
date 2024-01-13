@@ -1,13 +1,14 @@
 /**
  * compileDayExercises
- * 
+ *
  * @param {array} sessionObjects: an array of session objects.
- * 
+ *
  * This utility function takes in an array of session objects from the same
  * day and combines them into a single object to represent all exercises
- * completed on that day. 
+ * completed on that day.
  */
 const compileDayExercises = (sessionObjects) => {
+    
     // Compile all exercises for that day into a single exercise object
     const compiledSessionsExercises = {};
 
@@ -20,10 +21,13 @@ const compileDayExercises = (sessionObjects) => {
 
             if (uid in compiledSessionsExercises) {
                 // Add sets to existing sets array
-                compiledSessionsExercises[uid].sets.push(...sets);
+                compiledSessionsExercises[uid].sets = [
+                    ...compiledSessionsExercises[uid].sets,
+                    ...sets,
+                ];
             } else {
                 // Add exercise data to object
-                compiledSessionsExercises[uid] = exercise;
+                compiledSessionsExercises[uid] = {...exercise};
             }
         });
     });
