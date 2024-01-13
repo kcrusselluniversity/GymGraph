@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
     "react-svg": "^16.1.29",
+    "recharts": "^2.10.4",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
