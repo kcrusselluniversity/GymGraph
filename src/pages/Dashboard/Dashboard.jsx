@@ -4,6 +4,7 @@ import Calendar from "./components/Calendar";
 import { useContext } from "react";
 import { dashboardContext } from "../../context/DashboardContext";
 import HistoryProvider from "../../context/HistoryProvider";
+import VolumePerSessionGraph from "./components/VolumePerSessionGraph";
 import "./dashboard.css";
 
 const Dashboard = () => {
@@ -20,7 +21,8 @@ const Dashboard = () => {
                 <div className="dashboard__content">
                     <Calendar />
                     {/* <MuscleGroupHistory /> */}
-                    {/* <SetsGraph /> */}
+                    <VolumePerSessionGraph />
+
                 </div>
                 <Dialog
                     open={isSelectedDateModalOpen}
