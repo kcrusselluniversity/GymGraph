@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../config/firebase";
 import { collection, query, getDocs } from "firebase/firestore";
 
+/**
+ * History Provider
+ * This context is used to fetch a users exercise history on mount
+ * of the component it is contained in. This is used to wrap the contents
+ * of a page component (eg the Dashboard page or History page) so that every
+ * time the page renders it updates the userHistory and provides this to all 
+ * descendant components.
+ */
 const HistoryProvider = ({ children }) => {
     const [userHistory, setUserHistory] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +47,7 @@ const HistoryProvider = ({ children }) => {
         fetchUserHistory();
     }, []);
 
-    return <historyContext.Provider value>{children}</historyContext.Provider>;
+    return <historyContext.Provider value={{isLoading, userHistory}}>{children}</historyContext.Provider>;
 };
 
 HistoryProvider.propTypes = {
