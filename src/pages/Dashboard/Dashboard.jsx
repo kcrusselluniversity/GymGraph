@@ -8,34 +8,34 @@ import VolumePerSessionGraph from "./components/VolumePerSessionGraph";
 import "./dashboard.css";
 
 const Dashboard = () => {
-    const { selectedDateHistory, isSelectedDateModalOpen, setIsSelectedDateModalOpen } =
-        useContext(dashboardContext);
+    const {
+        selectedDateHistory,
+        isSelectedDateModalOpen,
+        setIsSelectedDateModalOpen,
+    } = useContext(dashboardContext);
 
     const handleSelectedDateModalClose = () =>
         setIsSelectedDateModalOpen(false);
 
     return (
-        <HistoryProvider>
-            <div className="dashboardPage userPageGrid">
-                <h2>Welcome, </h2>
-                <div className="dashboard__content">
-                    <Calendar />
-                    {/* <MuscleGroupHistory /> */}
-                    <VolumePerSessionGraph />
-
-                </div>
-                <Dialog
-                    open={isSelectedDateModalOpen}
-                    onClose={handleSelectedDateModalClose}
-                >
-                    <div className="SessionHistorySummaryModal">
-                        <SessionHistorySummary
-                            sessionObject={selectedDateHistory}
-                        />
-                    </div>
-                </Dialog>
+        <div className="dashboardPage userPageGrid">
+            <h2>Welcome, </h2>
+            <div className="dashboard__content">
+                <Calendar />
+                {/* <MuscleGroupHistory /> */}
+                <VolumePerSessionGraph />
             </div>
-        </HistoryProvider>
+            <Dialog
+                open={isSelectedDateModalOpen}
+                onClose={handleSelectedDateModalClose}
+            >
+                <div className="SessionHistorySummaryModal">
+                    <SessionHistorySummary
+                        sessionObject={selectedDateHistory}
+                    />
+                </div>
+            </Dialog>
+        </div>
     );
 };
 

@@ -16,6 +16,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Loading from "../components/ui/Loading";
 import ExerciseModalProvider from "../context/ExerciseModalProvider";
 import DashboardProvider from "../context/DashboardProvider";
+import HistoryProvider from "../context/HistoryProvider";
 
 /**
  * Router component
@@ -63,7 +64,9 @@ const Router = () => {
                         path="dashboard"
                         element={
                             <DashboardProvider>
-                                <Dashboard />
+                                <HistoryProvider>
+                                    <Dashboard />
+                                </HistoryProvider>
                             </DashboardProvider>
                         }
                     />
