@@ -1,23 +1,30 @@
-import { Table } from "@mui/material";
-import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import ExerciseTableDisplayRow from "./ExerciseTableDisplayRow";
+import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Table } from "@mui/material";
+import { Timestamp } from "firebase/firestore";
 import { object } from "prop-types";
 import dayjs from "dayjs";
 
 /**
  * SessionHistorySummary component
- * 
+ *
  * This component displays a users exercise session in a table format.
  * Specifically, it shows all exercises and each set in each exercise a user
  * completed in a given session.
  */
 const SessionHistorySummary = ({ sessionObject }) => {
     // Destructure session object
-    const { startTime, exercises } = sessionObject;
+    const { exercises } = sessionObject;
+    let { startTime } = sessionObject;
 
-    const startTimeObject = dayjs(startTime)   
-    const day = startTimeObject.format('ddd')
-    const date = startTimeObject.format('D MMM YYYY')
+    // Convert startTime to JS Date object if it is of type Timestamp
+    if (startTime instanceof Timestamp) {
+        startTime = startTime.toDate();
+    }
+
+    const startTimeObject = dayjs(startTime);
+    const day = startTimeObject.format("ddd");
+    const date = startTimeObject.format("D MMM YYYY");
 
     const sessionTableRows = [];
 
@@ -37,7 +44,9 @@ const SessionHistorySummary = ({ sessionObject }) => {
                     index={index}
                     setCount={setCount}
                     exerciseName={exerciseName}
-                    className={index === (setCount - 1) ? 'ExerciseTable__lastRow': ''}
+                    className={
+                        index === setCount - 1 ? "ExerciseTable__lastRow" : ""
+                    }
                 />
             );
         });
@@ -45,7 +54,11 @@ const SessionHistorySummary = ({ sessionObject }) => {
 
     return (
         <div className="sessionHistorySummary Card">
-            <div className="sessionHistorySummary__date"><b>{day}</b><br /><span>{date}</span></div>
+            <div className="sessionHistorySummary__date">
+                <b>{day}</b>
+                <br />
+                <span>{date}</span>
+            </div>
             <Table
                 aria-label="session history"
                 className="sessionHistorySummary__table"
@@ -57,9 +70,7 @@ const SessionHistorySummary = ({ sessionObject }) => {
                         <TableCell align="center">Reps</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody> 
-                    {sessionTableRows}
-                </TableBody>
+                <TableBody>{sessionTableRows}</TableBody>
             </Table>
         </div>
     );
