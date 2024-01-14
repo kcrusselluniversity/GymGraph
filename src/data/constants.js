@@ -128,14 +128,6 @@ const YEAR_MONTH_DAY_FORMAT = "YYYY-MM-DD";
 
 export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 
-// Recharts contants
-export const CHART_MARGIN = {
-    top: 5,
-    right: 30,
-    left: 20,
-    bottom: 5,
-};
-
 // TESTING CONSTANTS
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
