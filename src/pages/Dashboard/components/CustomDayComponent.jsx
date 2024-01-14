@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { dashboardContext } from "../../../context/DashboardContext";
 import compileDayExercises from "../../../utils/compileDayExercises";
 import { historyContext } from "../../../context/historyContext";
-import isSameDay from "../utils/isSameDay";
+import isSameDate from "../utils/isSameDate";
 
 /**
  * CustomDay Component
@@ -45,7 +45,9 @@ const CustomDayComponent = ({
         // Get the sessions for the given day
         const sessionObjects = userHistory.filter((session) => {
             const { startTime } = session;
-            return isSameDay(startTime, day);
+            const dayObject = new Date(day);
+
+            return isSameDate(startTime, dayObject);
         });
 
         // Compile all sessions for that day into a single session object

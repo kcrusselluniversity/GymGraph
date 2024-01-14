@@ -30,8 +30,9 @@ const usePaginateHistory = () => {
         // first retrieval from the collection.
         // If it is, set 'startOfCollectionDoc' to 'updatedFirstVisibleDoc'
         // to mark the first document of the collection.
-        if (startOfCollectionDoc === null)
+        if (startOfCollectionDoc === null) {
             setStartOfCollectionDoc(updatedFirstVisibleDoc);
+        }
 
         // Update state
         setCurrentHistoryResults(historyArray);
@@ -85,17 +86,14 @@ const usePaginateHistory = () => {
         handleNextClick,
         handlePrevClick,
     };
-    // return { currentHistoryResults, handleNextClick, handleBackClick };
 };
 
 export default usePaginateHistory;
 
 /**
- * Helpder function to determine if two document references refer to the same
- * document. We do this by comparing that startTime of each document, which
- * uniquely identify each document as the startTime is measured
- * to the millisecond.
+ * Helper function to determine if two document references refer to the same
+ * document.
  */
 const isSameDoc = (doc1, doc2) => {
-    return doc1.data()["startTime"] == doc2.data()["startTime"];
+    return doc1.id === doc2.id;
 };

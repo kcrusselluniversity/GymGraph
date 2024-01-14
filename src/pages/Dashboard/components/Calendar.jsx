@@ -2,7 +2,6 @@ import { DateCalendar, DayCalendarSkeleton } from "@mui/x-date-pickers";
 import CustomDayComponent from "./CustomDayComponent";
 import { useContext } from "react";
 import { historyContext } from "../../../context/historyContext";
-import dayjs from "dayjs";
 
 /**
  * Calendar Component
@@ -15,7 +14,7 @@ const Calendar = () => {
     let activeDays = [];
     
     if (!isLoading) {
-        activeDays = userHistory.map(session => dayjs(session.startTime))
+        activeDays = userHistory.map(session => session.startTime)
     }
 
     return (
