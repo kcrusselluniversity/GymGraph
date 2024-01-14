@@ -6,10 +6,11 @@ import { collection, query, getDocs } from "firebase/firestore";
 
 /**
  * History Provider
+ *
  * This context is used to fetch a users exercise history on mount
  * of the component it is contained in. This is used to wrap the contents
  * of a page component (eg the Dashboard page or History page) so that every
- * time the page renders it updates the userHistory and provides this to all 
+ * time the page renders it updates the userHistory and provides this to all
  * descendant components.
  */
 const HistoryProvider = ({ children }) => {
@@ -34,6 +35,21 @@ const HistoryProvider = ({ children }) => {
                 historySnapshot.forEach((doc) =>
                     userHistoryArray.push(doc.data())
                 );
+                
+                // Convert firestore Timestamp objects to Date objects
+                userHistoryArray.forEach((session) => {
+                    const { startTime, exercises } = session;
+                    // Convert session startTime to Date object
+                    session["startTime"] = startTime.toDate();
+
+                    // Loop over each exercise in the session and convert
+                    // the timestamps to Date objects
+                    Object.values(exercises).forEach((exercise) => {
+                        const { uid, startTime } = exercise;
+                        session["exercises"][uid]["startTime"] =
+                            startTime.toDate();
+                    });
+                });
 
                 // Update state
                 setUserHistory(userHistoryArray);
@@ -47,7 +63,11 @@ const HistoryProvider = ({ children }) => {
         fetchUserHistory();
     }, []);
 
-    return <historyContext.Provider value={{isLoading, userHistory}}>{children}</historyContext.Provider>;
+    return (
+        <historyContext.Provider value={{ isLoading, userHistory }}>
+            {children}
+        </historyContext.Provider>
+    );
 };
 
 HistoryProvider.propTypes = {
