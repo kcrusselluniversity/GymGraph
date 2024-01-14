@@ -35,12 +35,20 @@ const FinishSessionButton = () => {
             const sessionUid = startTimeObject.getTime().toString();
             const userUid = auth.currentUser.uid;
             const userSessionObject = {
-                startTime: startTimeObject,
                 exercises: sessionExercises.getExercises(),
             };
 
             // Convert the custom objects into basic objects for storage
             const basicObject = JSON.parse(JSON.stringify(userSessionObject));
+
+            // Rehydrate startTimes so they are stored as timestamps not strings
+            Object.values(basicObject["exercises"]).forEach((exercise) => {
+                const { startTime, uid } = exercise;
+                basicObject["exercises"][uid]["startTime"] = new Date(startTime);
+            });
+
+            // Add the startTime to the basicObject
+            basicObject["startTime"] = startTimeObject;
 
             // Upload data to firestore
             try {
