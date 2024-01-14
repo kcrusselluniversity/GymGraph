@@ -50,6 +50,25 @@
     cursor: auto;
 }
 
+/* SECTION: VOLUME PER SESSION GRAPH COMPONENT STYLING */
+.volumePerSessionGraph {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.volumePerSessionGraph__title {
+    text-align: center;
+    margin: 1rem 0px 2rem;
+}
+
+.volumePerSessionGraph__controlBtns {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 @media screen and (width <= 500px) {
     .dashboardPage {
         height: calc(100dvh - var(--navbar-hight-small));
@@ -71,6 +90,10 @@
 
     .SessionHistorySummaryModal .sessionHistorySummary__date {
         margin-bottom: 12px;
+    }
+
+    .volumePerSessionGraph__controlBtns {
+        gap: 0.5rem;
     }
 
 }
