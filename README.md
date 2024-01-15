@@ -18,7 +18,8 @@ A full stack weight lifting tracker app.
 
 -   **User Authentication**: Offers a streamlined account creation process, allowing users to sign up using their email and a secure password. Alternatively, for enhanced convenience, users have the option to sign in directly using their Google account.
 -   **Exercise Database**: A comprehensive database of over 1,200 exercises with descriptions, muscle groups targeted, and detailed animations demonstrating proper form.
--   **Progress Tracking and Analytics**: Features for tracking workouts, including sets, reps, and weights lifted. Graphs and charts to visualize progress over time.
+-   **Progress Tracking**: Features for tracking workouts, including sets, reps, and weights lifted. 
+-   **Analytics**: Graphs and charts to visualize progress over time.
 -   **Countdown Timer**: A timer you can use to ensure you rest for long enough between sets for optimal hypertrophy.
 -   **Calendar**: A calendar which highlights the days you have completed a gym session in green. When you click on the day in the calendar a modal opens and shows a summary of all exercises you have done for that day.  
 -   **History using Pagination**: View your exercise history. This feature uses pagination to query the backend for only the data needed to fill the page. This avoid unnecessary payloads of data being requested, reducing load times and backend costs. 
@@ -29,7 +30,6 @@ A full stack weight lifting tracker app.
     -   HTML/CSS/JavaScript
     -   React
     -   Vite 
-    -   Chrome DevTools
 
 - **Backend**
     - Firebase (Firestore/Authentication/Hosting)
@@ -44,6 +44,7 @@ A full stack weight lifting tracker app.
 -   **Libraries**:
     - Material UI
     - React Router
+    - Recharts
 
 - **Other**
     - Jira (for project management)
