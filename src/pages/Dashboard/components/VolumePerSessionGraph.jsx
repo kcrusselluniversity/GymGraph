@@ -120,6 +120,11 @@ const VolumePerSessionGraph = () => {
         
     }
 
+    const toolTipLabelFormatter = (name) => {
+        const [date, time] = name.split(' ');
+        return `Session date: ${time} ${date}`
+    }
+
     return (
         <div className="volumePerSessionGraph Card">
             <h3 className="volumePerSessionGraph__title">
@@ -142,7 +147,7 @@ const VolumePerSessionGraph = () => {
                     <YAxis domain={[0, maxValue]} unit="kg" />
                     <Tooltip
                         formatter={(value) => [`${value} kg`, "Volume"]}
-                        labelFormatter={(name) => `Session date: ${name}`}
+                        labelFormatter={toolTipLabelFormatter}
                     />
                 </LineChart>
             </ResponsiveContainer>
