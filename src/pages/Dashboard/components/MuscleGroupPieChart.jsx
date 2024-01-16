@@ -1,16 +1,19 @@
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { historyContext } from "../../../context/historyContext";
 import { useContext, useEffect, useState } from "react";
+import tallyMuscleGroupSets from "../utils/tallyMuscleGroupSets";
+import {
+    LABEL_RADIUS_SCALING_FACTOR,
+    PIE_CHART_COLORS,
+    RADIAN,
+} from "../../../data/constants";
 
-const PIE_CHART_COLORS = [
-    "#0088FE",
-    "#00C49F",
-    "#FFBB28",
-    "#FF8042",
-    "#A633FF",
-];
-const RADIAN = Math.PI / 180;
-
+/**
+ * Muscle group pie chart component
+ *
+ * This component displays a pie chart representing the distribution of
+ * muscle groups worked based on a user's exercise history.
+ */
 const MuscleGroupPieChart = () => {
     const { userHistory, isLoading } = useContext(historyContext);
     const [muscleGroupSetData, setMuscleGroupSetData] = useState([]);
@@ -18,35 +21,7 @@ const MuscleGroupPieChart = () => {
     // Parse data to display in graph once userHistory data has loaded
     useEffect(() => {
         if (!isLoading) {
-            const muscleGroupSetTally = {};
-            const sessionsData = userHistory.map(
-                (session) => session.exercises
-            );
-            sessionsData.forEach((session) => {
-                // Loop through each exercise and add the set count to the
-                // corresponding muscleGroup property of the muscleGroupTally
-                // object
-                Object.values(session).forEach((exercise) => {
-                    const { muscleGroup, sets } = exercise;
-                    const setCount = sets.length;
-                    const currentTally = muscleGroupSetTally[muscleGroup];
-
-                    // Add the set count for this exercise to the tally object
-                    muscleGroupSetTally[muscleGroup] =
-                        currentTally === undefined
-                            ? setCount
-                            : currentTally + setCount;
-                });
-            });
-
-            const muscleGroupSetsArray = Object.keys(muscleGroupSetTally).map(
-                (muscleGroup) => {
-                    return {
-                        muscleGroup,
-                        value: muscleGroupSetTally[muscleGroup],
-                    };
-                }
-            );
+            const muscleGroupSetsArray = tallyMuscleGroupSets(userHistory);
 
             // Set state
             setMuscleGroupSetData(muscleGroupSetsArray);
@@ -84,6 +59,9 @@ const MuscleGroupPieChart = () => {
         </div>
     );
 };
+/**
+ * Util function to generate a label for each Cell of the pie chart
+ */
 
 const renderCustomizedLabel = ({
     cx,
@@ -93,7 +71,8 @@ const renderCustomizedLabel = ({
     outerRadius,
     percent,
 }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
+    const radius =
+        innerRadius + (outerRadius - innerRadius) * LABEL_RADIUS_SCALING_FACTOR;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 

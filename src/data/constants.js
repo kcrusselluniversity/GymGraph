@@ -131,6 +131,15 @@ export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 // Recharts constants
 export const DEFAULT_MAX_AXIS_VALUE = 100;
 export const GRAPH_DAY_RANGE = 6;
+export const PIE_CHART_COLORS = [
+    "#0088FE",
+    "#00C49F",
+    "#FFBB28",
+    "#FF8042",
+    "#A633FF",
+];
+export const RADIAN = Math.PI / 180;
+export const LABEL_RADIUS_SCALING_FACTOR = 0.6;
 
 // TESTING CONSTANTS
 // This is used for testing a user in RTL tests.
