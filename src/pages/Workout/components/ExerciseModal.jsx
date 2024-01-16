@@ -7,6 +7,7 @@ import ExerciseDetails from "./ExerciseDetails";
 import ExerciseSessionData from "./ExerciseSessionData";
 import BackButton from "../../../components/ui/BackButton";
 import RestTimer from "../../../components/ui/RestTimer";
+import ExerciseNameItem from "./ExerciseNameItem";
 
 /**
  * Exercise Modal component
@@ -34,7 +35,8 @@ const ExerciseModal = () => {
                         placeholder="Search exercise"
                         state={{ searchInput, setSearchInput }}
                     />
-                    <SearchResults input={searchInput} />
+                    <SearchResults input={searchInput} RenderComponent={ExerciseNameItem}/>
+                    {searchInput === "" && <ExercisesAccordion />}
                 </>
             );
             break;

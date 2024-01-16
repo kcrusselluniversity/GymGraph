@@ -37,6 +37,8 @@
     --exercise-table-font-reg: 18px;
     --exersise-table-font-sml: 16px;
     --exercise-table-data-font-sml: 14px;
+
+    --searchBarHeight: 40px;
 }
 
 * {
@@ -203,6 +205,11 @@ td, input {
 .divider__text-horizontal {
     display: inline-block;
     padding: 8px 16px;
+}
+
+/* Search Bar component styling */
+.searchBarInput {
+    height: var(--searchBarHeight)
 }
 
 /* Remove default spinners on the numberic input html element */
