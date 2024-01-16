@@ -3,8 +3,8 @@ import SessionHistorySummary from "../../components/ui/SessionHistorySummary";
 import Calendar from "./components/Calendar";
 import { useContext } from "react";
 import { dashboardContext } from "../../context/DashboardContext";
-import HistoryProvider from "../../context/HistoryProvider";
 import VolumePerSessionGraph from "./components/VolumePerSessionGraph";
+import MuscleGroupPieChart from "./components/MuscleGroupPieChart";
 import "./dashboard.css";
 
 const Dashboard = () => {
@@ -22,7 +22,7 @@ const Dashboard = () => {
             <h2>Welcome, </h2>
             <div className="dashboard__content">
                 <Calendar />
-                {/* <MuscleGroupHistory /> */}
+                <MuscleGroupPieChart />
                 <VolumePerSessionGraph />
             </div>
             <Dialog
