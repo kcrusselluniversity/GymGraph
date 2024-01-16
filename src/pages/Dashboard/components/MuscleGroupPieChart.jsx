@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Legend } from "recharts";
+import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 import { historyContext } from "../../../context/historyContext";
 import { useContext, useEffect, useState } from "react";
 import tallyMuscleGroupSets from "../utils/tallyMuscleGroupSets";
@@ -54,6 +54,7 @@ const MuscleGroupPieChart = () => {
                         />
                     ))}
                 </Pie>
+                <Tooltip formatter={(value, name) => [`${value} sets`, name]}/>
                 <Legend />
             </PieChart>
         </div>
