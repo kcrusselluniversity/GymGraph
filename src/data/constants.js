@@ -130,6 +130,7 @@ export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 
 // Recharts constants
 export const DEFAULT_MAX_AXIS_VALUE = 100;
+export const GRAPH_DAY_RANGE = 6;
 
 // TESTING CONSTANTS
 // This is used for testing a user in RTL tests.

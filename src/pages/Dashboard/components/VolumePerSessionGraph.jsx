@@ -1,8 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { historyContext } from "../../../context/historyContext";
-import { ACCENT_COLOR, DEFAULT_MAX_AXIS_VALUE } from "../../../data/constants";
 import GreyButton from "../../../components/ui/GreyButton";
 import calculateSessionsVolumeData from "../utils/calculateSessionsVolumeData";
+import {
+    ACCENT_COLOR,
+    DEFAULT_MAX_AXIS_VALUE,
+    GRAPH_DAY_RANGE,
+} from "../../../data/constants";
 import {
     CartesianGrid,
     Line,
@@ -12,8 +16,6 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-
-const GRAPH_DAY_RANGE = 6;
 
 const VolumePerSessionGraph = () => {
     // Destructure required context
@@ -70,7 +72,7 @@ const VolumePerSessionGraph = () => {
             setSessionsVolumeData(sessionsVolumeData);
             setIsLastBlockOfData(true);
 
-            // Store initial data in state variables for later usage
+            // Store initial data in state variables for later use
             setInitialEndIndex(initialEndIndex);
             setInitialDisplayData(initialDisplayData);
         }
@@ -82,7 +84,7 @@ const VolumePerSessionGraph = () => {
     };
 
     const handleResetBtnClick = () => {
-        // Update isFirstBlock boolean if required
+        // Update isFirstBlock boolean
         const calculatedStartIndex = initialEndIndex - GRAPH_DAY_RANGE;
         calculatedStartIndex < 0
             ? setIsFirstBlockOfData(true)
@@ -136,11 +138,6 @@ const VolumePerSessionGraph = () => {
         setDisplayedSessionVolumeData(updatedDisplayedSessionData);
         setEndIndex(newEndIndex);
         setIsFirstBlockOfData(false);
-    };
-
-    const toolTipLabelFormatter = (name) => {
-        const [date, time] = name.split(" ");
-        return `Session date: ${time} ${date}`;
     };
 
     // Determine whether there is enough data to display an 'All' button
@@ -199,6 +196,14 @@ const VolumePerSessionGraph = () => {
             </div>
         </div>
     );
+};
+
+/**
+ * Helper function to format the toolTip of the graph
+ */
+const toolTipLabelFormatter = (name) => {
+    const [date, time] = name.split(" ");
+    return `Session date: ${time} ${date}`;
 };
 
 export default VolumePerSessionGraph;
