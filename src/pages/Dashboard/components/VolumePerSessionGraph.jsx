@@ -117,13 +117,39 @@ const VolumePerSessionGraph = () => {
     };
 
     const handleNextBtnClick = () => {
-        
-    }
+        // Calculate new start and end indexes
+        let newEndIndex = endIndex + GRAPH_DAY_RANGE;
+        let newStartIndex = newEndIndex - (GRAPH_DAY_RANGE - 1);
+
+        if (newEndIndex >= initialEndIndex) {
+            setIsLastBlockOfData(true);
+            newEndIndex = initialEndIndex;
+        }
+
+        // Select the new section of data to display
+        const updatedDisplayedSessionData = sessionsVolumeData.slice(
+            newStartIndex,
+            newEndIndex + 1
+        );
+
+        // Update state
+        setDisplayedSessionVolumeData(updatedDisplayedSessionData);
+        setEndIndex(newEndIndex);
+        setIsFirstBlockOfData(false);
+    };
 
     const toolTipLabelFormatter = (name) => {
-        const [date, time] = name.split(' ');
-        return `Session date: ${time} ${date}`
-    }
+        const [date, time] = name.split(" ");
+        return `Session date: ${time} ${date}`;
+    };
+
+    // Determine whether there is enough data to display an 'All' button
+    const isDisplayAllBtn = sessionsVolumeData.length > GRAPH_DAY_RANGE;
+
+    // Determine whether each button should be displayed based on the state
+    const isPrevBtnVisible = !isAllActive && !isFirstBlockOfData && !isLoading;
+    const isNextBtnVisible = !isAllActive && !isLastBlockOfData && !isLoading;
+    const isAllBtnVisible = !isAllActive && isDisplayAllBtn;
 
     return (
         <div className="volumePerSessionGraph Card">
@@ -152,12 +178,12 @@ const VolumePerSessionGraph = () => {
                 </LineChart>
             </ResponsiveContainer>
             <div className="volumePerSessionGraph__controlBtns">
-                {!isAllActive && !isFirstBlockOfData && (
+                {isPrevBtnVisible && (
                     <GreyButton handleClick={handlePrevBtnClick}>
                         Prev
                     </GreyButton>
                 )}
-                {!isAllActive && (
+                {isAllBtnVisible && (
                     <GreyButton handleClick={handleAllBtnClick}>All</GreyButton>
                 )}
                 {isAllActive && (
@@ -165,8 +191,10 @@ const VolumePerSessionGraph = () => {
                         Reset
                     </GreyButton>
                 )}
-                {!isAllActive && !isLastBlockOfData && (
-                    <GreyButton>Next</GreyButton>
+                {isNextBtnVisible && (
+                    <GreyButton handleClick={handleNextBtnClick}>
+                        Next
+                    </GreyButton>
                 )}
             </div>
         </div>
