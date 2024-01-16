@@ -7,7 +7,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     grid-area: userPageContent;
 }
 
@@ -68,6 +69,13 @@
     justify-content: center;
     gap: 1.5rem;
 }
+
+/* SECTION: MUSCLE GROUP PIE CHART STYLING */
+.muscleGroupPieChart__title {
+    text-align: center;
+}
+
+/* Media Queries */
 
 @media screen and (width <= 500px) {
     .dashboardPage {
