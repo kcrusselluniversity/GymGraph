@@ -1,0 +1,21 @@
+.searchBarComponent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+}
+
+.searchResultsContainer {
+    position: absolute;
+    top: var(--searchBarHeight);
+    border: 1px solid var(--accent-color-with-opacity);
+    overflow-y: scroll;
+    min-height: min-content;
+    max-height: 400px;
+    width: 100%;
+}
+
+.searchResultsContainer::-webkit-scrollbar {
+    display: none;
+}
