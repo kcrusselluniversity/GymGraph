@@ -1,5 +1,5 @@
-import exerciseList from "../../../data/exerciseList.json";
-import ExerciseNameItem from "./ExerciseNameItem";
+import exerciseList from "../../data/exerciseList.json";
+import ExerciseNameItem from "../../pages/Workout/components/ExerciseNameItem";
 import { string } from "prop-types";
 
 /**
