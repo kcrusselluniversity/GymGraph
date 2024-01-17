@@ -212,6 +212,23 @@ td, input {
     height: var(--searchBarHeight)
 }
 
+/* Gif component styling */
+.gifContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (width <= 950px) {
+    .gifContainer,
+    .gifContainer > img,
+    .exerciseDetails__skeleton {
+        width: var(--gif-size-small) !important;
+        height: var(--gif-size-small) !important;
+    }
+}
+
 /* Remove default spinners on the numberic input html element */
 /* For Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
