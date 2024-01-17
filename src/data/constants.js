@@ -141,6 +141,9 @@ export const PIE_CHART_COLORS = [
 export const RADIAN = Math.PI / 180;
 export const LABEL_RADIUS_SCALING_FACTOR = 0.6;
 
+// METRICS PAGE CONSTANTS
+export const NUM_EXERCISES_TO_DISPLAY = 5;
+
 // TESTING CONSTANTS
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into

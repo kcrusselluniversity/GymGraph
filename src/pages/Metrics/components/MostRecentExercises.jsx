@@ -1,9 +1,22 @@
+import { useContext, useEffect, useState } from "react";
 import GreyButton from "../../../components/ui/GreyButton";
 import ExerciseName from "./ExerciseName";
 import { object } from "prop-types";
+import { historyContext } from "../../../context/historyContext";
+import getMostRecentExercises from "../utils/getMostRecentExercises";
 
 const MostRecentExercises = ({ state }) => {
     const { setSearchInput, isMostRecentOpen, setIsMostRecentOpen } = state;
+    const { userHistory, isLoading } = useContext(historyContext);
+    const [mostRecentExercises, setMostRecentExercises] = useState([]);
+
+    // Parse userHistory once loaded to determine most recent exercises
+    useEffect(() => {
+        if (!isLoading) {
+            const mostRecentExercises = getMostRecentExercises(userHistory);
+            setMostRecentExercises(mostRecentExercises);
+        }
+    }, [userHistory]);
 
     const handleBtnClick = () => {
         setIsMostRecentOpen(!isMostRecentOpen);
@@ -19,13 +32,12 @@ const MostRecentExercises = ({ state }) => {
             </GreyButton>
             {isMostRecentOpen && (
                 <div className="mostRecentComponent__results resultsContainer">
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
-                    <ExerciseName exerciseName="hi" />
+                    {mostRecentExercises.map((exercise, index) => (
+                        <ExerciseName
+                            key={`exercise-${index}`}
+                            exerciseName={exercise.name}
+                        />
+                    ))}
                 </div>
             )}
         </div>

@@ -5,7 +5,7 @@ import MostRecentExercises from "./components/MostRecentExercises";
 
 const Metrics = () => {
     const [searchInput, setSearchInput] = useState("");
-    const [isMostRecentOpen, setIsMostRecentOpen] = useState(true);
+    const [isMostRecentOpen, setIsMostRecentOpen] = useState(false);
 
     return (
         <div className="metricsPage userPageGrid">

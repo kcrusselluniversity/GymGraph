@@ -79,7 +79,14 @@ const Router = () => {
                         }
                     />
                     <Route path="history" element={<History />} />
-                    <Route path="metrics" element={<Metrics />} />
+                    <Route
+                        path="metrics"
+                        element={
+                            <HistoryProvider>
+                                <Metrics />
+                            </HistoryProvider>
+                        }
+                    />
                     <Route path="profile" element={<Profile />} />
                 </Route>
             </Route>
