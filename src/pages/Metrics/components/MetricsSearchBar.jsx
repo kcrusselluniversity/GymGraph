@@ -2,8 +2,9 @@ import { PropTypes, func, string } from "prop-types";
 import SearchBar from "../../../components/ui/SearchBar";
 import SearchResults from "../../../components/ui/SearchResults";
 import ExerciseName from "./ExerciseName";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { metricsContext } from "../../../context/appContext";
+import useOutsideClick from "../../../hooks/useOutsideClick";
 
 /**
  * Metrics search bar component
@@ -23,12 +24,23 @@ const MetricsSearchBar = () => {
         setIsMostRecentOpen,
     } = useContext(metricsContext);
 
+    // Set up ref
+    const ref = useRef(null);
+    
+    // Callback function for outside click event listener
+    const handleOutsideClick = () => {
+        setSearchInput("");
+    };
+    // Call custom hook to add event listener for clicks outside the component
+    useOutsideClick(ref, handleOutsideClick);
+
+
     const handleSearchBarClick = isMostRecentOpen
         ? () => setIsMostRecentOpen(false)
         : null;
 
     return (
-        <div className="searchBarComponent">
+        <div className="searchBarComponent" ref={ref}>
             <SearchBar
                 placeholder="search exercise"
                 state={{ searchInput, setSearchInput }}
