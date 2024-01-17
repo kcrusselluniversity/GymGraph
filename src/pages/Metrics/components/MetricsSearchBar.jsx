@@ -17,16 +17,11 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
  */
 const MetricsSearchBar = () => {
     // Destructure required context
-    const {
-        searchInput,
-        setSearchInput,
-        isMostRecentOpen,
-        setIsMostRecentOpen,
-    } = useContext(metricsContext);
+    const { searchInput, setSearchInput } = useContext(metricsContext);
 
     // Set up ref
     const ref = useRef(null);
-    
+
     // Callback function for outside click event listener
     const handleOutsideClick = () => {
         setSearchInput("");
@@ -34,17 +29,11 @@ const MetricsSearchBar = () => {
     // Call custom hook to add event listener for clicks outside the component
     useOutsideClick(ref, handleOutsideClick);
 
-
-    const handleSearchBarClick = isMostRecentOpen
-        ? () => setIsMostRecentOpen(false)
-        : null;
-
     return (
         <div className="searchBarComponent" ref={ref}>
             <SearchBar
                 placeholder="search exercise"
                 state={{ searchInput, setSearchInput }}
-                onClick={handleSearchBarClick}
             />
             <div className="resultsContainer searchResultsContainer">
                 <SearchResults

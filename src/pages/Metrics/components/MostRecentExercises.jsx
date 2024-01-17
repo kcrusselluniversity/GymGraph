@@ -17,7 +17,7 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
 const MostRecentExercises = () => {
     // Destructure required context
     const { userHistory, isLoading } = useContext(historyContext);
-    const { setSearchInput, isMostRecentOpen, setIsMostRecentOpen } =
+    const { isMostRecentOpen, setIsMostRecentOpen } =
         useContext(metricsContext);
 
     // Set up components state
@@ -38,7 +38,6 @@ const MostRecentExercises = () => {
 
     const handleBtnClick = () => {
         setIsMostRecentOpen(!isMostRecentOpen);
-        setSearchInput("");
     };
     return (
         <div className="mostRecentComponent">
