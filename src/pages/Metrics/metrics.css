@@ -1,21 +1,85 @@
+.metricsPage {
+    margin: 1rem 3rem;
+}
+
+.metrics__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* SECTION: SEARCH BAR STYLING */
+
 .searchBarComponent {
     position: relative;
     display: flex;
     flex-direction: column;
     height: 400px;
-    width: 400px;
+    width: 350px;
 }
 
-.searchResultsContainer {
+.metricsPage .resultsContainer {
     position: absolute;
-    top: var(--searchBarHeight);
     border: 1px solid var(--accent-color-with-opacity);
+    border-radius: var(--card-border-radius);
     overflow-y: scroll;
     min-height: min-content;
     max-height: 400px;
-    width: 100%;
 }
 
-.searchResultsContainer::-webkit-scrollbar {
+.searchResultsContainer {
+    width: 100%;
+    top: var(--searchBarHeight);
+}
+
+.metricsPage .resultsContainer::-webkit-scrollbar {
     display: none;
+}
+
+/* SECTION: MOST RECENT EXERCISES COMPONENT STYLING */
+.mostRecentComponent {
+    position: relative;
+}
+.mostRecentComponent__btn {
+    margin: 0px !important;
+    height: 40px;
+    padding: 4px 1rem !important;
+}
+
+.mostRecentComponent__results {
+    width: 290px;
+    right: 0px;
+    top: calc(var(--searchBarHeight) + 12px);
+}
+
+
+/* SECTION: MEDIA QUERIES */
+
+@media screen and (width <= 950px) {
+    .metricsPage {
+        margin: 1rem;
+    }
+}
+
+@media screen and (width <= 750px) {
+    .searchBarComponent {
+        width: auto;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (width <= 600px) {
+    .mostRecentComponent__btn {
+        padding: 0px 4px !important;
+    }
+    .mostRecentComponent__btn span{
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+@media screen and (width <= 500px) {
+    .metricsPage {
+        margin: 0px;
+    }    
 }

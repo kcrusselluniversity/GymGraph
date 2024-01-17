@@ -1,20 +1,19 @@
 import { useState } from "react";
-import SearchBar from "../../components/ui/SearchBar";
-import SearchResults from "../../components/ui/SearchResults";
-import ExerciseName from "./components/ExerciseName";
 import "./metrics.css";
+import MetricsSearchBar from "./components/MetricsSearchBar";
+import MostRecentExercises from "./components/MostRecentExercises";
 
 const Metrics = () => {
     const [searchInput, setSearchInput] = useState("");
+    const [isMostRecentOpen, setIsMostRecentOpen] = useState(true);
+
     return (
         <div className="metricsPage userPageGrid">
             <div className="metrics__header">
-                <div className="searchBarComponent">
-                    <SearchBar placeholder="search exercise" state={{ searchInput, setSearchInput }} />
-                    <div className="searchResultsContainer">
-                        <SearchResults input={searchInput} RenderComponent={ExerciseName}/>
-                    </div>
-                </div>
+                <MetricsSearchBar
+                    inputState={{ searchInput, setSearchInput, isMostRecentOpen, setIsMostRecentOpen }}
+                />
+                <MostRecentExercises state={{ setSearchInput, isMostRecentOpen, setIsMostRecentOpen }} />
             </div>
             <div className="metrics__content"></div>
         </div>
