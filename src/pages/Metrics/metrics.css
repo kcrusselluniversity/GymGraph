@@ -60,6 +60,13 @@
     top: calc(var(--searchBarHeight) + 12px);
 }
 
+/* SECTION: SELECTED EXERCISE COMPONENT STYLING */
+.selectedExercise__gifWrapper {
+    position: relative;
+    width: fit-content;
+    background-color: white !important;
+}
+
 
 /* SECTION: MEDIA QUERIES */
 

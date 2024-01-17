@@ -108,6 +108,7 @@
 .exerciseGroupList__item {
     padding: 1rem 0.5rem;
     border-bottom: 1px solid var(--accent-color-with-opacity);
+    background-color: white;
 }
 
 .accordionDetails .exerciseGroupList__item:last-child {
@@ -153,10 +154,6 @@
     align-items: center;
     margin: 3rem 0px;
     gap: 0.75rem;
-}
-
-.exerciseDetails .gifContainer {
-    position: relative;
 }
 
 .exerciseDetails__skeleton {
@@ -288,13 +285,6 @@
 
     .exerciseTableInput {
         width: 45px;
-    }
-
-    .exerciseDetails__body .gifContainer,
-    .exerciseDetails__body .gifContainer > img,
-    .exerciseDetails__skeleton {
-        width: var(--gif-size-small) !important;
-        height: var(--gif-size-small) !important;
     }
 }
 
