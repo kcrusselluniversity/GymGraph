@@ -17,7 +17,8 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
  */
 const MetricsSearchBar = () => {
     // Destructure required context
-    const { searchInput, setSearchInput } = useContext(metricsContext);
+    const { searchInput, setSearchInput, setSelectedExercise } =
+        useContext(metricsContext);
 
     // Set up ref
     const ref = useRef(null);
@@ -29,6 +30,10 @@ const MetricsSearchBar = () => {
     // Call custom hook to add event listener for clicks outside the component
     useOutsideClick(ref, handleOutsideClick);
 
+    const handleExerciseClick = (exercise) => {
+        setSelectedExercise({ name: exercise.exercise, uid: exercise.uid });
+    };
+
     return (
         <div className="searchBarComponent" ref={ref}>
             <SearchBar
@@ -39,6 +44,7 @@ const MetricsSearchBar = () => {
                 <SearchResults
                     input={searchInput}
                     RenderComponent={ExerciseName}
+                    exerciseClickHandler={handleExerciseClick}
                 />
             </div>
         </div>

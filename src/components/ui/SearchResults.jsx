@@ -1,5 +1,5 @@
 import exerciseList from "../../data/exerciseList.json";
-import { string, elementType } from "prop-types";
+import { string, elementType, func } from "prop-types";
 
 /**
  * SearchResults component
@@ -9,9 +9,11 @@ import { string, elementType } from "prop-types";
  *
  * @param {string} {input}: User provided search input.
  * @param {elementType} {RenderComponent}: Component used to render each item.
+ * @param {function} {exerciseClickHandler}: Callback function to execute
+ * when the user clicks on a matching exercise.
  * @returns {array}: Array of JSX UI components displaying each matching exercise.
  */
-const SearchResults = ({ input, RenderComponent }) => {
+const SearchResults = ({ input, RenderComponent, exerciseClickHandler }) => {
     // Convert input to lower case
     input = input.toLowerCase();
 
@@ -27,6 +29,7 @@ const SearchResults = ({ input, RenderComponent }) => {
                 key={object.uid}
                 uid={object.uid}
                 exerciseName={object.exercise}
+                onClick={() => exerciseClickHandler(object)}
             />
         ));
 
@@ -36,6 +39,7 @@ const SearchResults = ({ input, RenderComponent }) => {
 SearchResults.propTypes = {
     input: string,
     RenderComponent: elementType.isRequired,
+    exerciseClickHandler: func,
 };
 
 export default SearchResults;
