@@ -12,6 +12,7 @@ const MetricsProvider = ({ children }) => {
     const [searchInput, setSearchInput] = useState("");
     const [isMostRecentOpen, setIsMostRecentOpen] = useState(false);
     const [selectedExercise, setSelectedExercise] = useState(null);
+    const [isGifLoading, setIsGifLoading] = useState(true);
 
     const state = {
         searchInput,
@@ -20,6 +21,8 @@ const MetricsProvider = ({ children }) => {
         setIsMostRecentOpen,
         selectedExercise,
         setSelectedExercise,
+        isGifLoading,
+        setIsGifLoading,
     };
 
     return (
