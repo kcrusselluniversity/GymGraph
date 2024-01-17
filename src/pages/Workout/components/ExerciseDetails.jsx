@@ -4,14 +4,14 @@ import getExerciseByUid from "../../../utils/getExerciseByUid";
 import {
     GREY_STYLE_BUTTON,
     EXERCISE_GIF_URL_ENDPOINT,
-    GIF_SIZE_STANDARD,
 } from "../../../data/constants";
-import { Button, Skeleton } from "@mui/material";
-import { ReactSVG } from "react-svg";
 import BackIcon from "../../../assets/icons/Back_Icon.svg";
-import { errorMessage } from "../../../utils/getExerciseByUid";
 import BackButton from "../../../components/ui/BackButton";
-import { bool, func, string } from "prop-types";
+import GifContainer from "../../../components/ui/GifContainer";
+import { errorMessage } from "../../../utils/getExerciseByUid";
+import { Button } from "@mui/material";
+import { ReactSVG } from "react-svg";
+import { func } from "prop-types";
 
 /**
  * Exercise Details component
@@ -125,56 +125,6 @@ const ExerciseHeader = ({ handleAddExerciseClick }) => {
 
 ExerciseHeader.propTypes = {
     handleAddExerciseClick: func,
-};
-
-/**
- * Gif Container
- *
- * This is a helper component for the ExerciseDetails componant.
- * It renders the exercise gif associated with the selected exercise,
- * and shows a skeleton loading image if the gif is still loading.
- */
-const GifContainer = ({
-    name,
-    exerciseGifUrl,
-    isGifLoading,
-    setIsGifLoading,
-}) => {
-    return (
-        <div
-            className="gifContainer"
-            style={{
-                height: `${GIF_SIZE_STANDARD}px`,
-                width: `${GIF_SIZE_STANDARD}px`,
-            }}
-        >
-            <img
-                alt={name}
-                src={exerciseGifUrl}
-                onLoad={() => setIsGifLoading(false)}
-            />
-            {isGifLoading && (
-                <Skeleton
-                    className="exerciseDetails__skeleton"
-                    variant="rectangular"
-                    data-testid="exerciseDetailsSkeleton"
-                    height={GIF_SIZE_STANDARD}
-                    width={GIF_SIZE_STANDARD}
-                    sx={{
-                        borderRadius: "1rem",
-                        opacity: isGifLoading ? 1 : 0,
-                    }}
-                />
-            )}
-        </div>
-    );
-};
-
-GifContainer.propTypes = {
-    name: string,
-    exerciseGifUrl: string,
-    isGifLoading: bool,
-    setIsGifLoading: func,
 };
 
 export default ExerciseDetails;
