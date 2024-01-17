@@ -1,10 +1,11 @@
-import { string } from "prop-types";
+import { func, string } from "prop-types";
 
-const ExerciseName = ({ exerciseName }) => {
+const ExerciseName = ({ exerciseName, onClick }) => {
     return (
         <div
             className="exerciseGroupList__item"
             data-testid="exerciseNameItem"
+            onClick={() => onClick()}
         >
             {exerciseName}
         </div>
@@ -13,6 +14,7 @@ const ExerciseName = ({ exerciseName }) => {
 
 ExerciseName.propTypes = {
     exerciseName: string,
+    onClick: func,
 };
 
 export default ExerciseName;
