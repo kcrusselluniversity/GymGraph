@@ -17,8 +17,12 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
  */
 const MetricsSearchBar = () => {
     // Destructure required context
-    const { searchInput, setSearchInput, setSelectedExercise } =
-        useContext(metricsContext);
+    const {
+        searchInput,
+        setSearchInput,
+        setSelectedExercise,
+        setIsGifLoading,
+    } = useContext(metricsContext);
 
     // Set up ref
     const ref = useRef(null);
@@ -32,6 +36,7 @@ const MetricsSearchBar = () => {
 
     const handleExerciseClick = (exercise) => {
         setSelectedExercise({ name: exercise.exercise, uid: exercise.uid });
+        setIsGifLoading(true);
     };
 
     return (

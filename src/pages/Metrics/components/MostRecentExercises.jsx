@@ -17,8 +17,13 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
 const MostRecentExercises = () => {
     // Destructure required context
     const { userHistory, isLoading } = useContext(historyContext);
-    const { isMostRecentOpen, setIsMostRecentOpen, setSelectedExercise } =
-        useContext(metricsContext);
+    const {
+        isMostRecentOpen,
+        setIsMostRecentOpen,
+        selectedExercise,
+        setSelectedExercise,
+        setIsGifLoading,
+    } = useContext(metricsContext);
 
     // Set up components state
     const [mostRecentExercises, setMostRecentExercises] = useState([]);
@@ -44,6 +49,9 @@ const MostRecentExercises = () => {
         const { name, uid } = exercise;
         setIsMostRecentOpen(false);
         setSelectedExercise({ name, uid });
+        if (selectedExercise?.uid != uid) {
+            setIsGifLoading(true);
+        }
     };
 
     return (
