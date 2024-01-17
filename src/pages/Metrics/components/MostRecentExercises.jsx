@@ -41,8 +41,9 @@ const MostRecentExercises = () => {
     };
 
     const handleExerciseNameClick = (exercise) => () => {
+        const { name, uid } = exercise;
         setIsMostRecentOpen(false);
-        setSelectedExercise(exercise);
+        setSelectedExercise({ name, uid });
     };
 
     return (
