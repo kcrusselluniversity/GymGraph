@@ -144,6 +144,9 @@ export const LABEL_RADIUS_SCALING_FACTOR = 0.6;
 // METRICS PAGE CONSTANTS
 export const NUM_EXERCISES_TO_DISPLAY = 5;
 
+// Gif Component Constants
+export const SKELETON_SCALING_FACTOR = 1.01;
+
 // TESTING CONSTANTS
 // This is used for testing a user in RTL tests.
 // It specifically represents what information a user would input into
