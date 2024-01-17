@@ -9,7 +9,7 @@ import { PropTypes, func, string } from "prop-types";
  * @param {string} placeholder: The placeholder text for the input field.
  * @param {object} state: The state to control the input.
  */
-const SearchBar = ({ placeholder, state }) => {
+const SearchBar = ({ placeholder, state, onClick }) => {
     const { searchInput, setSearchInput } = state;
 
     return (
@@ -19,6 +19,7 @@ const SearchBar = ({ placeholder, state }) => {
             size="small"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
+            onClick={onClick ? () => onClick() : undefined}
             InputProps={{
                 endAdornment: <Search />,
             }}
@@ -32,6 +33,7 @@ SearchBar.propTypes = {
         searchInput: string,
         setSearchInput: func,
     }),
+    onClick: func,
 };
 
 export default SearchBar;
