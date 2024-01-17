@@ -11,12 +11,15 @@ import { node } from "prop-types";
 const MetricsProvider = ({ children }) => {
     const [searchInput, setSearchInput] = useState("");
     const [isMostRecentOpen, setIsMostRecentOpen] = useState(false);
+    const [selectedExercise, setSelectedExercise] = useState(null);
 
     const state = {
         searchInput,
         setSearchInput,
         isMostRecentOpen,
         setIsMostRecentOpen,
+        selectedExercise,
+        setSelectedExercise,
     };
 
     return (
