@@ -17,6 +17,7 @@ import Loading from "../components/ui/Loading";
 import ExerciseModalProvider from "../context/ExerciseModalProvider";
 import DashboardProvider from "../context/DashboardProvider";
 import HistoryProvider from "../context/HistoryProvider";
+import MetricsProvider from "../context/MetricsProvider";
 
 /**
  * Router component
@@ -82,9 +83,11 @@ const Router = () => {
                     <Route
                         path="metrics"
                         element={
-                            <HistoryProvider>
-                                <Metrics />
-                            </HistoryProvider>
+                            <MetricsProvider>
+                                <HistoryProvider>
+                                    <Metrics />
+                                </HistoryProvider>
+                            </MetricsProvider>
                         }
                     />
                     <Route path="profile" element={<Profile />} />
