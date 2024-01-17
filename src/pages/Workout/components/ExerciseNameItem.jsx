@@ -1,6 +1,6 @@
 import { string } from "prop-types";
 import { useContext } from "react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 /**
  * ExerciseNameItem component
  *

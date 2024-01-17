@@ -2,7 +2,7 @@ import { Dialog } from "@mui/material";
 import SessionHistorySummary from "../../components/ui/SessionHistorySummary";
 import Calendar from "./components/Calendar";
 import { useContext } from "react";
-import { dashboardContext } from "../../context/DashboardContext";
+import { dashboardContext } from "../../context/appContext";
 import VolumePerSessionGraph from "./components/VolumePerSessionGraph";
 import MuscleGroupPieChart from "./components/MuscleGroupPieChart";
 import "./dashboard.css";

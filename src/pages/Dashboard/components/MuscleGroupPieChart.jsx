@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
-import { historyContext } from "../../../context/historyContext";
+import { historyContext } from "../../../context/appContext";
 import { useContext, useEffect, useState } from "react";
 import tallyMuscleGroupSets from "../utils/tallyMuscleGroupSets";
 import {

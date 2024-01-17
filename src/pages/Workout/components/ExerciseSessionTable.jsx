@@ -3,7 +3,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import ExerciseTableDataRow from "./ExerciseTableDataRow";
 import ExerciseTableInputRow from "./ExerciseTableInputRow";
 import { useContext } from "react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 
 /**
  * Exercise Session Table

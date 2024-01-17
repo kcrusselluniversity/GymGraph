@@ -5,7 +5,7 @@ import AddExerciseButton from "./AddExerciseButton";
 import ExerciseItem from "./ExerciseItem";
 import { useContext, useState } from "react";
 import ExerciseModal from "./ExerciseModal";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import sortExerciseByStartTime from "../utils/sortExerciseByStartTime";
 import FinishSessionButton from "./FinishSessionButton";
 

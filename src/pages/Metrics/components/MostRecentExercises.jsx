@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import GreyButton from "../../../components/ui/GreyButton";
 import ExerciseName from "./ExerciseName";
 import { object } from "prop-types";
-import { historyContext } from "../../../context/historyContext";
+import { historyContext } from "../../../context/appContext";
 import getMostRecentExercises from "../utils/getMostRecentExercises";
 
 const MostRecentExercises = ({ state }) => {

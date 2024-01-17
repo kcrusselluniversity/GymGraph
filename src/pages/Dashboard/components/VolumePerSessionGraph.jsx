@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { historyContext } from "../../../context/historyContext";
+import { historyContext } from "../../../context/appContext";
 import GreyButton from "../../../components/ui/GreyButton";
 import calculateSessionsVolumeData from "../utils/calculateSessionsVolumeData";
 import {

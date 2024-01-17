@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import heroImage from "../../assets/images/404_hero_image_compressed.png";
 import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/appContext";
 import "./Error.css";
 
 const Error = () => {

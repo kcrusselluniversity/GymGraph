@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import GreyButton from "../../../components/ui/GreyButton";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../../config/firebase";
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { exerciseModalContext } from "./exerciseModalContext";
+import { exerciseModalContext } from "./appContext";
 import { node } from "prop-types";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { SessionExercises } from "../utils/classes/SessionExercises";

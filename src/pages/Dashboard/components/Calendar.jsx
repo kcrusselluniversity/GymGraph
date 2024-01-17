@@ -1,7 +1,7 @@
 import { DateCalendar, DayCalendarSkeleton } from "@mui/x-date-pickers";
 import CustomDayComponent from "./CustomDayComponent";
 import { useContext } from "react";
-import { historyContext } from "../../../context/historyContext";
+import { historyContext } from "../../../context/appContext";
 
 /**
  * Calendar Component

@@ -2,7 +2,7 @@ import { Table } from "@mui/material";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { number, string, PropTypes } from "prop-types";
 import { useContext } from "react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import getExerciseByUid from "../../../utils/getExerciseByUid";
 import ExerciseTableDisplayRow from "../../../components/ui/ExerciseTableDisplayRow";
 /**

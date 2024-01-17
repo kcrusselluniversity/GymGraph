@@ -8,7 +8,7 @@ import {
 } from "../../data/constants";
 import { number, string, func } from "prop-types";
 import "./RestTimer.css";
-import { RestTimerContext } from '../../context/restTimerContext';
+import { RestTimerContext } from '../../context/appContext';
 import { useContext } from 'react';
 
 /**

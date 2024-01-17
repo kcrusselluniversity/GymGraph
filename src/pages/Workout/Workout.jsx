@@ -1,6 +1,6 @@
 import StartWorkoutButton from "./components/StartWorkoutButton";
 import ExerciseSession from "./components/ExerciseSession";
-import { exerciseModalContext } from "../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../context/appContext";
 import { useContext } from "react";
 import { SessionExercises } from "../../utils/classes/SessionExercises";
 import "./workout.css";

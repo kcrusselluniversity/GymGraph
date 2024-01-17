@@ -2,9 +2,9 @@ import { PickersDay } from "@mui/x-date-pickers";
 import { array, bool, object } from "prop-types";
 import isActiveDay from "../utils/isActiveDay";
 import { useContext } from "react";
-import { dashboardContext } from "../../../context/DashboardContext";
+import { dashboardContext } from "../../../context/appContext";
 import compileDayExercises from "../../../utils/compileDayExercises";
-import { historyContext } from "../../../context/historyContext";
+import { historyContext } from "../../../context/appContext";
 import isSameDate from "../utils/isSameDate";
 
 /**

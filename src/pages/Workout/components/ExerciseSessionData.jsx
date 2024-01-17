@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { GREY_STYLE_BUTTON } from "../../../data/constants";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import { useContext } from "react";
 import ExerciseSessionTable from "./ExerciseSessionTable";
 import BackButton from "../../../components/ui/BackButton";

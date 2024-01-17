@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import SearchBar from "../../../components/ui/SearchBar";
 import ExercisesAccordion from "./ExercisesAccordion";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import SearchResults from "../../../components/ui/SearchResults";
 import ExerciseDetails from "./ExerciseDetails";
 import ExerciseSessionData from "./ExerciseSessionData";

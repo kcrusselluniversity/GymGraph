@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/appContext";
 import UnderConstructionContent from "./UnderConstructionConent";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
 import "./underConstruction.css";

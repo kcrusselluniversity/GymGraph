@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import ExerciseSessionData from "../components/ExerciseSessionData";
 import { node } from "prop-types";
 import userEvent from "@testing-library/user-event";

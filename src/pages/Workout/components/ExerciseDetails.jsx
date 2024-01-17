@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import getExerciseByUid from "../../../utils/getExerciseByUid";
 import {
     GREY_STYLE_BUTTON,

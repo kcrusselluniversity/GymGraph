@@ -1,5 +1,5 @@
 import useRestTimer from "../hooks/useRestTimer";
-import { RestTimerContext } from "./restTimerContext";
+import { RestTimerContext } from "./appContext";
 import useCountdown from "../hooks/useCountdown";
 import { node } from "prop-types";
 

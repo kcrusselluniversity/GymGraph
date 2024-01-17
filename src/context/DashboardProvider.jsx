@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { node } from "prop-types";
-import { dashboardContext } from "./DashboardContext";
+import { dashboardContext } from "./appContext";
 
 const DashboardProvider = ({ children }) => {
     const [selectedDateHistory, setSelectedDateHistory] = useState(null);

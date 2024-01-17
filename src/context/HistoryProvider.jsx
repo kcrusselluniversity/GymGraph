@@ -1,5 +1,5 @@
 import { node } from "prop-types";
-import { historyContext } from "./historyContext";
+import { historyContext } from "./appContext";
 import { useEffect, useState } from "react";
 import { auth, db } from "../config/firebase";
 import { collection, query, getDocs } from "firebase/firestore";

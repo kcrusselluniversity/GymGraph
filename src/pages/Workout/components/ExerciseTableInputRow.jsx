@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from "@mui/material";
 import ControlButton from "../../../components/ui/ControlButton";
 import { useContext, useState } from "react";
-import { exerciseModalContext } from "../../../context/exerciseModalContext";
+import { exerciseModalContext } from "../../../context/appContext";
 import ExerciseTableInput from "./ExerciseTableInput";
 import { Exercise, Set } from "../../../utils/classes/SessionExercises";
 
