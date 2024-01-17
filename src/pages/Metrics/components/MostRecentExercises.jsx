@@ -17,7 +17,7 @@ import useOutsideClick from "../../../hooks/useOutsideClick";
 const MostRecentExercises = () => {
     // Destructure required context
     const { userHistory, isLoading } = useContext(historyContext);
-    const { isMostRecentOpen, setIsMostRecentOpen } =
+    const { isMostRecentOpen, setIsMostRecentOpen, setSelectedExercise } =
         useContext(metricsContext);
 
     // Set up components state
@@ -39,6 +39,12 @@ const MostRecentExercises = () => {
     const handleBtnClick = () => {
         setIsMostRecentOpen(!isMostRecentOpen);
     };
+
+    const handleExerciseNameClick = (exercise) => () => {
+        setIsMostRecentOpen(false);
+        setSelectedExercise(exercise);
+    };
+
     return (
         <div className="mostRecentComponent">
             <GreyButton
@@ -56,6 +62,7 @@ const MostRecentExercises = () => {
                         <ExerciseName
                             key={`exercise-${index}`}
                             exerciseName={exercise.name}
+                            onClick={handleExerciseNameClick(exercise)}
                         />
                     ))}
                 </div>
