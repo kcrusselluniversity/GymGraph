@@ -17,6 +17,7 @@ const usePaginateHistory = () => {
     const [isLastPage, setIsLastPage] = useState(false);
     const [startOfCollectionDoc, setStartOfCollectionDoc] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isNoHistory, setIsNoHistory] = useState(true);
 
     const fetchNextResults = async () => {
         const {
@@ -40,6 +41,7 @@ const usePaginateHistory = () => {
         setLastVisibleDoc(updatedLastVisibleDoc);
         setIsLastPage(lastPage);
         setIsLoading(false);
+        setIsNoHistory(historyArray.length === 0)
     };
 
     const fetchPrevResults = async () => {
@@ -81,6 +83,7 @@ const usePaginateHistory = () => {
     return {
         currentHistoryResults,
         isLoading,
+        isNoHistory,
         isFirstPage,
         isLastPage,
         handleNextClick,

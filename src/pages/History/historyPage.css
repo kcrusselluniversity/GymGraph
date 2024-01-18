@@ -18,6 +18,10 @@
     margin-bottom: 12px;
 }
 
+.HistoryPage__noHistoryMessage {
+    margin: auto;
+}
+
 @media screen and (width <= 500px) {
     .HistoryPage {
         height: calc(100dvh - var(--navbar-hight-small));

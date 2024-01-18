@@ -4,10 +4,13 @@ import Loading from "../../components/ui/Loading";
 import GreyButton from "../../components/ui/GreyButton";
 import "./historyPage.css";
 
+const NO_HISTORY_MESSAGE = "You haven't completed any sessions yet";
+
 const History = () => {
     const {
         currentHistoryResults,
         isLoading,
+        isNoHistory,
         isFirstPage,
         isLastPage,
         handleNextClick,
@@ -19,6 +22,8 @@ const History = () => {
             <SessionHistorySummary sessionObject={session} key={index} />
         )
     );
+
+    const displayNoHistoryMessage = isNoHistory && !isLoading;
 
     return (
         <div className="HistoryPage userPageGrid">
@@ -37,6 +42,11 @@ const History = () => {
                     )}
                 </div>
                 {isLoading ? <Loading /> : historySummaryComponents}
+                {displayNoHistoryMessage && (
+                    <h2 className="HistoryPage__noHistoryMessage">
+                        {NO_HISTORY_MESSAGE}
+                    </h2>
+                )}
             </div>
         </div>
     );
