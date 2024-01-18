@@ -34,6 +34,11 @@ const ExerciseSessionData = () => {
         setExerciseModalState("rest_timer");
     };
 
+    const handleDoneBtnClick = () => {
+        setIsExerciseModalOpen(false);
+        setIsExerciseItemSelected(false);
+    }
+
     const handleBackArrowClick = () => {
         if (isExerciseItemSelected) {
             // Set the state to default and close the modal
@@ -64,6 +69,12 @@ const ExerciseSessionData = () => {
                     sx={GREY_STYLE_BUTTON}
                 >
                     Rest Timer
+                </Button>
+                <Button
+                    onClick={handleDoneBtnClick}
+                    sx={GREY_STYLE_BUTTON}
+                >
+                    Done
                 </Button>
             </div>
         </div>
