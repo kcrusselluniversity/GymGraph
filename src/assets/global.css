@@ -229,6 +229,25 @@ td, input {
     }
 }
 
+/* Graph Component Styling */
+.graphWithControlBtns {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.graphWithControlBtns__title {
+    text-align: center;
+    margin: 1rem 0px 2rem;
+}
+
+.graphWithControlBtns__controlBtns {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 /* Remove default spinners on the numberic input html element */
 /* For Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
