@@ -131,6 +131,7 @@ export { MIN_DATE, MAX_DATE, YEAR_MONTH_DAY_FORMAT };
 // Recharts constants
 export const DEFAULT_MAX_AXIS_VALUE = 100;
 export const GRAPH_DAY_RANGE = 6;
+export const GRAPH_EXERCISE_VOLUME_RANGE = 4;
 export const PIE_CHART_COLORS = [
     "#0088FE",
     "#00C49F",
