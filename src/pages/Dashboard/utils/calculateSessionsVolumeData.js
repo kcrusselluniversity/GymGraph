@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import formatDateObject from "../../../utils/formatDateObject";
 
 const calculateSessionsVolumeData = (userHistory) => {
     const sessionsVolumeData = [];
@@ -29,8 +30,8 @@ const calculateSessionsVolumeData = (userHistory) => {
         );
 
         // Format startTime for use in the graph X axis
-        let startTimeFormatted = new dayjs(startTime);
-        startTimeFormatted = startTimeFormatted.format("DD-MM-YY hh:mm");
+        let startTimeFormatted = formatDateObject(startTime);
+
         const sessionVolumeData = {
             date: startTimeFormatted,
             value: TotalWeightForSession,
