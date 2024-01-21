@@ -1,8 +1,5 @@
 import { array, func, number, string } from "prop-types";
-import {
-    ACCENT_COLOR,
-    GRAPH_DAY_RANGE,
-} from "../../data/constants";
+import { ACCENT_COLOR, GRAPH_DAY_RANGE } from "../../data/constants";
 import {
     CartesianGrid,
     Line,
@@ -14,17 +11,17 @@ import {
 } from "recharts";
 /**
  * Custom line graph component
- * 
- * The LineGraph component is a React component that renders a line chart using 
- * the recharts library. It's designed to be flexible and easy to use for 
+ *
+ * The LineGraph component is a React component that renders a line chart using
+ * the recharts library. It's designed to be flexible and easy to use for
  * displaying various types of line graphs with custom data, axes, and tooltips.
- * 
- * @param {Array of Objects} displayedGraphData: The data to be displayed 
- * in the line graph. It should be an array of objects, with each object having 
+ *
+ * @param {Array of Objects} displayedGraphData: The data to be displayed
+ * in the line graph. It should be an array of objects, with each object having
  * just two properties:
  *      xAxisDataKey: the x axis value
  *      value: The corresponding y axis value (of type number)
- * 
+ *
  * The xAxisDataKey is the name you choose to give to represent the x axis.
  * For example: If you want to use this component to display the volume of an
  * exercise session (ie the total amount of weight lifted each session) over time,
@@ -33,7 +30,9 @@ import {
  * where date is the xAxisDataKey.
  * An array of these objects will then be displayed on a line graph with the
  * x axis representing the date, and the y axis representing the volume.
- * @param {any} maxValue: The maximum value for the y axis. 
+ * @param {any} minValue: The minimum value for the y axis.
+ * This defines the lower limit of the graph.
+ * @param {any} maxValue: The maximum value for the y axis.
  * This defines the upper limit of the graph.
  * @param {any} valueTitle: The title for the y axis displayed in the graph.
  * @param {any} xAxisDataKey: The key from the data object to be used for
@@ -55,6 +54,7 @@ import {
 const LineGraph = ({
     displayedGraphData,
     maxValue,
+    minValue = 0,
     valueTitle,
     xAxisDataKey,
     xAxisTooltipLabelFormatter,
@@ -69,7 +69,7 @@ const LineGraph = ({
                     dataKey={xAxisDataKey}
                     tick={displayedGraphData.length <= GRAPH_DAY_RANGE}
                 />
-                <YAxis domain={[0, maxValue]} unit={yAxisUnit} />
+                <YAxis domain={[minValue, maxValue]} unit={yAxisUnit} />
                 <Tooltip
                     formatter={(value) => [`${value} ${yAxisUnit}`, valueTitle]}
                     labelFormatter={xAxisTooltipLabelFormatter}
@@ -81,6 +81,7 @@ const LineGraph = ({
 
 LineGraph.propTypes = {
     displayedGraphData: array,
+    minValue: number,
     maxValue: number,
     valueTitle: string,
     xAxisDataKey: string,
