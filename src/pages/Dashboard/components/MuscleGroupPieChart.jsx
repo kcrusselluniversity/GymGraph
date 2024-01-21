@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import tallyMuscleGroupSets from "../utils/tallyMuscleGroupSets";
 import {
     LABEL_RADIUS_SCALING_FACTOR,
-    PIE_CHART_COLORS,
+    CHART_COLORS,
     RADIAN,
 } from "../../../data/constants";
 
@@ -47,8 +47,8 @@ const MuscleGroupPieChart = () => {
                         <Cell
                             key={`cell-${index}`}
                             fill={
-                                PIE_CHART_COLORS[
-                                    index % PIE_CHART_COLORS.length
+                                CHART_COLORS[
+                                    index % CHART_COLORS.length
                                 ]
                             }
                         />
