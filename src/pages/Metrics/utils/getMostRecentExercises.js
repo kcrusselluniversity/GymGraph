@@ -30,13 +30,19 @@ const getMostRecentExercises = (userHistory) => {
             });
         });
 
-    // Sort exercises by based on their start time
-    mostRecentExercises.sort(
-        (ex1, ex2) => ex2.startTime.getTime() - ex1.startTime.getTime()
-    );
+    // Sort exercises by based on their start time, then filter out duplicate
+    // values
+    const sortedMostRecentExercises = mostRecentExercises
+        .sort((ex1, ex2) => ex2.startTime.getTime() - ex1.startTime.getTime())
+        .filter((exerciseObject, index, array) => {
+            const { name } = exerciseObject;
+            return (
+                array.map((exObject) => exObject.name).indexOf(name) === index
+            );
+        });
 
     // Return most recent exercises
-    return mostRecentExercises.slice(0, NUM_EXERCISES_TO_DISPLAY);
+    return sortedMostRecentExercises.slice(0, NUM_EXERCISES_TO_DISPLAY);
 };
 
 export default getMostRecentExercises;
