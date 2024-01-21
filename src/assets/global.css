@@ -248,6 +248,12 @@ td, input {
     gap: 1.5rem;
 }
 
+.graphWithControlBtns__subtitle {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
 /* Remove default spinners on the numberic input html element */
 /* For Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
