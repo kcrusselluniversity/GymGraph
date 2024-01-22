@@ -69,10 +69,10 @@ const BarGraph = ({
                 <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
                 <XAxis dataKey={xAxisDataKey} />
                 <YAxis domain={[0, maxValue]} unit={yAxisUnit} />
-                <Tooltip
+                {maxNumBars > 0 && <Tooltip
                     formatter={yAxisTooltipLabelFormatter}
                     labelFormatter={xAxisTooltipLabelFormatter}
-                />
+                />}
                 {BarComponentsArray}
             </BarChart>
         </ResponsiveContainer>

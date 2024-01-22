@@ -13,7 +13,7 @@ const MetricsProvider = ({ children }) => {
     const [searchInput, setSearchInput] = useState("");
     const [isMostRecentOpen, setIsMostRecentOpen] = useState(false);
     const [selectedExercise, setSelectedExercise] = useState(null);
-    const [selectedExerciseData, setSelectedExerciseData] = useState(null);
+    const [selectedExerciseData, setSelectedExerciseData] = useState([]);
     const [isGifLoading, setIsGifLoading] = useState(true);
 
     const { userHistory, isLoading } = useContext(historyContext);
