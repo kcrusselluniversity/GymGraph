@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import BarGraph from "./BarGraph";
 import { historyContext, metricsContext } from "../../../context/appContext";
+import GraphControlBtns from "../../../components/ui/GraphControlBtns";
+import calculateSetsGraphData from "../utils/calculateSetsGraphData";
+import BarGraph from "./BarGraph";
+import { object } from "prop-types";
 import {
     DEFAULT_MAX_AXIS_VALUE,
     GRAPH_EXERCISE_VOLUME_RANGE,
 } from "../../../data/constants";
-import GraphControlBtns from "../../../components/ui/GraphControlBtns";
-import { object } from "prop-types";
-import calculateSetsGraphData from "../utils/calculateSetsGraphData";
 
 /**
  * Sets bar graph component

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import MetricsSearchBar from "./components/MetricsSearchBar";
 import MostRecentExercises from "./components/MostRecentExercises";
-import "./metrics.css";
 import { metricsContext } from "../../context/appContext";
 import SelectedExerciseMetrics from "./components/SelectedExerciseMetrics";
+import "./metrics.css";
 
 const Metrics = () => {
     const { selectedExercise } = useContext(metricsContext);
