@@ -10,10 +10,7 @@
 
 /* SECTION: METRICS CONTENT STYLING */
 .metrics__content {
-    display: flex;
     height: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 /* SECTION: SEARCH BAR STYLING */
@@ -38,6 +35,7 @@
 .searchResultsContainer {
     width: 100%;
     top: var(--searchBarHeight);
+    background-color: white;
 }
 
 .metricsPage .resultsContainer::-webkit-scrollbar {
