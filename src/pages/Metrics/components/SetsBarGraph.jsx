@@ -41,7 +41,6 @@ const SetsBarGraph = ({ selectedExercise }) => {
 
             const selectedExerciseGraphData =
                 calculateSetsGraphData(selectedExerciseData);
-            console.log(selectedExerciseGraphData);
 
             // Calculate derived values
             const maxValue = calculateMaxValue(selectedExerciseGraphData);
@@ -94,6 +93,8 @@ const calculateMaxValue = (graphData) => {
 // Helper function to find the largest amount of sets performed for a single
 // exercise in any one session
 const calculateMaxNumSets = (graphData) => {
+    if (graphData.length === 0) return 0;
+
     return Math.max(...graphData.map((obj) => Object.keys(obj).length - 1));
 };
 

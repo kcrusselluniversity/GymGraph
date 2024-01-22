@@ -37,6 +37,7 @@ const MetricsSearchBar = () => {
     const handleExerciseClick = (exercise) => {
         setSelectedExercise({ name: exercise.exercise, uid: exercise.uid });
         setIsGifLoading(true);
+        setSearchInput("");
     };
 
     return (
