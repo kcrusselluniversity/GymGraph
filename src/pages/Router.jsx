@@ -83,11 +83,11 @@ const Router = () => {
                     <Route
                         path="metrics"
                         element={
-                            <MetricsProvider>
-                                <HistoryProvider>
+                            <HistoryProvider>
+                                <MetricsProvider>
                                     <Metrics />
-                                </HistoryProvider>
-                            </MetricsProvider>
+                                </MetricsProvider>
+                            </HistoryProvider>
                         }
                     />
                     <Route path="profile" element={<Profile />} />

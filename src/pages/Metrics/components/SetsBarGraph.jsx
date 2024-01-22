@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import BarGraph from "./BarGraph";
-import { historyContext } from "../../../context/appContext";
+import { historyContext, metricsContext } from "../../../context/appContext";
 import {
     DEFAULT_MAX_AXIS_VALUE,
     GRAPH_EXERCISE_VOLUME_RANGE,
 } from "../../../data/constants";
-import calculateSelectedExerciseData from "../utils/calculateSelectedExerciseData";
-import calculateSetsGraphData from "../utils/calculateSetsGraphData";
 import GraphControlBtns from "../../../components/ui/GraphControlBtns";
 import { object } from "prop-types";
+import calculateSetsGraphData from "../utils/calculateSetsGraphData";
 
 /**
  * Sets bar graph component
@@ -18,13 +17,11 @@ import { object } from "prop-types";
  * a user's history and reacts to changes in exercise selection or data updates.
  * The component manages various state variables to control the display and
  * calculation of graph data.
- *
- * @param {object} selectedExercise: The exercise currently selected.
- * This prop is used to determine which exercise data to display in the graph.
  */
-const SetsBarGraph = ({ selectedExercise }) => {
+const SetsBarGraph = () => {
     // Destructure required context
-    const { userHistory, isLoading } = useContext(historyContext);
+    const { isLoading } = useContext(historyContext);
+    const { selectedExerciseData } = useContext(metricsContext);
 
     // Set state variables
     const [graphData, setGraphData] = useState([]);
@@ -33,28 +30,20 @@ const SetsBarGraph = ({ selectedExercise }) => {
     const [displayedGraphData, setDisplayedGraphData] = useState([]);
 
     useEffect(() => {
-        if (!isLoading) {
-            const selectedExerciseData = calculateSelectedExerciseData(
-                selectedExercise,
-                userHistory
-            );
-
-            const selectedExerciseGraphData =
-                calculateSetsGraphData(selectedExerciseData);
+        if (selectedExerciseData != null) {
+            // Calculate volume data
+            const volumeData = calculateSetsGraphData(selectedExerciseData);
 
             // Calculate derived values
-            const maxValue = calculateMaxValue(selectedExerciseGraphData);
-
-            const maxNumberOfSets = calculateMaxNumSets(
-                selectedExerciseGraphData
-            );
+            const maxValue = calculateMaxValue(volumeData);
+            const maxNumberOfSets = calculateMaxNumSets(selectedExerciseData);
 
             // Update state
-            setGraphData(selectedExerciseGraphData);
+            setGraphData(volumeData);
             setMaxValue(maxValue);
             setMaxNumberOfSets(maxNumberOfSets);
         }
-    }, [isLoading, selectedExercise, userHistory]);
+    }, [selectedExerciseData]);
 
     return (
         <div className="graphWithControlBtns Card">
@@ -82,9 +71,9 @@ SetsBarGraph.propTypes = {
 };
 
 // Helper function to calculate the largest volume lifted in any one set
-const calculateMaxValue = (graphData) => {
+const calculateMaxValue = (graphVolumeData) => {
     Math.max(
-        ...graphData
+        ...graphVolumeData
             .map(({ date, ...rest }) => rest)
             .map((obj) => Math.max(...Object.values(obj)))
     );
@@ -95,7 +84,7 @@ const calculateMaxValue = (graphData) => {
 const calculateMaxNumSets = (graphData) => {
     if (graphData.length === 0) return 0;
 
-    return Math.max(...graphData.map((obj) => Object.keys(obj).length - 1));
+    return Math.max(...graphData.map((obj) => Object.keys(obj.sets).length));
 };
 
 export default SetsBarGraph;
