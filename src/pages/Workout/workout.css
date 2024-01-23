@@ -117,7 +117,7 @@
 
 .exerciseGroupList__item:hover {
     cursor: pointer;
-    background-color: var(--accent-color-with-opacity);
+    background-color: var(--accent-color-lite);
     border-radius: var(--link-border-radius);
     scale: 1.005;
 }
