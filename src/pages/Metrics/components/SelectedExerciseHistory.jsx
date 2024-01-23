@@ -21,18 +21,16 @@ const SelectedExerciseHistory = () => {
         return <div>{NO_HISTORY_MESSAGE}</div>;
     }
 
-    const componentArray = selectedExerciseData.map((session) => {
+    // Map each set of the selected exercise to a table row component
+    const setComponentArray = selectedExerciseData.map((session) => {
         const { sets, startTime } = session;
         const setCount = sets.length;
 
-        const dataRows = sets.map((set, index) => {
+        const sessionSetRows = sets.map((set, index) => {
             const { weight, reps } = set;
 
-            const className =
-                index === setCount - 1 ? "ExerciseTable__lastRow" : "";
-
             return (
-                <TableRow key={index} className={className}>
+                <TableRow key={index}>
                     {index === 0 && (
                         <TableCell rowSpan={setCount}>
                             <FormattedDate dateObject={startTime} />
@@ -43,7 +41,7 @@ const SelectedExerciseHistory = () => {
             );
         });
 
-        return dataRows;
+        return sessionSetRows;
     });
 
     return (
@@ -57,7 +55,7 @@ const SelectedExerciseHistory = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {componentArray}
+                    {setComponentArray}
                 </TableBody>
             </Table>
         </div>
