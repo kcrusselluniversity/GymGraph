@@ -31,16 +31,6 @@
     text-align: center;
 }
 
-.sessionHistorySummary .ExerciseTable__lastRow,
-.metrics__selectedExerciseHistory .ExerciseTable__lastRow {
-    border-bottom: var(--card-border-bottom-color);
-}
-
-.sessionHistorySummary .ExerciseTable__lastRow:last-child,
-.metrics__selectedExerciseHistory .ExerciseTable__lastRow:last-child {
-    border-bottom: none;
-}
-
 /* SECTION: SESSION HISTORY MODAL STYLING */
 .SessionHistorySummaryModal .sessionHistorySummary {
     margin: 0px;

@@ -40,9 +40,6 @@ const SessionHistorySummary = ({ sessionObject }) => {
                     index={index}
                     setCount={setCount}
                     exerciseName={exerciseName}
-                    className={
-                        index === setCount - 1 ? "ExerciseTable__lastRow" : ""
-                    }
                 />
             );
         });
