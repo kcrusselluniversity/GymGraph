@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { metricsContext } from "../../../context/appContext";
 import SelectedExerciseGif from "./SelectedExerciseGif";
 import SetsBarGraph from "./SetsBarGraph";
-import ExerciseHistorySession from "./ExerciseHistorySession";
+import SelectedExerciseHistory from "./SelectedExerciseHistory";
 
 /**
  * The SelectedExerciseMetrics component is a functional component designed 
@@ -15,7 +15,7 @@ const SelectedExerciseMetrics = () => {
     return (
         <div>
             <SelectedExerciseGif />
-            <ExerciseHistorySession />
+            <SelectedExerciseHistory />
             <SetsBarGraph selectedExercise={selectedExercise} />
         </div>
     );

@@ -59,6 +59,24 @@
     top: calc(var(--searchBarHeight) + 12px);
 }
 
+/* SECTION: SELECTED EXERCISE HISTORY STYLING */
+.metricsPage .metrics__selectedExerciseHistory {
+    width: var(--selected-exercise-history-width);
+    max-height: var(--selected-exercise-history-height);
+    overflow-y: auto;
+    padding: 0px;
+}
+
+.metrics__selectedExerciseHistory::-webkit-scrollbar {
+   border-radius: var(--card-border-radius);
+}
+
+.metrics__selectedExerciseHistory::-webkit-scrollbar-thumb {
+    border-radius: var(--card-border-radius);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.135);
+}
+
 /* SECTION: SELECTED EXERCISE COMPONENT STYLING */
 .selectedExercise__gifWrapper {
     position: relative;

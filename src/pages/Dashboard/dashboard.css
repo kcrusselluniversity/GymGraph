@@ -31,11 +31,13 @@
     text-align: center;
 }
 
-.sessionHistorySummary .ExerciseTable__lastRow {
-    border-bottom: var(--card-border-bottom-color)
+.sessionHistorySummary .ExerciseTable__lastRow,
+.metrics__selectedExerciseHistory .ExerciseTable__lastRow {
+    border-bottom: var(--card-border-bottom-color);
 }
 
-.sessionHistorySummary .ExerciseTable__lastRow:last-child {
+.sessionHistorySummary .ExerciseTable__lastRow:last-child,
+.metrics__selectedExerciseHistory .ExerciseTable__lastRow:last-child {
     border-bottom: none;
 }
 

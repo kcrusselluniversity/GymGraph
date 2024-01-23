@@ -39,6 +39,9 @@
     --exersise-table-font-sml: 16px;
     --exercise-table-data-font-sml: 14px;
 
+    --selected-exercise-history-width: 500px;
+    --selected-exercise-history-height: 400px;
+
     --searchBarHeight: 40px;
 }
 

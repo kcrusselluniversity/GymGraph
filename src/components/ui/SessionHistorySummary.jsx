@@ -3,7 +3,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { Table } from "@mui/material";
 import { Timestamp } from "firebase/firestore";
 import { object } from "prop-types";
-import dayjs from "dayjs";
+import FormattedDate from "./FormattedDate";
 
 /**
  * SessionHistorySummary component
@@ -21,10 +21,6 @@ const SessionHistorySummary = ({ sessionObject }) => {
     if (startTime instanceof Timestamp) {
         startTime = startTime.toDate();
     }
-
-    const startTimeObject = dayjs(startTime);
-    const day = startTimeObject.format("ddd");
-    const date = startTimeObject.format("D MMM YYYY");
 
     const sessionTableRows = [];
 
@@ -54,11 +50,7 @@ const SessionHistorySummary = ({ sessionObject }) => {
 
     return (
         <div className="sessionHistorySummary Card">
-            <div className="sessionHistorySummary__date">
-                <b>{day}</b>
-                <br />
-                <span>{date}</span>
-            </div>
+            <FormattedDate dateObject={startTime} />
             <Table
                 aria-label="session history"
                 className="sessionHistorySummary__table"
