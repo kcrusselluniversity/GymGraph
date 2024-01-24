@@ -33,6 +33,12 @@
     align-items: center;
 }
 
+.metricsPage__noHistoryMsg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* SECTION: SEARCH BAR STYLING */
 
 .searchBarComponent {

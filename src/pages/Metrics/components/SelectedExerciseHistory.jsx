@@ -18,7 +18,7 @@ const SelectedExerciseHistory = () => {
     const { selectedExerciseData } = useContext(metricsContext);
 
     if (selectedExerciseData.length === 0) {
-        return <div>{NO_HISTORY_MESSAGE}</div>;
+        return <div className="metricsPage__noHistoryMsg">{NO_HISTORY_MESSAGE}</div>;
     }
 
     // Map each set of the selected exercise to a table row component
