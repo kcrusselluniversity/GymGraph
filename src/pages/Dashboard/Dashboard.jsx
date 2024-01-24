@@ -19,7 +19,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboardPage userPageGrid">
-            <h2>Welcome, </h2>
+            <h1 className="UserPage__title">Dashboard</h1>
             <div className="dashboard__content">
                 <Calendar />
                 <MuscleGroupPieChart />
