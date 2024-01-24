@@ -6,15 +6,46 @@
 .dashboard__content {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    row-gap: 1.5rem;
+    column-gap: 1rem;
     justify-content: space-around;
-    align-items: center;
+    align-content: start;
     grid-area: userPageContent;
 }
 
+/* SECTION: MUI CALENDAR STYLING */
+
 .Dashboard__Calendar {
     /* Override DateCalendar MUI component style for this component */
-    margin: 0px !important ;
+    margin: 0px !important;
+    height: var(--calendar-size) !important;
+    width: var(--calendar-size) !important;
+}
+
+.Dashboard__Calendar .MuiPickersCalendarHeader-label {
+    font-size: 12px;
+}
+
+.Dashboard__Calendar .MuiPickersCalendarHeader-root {
+    margin: 0px;
+}
+
+.Dashboard__Calendar .MuiPickersDay-root {
+    font-size: 10px;
+    margin: 0px;
+}
+
+.Dashboard__Calendar .MuiDayCalendar-weekDayLabel {
+    margin: 0px;
+}
+
+.Dashboard__Calendar .MuiDayCalendar-weekContainer {
+    margin: 0px;
+}
+
+.Dashboard__Calendar .MuiPickersYear-yearButton {
+    font-size: 14px;
+    margin: 0px;
 }
 
 /* SECTION: SESSION HISTORY STYLING */
@@ -64,8 +95,17 @@
 }
 
 /* SECTION: MUSCLE GROUP PIE CHART STYLING */
+.muscleGroupPieChart {  
+    height: var(--pie-chart-height);
+    margin: 0px;
+}
 .muscleGroupPieChart__title {
+    margin: 0px;
     text-align: center;
+}
+
+.muscleGroupPieChart text {
+    font-size: 14px;
 }
 
 /* Media Queries */
@@ -78,6 +118,10 @@
 
     .dashboardPage::-webkit-scrollbar {
         display: none;
+    }
+
+    .dashboard__content {
+        padding: 1rem 0px;
     }
 
     .sessionHistorySummary {

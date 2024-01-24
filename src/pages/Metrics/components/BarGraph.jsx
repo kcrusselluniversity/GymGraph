@@ -67,7 +67,7 @@ const BarGraph = ({
         <ResponsiveContainer width="100%" height={175}>
             <BarChart data={displayedGraphData}>
                 <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-                <XAxis dataKey={xAxisDataKey} />
+                <XAxis dataKey={xAxisDataKey} tickMargin={8}/>
                 <YAxis domain={[0, maxValue]} unit={yAxisUnit} />
                 {maxNumBars > 0 && <Tooltip
                     formatter={yAxisTooltipLabelFormatter}

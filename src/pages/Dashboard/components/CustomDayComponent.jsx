@@ -36,6 +36,7 @@ const CustomDayComponent = ({
         backgroundColor: isHighlight ? "rgba(0,255,0,0.4)" : "transparent",
         color: isHighlight ? "white" : "inherit",
         borderRadius: "100%",
+        margin: '1px'
     };
 
     // Function to handle when the user clicks on a day in the calendar

@@ -31,7 +31,7 @@ const MuscleGroupPieChart = () => {
     return (
         <div className="muscleGroupPieChart Card">
             <h3 className="muscleGroupPieChart__title">Muscle Groups Worked</h3>
-            <PieChart width={320} height={320}>
+            <PieChart width={270} height={260}>
                 <Pie
                     data={muscleGroupSetData}
                     cx="50%"

@@ -45,6 +45,9 @@
     --selected-exercise-history-max-width: 700px;
     --selected-exercise-history-height: 250px;
 
+    --calendar-size: 300px;
+    --pie-chart-height: var(--calendar-size);
+
     --searchBarHeight: 40px;
 }
 
@@ -63,7 +66,7 @@ html, body, #root {
 
 h1 {
     font-weight: 600;
-    font-size: 42px;
+    font-size: 36px;
     letter-spacing: -0.8px;
     padding: 6px 0px;
 }

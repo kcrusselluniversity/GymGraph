@@ -23,8 +23,8 @@
     display: grid;
     grid-template-rows: var(--header-height) 1fr;
     grid-template-areas: "header" "userPageContent";
-    gap: 1rem;
-    padding: 1rem 0px;
+    gap: 1.25rem;
+    padding: 1rem;
 }
 
 .UserPage__title {

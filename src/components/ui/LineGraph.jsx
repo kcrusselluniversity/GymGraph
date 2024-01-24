@@ -61,15 +61,16 @@ const LineGraph = ({
     yAxisUnit,
 }) => {
     return (
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="100%" height={175}>
             <LineChart data={displayedGraphData}>
                 <Line type="monotone" dataKey="value" stroke={ACCENT_COLOR} />
                 <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
                 <XAxis
                     dataKey={xAxisDataKey}
                     tick={displayedGraphData.length <= GRAPH_DAY_RANGE}
+                    tickMargin={8}
                 />
-                <YAxis domain={[minValue, maxValue]} unit={yAxisUnit} />
+                <YAxis domain={[minValue, maxValue]} unit={yAxisUnit}/>
                 <Tooltip
                     formatter={(value) => [`${value} ${yAxisUnit}`, valueTitle]}
                     labelFormatter={xAxisTooltipLabelFormatter}

@@ -140,7 +140,7 @@ export const CHART_COLORS = [
     "#A633FF",
 ];
 export const RADIAN = Math.PI / 180;
-export const LABEL_RADIUS_SCALING_FACTOR = 0.6;
+export const LABEL_RADIUS_SCALING_FACTOR = 0.65;
 
 // METRICS PAGE CONSTANTS
 export const NUM_EXERCISES_TO_DISPLAY = 5;
