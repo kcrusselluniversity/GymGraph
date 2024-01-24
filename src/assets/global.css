@@ -34,7 +34,7 @@
     --control-button-size: 18px;
     --control-button-svg-size: 16px;
 
-    --gif-size-small: 250px;
+    --gif-size-small: 225px;
     --gif-size-reg: 350px;
 
     --exercise-table-font-reg: 18px;
@@ -43,7 +43,7 @@
 
     --selected-exercise-history-min-width: 250px;
     --selected-exercise-history-max-width: 700px;
-    --selected-exercise-history-height: 400px;
+    --selected-exercise-history-height: 250px;
 
     --searchBarHeight: 40px;
 }
@@ -227,22 +227,11 @@ td, input {
     align-items: center;
 }
 
-@media screen and (width > 950px) {
-    .gifContainer,
-    .gifContainer > img,
-    .exerciseDetails__skeleton {
-        width: var(--gif-size-reg) !important;
-        height: var(--gif-size-reg) !important;
-    }
-}
-
-@media screen and (width <= 950px) {
-    .gifContainer,
-    .gifContainer > img,
-    .exerciseDetails__skeleton {
-        width: var(--gif-size-small) !important;
-        height: var(--gif-size-small) !important;
-    }
+.gifContainer,
+.gifContainer > img,
+.exerciseDetails__skeleton {
+    width: var(--gif-size-small) !important;
+    height: var(--gif-size-small) !important;
 }
 
 /* Graph Component Styling */
@@ -255,7 +244,7 @@ td, input {
 
 .graphWithControlBtns__title {
     text-align: center;
-    margin: 1rem 0px 2rem;
+    margin: 4px 0px 8px;
 }
 
 .graphWithControlBtns__controlBtns {

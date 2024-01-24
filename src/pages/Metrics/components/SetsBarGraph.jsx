@@ -45,6 +45,9 @@ const SetsBarGraph = () => {
         }
     }, [selectedExerciseData]);
 
+    // Return no component if there is no data for the selected exercise
+    if (selectedExerciseData.length === 0) return null;
+
     return (
         <div className="graphWithControlBtns Card setsHistory">
             <h3 className="graphWithControlBtns__title">Sets History</h3>

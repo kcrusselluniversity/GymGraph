@@ -64,7 +64,7 @@ const BarGraph = ({
     ];
 
     return (
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="100%" height={175}>
             <BarChart data={displayedGraphData}>
                 <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
                 <XAxis dataKey={xAxisDataKey} />

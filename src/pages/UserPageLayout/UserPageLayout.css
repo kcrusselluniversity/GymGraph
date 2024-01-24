@@ -1,5 +1,5 @@
 :root {
-    --header-height: 75px;
+    --header-height: 50px;
     --navbar-width: 250px;
     --navbar-width-small: 125px;
     --navbar-height-small: 62px;
@@ -7,14 +7,13 @@
     --dashboard-font-color: rgb(60, 60, 60);
     --dashboard-font-size: 16px;
 
+    /* --user-page-background-color: black; */
     --user-page-background-color: rgba(249,250,253,1.0);
 }
 
 .userPageContainer {
     min-height: 100dvh;
-    padding: 1rem;
     display: grid;
-    column-gap: 2rem;
     grid-template: 1fr / var(--navbar-width) 1fr;
     grid-template-areas: "dashboard content";
     background-color: var(--user-page-background-color)
@@ -50,6 +49,6 @@
 
     .userPageGrid {
         display: block;
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.5rem;
     }
 }

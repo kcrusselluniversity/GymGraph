@@ -16,12 +16,13 @@
     align-content: start;
     justify-content: space-between;
     align-items: stretch;
-    gap: 2rem;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
 }
 
 .metrics__contentTitle {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .metrics__noContentMsg {
@@ -38,8 +39,11 @@
     align-items: center;
 }
 
-/* SECTION: SEARCH BAR STYLING */
+.exerciseSelected {
+    height: 100%;
+}
 
+/* SECTION: SEARCH BAR STYLING */
 .searchBarComponent {
     position: relative;
     display: flex;
@@ -132,12 +136,6 @@
 } 
 
 @media screen and (width <= 1300px) {
-    .metricsPage .gifContainer > img, 
-    .metricsPage .exerciseDetails__skeleton {
-        width: var(--gif-size-small);
-        height: var(--gif-size-small);
-    }
-
     .selectedExercise__gifWrapper {
         width: fit-content;
     }
@@ -150,10 +148,6 @@
     
     .metrics__content {
         margin-top: 1rem;
-    }
-
-    .selectedExercise__gifWrapper {
-        height: fit-content;
     }
 }
 
@@ -188,5 +182,9 @@
 
     .metrics__content {
         height: fit-content;
+    }
+
+    .metrics__contentTitle {
+        margin-top: 1rem;
     }
 }
