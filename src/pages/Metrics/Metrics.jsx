@@ -14,11 +14,11 @@ const Metrics = () => {
                 <MetricsSearchBar />
                 <MostRecentExercises />
             </div>
-            <div className="metrics__content">
+            <div className="exerciseSelected">
                 {selectedExercise ? (
                     <SelectedExerciseMetrics />
                 ) : (
-                    <h2>Select an exercise to see your metrics</h2>
+                    <h2 className="metrics__noContentMsg">Select an exercise to see your metrics</h2>
                 )}
             </div>
         </div>

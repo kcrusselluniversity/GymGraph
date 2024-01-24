@@ -20,6 +20,19 @@
     gap: 2rem;
 }
 
+.metrics__contentTitle {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.metrics__noContentMsg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* SECTION: SEARCH BAR STYLING */
 
 .searchBarComponent {
@@ -114,7 +127,6 @@
     }
 
     .selectedExercise__gifWrapper {
-        height: fit-content;
         width: fit-content;
     }
 } 
@@ -122,6 +134,14 @@
 @media screen and (width <= 950px) {
     .metricsPage {
         margin: 1rem;
+    }
+    
+    .metrics__content {
+        margin-top: 1rem;
+    }
+
+    .selectedExercise__gifWrapper {
+        height: fit-content;
     }
 }
 
@@ -149,5 +169,12 @@
 @media screen and (width <= 500px) {
     .metricsPage {
         margin: 0px;
-    }    
+        padding-bottom: 2rem !important;
+        height: calc(100dvh - var(--navbar-height-small));
+        overflow-y: scroll;
+    }
+
+    .metrics__content {
+        height: fit-content;
+    }
 }
