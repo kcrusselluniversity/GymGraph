@@ -54,8 +54,8 @@ const ExerciseSession = () => {
 
     return (
         <div className="exerciseSession">
-            <AddExerciseButton handleClick={handleAddExerciseBtnClick} />
             {exerciseItems}
+            <AddExerciseButton handleClick={handleAddExerciseBtnClick} />
             <RestTimerButton
                 handleClick={() => setIsRestTimerOpen(!isRestTimerOpen)}
             />

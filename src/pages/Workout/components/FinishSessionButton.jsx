@@ -74,7 +74,7 @@ const FinishSessionButton = () => {
     };
 
     return (
-        <GreyButton handleClick={handleClick}>
+        <GreyButton handleClick={handleClick} className="finishSessionButton">
             <span>Finish Session</span>
         </GreyButton>
     );
