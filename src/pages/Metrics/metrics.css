@@ -68,8 +68,14 @@
     background-color: white;
 }
 
+/* For WebKit (Chrome, Safari, etc.) */
 .metricsPage .resultsContainer::-webkit-scrollbar {
     display: none;
+}
+
+/* For Firefox */
+.metricsPage .resultsContainer {
+    scrollbar-width: none; 
 }
 
 /* SECTION: MOST RECENT EXERCISES COMPONENT STYLING */
