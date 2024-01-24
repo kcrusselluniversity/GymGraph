@@ -72,7 +72,7 @@
 
 @media screen and (width <= 500px) {
     .dashboardPage {
-        height: calc(100dvh - var(--navbar-hight-small));
+        height: calc(100dvh - var(--navbar-height-small));
         overflow-y: scroll;
     }
 

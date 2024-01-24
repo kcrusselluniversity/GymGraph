@@ -93,7 +93,6 @@
 .Card > table * {
     padding: 4px;
     font-family: inherit;
-    border: none;
 }
 
 .Card thead {
@@ -223,7 +222,7 @@
 @media screen and (width <= 500px) {    
     .workoutPage {
         padding: 1.5rem 10% 0px;
-        height: calc(100dvh - var(--navbar-hight-small));
+        height: calc(100dvh - var(--navbar-height-small));
     }
     
     .workoutPage * {

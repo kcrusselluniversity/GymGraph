@@ -9,6 +9,7 @@
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
     transition: box-shadow 0.2s;
+    background-color: white;
 }
 
 .navbar:hover {

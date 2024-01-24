@@ -24,7 +24,7 @@
 
 @media screen and (width <= 500px) {
     .HistoryPage {
-        height: calc(100dvh - var(--navbar-hight-small));
+        height: calc(100dvh - var(--navbar-height-small));
         overflow-y: scroll;
         padding: 1.5rem 0px 1rem;
     }
