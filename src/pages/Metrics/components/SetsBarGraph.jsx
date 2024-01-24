@@ -46,7 +46,7 @@ const SetsBarGraph = () => {
     }, [selectedExerciseData]);
 
     return (
-        <div className="graphWithControlBtns Card">
+        <div className="graphWithControlBtns Card setsHistory">
             <h3 className="graphWithControlBtns__title">Sets History</h3>
             <BarGraph
                 displayedGraphData={displayedGraphData}

@@ -13,11 +13,11 @@ const SelectedExerciseMetrics = () => {
     const { selectedExercise } = useContext(metricsContext);
 
     return (
-        <div>
+        <>
             <SelectedExerciseGif />
             <SelectedExerciseHistory />
             <SetsBarGraph selectedExercise={selectedExercise} />
-        </div>
+        </>
     );
 };
 

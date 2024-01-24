@@ -11,6 +11,13 @@
 /* SECTION: METRICS CONTENT STYLING */
 .metrics__content {
     height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
 }
 
 /* SECTION: SEARCH BAR STYLING */
@@ -19,7 +26,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 400px;
+    max-height: 400px;
     width: 350px;
 }
 
@@ -61,8 +68,10 @@
 
 /* SECTION: SELECTED EXERCISE HISTORY STYLING */
 .metricsPage .metrics__selectedExerciseHistory {
-    width: var(--selected-exercise-history-width);
+    flex-grow: 1;
+    min-width: var(--selected-exercise-history-min-width);
     max-height: var(--selected-exercise-history-height);
+    height: fit-content;
     overflow-y: auto;
     padding: 0px;
 }
@@ -81,11 +90,34 @@
 .selectedExercise__gifWrapper {
     position: relative;
     width: fit-content;
+    height: auto;
     background-color: white !important;
 }
 
+/* SECTION: BAR CHART STYLING */
+.metricsPage .setsHistory {
+    width: 100%;
+}
 
 /* SECTION: MEDIA QUERIES */
+@media screen and (width > 1300px) {
+    .metricsPage .metrics__selectedExerciseHistory {
+        max-width: var(--selected-exercise-history-max-width);
+    }
+} 
+
+@media screen and (width <= 1300px) {
+    .metricsPage .gifContainer > img, 
+    .metricsPage .exerciseDetails__skeleton {
+        width: var(--gif-size-small);
+        height: var(--gif-size-small);
+    }
+
+    .selectedExercise__gifWrapper {
+        height: fit-content;
+        width: fit-content;
+    }
+} 
 
 @media screen and (width <= 950px) {
     .metricsPage {
@@ -94,6 +126,10 @@
 }
 
 @media screen and (width <= 750px) {
+    .metrics__content {
+        justify-content: center;
+    }
+    
     .searchBarComponent {
         width: auto;
         flex-grow: 1;
