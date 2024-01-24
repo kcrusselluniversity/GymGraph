@@ -19,6 +19,7 @@
 
 /* SECTION: SESSION HISTORY STYLING */
 .sessionHistorySummary {
+    margin: 1rem 0px;
     display: flex;
     align-items: center;
     width: 80%;

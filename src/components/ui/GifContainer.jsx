@@ -1,9 +1,6 @@
 import { bool, func, string } from "prop-types";
 import { Skeleton } from "@mui/material";
-import {
-    GIF_SIZE_STANDARD,
-    SKELETON_SCALING_FACTOR,
-} from "../../data/constants";
+import { GIF_SIZE_STANDARD } from "../../data/constants";
 
 /**
  * Gif Container component
@@ -18,13 +15,7 @@ const GifContainer = ({
     setIsGifLoading,
 }) => {
     return (
-        <div
-            className="gifContainer"
-            style={{
-                height: `${GIF_SIZE_STANDARD}px`,
-                width: `${GIF_SIZE_STANDARD}px`,
-            }}
-        >
+        <div className="gifContainer">
             <img
                 alt={name}
                 src={exerciseGifUrl}
@@ -36,8 +27,6 @@ const GifContainer = ({
                     className="exerciseDetails__skeleton"
                     variant="rectangular"
                     data-testid="exerciseDetailsSkeleton"
-                    height={GIF_SIZE_STANDARD * SKELETON_SCALING_FACTOR}
-                    width={GIF_SIZE_STANDARD * SKELETON_SCALING_FACTOR}
                     sx={{
                         borderRadius: "1rem",
                         opacity: isGifLoading ? 1 : 0,
