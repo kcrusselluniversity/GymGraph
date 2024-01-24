@@ -30,6 +30,10 @@
     margin: 0px;
 }
 
+.Dashboard__Calendar .MuiDayCalendar-header {
+    justify-content: space-evenly;
+}
+
 .Dashboard__Calendar .MuiPickersDay-root {
     font-size: 10px;
     margin: 0px;
