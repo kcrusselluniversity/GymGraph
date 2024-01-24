@@ -10,7 +10,6 @@
 
 /* SECTION: METRICS CONTENT STYLING */
 .metrics__content {
-    height: 100%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -103,6 +102,13 @@
     border-radius: var(--card-border-radius);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background: rgba(0, 0, 0, 0.135);
+}
+
+.selectedExerciseHistory__title {
+    text-align: center;
+    padding: 0.5rem 0px;
+    background-color: white;
+    border-bottom: 1px solid var(--border-bottom-color-grey);
 }
 
 /* SECTION: SELECTED EXERCISE COMPONENT STYLING */

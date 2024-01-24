@@ -18,7 +18,11 @@ const SelectedExerciseHistory = () => {
     const { selectedExerciseData } = useContext(metricsContext);
 
     if (selectedExerciseData.length === 0) {
-        return <div className="metricsPage__noHistoryMsg">{NO_HISTORY_MESSAGE}</div>;
+        return (
+            <div className="metricsPage__noHistoryMsg">
+                {NO_HISTORY_MESSAGE}
+            </div>
+        );
     }
 
     // Map each set of the selected exercise to a table row component
@@ -46,6 +50,7 @@ const SelectedExerciseHistory = () => {
 
     return (
         <div className="metrics__selectedExerciseHistory Card">
+            <h3 className="selectedExerciseHistory__title">History</h3>
             <Table stickyHeader>
                 <TableHead className="selectedExerciseHistory__tHead">
                     <TableRow>
@@ -54,9 +59,7 @@ const SelectedExerciseHistory = () => {
                         <TableCell align="center">Reps</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
-                    {setComponentArray}
-                </TableBody>
+                <TableBody>{setComponentArray}</TableBody>
             </Table>
         </div>
     );

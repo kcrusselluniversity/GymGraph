@@ -21,6 +21,7 @@
     --card-box-shadow: 0px 4px 8px 6px var(--accent-color-with-opacity);
     --card-box-shadow--hover: 0px 4px 12px 10px var(--accent-color-with-opacity);
     --card-border-bottom-color: 1px solid rgba(80,80,80,0.6);
+    --border-bottom-color-grey: rgba(224, 224, 224, 1);
     
     --sml-card-box-shadow: 0px 2px 4px 3px var(--accent-color-with-opacity);
     --sml-card-box-shadow--hover: 0px 2px 6px 5px var(--accent-color-with-opacity);
