@@ -127,6 +127,7 @@
     width: fit-content;
     height: auto;
     background-color: white !important;
+    cursor: default !important;
 }
 
 /* SECTION: BAR CHART STYLING */
