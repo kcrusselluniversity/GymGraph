@@ -85,6 +85,9 @@ const SignInForm = () => {
                     {formSubmissionError}
                 </div>
             ) : null}
+            <div className="textCenter"><i>Or sign into the demo account</i></div>
+            <div><b>Email</b>: ada.lovelace@gmail.com</div>
+            <div><b>Password</b>: AnalyticEngine1815</div>
         </form>
     );
 };
