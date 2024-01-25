@@ -22,7 +22,7 @@ const Error = () => {
                     <h3>
                         This page decided not to work out today. While it&apos;s
                         taking a rest day, you might want to head back and choose a
-                        different exercise.
+                        different page.
                     </h3>
                 </div>
                 <img
