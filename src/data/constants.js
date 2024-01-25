@@ -14,6 +14,14 @@ export const EXERCISE_GROUPS = [
 export const DEMO_USER_EMAIL = "ada.lovelace@gmail.com";
 export const DEMO_USER_PASSWORD = "AnalyticEngine1815";
 
+// Tooltip descriptions
+export const MUSCLE_GROUP_CHART_DESCRIPTION =
+    "This chart shows the total number of sets performed for each muscle group, displaying this data in pie chart form";
+export const VOLUME_GRAPH_DESCRIPTION =
+    "This graph shows the total volume (the product of weight lifted and repetitions), for each session across the users historical data";
+export const SET_GRAPH_DESCRIPTION =
+    "This chart shows the history of sets performed for the selected exercise, showing the volume (reps multiplied by weight lifted) for each set";
+
 // Colour palette for the sites design
 const DOMINANT_COLOR = "white";
 const SECONDARY_COLOR = "#a8dadc";
@@ -147,8 +155,6 @@ export const LABEL_RADIUS_SCALING_FACTOR = 0.65;
 
 // METRICS PAGE CONSTANTS
 export const NUM_EXERCISES_TO_DISPLAY = 5;
-export const SET_GRAPH_DESCRIPTION =
-    "This chart shows the history of sets performed for the selected exercise, showing the volume (reps multiplied by weight lifted) in each set";
 
 // Gif Component Constants
 export const SKELETON_SCALING_FACTOR = 1.01;

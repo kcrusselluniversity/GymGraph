@@ -6,7 +6,9 @@ import {
     LABEL_RADIUS_SCALING_FACTOR,
     CHART_COLORS,
     RADIAN,
+    MUSCLE_GROUP_CHART_DESCRIPTION,
 } from "../../../data/constants";
+import LightTooltip from "../../../components/ui/LightTooltip";
 
 /**
  * Muscle group pie chart component
@@ -30,7 +32,9 @@ const MuscleGroupPieChart = () => {
 
     return (
         <div className="muscleGroupPieChart Card">
-            <h3 className="muscleGroupPieChart__title">Muscle Groups Worked</h3>
+            <LightTooltip title={MUSCLE_GROUP_CHART_DESCRIPTION} placement="top">
+                <h3 className="muscleGroupPieChart__title">Muscle Groups Worked</h3>
+            </LightTooltip>
             <PieChart width={270} height={260}>
                 <Pie
                     data={muscleGroupSetData}

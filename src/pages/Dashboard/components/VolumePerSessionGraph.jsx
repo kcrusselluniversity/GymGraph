@@ -3,9 +3,11 @@ import { historyContext } from "../../../context/appContext";
 import LineGraph from "../../../components/ui/LineGraph";
 import GraphControlBtns from "../../../components/ui/GraphControlBtns";
 import calculateSessionsVolumeData from "../utils/calculateSessionsVolumeData";
+import LightTooltip from '../../../components/ui/LightTooltip';
 import {
     DEFAULT_MAX_AXIS_VALUE,
     GRAPH_DAY_RANGE,
+    VOLUME_GRAPH_DESCRIPTION,
 } from "../../../data/constants";
 
 /**
@@ -41,9 +43,11 @@ const VolumePerSessionGraph = () => {
 
     return (
         <div className="graphWithControlBtns Card">
-            <h3 className="graphWithControlBtns__title">
-                Volume per Session Graph
-            </h3>
+            <LightTooltip title={VOLUME_GRAPH_DESCRIPTION} placement="top">
+                <h3 className="graphWithControlBtns__title">
+                    Volume per Session Graph
+                </h3>
+            </LightTooltip>
             <LineGraph
                 displayedGraphData={displayedGraphData}
                 maxValue={maxValue}
