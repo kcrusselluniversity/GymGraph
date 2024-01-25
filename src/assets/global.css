@@ -151,10 +151,21 @@ td, input {
     font-size: 18px;
 }
 
+.loading_container {
+    display: grid;
+    place-content: center;
+    height: 100%;
+}
+
 @media screen and (width <=500px) {
     .greyButton {
         font-size: 16px;
     }
+}
+
+/* UTIL CLASSES */
+.textCenter {
+    text-align: center;
 }
 
 /* DIVIDER */
@@ -180,7 +191,6 @@ td, input {
 
 @media screen and (width <= 750px) {
     html, body, #root {
-        height: auto;
         min-height: 100vh;
     }
 
