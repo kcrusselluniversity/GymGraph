@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import LinkButton from "../../components/ui/LinkButton";
 import GymGraphLogo from "../../components/ui/GymGraphLogo";
+import handleSignInDemoAccount from "./utils/handleSignInDemoAccount";
+import Loading from "../../components/ui/Loading";
 import "./landing.css";
 
 /**
@@ -10,6 +13,15 @@ import "./landing.css";
  * the user sees when they go to the default route of the site.
  */
 const Landing = () => {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleDemoClick = () => {
+        handleSignInDemoAccount(navigate, setIsLoading);
+    };
+
+    if (isLoading) return <Loading />;
+
     return (
         <div className="landing">
             <div className="landing__content">
@@ -35,9 +47,9 @@ const Landing = () => {
                     <p>
                         Already a member &nbsp;<Link to="/signin">Sign in</Link>
                     </p>
-                    <p>
-                        ... or just looking for a demo &nbsp;
-                        <Link to="/underConstruction">Click here</Link>
+                    <p className="footer__demo">
+                        ... or just want to try the demo account &nbsp;
+                        <Link onClick={handleDemoClick}>Click here</Link>
                     </p>
                 </footer>
             </div>
