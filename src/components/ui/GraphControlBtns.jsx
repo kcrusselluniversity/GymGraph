@@ -64,6 +64,7 @@ const GraphControlBtns = ({
             setEndIndex(initialEndIndex);
             setDisplayedGraphData(initialDisplayData);
             setIsLastBlockOfData(true);
+            setIsAllActive(false);
 
             // Store initial data in state variables for later use
             setInitialEndIndex(initialEndIndex);
