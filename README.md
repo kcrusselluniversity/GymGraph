@@ -74,7 +74,7 @@ While testing routing from the 'underConstruction' page, an ECONNREFUSED error o
 Initially, mocking the SVGs didn't solve the issue. Further research showed that the problem was with the imported library *ReactSVG* components themselves. Mocking these components resolved the error, and I shared this solution to a question on *StackOverflow* from someone who encountered the same issue, but for which no solutions were posted.
 
 ### Rehydrating State Stored in localStorage
-For workout sessions, I decided to store exercise and set data in localStorage to prevent loss upon navigation (and thus rerendering). However, after a page reload, methods like updateSetFromExercise (which syncs the React state with local storage) were undefined, causing errors.
+For workout sessions, I decided to store exercise and set data in localStorage to prevent loss upon navigation (and thus rerendering). However, after a page reload, class methods like *updateSetFromExercise* (which updates a specified set for a given exercise) were undefined, causing errors.
 
 I found the issue was that localStorage only stored data, not class methods. To fix this, I adapted the SessionExercises class to accept a parsed JSON object and rehydrate it into class objects with necessary methods. This resolved the issue, allowing the state to update from localStorage correctly.
 
