@@ -10,6 +10,10 @@ export const EXERCISE_GROUPS = [
     "shoulders",
 ];
 
+// Demo user account details
+export const DEMO_USER_EMAIL = "ada.lovelace@gmail.com";
+export const DEMO_USER_PASSWORD = "AnalyticEngine1815";
+
 // Colour palette for the sites design
 const DOMINANT_COLOR = "white";
 const SECONDARY_COLOR = "#a8dadc";
@@ -54,7 +58,6 @@ export const GIF_SIZE_STANDARD = 360;
 // NOTE: This API endpoint is self hosted by me, thus is hardcoded
 export const EXERCISE_GIF_URL_ENDPOINT =
     "https://gymgraph-gifs.web.app/exercises";
-
 
 // Firebase calls constants
 export const PAGINATION_LIMIT = 2;
@@ -261,47 +264,47 @@ export const TEST_EXERCISE_LIST = {
     },
 };
 
-export const TEST_SESSION_OBJECT =  {
-    "exercises": {
-        "13681301": {
-            "uid": "13681301",
-            "startTime": "2024-01-09T02:39:50.111Z",
-            "muscleGroup": "legs",
-            "sets": [
+export const TEST_SESSION_OBJECT = {
+    exercises: {
+        13681301: {
+            uid: "13681301",
+            startTime: "2024-01-09T02:39:50.111Z",
+            muscleGroup: "legs",
+            sets: [
                 {
-                    "weight": 10,
-                    "reps": 10
+                    weight: 10,
+                    reps: 10,
                 },
                 {
-                    "weight": 10,
-                    "reps": 10
+                    weight: 10,
+                    reps: 10,
                 },
                 {
-                    "weight": 10,
-                    "reps": 10
-                }
+                    weight: 10,
+                    reps: 10,
+                },
             ],
-            "name": "Ankle Circles"
+            name: "Ankle Circles",
         },
         "09781301": {
-            "uid": "09781301",
-            "muscleGroup": "shoulders",
-            "name": "Band front raise",
-            "sets": [
+            uid: "09781301",
+            muscleGroup: "shoulders",
+            name: "Band front raise",
+            sets: [
                 {
-                    "weight": 10,
-                    "reps": 10
+                    weight: 10,
+                    reps: 10,
                 },
                 {
-                    "weight": 10,
-                    "reps": 10
+                    weight: 10,
+                    reps: 10,
                 },
                 {
-                    "weight": 10,
-                    "reps": 10
-                }
+                    weight: 10,
+                    reps: 10,
+                },
             ],
-            "startTime": "2024-01-09T02:39:57.431Z"
+            startTime: "2024-01-09T02:39:57.431Z",
         },
         // "00111301": {
         //     "muscleGroup": "abs",
@@ -324,5 +327,5 @@ export const TEST_SESSION_OBJECT =  {
         //     "name": "Assisted Hanging Knee Raise"
         // }
     },
-    "startTime": "2024-01-09T02:39:36.977Z"
-}
+    startTime: "2024-01-09T02:39:36.977Z",
+};
