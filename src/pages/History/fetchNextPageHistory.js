@@ -5,11 +5,9 @@ import {
     orderBy,
     query,
     startAfter,
-    startAt,
 } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 import { PAGINATION_LIMIT } from "../../data/constants";
-import dayjs from "dayjs";
 
 /**
  * This function fetches the next batch of a users exercise session history
@@ -36,13 +34,15 @@ const fetchNextPageHistory = async (lastVisibleDoc) => {
         `users/${userUid}/exerciseHistory`
     );
 
+    const today = new Date();
+
     const historyQuery =
         lastVisibleDoc === null
             ? query(
                   exerciseHistoryRef,
                   limit(PAGINATION_LIMIT),
                   orderBy("startTime", "desc"),
-                  startAt(dayjs().add(1, "day").format("YYYY-MM-DD"))
+                  startAfter(today)
               )
             : query(
                   exerciseHistoryRef,
@@ -87,7 +87,7 @@ export default fetchNextPageHistory;
  * @param {any} lastVisibleDocRef: The doc ref of the last document fetched
  * in the most recent batch.
  * @returns {bool} Boolean to indicate whether the most recently fetched batch
- * is the last batch of data. 
+ * is the last batch of data.
  */
 const isLastPage = async (collectionRef, lastVisibleDocRef) => {
     if (lastVisibleDocRef == undefined) return true;
