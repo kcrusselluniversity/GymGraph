@@ -4,10 +4,10 @@ import Fade from "@mui/material/Fade";
 
 const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip
-        {...props}
-        classes={{ popper: className }}
-        TransitionComponent={Fade}
-        placement="right-start"
+    classes={{ popper: className }}
+    TransitionComponent={Fade}
+    placement="right-start"
+    {...props}
     />
 ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
@@ -15,6 +15,7 @@ const LightTooltip = styled(({ className, ...props }) => (
         color: "rgba(0, 0, 0, 0.87)",
         boxShadow: theme.shadows[1],
         fontSize: "1rem",
+        fontWeight: "400",
         padding: "4px 12px",
     },
 }));
