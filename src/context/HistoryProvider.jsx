@@ -22,7 +22,7 @@ const HistoryProvider = ({ children }) => {
         const fetchUserHistory = async () => {
             try {
                 const userUid = auth.currentUser.uid;
-                const userHistoryArray = [];
+                let userHistoryArray = [];
 
                 // Query db for this users exercise history
                 const q = query(
@@ -49,6 +49,16 @@ const HistoryProvider = ({ children }) => {
                             startTime.toDate();
                     });
                 });
+
+                // Filter out any dates after todays date
+                const today = new Date();
+
+                // Set time to 11:59:59 pm
+                today.setHours(23, 59, 59);
+
+                userHistoryArray = userHistoryArray.filter(
+                    (session) => session.startTime < today
+                );
 
                 // Update state
                 setUserHistory(userHistoryArray);
