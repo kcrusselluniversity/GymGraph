@@ -22,7 +22,7 @@ const SetsBarGraph = () => {
     // Destructure required context
     const { isLoading } = useContext(historyContext);
     const { selectedExerciseData } = useContext(metricsContext);
-
+  
     // Set state variables
     const [graphData, setGraphData] = useState([]);
     const [maxValue, setMaxValue] = useState(DEFAULT_MAX_AXIS_VALUE);
@@ -33,7 +33,7 @@ const SetsBarGraph = () => {
         if (selectedExerciseData != null) {
             // Calculate volume data
             const volumeData = calculateSetsGraphData(selectedExerciseData);
-
+        
             // Calculate derived values
             const maxValue = calculateMaxValue(volumeData);
             const maxNumberOfSets = calculateMaxNumSets(selectedExerciseData);
@@ -50,7 +50,7 @@ const SetsBarGraph = () => {
 
     return (
         <div className="graphWithControlBtns Card setsHistory">
-            <h3 className="graphWithControlBtns__title">Sets History</h3>
+            <h3 className="graphWithControlBtns__title">Set History</h3>
             <BarGraph
                 displayedGraphData={displayedGraphData}
                 maxNumBars={maxNumberOfSets}
