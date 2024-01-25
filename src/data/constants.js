@@ -18,7 +18,7 @@ export const DEMO_USER_PASSWORD = "AnalyticEngine1815";
 export const MUSCLE_GROUP_CHART_DESCRIPTION =
     "This chart shows the total number of sets performed for each muscle group, displaying this data in pie chart form";
 export const VOLUME_GRAPH_DESCRIPTION =
-    "This graph shows the total volume (the product of weight lifted and repetitions), for each session across the users historical data";
+    "This graph shows the total volume (the product of weight lifted and repetitions) for each session across the users historical data";
 export const SET_GRAPH_DESCRIPTION =
     "This chart shows the history of sets performed for the selected exercise, showing the volume (reps multiplied by weight lifted) for each set";
 
