@@ -147,6 +147,8 @@ export const LABEL_RADIUS_SCALING_FACTOR = 0.65;
 
 // METRICS PAGE CONSTANTS
 export const NUM_EXERCISES_TO_DISPLAY = 5;
+export const SET_GRAPH_DESCRIPTION =
+    "This chart shows the history of sets performed for the selected exercise, showing the volume (reps multiplied by weight lifted) in each set";
 
 // Gif Component Constants
 export const SKELETON_SCALING_FACTOR = 1.01;

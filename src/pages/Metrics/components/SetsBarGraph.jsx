@@ -3,6 +3,8 @@ import { historyContext, metricsContext } from "../../../context/appContext";
 import GraphControlBtns from "../../../components/ui/GraphControlBtns";
 import calculateSetsGraphData from "../utils/calculateSetsGraphData";
 import BarGraph from "./BarGraph";
+import LightTooltip from "../../../components/ui/LightTooltip";
+import { SET_GRAPH_DESCRIPTION } from "../../../data/constants";
 import { object } from "prop-types";
 import {
     DEFAULT_MAX_AXIS_VALUE,
@@ -50,7 +52,11 @@ const SetsBarGraph = () => {
 
     return (
         <div className="graphWithControlBtns Card setsHistory">
-            <h3 className="graphWithControlBtns__title">Set History</h3>
+           
+                <LightTooltip title={SET_GRAPH_DESCRIPTION} placement="top">
+                    <h3 className="graphWithControlBtns__title">Set Volume History</h3>
+                </LightTooltip>
+           
             <BarGraph
                 displayedGraphData={displayedGraphData}
                 maxNumBars={maxNumberOfSets}
