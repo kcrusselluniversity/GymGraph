@@ -1,6 +1,6 @@
 import { func, string } from "prop-types";
 
-const ExerciseName = ({ exerciseName, onClick }) => {
+const ExerciseName = ({ exerciseName, onClick=()=>{} }) => {
     return (
         <div
             className="exerciseGroupList__item"
