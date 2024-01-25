@@ -1,8 +1,12 @@
 import { useContext } from "react";
 import GreyButton from "../../../components/ui/GreyButton";
-import { exerciseModalContext } from "../../../context/appContext";
+import {
+    RestTimerContext,
+    exerciseModalContext,
+} from "../../../context/appContext";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../../config/firebase";
+import { INITIAL_REST_TIME } from "../../../data/constants";
 
 /**
  * FinishSessionButton component
@@ -24,6 +28,9 @@ const FinishSessionButton = () => {
         setExerciseAdded,
     } = useContext(exerciseModalContext);
 
+    const { setRemainingTime, setChosenTime, setIsFinished, setIsActive } =
+        useContext(RestTimerContext);
+
     const handleClick = async () => {
         // Check if any exercises were added
         const exercises = sessionExercises.getExercises();
@@ -44,7 +51,9 @@ const FinishSessionButton = () => {
             // Rehydrate startTimes so they are stored as timestamps not strings
             Object.values(basicObject["exercises"]).forEach((exercise) => {
                 const { startTime, uid } = exercise;
-                basicObject["exercises"][uid]["startTime"] = new Date(startTime);
+                basicObject["exercises"][uid]["startTime"] = new Date(
+                    startTime
+                );
             });
 
             // Add the startTime to the basicObject
@@ -71,6 +80,12 @@ const FinishSessionButton = () => {
         setExerciseModalState("default");
         setSelectedExerciseInfo(null);
         setExerciseAdded(null);
+
+        // Reset rest timer
+        setRemainingTime(INITIAL_REST_TIME);
+        setChosenTime(INITIAL_REST_TIME);
+        setIsFinished(false);
+        setIsActive(false);
     };
 
     return (
