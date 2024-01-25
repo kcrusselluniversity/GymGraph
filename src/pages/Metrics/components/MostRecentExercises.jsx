@@ -6,6 +6,8 @@ import { historyContext, metricsContext } from "../../../context/appContext";
 import getMostRecentExercises from "../utils/getMostRecentExercises";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 
+const NO_EXERCISES_MESSAGE = "You haven't completed any exercises yet";
+
 /**
  * Most recent exercises component
  *
@@ -74,6 +76,9 @@ const MostRecentExercises = () => {
                             onClick={handleExerciseNameClick(exercise)}
                         />
                     ))}
+                    {mostRecentExercises.length === 0 && (
+                        <ExerciseName exerciseName={NO_EXERCISES_MESSAGE} />
+                    )}
                 </div>
             )}
         </div>
