@@ -78,14 +78,14 @@ For workout sessions, I decided to store exercise and set data in localStorage t
 
 I found the issue was that localStorage only stored data, not class methods. To fix this, I adapted the SessionExercises class to accept a parsed JSON object and rehydrate it into class objects with necessary methods. This resolved the issue, allowing the state to update from localStorage correctly.
 
-## :test_tube: Testing Lessons Learnt
-### The Value of TDD
-Through testing the addGoogleUserToDb function, I realized the drawbacks of heavy coupling with Firebase. The tests would break if the backend was changed. This highlighted the importance of writing functions independent of specific database services, underlining the principle of TDD to test interfaces, not implementations. TDD promotes writing more reusable, maintainable, and testable code.
-
 ### Refactoring for Code Maintainability/Readability
 Initially, I hard-coded state updates for workout sessions, violating the DRY principle and complicating maintenance. 
 
 By creating a *SessionExercises* class, I streamlined CRUD operations through clear, concise class methods. This approach simplified the code, enhanced readability, and made the implementation easily adjustable without affecting the overall application.
+
+## :test_tube: Testing Lessons Learnt
+### The Value of TDD
+Through testing the *addGoogleUserToDb* function, I realized the drawbacks of heavy coupling with Firebase. The tests would break if the backend was changed. This highlighted the importance of writing functions independent of specific database services, underlining the principle of TDD to test interfaces, not implementations. TDD promotes writing more reusable, maintainable, and testable code.
 
 ### The Cons of TDD
 TDD requires well-defined specifications, which can be a limitation. During development, I often found better UI/UX implementations than I had initially planned, necessitating refactoring and resulting in time lost. 
