@@ -1,7 +1,8 @@
 import formatDateObject from "../../../utils/formatDateObject";
+import sortExerciseByStartTime from '../../Workout/utils/sortExerciseByStartTime';
 
 const calculateSetsGraphData = (selectedExerciseData) => {
-    return selectedExerciseData.map((session) => {
+    return selectedExerciseData.sort(sortExerciseByStartTime).map((session) => {
         const { sets, startTime } = session;
 
         const date = formatDateObject(startTime);
