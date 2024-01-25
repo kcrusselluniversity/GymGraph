@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import SetData from "../../../components/ui/SetData";
 import FormattedDate from "../../../components/ui/FormattedDate";
+import sortExerciseByStartTimeReversed from "../utils/sortExerciseByStartTimeReversed";
 
 const NO_HISTORY_MESSAGE = "You have no history for this exercise yet";
 
@@ -25,8 +26,14 @@ const SelectedExerciseHistory = () => {
         );
     }
 
+    // Sort selectedExerciseData in reverse order to display in the
+    // History table
+    const sortedSelectedExerciseData = selectedExerciseData.sort(
+        sortExerciseByStartTimeReversed
+    );
+
     // Map each set of the selected exercise to a table row component
-    const setComponentArray = selectedExerciseData.map((session) => {
+    const setComponentArray = sortedSelectedExerciseData.map((session) => {
         const { sets, startTime } = session;
         const setCount = sets.length;
 
