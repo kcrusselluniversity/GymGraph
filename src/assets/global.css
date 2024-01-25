@@ -262,6 +262,10 @@ td, input {
     margin-bottom: 8px;
 }
 
+.graphWithControlBtns tspan {
+    font-size: 12px;
+}
+
 /* Remove default spinners on the numberic input html element */
 /* For Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-inner-spin-button,
