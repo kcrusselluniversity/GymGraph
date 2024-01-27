@@ -23,6 +23,29 @@ vi.mock("react-svg", () => {
     };
 });
 
+// Mock the Dashboard components that make async calls
+// We do this as we are only testing the routing to dashboard, not the
+// contents
+vi.mock("./pages/Dashboard/components/Calendar", () => {
+    return { default: () => <div>Calendar</div> };
+});
+vi.mock("./pages/Dashboard/components/MuscleGroupPieChart", () => {
+    return { default: () => <div>Pie Chart</div> };
+});
+vi.mock("./pages/Dashboard/components/VolumePerSessionGraph", () => {
+    return { default: () => <div>Volume Graph</div> };
+});
+vi.mock("./context/HistoryProvider", () => {
+    return { default: ({children}) => <div>{children}</div> };
+});
+vi.mock("@mui/material", async () => {
+    const lib = await vi.importActual("@mui/material")
+    return {
+        ...lib,
+        Dialog: () => <div>Dialog</div>
+    }
+})
+
 afterEach(vi.restoreAllMocks);
 
 describe("App routing tests", () => {

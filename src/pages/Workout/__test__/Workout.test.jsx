@@ -12,9 +12,17 @@ vi.mock("react-svg", () => {
     };
 });
 
+// Mock the finish session button to simplify testing of workout page
+// Testing of finish session button should be done separately
+vi.mock("../components/FinishSessionButton", () => {
+    return {
+        default: () => <div>Finish Session Btn</div>,
+    };
+});
+
 describe("Workout page tests", () => {
     it("renders without crashing", () => {
-        render(<Workout />, {wrapper: ExerciseModalProvider});
+        render(<Workout />, { wrapper: ExerciseModalProvider });
 
         const startWorkoutButton = screen.getByRole("button", {
             name: /start/i,
@@ -23,7 +31,7 @@ describe("Workout page tests", () => {
     });
 
     it("renders the start button on initial load", () => {
-        render(<Workout />, {wrapper: ExerciseModalProvider});
+        render(<Workout />, { wrapper: ExerciseModalProvider });
 
         const startWorkoutButton = screen.getByRole("button", {
             name: /start/i,
@@ -32,9 +40,9 @@ describe("Workout page tests", () => {
     });
 
     it("does not show a start button when the workout has already started", async () => {
-        const user = userEvent.setup()
-        
-        render(<Workout />, {wrapper: ExerciseModalProvider});
+        const user = userEvent.setup();
+
+        render(<Workout />, { wrapper: ExerciseModalProvider });
 
         const startWorkoutButton = screen.getByRole("button", {
             name: /start/i,
