@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import fetchNextPageHistory from "./fetchNextPageHistory";
 import fetchPrevPageHistory from "./fetchPrevPageHistory";
 
@@ -41,7 +41,7 @@ const usePaginateHistory = () => {
         setLastVisibleDoc(updatedLastVisibleDoc);
         setIsLastPage(lastPage);
         setIsLoading(false);
-        setIsNoHistory(historyArray.length === 0)
+        setIsNoHistory(historyArray.length === 0);
     };
 
     const fetchPrevResults = async () => {
@@ -77,9 +77,6 @@ const usePaginateHistory = () => {
         await fetchPrevResults();
     };
 
-    // Fetch the first result on page load
-    useEffect(() => fetchNextResults, []);
-
     return {
         currentHistoryResults,
         isLoading,
@@ -88,6 +85,7 @@ const usePaginateHistory = () => {
         isLastPage,
         handleNextClick,
         handlePrevClick,
+        fetchNextResults,
     };
 };
 

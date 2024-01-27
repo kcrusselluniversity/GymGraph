@@ -3,6 +3,7 @@ import usePaginateHistory from "./usePaginateHistory";
 import Loading from "../../components/ui/Loading";
 import GreyButton from "../../components/ui/GreyButton";
 import "./historyPage.css";
+import { useEffect } from "react";
 
 const NO_HISTORY_MESSAGE = "You haven't completed any sessions yet";
 
@@ -15,7 +16,13 @@ const History = () => {
         isLastPage,
         handleNextClick,
         handlePrevClick,
+        fetchNextResults,
     } = usePaginateHistory();
+
+    // Fetch the first results on page load
+    useEffect(() => {
+        fetchNextResults();
+    }, []);
 
     const historySummaryComponents = currentHistoryResults.map(
         (session, index) => (
