@@ -13,10 +13,10 @@ A full stack weight lifting tracker app.
 
 ## :camera_flash: Screenshots
 <div style="display: flex; flex-wrap:wrap;gap: 2rem;">
-<img src='./src/assets/images/dashboard_page.png' width="400px" alt='Dashboard Page'>
-<img src='./src/assets/images/selected_exercise_metrics_page.png' width="400px" alt='Selected Exerice Metrics Page'>
-<img src='./src/assets/images/exercise_session.png' width="400px" alt='Exercise Session'>
-<img src='./src/assets/images/rest_timer.png' width="400px" alt='Rest Timer'>
+<img src='./src/assets/images/dashboard_page.png' width="800px" alt='Dashboard Page'>
+<img src='./src/assets/images/selected_exercise_metrics_page.png' width="800px" alt='Selected Exerice Metrics Page'>
+<img src='./src/assets/images/exercise_session.png' width="800px" alt='Exercise Session'>
+<img src='./src/assets/images/rest_timer.png' width="800px" alt='Rest Timer'>
 </div>
 
 ## :sparkles: Features
