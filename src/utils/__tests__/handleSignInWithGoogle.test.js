@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithRedirect } from "firebase/auth";
 import handleSignInWithGoogle from "../firebaseUtils/handleSignInWithGoogle";
 import { addUserToDb } from "../firebaseUtils/addUserToDb"
 import FirebaseAuthCustomError from "../firebaseUtils/FirebaseAuthCustomError";
@@ -7,7 +7,7 @@ import FirebaseAuthCustomError from "../firebaseUtils/FirebaseAuthCustomError";
 vi.mock("../firebaseUtils/addUserToDb");
 vi.mock("firebase/auth", () => {
     return {
-        signInWithPopup: vi.fn(),
+        signInWithRedirect: vi.fn(),
         getAuth: vi.fn(() => {
             return {};
         }),
@@ -21,7 +21,7 @@ afterEach(vi.restoreAllMocks);
 
 describe("handleSignInWithGoogle function tests", () => {
     it("signs in a valid user", async () => {
-        signInWithPopup.mockResolvedValue({
+        signInWithRedirect.mockResolvedValue({
             user: { email: "validuser@test.com" },
         });
 
@@ -31,7 +31,7 @@ describe("handleSignInWithGoogle function tests", () => {
     });
 
     it("handles an error gracefully", async () => {
-        signInWithPopup.mockRejectedValue(
+        signInWithRedirect.mockRejectedValue(
             new FirebaseAuthCustomError(
                 "Firebase auth test error",
                 "auth/invalid-login"
