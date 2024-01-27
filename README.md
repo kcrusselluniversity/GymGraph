@@ -43,6 +43,7 @@ with prefilled user data (best for seeing the full functionality of the site).
 - **Backend**
     - Firebase (Firestore/Authentication/Hosting)
     - Python (for scripting)
+    - Netlify (for hosting)
 
 - **Testing**
     - Jest/Vitest
