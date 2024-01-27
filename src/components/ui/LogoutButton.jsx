@@ -15,6 +15,9 @@ const LogoutButton = () => {
     const handleClick = async () => {
         try {
             await signOut(auth);
+
+            // Remove any data stored in local storage
+            window.localStorage.clear();
         } catch (err) {
             console.error(err);
         }
