@@ -2,7 +2,7 @@
 
 A full stack weight lifting tracker app.
 
-The site is live <a href="https://elaborate-figolla-f0ee4d.netlify.app/">here</a>!
+The site is live <a href="https://gymgraph.netlify.app/">here</a>!
 
 Create your own account, or click on the <b>demo</b> account to try it out
 with prefilled user data (best for seeing the full functionality of the site).
