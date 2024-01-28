@@ -1,10 +1,10 @@
-import { signInWithRedirect } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../config/firebase";
 import { addUserToDb } from "./addUserToDb";
 
 const handleSignInWithGoogle = async () => {
     try {
-        const result = await signInWithRedirect(auth, provider);
+        const result = await signInWithPopup(auth, provider);
         const user = result.user;
         const { email, uid } = user;
 
