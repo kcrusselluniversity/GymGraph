@@ -35,14 +35,14 @@
     grid-area: dashboard;
 }
 
-@media screen and (width <= 950px) {
+@media screen and (max-width: 950px) {
     .userPageContainer {
         grid-template: 1fr / var(--navbar-width-small) 1fr;
         grid-template-areas: "dashboard content";
     }  
 }
 
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     .userPageContainer {
         padding: 0px;
         display: block;

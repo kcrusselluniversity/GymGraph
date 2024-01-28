@@ -59,3 +59,32 @@
     max-width: 280px;
     margin-top: 8px;
 }
+
+@media screen and (max-width: 750px)  {
+    .landing::after {
+        content: none;
+    }
+
+    .landing {
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .landing__content {
+        width: 85%;
+        text-align: center;
+    }
+
+    .content__footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content__CTA {
+        width: auto;    
+        margin-bottom: 8px;
+    }
+}

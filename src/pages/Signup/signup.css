@@ -41,7 +41,7 @@ form > .inputContainer {
     align-self: stretch;
 }
 
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px) {
     .signUpPage {
         padding: 2rem;
         height: 100dvh;
@@ -80,7 +80,7 @@ form > .inputContainer {
     text-align: center;
 }
 
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px) {
     .formError {
         width: var(--text-input-width-small-screen);
     }

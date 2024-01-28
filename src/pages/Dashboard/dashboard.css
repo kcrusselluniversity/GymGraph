@@ -114,7 +114,7 @@
 
 /* Media Queries */
 
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     .dashboardPage {
         height: calc(100dvh - var(--navbar-height-small));
         overflow-y: scroll;
@@ -147,7 +147,7 @@
 
 }
 
-@media screen and (width <= 950px) {
+@media screen and (max-width: 950px) {
     .sessionHistorySummary__date {
         min-width: min-content;
         margin-right: 1rem;

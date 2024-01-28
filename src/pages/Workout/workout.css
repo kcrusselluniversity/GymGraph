@@ -234,7 +234,7 @@
 
 /* SECTION: Media Queries */
 
-@media screen and (width <= 500px) {    
+@media screen and (max-width: 500px) {    
     .workoutPage {
         padding: 1.5rem 10% 0px;
         height: calc(100dvh - var(--navbar-height-small));
@@ -296,7 +296,7 @@
     }
 }
 
-@media screen and (width <= 600px) {
+@media screen and (max-width: 600px) {
     .exerciseModal__restTimer {
         margin-top: 2.5rem;
     }

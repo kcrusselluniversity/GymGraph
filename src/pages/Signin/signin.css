@@ -58,7 +58,7 @@
     padding: 16px 8px;
 }
 
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px) {
     .signInPage {
         height: 100dvh;
     }
@@ -79,7 +79,7 @@
 }
 
 /* Responsiveness styling */
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px) {
     .signInPage > header {
         padding-left: 0px;
         text-align: center;

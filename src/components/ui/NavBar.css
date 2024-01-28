@@ -76,7 +76,7 @@
 }
 
 /* Responsive styling for small width browser windows */
-@media screen and (width <= 950px) {
+@media screen and (max-width: 950px) {
     .navbar {
         width: fit-content;
         align-items: center;
@@ -88,7 +88,7 @@
 }
 
 /* Responsive styling for mobile sized devices */
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     /* The navbar will be positioned absoluted on the bottom */
     .navbar {
         position: fixed;

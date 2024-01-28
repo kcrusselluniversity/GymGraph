@@ -136,19 +136,19 @@
 }
 
 /* SECTION: MEDIA QUERIES */
-@media screen and (width > 1300px) {
+@media screen and (min-width: 1301px) {
     .metricsPage .metrics__selectedExerciseHistory {
         max-width: var(--selected-exercise-history-max-width);
     }
 } 
 
-@media screen and (width <= 1300px) {
+@media screen and (max-width: 1300px) {
     .selectedExercise__gifWrapper {
         width: fit-content;
     }
 } 
 
-@media screen and (width <= 950px) {
+@media screen and (max-width: 950px) {
     .metricsPage {
         margin: 1rem;
     }
@@ -158,7 +158,7 @@
     }
 }
 
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px) {
     .metrics__content {
         justify-content: center;
     }
@@ -169,7 +169,7 @@
     }
 }
 
-@media screen and (width <= 600px) {
+@media screen and (max-width: 600px) {
     .mostRecentComponent__btn {
         padding: 0px 4px !important;
     }
@@ -179,7 +179,7 @@
     }
 }
 
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     .metricsPage {
         margin: 0px;
         padding-bottom: 2rem !important;

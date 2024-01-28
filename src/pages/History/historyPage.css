@@ -23,7 +23,7 @@
     margin: auto;
 }
 
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     .HistoryPage {
         height: calc(100dvh - var(--navbar-height-small));
         overflow-y: scroll;

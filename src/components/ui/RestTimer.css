@@ -43,7 +43,7 @@
     color: white;
 }
 
-@media screen and (width <= 500px) {
+@media screen and (max-width: 500px) {
     .RestTimer {
         padding: 1rem;
     }
