@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBm20LnuKowcEeV0R4UayexrsUvQaAmZr4",
-    authDomain: "gymgraph-ac95d.firebaseapp.com",
+    authDomain: "https://gymgraph.netlify.app/",
     projectId: "gymgraph-ac95d",
     storageBucket: "gymgraph-ac95d.appspot.com",
     messagingSenderId: "569702322733",
