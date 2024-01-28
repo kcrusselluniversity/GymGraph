@@ -20,6 +20,13 @@ vi.mock("../components/FinishSessionButton", () => {
     };
 });
 
+// Mock scroll to top component
+vi.mock("../../../components/ui/ScrollToTopOnLoad", () => {
+    return {
+        default: () => <div></div>,
+    };
+});
+
 describe("Workout page tests", () => {
     it("renders without crashing", () => {
         render(<Workout />, { wrapper: ExerciseModalProvider });

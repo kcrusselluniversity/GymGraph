@@ -3,6 +3,7 @@ import ExerciseSession from "./components/ExerciseSession";
 import { exerciseModalContext } from "../../context/appContext";
 import { useContext } from "react";
 import { SessionExercises } from "../../utils/classes/SessionExercises";
+import ScrollToTopOnLoad from "../../components/ui/ScrollToTopOnLoad";
 import "./workout.css";
 
 /**
@@ -15,18 +16,19 @@ const Workout = () => {
         workoutActive,
         setWorkoutActive,
         setSessionStartTime,
-        setSessionExercises
+        setSessionExercises,
     } = useContext(exerciseModalContext);
 
     const handleClick = () => {
         setWorkoutActive(true);
         setSessionStartTime(new Date());
-        setSessionExercises(new SessionExercises())
+        setSessionExercises(new SessionExercises());
     };
 
     return (
         <div className="workoutPage userPageGrid">
             <div className="workoutPage__content">
+                <ScrollToTopOnLoad />
                 {workoutActive ? (
                     <ExerciseSession />
                 ) : (
