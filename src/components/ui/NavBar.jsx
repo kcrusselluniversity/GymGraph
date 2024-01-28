@@ -23,11 +23,9 @@ const linkData = [
 
 const NavBar = () => {
     // Determine the screen size based on the screen width
-    const isSmallScreen = useMediaQuery(
-        `(width <= ${DISPLAY_SMALL_SCREEN})`
-    );
+    const isSmallScreen = useMediaQuery(`(min-width: ${DISPLAY_SMALL_SCREEN})`);
     const isMobileScreen = useMediaQuery(
-        `(width <= ${DISPLAY_MOBILE_SCREEN})`
+        `(min-width: ${DISPLAY_MOBILE_SCREEN})`
     );
 
     return (
