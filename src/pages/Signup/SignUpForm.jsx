@@ -16,7 +16,7 @@ import { handleSignup } from "./utils/handleSignup";
  */
 const SignUpForm = () => {
     // Determine the screen size based on the screen width
-    const isSmallScreen = useMediaQuery("(width <= 750px)");
+    const isSmallScreen = useMediaQuery("(max-width: 750px)");
     const size = isSmallScreen ? "small" : "medium";
 
     // Set up navigation

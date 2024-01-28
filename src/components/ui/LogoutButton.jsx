@@ -10,7 +10,7 @@ import "./LogoutButton.css";
 
 const LogoutButton = () => {
     const navigate = useNavigate();
-    const isSmallScreen = useMediaQuery(`(width <= ${DISPLAY_SMALL_SCREEN})`);
+    const isSmallScreen = useMediaQuery(`(max-width: ${DISPLAY_SMALL_SCREEN})`);
 
     const handleClick = async () => {
         try {
