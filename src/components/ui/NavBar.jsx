@@ -30,6 +30,7 @@ const NavBar = () => {
 
     return (
         <nav className="navbar">
+            {isMobileScreen}
             {isMobileScreen ? null : (
                 <Link to="/user/dashboard">
                     <GymGraphLogo />
