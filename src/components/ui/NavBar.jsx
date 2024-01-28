@@ -23,14 +23,13 @@ const linkData = [
 
 const NavBar = () => {
     // Determine the screen size based on the screen width
-    const isSmallScreen = useMediaQuery(`(min-width: ${DISPLAY_SMALL_SCREEN})`);
+    const isSmallScreen = useMediaQuery(`(max-width: ${DISPLAY_SMALL_SCREEN})`);
     const isMobileScreen = useMediaQuery(
-        `(min-width: ${DISPLAY_MOBILE_SCREEN})`
+        `(max-width: ${DISPLAY_MOBILE_SCREEN})`
     );
 
     return (
         <nav className="navbar">
-            {isMobileScreen}
             {isMobileScreen ? null : (
                 <Link to="/user/dashboard">
                     <GymGraphLogo />
