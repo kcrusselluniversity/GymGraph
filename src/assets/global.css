@@ -291,7 +291,7 @@ input[type="number"] {
 
 /* Media queries to load on initial app load */
 /* Landing Page */
-@media screen and (width <= 750px) {
+@media screen and (max-width: 750px)  {
     .landing::after {
         content: none;
     }
